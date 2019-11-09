@@ -17,24 +17,28 @@
         color: black;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 10px;
+        
     }
 
 .grid-container {
   display: grid;
   grid-template-columns: 150px 150px 150px 150px; /* four columns  */
   grid-template-rows: 150px 150px 150px 150px 150px; /* five rows  */
+  justify-items: center;
+  align-items: center;
 }
 
 .banner_header{        
-    background-color: rgba(59, 138, 212, 0.719)        
+    background-color: rgba(59, 138, 212, 0.719);
     grid-column-start: 1;
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 2;
+    justify-items: center;
 }
 
 .banner_main{
-    background-color: rgba(219, 223, 29, 0.719);
+    background-color: rgba(223, 155, 29, 0.719);
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 2;
@@ -51,7 +55,7 @@
 }
 
 .banner_footer {
-    background-color:rgba(59, 138, 212, 0.719)        
+    background-color:rgba(59, 138, 212, 0.719);
     grid-column-start: 1;
     grid-column-end: 4;
     grid-row-start: 4;
