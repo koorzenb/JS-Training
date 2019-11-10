@@ -9,18 +9,20 @@ html, body {
     font-size: 10px;        
 }
 
-.text{
-    display: flex;            /* new */
-    align-items: center;      /* new */
-    justify-content: center;  /* new */
-}
-
 .grid-container {
   display: grid;
   justify-content: center;
   grid-template-columns: 150px 150px 150px 150px; /* four columns  */
-  grid-template-rows: 150px 150px 150px 150px 150px; /* five rows  */  
+  grid-template-rows: 150px 150px 150px 150px;; /* four rows  */  
 }
+
+/*
+.text{
+    display: flex;          
+    align-items: center;    
+    justify-content: center;
+}
+*/
 
 .banner_header{            
     background-color: rgba(59, 138, 212, 0.719);
