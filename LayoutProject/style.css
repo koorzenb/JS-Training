@@ -18,11 +18,18 @@ html, body {
 
 /*
 .text{
+    //TODO: make banners DRY
     display: flex;          
     align-items: center;    
     justify-content: center;
 }
 */
+
+.banner_aside, .banner_footer, .banner_header, .banner_main {
+    display: flex;          
+    align-items: center;    
+    justify-content: center;
+}
 
 .banner_header{            
     background-color: rgba(59, 138, 212, 0.719);
@@ -30,9 +37,6 @@ html, body {
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 2;
-    display: flex;          
-    align-items: center;    
-    justify-content: center;
 }
 
 .banner_main{
@@ -41,9 +45,6 @@ html, body {
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 4;
-    display: flex;          
-    align-items: center;    
-    justify-content: center;
     }
 
 .banner_aside {
@@ -53,9 +54,6 @@ html, body {
     grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 4;
-    display: flex;          
-    align-items: center;    
-    justify-content: center;
 }
 
 .banner_footer {
@@ -64,7 +62,4 @@ html, body {
     grid-column-end: 4;
     grid-row-start: 4;
     grid-row-end: 5;
-    display: flex;          
-    align-items: center;    
-    justify-content: center;
 }
