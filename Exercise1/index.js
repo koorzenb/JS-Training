@@ -1,8 +1,9 @@
 const x = 4;
 const y = 5;
 
-console.log(multi(x,y));
+//Using Arrow func
+let result = 0;
 
-function multi(r,z){
-    return r*z;
-}
+result = (a,b) => a * b;
+
+console.log(result(8,7));
