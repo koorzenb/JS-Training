@@ -4,19 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Calculator</title>
-    <link rel="stylesheet" href="./style.css" />
+    <title>Calculator</title>    
 </head>
-<style>
-    html, body {
-        padding: 0;
-        margin: 0;
-        width: 100vw;
-        height: 100vh;
-    }
-</style>
-<body>        
-    <script src="index.js"></script>
+<body>                
+<script type="module" src="calculator.js">
+    import {add} from 'calculator.js'
+    console.log(add(3,4));    
+</script>
 </body>
 </html>
 
