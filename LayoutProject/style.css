@@ -27,7 +27,12 @@ html, body {
     display: grid;
     color: black;
     font-family: Arial;
-    font-size: 10px;        
+    font-size: 10px;   
+    grid: "header header"
+        "nav nav"
+        "content sidebar"
+        "footer footer";
+  grid-template-columns: 1fr 25%;      
 } 
 
 .center{
@@ -38,33 +43,34 @@ html, body {
 
 .banner_header{            
     background-color: rgba(59, 138, 212, 0.719);
-    grid-column-start: 1;
+  /*  grid-column-start: 1;
     grid-column-end: 4;
     grid-row-start: 1;
-    grid-row-end: 2;
+    grid-row-end: 2;*/
+
 }
 
 .banner_main{
     background-color: rgba(223, 155, 29, 0.719);
-    grid-column-start: 1;
+    /*grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 2;
-    grid-row-end: 4;
+    grid-row-end: 4;*/
     }
 
 .banner_aside {
     background-color: black;    
     color: white;
-    grid-column-start: 3;
+    /*grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 2;
-    grid-row-end: 4;
+    grid-row-end: 4;*/
 }
 
 .banner_footer {
     background-color:rgba(59, 138, 212, 0.719);
-    grid-column-start: 1;
+    /*grid-column-start: 1;
     grid-column-end: 4;
     grid-row-start: 4;
-    grid-row-end: 5;
+    grid-row-end: 5;*/
 }
