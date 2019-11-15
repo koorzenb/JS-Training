@@ -5,6 +5,6 @@
 */
 
 let add = 0;
-add = (number1,number2) => number1 + number2;
-export {add};
+add = (number1,number2) => console.log(`${number1} + ${number2} =`, number1 + number2);
 
+export {add};
