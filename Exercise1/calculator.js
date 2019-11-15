@@ -4,6 +4,6 @@
 - Print the result using the "console.log" function. When you open your browser's developer tools you should see your result in the console.
 */
 
-let add = 0;
-add = (number1,number2) => number1 + number2;
+const add = (number1, number2) => number1 + number2;
+
 export {add};
