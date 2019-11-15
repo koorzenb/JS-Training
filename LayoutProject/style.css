@@ -29,11 +29,19 @@ html, body {
     font-family: Arial;
     font-size: 10px;   
     grid: "header header"
-        "nav nav"
-        "content sidebar"
-        "footer footer";
-  grid-template-columns: 1fr 25%;      
+    "main aside"  
+    "main aside"    
+    "main aside"    
+    "main aside"    
+    "footer footer";
+  grid-template-columns: 1fr 20%;      
+  grid-template-rows: 10%;
 } 
+
+header { grid-area: header; }
+main { grid-area: main;}
+aside {grid-area: aside;}
+footer { grid-area: footer; }
 
 .center{
     display: grid;          
@@ -43,34 +51,17 @@ html, body {
 
 .banner_header{            
     background-color: rgba(59, 138, 212, 0.719);
-  /*  grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 2;*/
-
 }
 
 .banner_main{
-    background-color: rgba(223, 155, 29, 0.719);
-    /*grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 4;*/
+    background-color: rgba(223, 155, 29, 0.719);   
     }
 
 .banner_aside {
     background-color: black;    
-    color: white;
-    /*grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 4;*/
+    color: white;  
 }
 
 .banner_footer {
     background-color:rgba(59, 138, 212, 0.719);
-    /*grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 4;
-    grid-row-end: 5;*/
 }
