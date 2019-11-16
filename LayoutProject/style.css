@@ -1,24 +1,3 @@
-/**
-    General comments.
-    1. Use grid areas instead  it will reduce the amount of CSS by alot 
-    2. You repeat a lot of your stuff.
-
-    display: flex;          
-    align-items: center;    
-    justify-content: center;
-
-    You can batch these in one using comman seperated statements.
-
-    .banner_header, .banner_main, .banner_footer {
-        display: flex;          
-        align-items: center;    
-        justify-content: center;
-    }
-
-    better yet, create a class called .center and just use that class where you need to center the items.
-    Please redo this project with these changes
-**/
-
 html, body {
     padding: 0;
     margin: 0;
