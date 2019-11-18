@@ -8,7 +8,12 @@
     <title>Classes</title>
 </head>
 <body>
-    <script>    
+    <script type="module">    
+        import {Person, Rectangle} from './person.js';
+
+        const Rita = new Person("Rita","Koorzen", 38);
+        
+        console.log(`First person:\n ${Rita.name} ${Rita.lastName} \n Age = ${Rita.age}`)
     
     </script> 
 </body>
