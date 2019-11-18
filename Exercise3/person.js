@@ -39,28 +39,30 @@ In the index.html file import JoeDirt and MileyCirus and create instances for ea
     Tell them to stop using the stop walking function and print out their moving status. 
 */
 
+
     export class Person {
+        isWalking = Boolean();
+
         constructor(name, lastName, age){
             this.name = name;
             this.lastName = lastName;
             this.age = age;
-
-            (name, lastName, age) => {
-                console.log(name, lastName, age)
+            this.isWalking = Boolean(false);
             }
+        }
+
+        function startWalking{
+            isWalking = Boolean(true);
+
+        }
+    
+        function stopWalking{
+            isWalking = Boolean(false;
         }
     }  
 
-    export class Rectangle {
-        constructor(height, width) {
-            this.height = height;
-            this.width = width;
-        }
-    }
+  
 
-    const Rita = new Person("Rita","Koorzen", 39);
+    
 
-    console.log(Rectangle.name);
-    //console.log(Person.name);
-    const Recta2 = new Rectangle(34, 35);
-    //console.log(Recta2.height, Recta2.name);
+
