@@ -3,11 +3,8 @@
  * As with the first exercise call this function from index.html and lot the result.
 */
 
-export const add = (number1, number2) => number1 + number2;
-
 let total = 0;
-
-export function addNumbers(array){
+export function addNumbers(...array) {
   for(let i=0; i < array.length; i++){
     total += array[i];
   } 

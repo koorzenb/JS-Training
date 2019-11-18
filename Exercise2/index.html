@@ -8,10 +8,11 @@
 </head>
 <body>                
 <script type="module">
-    import {add, addNumbers} from './calculator.js';
+    import {addNumbers} from './calculator.js';
 
-    const array = [1,2,3,4,5];
-    console.log(`Array sum = ${addNumbers(array)}`);
+    const array = [1,2,3,4,5];   
+    console.log(`Array sum = ${addNumbers(...array)}`);
+    //Garbage collection necessary?
 </script>
 </body>
 </html>
