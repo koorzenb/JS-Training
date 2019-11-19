@@ -3,8 +3,10 @@
  * As with the first exercise call this function from index.html and lot the result.
 */
 
-let total = 0;
+
 export function addNumbers(...array) {
+  let total = 0;
+  
   for(let i=0; i < array.length; i++){
     total += array[i];
   } 
