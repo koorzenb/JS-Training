@@ -4,7 +4,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
 
 The person class has the following properties: 
     -First Name 
-    -Last Name Age 
+    -Last Name 
+    -Age 
     
 It (class or 'person' file?) also has the following functions:
         ~Start walking 
@@ -12,7 +13,8 @@ It (class or 'person' file?) also has the following functions:
         
 When start walking is called you need to set a private field "is walking" to true, 
     stop walking set's the same field back to false. 
-The default value of this field is false and should be set to false in the constructor of the class.
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Class_fields
+    The default value of this field is false and should be set to false in the constructor of the class.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor
 
 Now add a read-only property (property with a getter but no setter called status. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get    
@@ -39,30 +41,39 @@ In the index.html file import JoeDirt and MileyCirus and create instances for ea
     Tell them to stop using the stop walking function and print out their moving status. 
 */
 
+export class Person {       
+    #isWalking = Boolean()
 
-    export class Person {
-        isWalking = Boolean();
+    constructor(name, lastName, age){
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;    
+        this.#isWalking = Boolean(false)    ;
+    }        
 
-        constructor(name, lastName, age){
-            this.name = name;
-            this.lastName = lastName;
-            this.age = age;
-            this.isWalking = Boolean(false);
+    startWalking() {
+        isWalking = Boolean(true);
+    }
+
+    stopWalking () {
+        isWalking = Boolean(false);
+    } 
+      //TODO: get Getter working
+    let isWalking = {
+        isWalking,
+        get getAction() {
+            if (isWalking) {
+            console.log(`${Person.name} ${Person.lastName} is walking`);
+            } else {
+            console.log(`${Person.name} ${Person.lastName} is idle`);
             }
-        }
-
-        function startWalking{
-            isWalking = Boolean(true);
-
-        }
+            return;
+        }    
+    }
+}
+ 
     
-        function stopWalking{
-            isWalking = Boolean(false;
-        }
-    }  
-
+    
   
 
-    
-
-
+          
