@@ -15,15 +15,16 @@ In the index.html file import JoeDirt and MileyCirus and create instances for ea
 */
 
 export class Person {           
-    _isWalking = Boolean();
+    get isWalking() {
+        return this._isWalking == true ? `${Person.name} ${Person.lastName} is walking` : `${Person.name} ${Person.lastName} is idle`;
+    }
 
     constructor(name, lastName, age){
         this.name = name;
         this.lastName = lastName;
         this.age = age;    
-        this._isWalking = Boolean(false)    ;
-    }        
-    //TODO: rewrite test code so that you can send actual code as example to Rabie
+        this._isWalking = false;
+    }           
     
     startWalking() {
         this._isWalking = Boolean(true);
@@ -33,14 +34,6 @@ export class Person {
     stopWalking() {
         this._isWalking = Boolean(false);  
         console.log("stopped walking")
-    }
-
-    get _isWalking() {
-        if (_isWalking) {                        
-            return `${Person.name} ${Person.lastName} is walking`;
-        } else {
-            return '${Person.name} ${Person.lastName} is idle';
-        }
     }
 }   
     
