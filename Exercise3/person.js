@@ -27,13 +27,11 @@ export class Person {
     }           
     
     startWalking() {
-        this._isWalking = Boolean(true);
-        console.log("started walking");
+        this._isWalking = Boolean(true);        
     }    
 
     stopWalking() {
-        this._isWalking = Boolean(false);  
-        console.log("stopped walking")
+        this._isWalking = Boolean(false);          
     }
 }   
     
