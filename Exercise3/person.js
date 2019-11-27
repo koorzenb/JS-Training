@@ -17,7 +17,7 @@ In the index.html file import JoeDirt and MileyCirus and create instances for ea
 export class Person {           
        
     get isWalking() {
-        return this._isWalking == true ? `${Person.name} ${Person.lastName} is walking` : `${Person.name} ${Person.lastName} is idle`;
+        return this._isWalking == true ? `${this.name} ${this.lastName} is walking` : `${this.name} ${this.lastName} is idle`;
     }
 
     constructor(name, lastName, age){
