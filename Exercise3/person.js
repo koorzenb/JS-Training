@@ -15,6 +15,7 @@ In the index.html file import JoeDirt and MileyCirus and create instances for ea
 */
 
 export class Person {           
+       
     get isWalking() {
         return this._isWalking == true ? `${Person.name} ${Person.lastName} is walking` : `${Person.name} ${Person.lastName} is idle`;
     }
@@ -27,11 +28,11 @@ export class Person {
     }           
     
     startWalking() {
-        this._isWalking = Boolean(true);        
+        this._isWalking = true;        
     }    
 
     stopWalking() {
-        this._isWalking = Boolean(false);          
+        this._isWalking = false;          
     }
 }   
     
