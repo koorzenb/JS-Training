@@ -9,14 +9,18 @@
 </head>
 <body>
     <script type="module">    
-        import {Person} from './person.js';
+        import {Person, JoeDirt} from './person.js';
 
-        const Barend = new Person("Barend","Koorzen", 42);        
-        console.log(`First person:\n ${Barend.name} ${Barend.lastName} \n Age = ${Barend.age}`)
-        Barend.startWalking();            
-        console.log(Barend.isWalking);        
-        Barend.stopWalking();
-
+        /*const barend = new Person("Barend","Koorzen", 42);        
+        console.log(`First person:\n${barend.name} ${barend.lastName} \n Age = ${barend.age}`)
+        barend.startWalking();            
+        console.log(barend.isWalking);        
+        barend.stopWalking();
+*/
+        const joe = new JoeDirt("Joe", "Dirt","24");
+        joe.startWalking();            
+        console.log(joe.isWalking);        
+        joe.stopWalking();
     </script> 
 </body>
 </html>
