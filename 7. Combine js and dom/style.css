@@ -1,0 +1,8 @@
+input,
+label {
+    margin: .4rem 0;
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    margin: .2rem;
+}
