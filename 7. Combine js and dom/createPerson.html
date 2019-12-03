@@ -7,28 +7,28 @@
     <title>Create Person</title>
     <link rel="stylesheet" href="./style.css" />
 </head>
-<body>	
-    
+<body>	    
     <div class="inputs">        
         <div>    
             <label>Name
-                <input type="text" name="name">
+                <input type="text" name="name" placeholder="Type something..." id="name">
         </label>
         </div>
         <div >    
             <label>Lastname
-                <input type="text" name="lastName">
+                <input type="text" name="lastName" placeholder="Type something..." id="lastName">
             </label>
         </div>
         <div>    
             <label>Age
-                <input type="text" name="age">
+                <input type="text" name="age" placeholder="Type something..." id="age">
             </label>
         </div>
     </div>   
     <div>   
-        <input class="buttons" type="button" name="createPerson" value="Create Person">
-    </div>
+        <input class="buttons" type="button" name="createPerson" value="Create Person"
+            id="createPerson"  onclick="getInputValue();">         
+    </div>   
     <div>   
         <input class="buttons" type="button" name="personWalk" value="Walk">
         <input class="buttons" type="button" name="personStop" value="Stop">
@@ -38,13 +38,32 @@
             <input type="text" name="age">
         </label>
     </div>
+    
 
-    <script>
+    <script type="module">
         //https://github.com/caperaven/training/blob/master/07.Combine%20javascript%20and%20dom%20project.md        
         
        
         import {Person} from './person.js';
-               
-    </script>
+        const joe = new Person("Joe", "Dirt","24");
+/*
+        function getInputValue(){
+            const inputVal = document.getElementById("name").value;
+            alert(name);
+        }
+    */    
+
+</script>
+
+<script>
+    function getInputValue(){
+        // Selecting the input element and get its value 
+        const inputVal = document.getElementById("name").value;
+        
+        // Displaying the value
+        alert(inputVal);
+    }
+</script>
+
 </body>
 </html>
