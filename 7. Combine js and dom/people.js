@@ -1,20 +1,11 @@
 
-import {Person} from './person.js';
-
-export function getInputValue(){
-    var inputVal = document.getElementById("myInput").value;
+export function getInputValue(name,lastName,age){    
+    const nVal = document.getElementById("name").value;
+    const lnVal = document.getElementById("lastName").value;
+    const aVal = document.getElementById("age").value;
     
-    // Displaying the value
-    alert(inputVal);
+    const details = nVal + lnVal + aVal;
+    return details;
 }
 
-export class JoeDirt extends Person {
-    /*
-    constructor(){
-        this.name = super.name;
-        this.lastName = super.name;
-        this.age = super.age;
-    }   
-    */
-}
 
