@@ -8,40 +8,41 @@
     <link rel="stylesheet" href="./style.css" />
 </head>
 <body>	    
-    <div class="inputs">        
-            
-            <label>Name
-                <input type="text" name="name" placeholder="Type something..." id="name">
-            </label>
-            <label>Lastname
-                <input type="text" name="lastName" placeholder="Type something..." id="lastName">
-            </label>
-            <label>Age
-                <input type="text" name="age" placeholder="Type something..." id="age">
-            </label>
+    <div class="inputs">   
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required
+               minlength="3"size="10">
+               
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastname" name="lastName" required
+               minlength="3"size="10">               
+               
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" required
+               minlength="3"size="10">               
     </div>
-    <div>   
+    
         <input class="buttons" type="button" name="createPerson" value="Create Person"
-            id="createPerson"  onclick="getInputValue(name,lastName,age);">         
-    </div>   
+            id="createPerson" >         
+    
     <div>   
         <input class="buttons" type="button" name="personWalk" value="Walk" disabled>
         <input class="buttons" type="button" name="personStop" value="Stop" disabled>
     </div>
-    <div>
-        <label class="status">Status
-            <input type="text" name="age">
-        </label>
-    </div>    
+        <label for="status">Status:</label>
+        <input type="text" id="status" name="status"
+           minlength="3"size="10"> 
+
 
     <script type="module">
         import {Person} from './person.js';
         
         //see "people.js". Wanted to seperate concern, but have "Uncaught ReferenceError: getInputValue is not defined"
-        import {getInputValue} from './people.js';
+        //import {getInputValue} from './lib.js';
     </script>          
 
     <script>        
+      /*
         function getInputValue(name,lastName,age){    
             const nVal = document.getElementById("name").value;
             const lnVal = document.getElementById("lastName").value;
@@ -50,8 +51,15 @@
             const details = nVal + lnVal + aVal;
             alert(details);        
         }
-        
+        */
     //https://github.com/caperaven/training/blob/master/07.Combine%20javascript%20and%20dom%20project.md  
+
+    document.getElementById("createPerson").addEventListener("click", changeText);
+    
+    function changeText(){ 
+        document.getElementById("status").innerText = "test"; 
+    }
+    
     </script>
 
 </body>
