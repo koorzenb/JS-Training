@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="./style.css" />
 </head>
 <body>	    
-    <div class="inputs">   
-        <label for="name">Name:</label>
+    <div class="inputs" id="inputs">   
+       
         <input type="text" id="name" name="name" required
                minlength="3"size="10">
-               
+    
         <label for="lastName">Last Name:</label>
         <input type="text" id="lastname" name="lastName" required
                minlength="3"size="10">               
@@ -25,8 +25,8 @@
         <input class="buttons" type="button" name="createPerson" value="Create Person"
             id="createPerson" >         
     
-    <div>   
-        <input class="buttons" type="button" name="personWalk" value="Walk" disabled>
+     
+        <input id="btnWalk" class="buttons" type="button" name="personWalk" value="Walk" disabled>
         <input class="buttons" type="button" name="personStop" value="Stop" disabled>
     </div>
         <label for="status">Status:</label>
@@ -35,32 +35,14 @@
 
 
     <script type="module">
-        import {Person} from './person.js';
+        import {addNameLabel, testListener} from './lib.js';
         
-        //see "people.js". Wanted to seperate concern, but have "Uncaught ReferenceError: getInputValue is not defined"
-        //import {getInputValue} from './lib.js';
-    </script>          
+        //add next line to js?
+        document.body.onload = addNameLabel;
 
-    <script>        
-      /*
-        function getInputValue(name,lastName,age){    
-            const nVal = document.getElementById("name").value;
-            const lnVal = document.getElementById("lastName").value;
-            const aVal = document.getElementById("age").value;
-            
-            const details = nVal + lnVal + aVal;
-            alert(details);        
-        }
-        */
-    //https://github.com/caperaven/training/blob/master/07.Combine%20javascript%20and%20dom%20project.md  
+        testListener();
 
-    document.getElementById("createPerson").addEventListener("click", changeText);
+    </script>      
     
-    function changeText(){ 
-        document.getElementById("status").value = "test";         
-    }
-    
-    </script>
-
 </body>
 </html>

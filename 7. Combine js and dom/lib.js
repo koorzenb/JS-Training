@@ -1,16 +1,23 @@
 
-export function getInputValue(name,lastName,age){    
-    const nVal = document.getElementById("name").value;
-    const lnVal = document.getElementById("lastName").value;
-    const aVal = document.getElementById("age").value;
+    //attempting to create dynamic tag 
+    export function addNameLabel () { 
+        const newDiv = document.createElement("label");         
+        const newContent = document.createTextNode("Name:"); 
+        
+        newDiv.appendChild(newContent);  
     
-    const details = nVal + lnVal + aVal;
-    return details;
-}
+        // add the newly created element and its content into the DOM 
+        const currentDiv = document.getElementById("inputs"); 
+        document.body.insertBefore(newDiv, currentDiv); 
+    }
 
-document.getElementById("try").addEventListener("click", function(){ 
-    document.getElementById("text").innerText = "GeeksforGeeks"; 
-
+    export function testListener(){
+        document.getElementById("createPerson").addEventListener("click", changeText);
+        
+        function changeText(){ 
+            document.getElementById("status").value = "test";         
+        }
+    }
 
 class getTextFieldValue {
     get personDetails() {
@@ -33,4 +40,3 @@ class getTextFieldValue {
         myElement = null;
     }
 }
-
