@@ -12,8 +12,7 @@
     }
 
     export function testListener(){
-        document.getElementById("createPerson").addEventListener("click", changeText);
-        
+       
         function changeText(){ 
             document.getElementById("status").value = "test";         
         }
