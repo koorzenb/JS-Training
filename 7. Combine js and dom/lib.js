@@ -6,8 +6,8 @@
         
         newDiv.appendChild(newContent);  
     
-        // add the newly created element and its content into the DOM 
         const currentDiv = document.getElementById("inputs"); 
+        //what is method to insert AFTER element
         document.body.insertBefore(newDiv, currentDiv); 
     }
 
