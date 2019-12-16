@@ -1,23 +1,21 @@
+// attempting to create dynamic tag
+export function addNameLabel() {
+  const newDiv = document.createElement('label');
+  const newContent = document.createTextNode('Name:');
+  newDiv.appendChild(newContent);
+  const currentDiv = document.getElementById('inputs');
+  // what is method to create element AFTER div
+  document.body.insertBefore(newDiv, currentDiv);
+}
 
-    //attempting to create dynamic tag 
-    export function addNameLabel () { 
-        const newDiv = document.createElement("label");         
-        const newContent = document.createTextNode("Name:"); 
-        
-        newDiv.appendChild(newContent);  
-    
-        const currentDiv = document.getElementById("inputs"); 
-        //what is method to insert AFTER element
-        document.body.insertBefore(newDiv, currentDiv); 
-    }
+export function testListener() {
+  function changeText() {
+    document.getElementById('status').value = 'test';
+  }
+  document.getElementById('createPerson').addEventListener('click', changeText);
+}
 
-    export function testListener(){
-       
-        function changeText(){ 
-            document.getElementById("status").value = "test";         
-        }
-    }
-
+/*
 class getTextFieldValue {
     get personDetails() {
         // if the element does not exist, fetch it and cache it
@@ -39,3 +37,23 @@ class getTextFieldValue {
         myElement = null;
     }
 }
+
+
+/*
+document.getElementById("createPerson").addEventListener("click", changeText);
+    
+function changeText(){ 
+    document.getElementById("status").value = "test again";         
+}
+*/
+
+/*
+        function getInputValue(name,lastName,age){    
+            const nVal = document.getElementById("name").value;
+            const lnVal = document.getElementById("lastName").value;
+            const aVal = document.getElementById("age").value;
+            
+            const details = nVal + lnVal + aVal;
+            alert(details);        
+        }
+        */
