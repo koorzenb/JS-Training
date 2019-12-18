@@ -1,59 +1,7 @@
-// attempting to create dynamic tag
-export function addNameLabel() {
-  const newDiv = document.createElement('label');
-  const newContent = document.createTextNode('Name:');
-  newDiv.appendChild(newContent);
-  const currentDiv = document.getElementById('inputs');
-  // what is method to create element AFTER div
-  document.body.insertBefore(newDiv, currentDiv);
+export function test() {
+        console.log('working');
 }
 
-export function testListener() {
-  function changeText() {
-    document.getElementById('status').value = 'test';
-  }
-  document.getElementById('createPerson').addEventListener('click', changeText);
-}
+//TODO: remove disabled attribute once all fields have been populated
 
-/*
-class getTextFieldValue {
-    get personDetails() {
-        // if the element does not exist, fetch it and cache it
-        if (this._personDetails == null) {
-            this._personDetails = document.querySelector("my-element");
-        }
-
-        // return the cached item
-        return this._personDetails;
-    }
-
-    set myElement(newValue) {
-        // used to set the reference and also clean it by setting it to null in the dipsose
-        this._myElement = newValue;
-    }
-
-    dispose() {
-        // set the reference pointer to null so that garbage collection can happen
-        myElement = null;
-    }
-}
-
-
-/*
-document.getElementById("createPerson").addEventListener("click", changeText);
-    
-function changeText(){ 
-    document.getElementById("status").value = "test again";         
-}
-*/
-
-/*
-        function getInputValue(name,lastName,age){    
-            const nVal = document.getElementById("name").value;
-            const lnVal = document.getElementById("lastName").value;
-            const aVal = document.getElementById("age").value;
-            
-            const details = nVal + lnVal + aVal;
-            alert(details);        
-        }
-        */
+https://github.com/caperaven/training/blob/master/07.Combine%20javascript%20and%20dom%20project.md
