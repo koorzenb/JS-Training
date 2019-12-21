@@ -1,13 +1,47 @@
-// https://github.com/caperaven/training/blob/master/07.Combine%20javascript%20and%20dom%20project.md
+//Project 7:
+//https://github.com/caperaven/training/blob/master/07.Combine%20javascript%20and%20dom%20project.md
 
 // TODO: remove disabled attribute once all fields have been populated
-// TODO: remove global vraiables
 
-const name = document.querySelector('.name');
-const lastName = document.querySelector('.lastName');
-const age = document.querySelector('.age');
-const status = document.querySelector('.status');
-const input = document.querySelectorAll('input');
+get name(){
+        if (this._name == null){
+                this._name = document.querySelector('.name');
+        }
+        return this._name;
+}
+
+get surname(){
+        if (this._surname == null){
+                this._surname = document.querySelector('.surname');                
+        }document.querySelector('.surname');        
+}
+
+get age(){
+        if(this._age ==  null){
+                this._age = document.querySelector('.age');
+        }
+        return this._age;
+}
+
+get status(){
+        if(this._status ==  null){
+                this._status = document.querySelector('.status');
+        }
+        return this._status;
+}
+
+get input(){
+        if(this._input == null){
+                this._input = document.querySelector('.input');
+        }
+        return this._input;
+}
+
+dispose(){
+        name = null;
+        surname = null;
+        age = null;
+}
 
 function checkValue(e) {
         status.value = e.currentTarget.value;
