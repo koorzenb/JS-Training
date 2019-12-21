@@ -1,21 +1,23 @@
-//TODO: capture values if textboxes using 
 //https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text
 
-export class Person {           
-       
-    get isWalking() {
-        return this._isWalking == true ? `\n${this.name} ${this.lastName} is walking` : `\n${this.name} ${this.lastName} is idle`;
+export class Person {
+        get isWalking() {
+            return this._isWalking == true
+                ? `\n${this.name} ${this.lastName} is walking`
+                : `\n${this.name} ${this.lastName} is idle`;
     }
 
-    constructor(name, lastName, age){
-        this.name = name;
-        this.lastName = lastName;
-        this.age = age;    
-        this._isWalking = false;
-    }           
-    
-    startWalking() {
-        this._isWalking = true;        
+        constructor(name, lastName, age) {
+                this.name = name;
+                this.lastName = lastName;
+                this.age = age;
+                this._isWalking = false;
+        }
+
+        startWalking() {
+                this._isWalking = true;
+        }
+
     }    
 
     stopWalking() {
