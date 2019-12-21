@@ -39,6 +39,17 @@
       />
     </div>
 
-    <script src="lib.js"></script>
+    <script type="module">
+      import { Helper } from "./lib.js";
+
+      const help = new Helper();
+      help.test();
+
+      function second() {
+        console.log("working again");
+      }
+
+      second();
+    </script>
   </body>
 </html>

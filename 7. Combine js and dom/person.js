@@ -1,11 +1,11 @@
-//https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text
 
 export class Person {
         get isWalking() {
-            return this._isWalking == true
-                ? `\n${this.name} ${this.lastName} is walking`
-                : `\n${this.name} ${this.lastName} is idle`;
-    }
+                return this._isWalking == true
+                        ? `\n${this.name} ${this.lastName} is walking`
+                        : `\n${this.name} ${this.lastName} is idle`;
+        }
 
         constructor(name, lastName, age) {
                 this.name = name;
@@ -18,34 +18,12 @@ export class Person {
                 this._isWalking = true;
         }
 
-    }    
+        stopWalking() {
+                this._isWalking = false;
+        }
+}
 
-    stopWalking() {
-        this._isWalking = false;          
-    }
-}   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /**Done**
+/** Done**
 
   Create a file called person.js. This file should export a class called "Person".
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
@@ -95,4 +73,3 @@ Please note that private members in javascript has a "_" prefix to the name.
     }
 
    */
-          
