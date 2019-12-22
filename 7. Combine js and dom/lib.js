@@ -9,12 +9,23 @@ const age = document.querySelector('.age');
 const status = document.querySelector('.status');
 const input = document.querySelectorAll('input');
 
-function checkValue(e) {
+// wait on 3x textfields to contain data
+// enable CreatePerson button
+function waitOnData() {
+        if (name.value != null) {
+                return 'barend';
+        }
+        return 'rita';
+}
+
+// listen on 3x textfields
+function listenOnInputs(e) {
         status.value = e.currentTarget.value;
+        console.log(waitOnData);
 }
 
 input.forEach(function(ev) {
-        ev.addEventListener('input', checkValue);
+        ev.addEventListener('input', listenOnInputs);
 });
 
 /*
