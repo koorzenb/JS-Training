@@ -2,7 +2,7 @@
 
 export class Person {
         get isWalking() {
-                return this._isWalking == true
+                return this._isWalking === true
                         ? `\n${this.name} ${this.lastName} is walking`
                         : `\n${this.name} ${this.lastName} is idle`;
         }

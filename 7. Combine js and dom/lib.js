@@ -1,30 +1,12 @@
+/* eslint-disable quotes */
 // Project 7:
 // https://github.com/caperaven/training/blob/master/07.Combine%20javascript%20and%20dom%20project.md
 
 // TODO: remove disabled attribute once all fields have been populated
 
-export class Helper {
-        test() {
-                console.log('working');
-        }
-
-        get name() {
-                if (this._name == null) {
-                        this._name = document.querySelector(".name");
-                }
-                return this._name;
-        }
-
-        get surname() {
-                if (this._surname == null) {
-                        this._surname = document.querySelector('.surname');
-                }
-                return this._surname;
-        }
-
-        get age() {
-                if (this._age == null) {
-                        this._age = document.querySelector('.age');
+const name = document.querySelector(".name");
+const surname = document.querySelector(".surname");
+const age = document.querySelector(".age");
                 }
                 return this._age;
         }
@@ -38,7 +20,7 @@ export class Helper {
 
         get input() {
                 if (this._input == null) {
-                        this._input = document.querySelector('.input');
+                        this._input = document.querySelector(".input");
                 }
                 return this._input;
         }
@@ -55,7 +37,7 @@ export class Helper {
 
         addInputListner() {
                 this.input.forEach(function(ev) {
-                        ev.addEventListener('input', checkValue(e));
+                        ev.addEventListener("input", checkValue);
                 });
         }
 }
