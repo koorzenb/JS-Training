@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable quotes */
 // https://github.com/caperaven/training/blob/master/07.Combine%20javascript%20and%20dom%20project.md
 
 // TODO: remove disabled attribute once all fields have been populated
@@ -12,16 +14,23 @@ const input = document.querySelectorAll('input');
 // wait on 3x textfields to contain data
 // enable CreatePerson button
 function waitOnData() {
-        if (name.value != null) {
-                return 'barend';
+        console.log('started WO');
+        if (name.value !== "") {
+                console.log('barend');
+                return true;
         }
-        return 'rita';
+        console.log('rita');
+        return false;
 }
 
 // listen on 3x textfields
 function listenOnInputs(e) {
         status.value = e.currentTarget.value;
-        console.log(waitOnData);
+        if (waitOnData === true) {
+                console.log('true');
+        } else {
+                console.log('false');
+        }
 }
 
 input.forEach(function(ev) {
