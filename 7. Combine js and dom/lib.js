@@ -1,69 +1,34 @@
-/* eslint-disable quotes */
-// Project 7:
 // https://github.com/caperaven/training/blob/master/07.Combine%20javascript%20and%20dom%20project.md
+// TODO: remove global vraiables
 
-// TODO: remove disabled attribute once all fields have been populated
+const name = document.querySelector('.name');
+const surname = document.querySelector('.surname');
+const age = document.querySelector('.age');
+const status = document.querySelector('.status');
+const input = document.querySelectorAll('input');
+const btnCreatePerson = document.querySelector('.createPerson');
 
-const name = document.querySelector(".name");
-const surname = document.querySelector(".surname");
-const age = document.querySelector(".age");
-                }
-                return this._age;
+// wait on 3x textfields to contain data
+// enable CreatePerson button
+function waitOnData() {
+        if (surname.value !== '' && name.value !== '' && age.value !== '') {
+                return true;
         }
+        return false;
+}
 
-        get status() {
-                if (this._status == null) {
-                        this._status = document.querySelector(".status");
-                }
-                return this._status;
-        }
-
-        get input() {
-                if (this._input == null) {
-                        this._input = document.querySelector(".input");
-                }
-                return this._input;
-        }
-
-        dispose() {
-                this.name = null;
-                this.surname = null;
-                this.age = null;
-        }
-
-        checkValue(e) {
-                this.status.value = e.currentTarget.value;
-        }
-
-        addInputListner() {
-                this.input.forEach(function(ev) {
-                        ev.addEventListener("input", checkValue);
-                });
+// listen on 3x textfields
+function listenOnInputs(e) {
+        status.value = e.currentTarget.value;
+        if (waitOnData()) {
+                btnCreatePerson.removeAttribute('disabled');
         }
 }
 
-/*
-        const handle = (event) => {
-                console.log('clicked here');
-                status.value += event.currentTarget.value;
-                
-        }
+input.forEach(function(e) {
+        e.addEventListener('input', listenOnInputs);
+});
 
-        name.addEventListener('keyup',handle);
-        lastName.addEventListener('keyup',handle);
-        window.addEventListener('click', handle );
-
-
-        const attachListener = (event) => {
-                status.value = event.currentTarget.value;
-                console.log(surname.value);        
-        }
-        inputs.forEach(function(textfield) {
-                //textfield.addEventListener('keyup',attachListener);
-                console.log(textfield.value);          
-        });
-
-        function validateInputs() {
-                
-        }
-        */
+// TODO: Once person is created:
+//      - Enabled walk/stop buttons
+//      - remove listeners
