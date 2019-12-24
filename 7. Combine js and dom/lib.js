@@ -14,19 +14,16 @@ const input = document.querySelectorAll('input');
 // wait on 3x textfields to contain data
 // enable CreatePerson button
 function waitOnData() {
-        console.log('started WO');
         if (name.value !== "") {
-                console.log('barend');
                 return true;
         }
-        console.log('rita');
         return false;
 }
 
 // listen on 3x textfields
 function listenOnInputs(e) {
         status.value = e.currentTarget.value;
-        if (waitOnData === true) {
+        if (waitOnData() == true) {
                 console.log('true');
         } else {
                 console.log('false');
