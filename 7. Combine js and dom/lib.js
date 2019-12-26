@@ -29,6 +29,10 @@ input.forEach(function(e) {
         e.addEventListener('input', listenOnInputs);
 });
 
-// TODO: Once person is created:
-//      - Enabled walk/stop buttons
-//      - remove listeners
+// TODO:
+/**
+ * Enable Create Person button
+ * Once person is created:
+ * - Enabled walk/stop buttons
+ * - remove listeners
+ */
