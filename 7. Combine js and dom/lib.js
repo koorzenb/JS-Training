@@ -1,6 +1,6 @@
 // https://github.com/caperaven/training/blob/master/07.Combine%20javascript%20and%20dom%20project.md
 // TODO: remove global vraiables
-
+console.log('master');
 const name = document.querySelector('.name');
 const surname = document.querySelector('.surname');
 const age = document.querySelector('.age');
