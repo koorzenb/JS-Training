@@ -1,5 +1,6 @@
 // https://github.com/caperaven/training/blob/master/07.Combine%20javascript%20and%20dom%20project.md
 // TODO: remove global vraiables
+// TODO: on HTML, add <form>. Test "required" functionality
 
 class Person {
         get isWalking() {
@@ -30,6 +31,8 @@ const age = document.querySelector('.age');
 const status = document.querySelector('.status');
 const input = document.querySelectorAll('input');
 const btnCreatePerson = document.querySelector('.createPerson');
+const btnWalk = document.querySelector('.walk');
+const btnStop = document.querySelector('.stop');
 
 // Dummy person
 name.value = 'Barend';
@@ -56,14 +59,38 @@ input.forEach(function(e) {
         e.addEventListener('input', listenOnInputs);
 });
 
-function createCreatePersonHandler() {
+function walkHandler() {
+        const clickHandler = () => {
+                console.log('clicked here');
+        };
+
+        btnWalk.addEventListener('click', clickHandler);
+}
+
+function stopHandler() {
+        const clickHandler = () => {
+                console.log('clicked here');
+        };
+
+        btnStop.addEventListener('click', clickHandler);
+}
+
+// TODO: seperate concern for this func. Should only create handler
+function createPersonHandler() {
         const clickHandler = () => {
                 const person = new Person(name.value, surname.value, age.value);
                 status.value = `${person.name} ${person.surname} created`;
+                btnCreatePerson.setAttribute('disabled', '');
+                btnStop.removeAttribute('disabled');
+                btnWalk.removeAttribute('disabled');
+                walkHandler();
+                stopHandler();
         };
 
         btnCreatePerson.addEventListener('click', clickHandler);
 }
+
+createPersonHandler();
 
 /**
  * Compare the func below to func above. This example breaks code. Why?
@@ -79,12 +106,10 @@ function createCreatePersonHandler() {
 }
  */
 
-function disposeCreatePersonHandler() {
-        createCreatePersonHandler = null;
-}
-
-createCreatePersonHandler();
+// function disposeCreatePersonHandler() {
+//         createCreatePersonHandler = null;
+// }
 
 // TODO: Once person is created:
 //      - Enabled walk/stop buttons
-//      - remove listeners
+//      - remove listeners - cannot do this yet as need help with "this" keyword
