@@ -30,7 +30,7 @@ const surname = document.querySelector('.surname');
 const age = document.querySelector('.age');
 const status = document.querySelector('.status');
 const input = document.querySelectorAll('input');
-const btnCreatePerson = document.querySelector('.createPerson');
+const frmCreatePerson = document.querySelector('[name="createPerson"]');
 const btnWalk = document.querySelector('.walk');
 const btnStop = document.querySelector('.stop');
 
@@ -40,24 +40,12 @@ surname.value = 'Koorzen';
 
 // wait on 3x textfields to contain data
 // enable CreatePerson button
-function waitOnData() {
-        if (surname.value !== '' && name.value !== '' && age.value !== '') {
-                return true;
-        }
-        return false;
-}
-
-// listen on 3x textfields
-function listenOnInputs(e) {
-        status.value = e.currentTarget.value;
-        if (waitOnData()) {
-                btnCreatePerson.removeAttribute('disabled');
-        }
-}
-
-input.forEach(function(e) {
-        e.addEventListener('input', listenOnInputs);
-});
+// function waitOnData() {
+//         if (surname.value !== '' && name.value !== '' && age.value !== '') {
+//                 return true;
+//         }
+//         return false;
+// }
 
 function walkHandler() {
         const clickHandler = () => {
@@ -80,17 +68,22 @@ function createPersonHandler() {
         const clickHandler = () => {
                 const person = new Person(name.value, surname.value, age.value);
                 status.value = `${person.name} ${person.surname} created`;
-                btnCreatePerson.setAttribute('disabled', '');
+                frmCreatePerson.setAttribute('disabled', '');
+                // TODO: register seperate eventlistener for statements below to seperate concern
                 btnStop.removeAttribute('disabled');
                 btnWalk.removeAttribute('disabled');
                 walkHandler();
                 stopHandler();
         };
 
-        btnCreatePerson.addEventListener('click', clickHandler);
+        frmCreatePerson.addEventListener('submit', clickHandler);
 }
 
-createPersonHandler();
+function program() {
+        createPersonHandler();
+}
+
+program();
 
 /**
  * Compare the func below to func above. This example breaks code. Why?

@@ -12,23 +12,26 @@
   </head>
 
   <body>
-    <div>
-      <label for="name">Name:</label>
-      <input type="text" class="name" required />
+    <form name="createPerson">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" class="name" required />
 
-      <label for="surname">Lastname:</label>
-      <input type="text" class="surname" required />
+        <label for="surname">Lastname:</label>
+        <input type="text" class="surname" required />
 
-      <label for="age">Age:</label>
-      <input type="text" class="age" required />
-    </div>
-    <div>
-      <button class="createPerson" disabled>Create Person</button>
-    </div>
+        <label for="age">Age:</label>
+        <input type="text" class="age" required />
+      </div>
+      <div>
+        <input type="submit" value="Create Person" />
+      </div>
+    </form>
     <div>
       <button class="walk" disabled>Walk Person</button>
       <button class="stop" disabled>Stop Person</button>
     </div>
+
     <div>
       <label for="status">Status</label>
       <input
@@ -39,6 +42,6 @@
       />
     </div>
 
-    <script src="lib.js"></script>
+    <script src="./lib.js"></script>
   </body>
 </html>
