@@ -56,12 +56,34 @@ input.forEach(function(e) {
         e.addEventListener('input', listenOnInputs);
 });
 
-const handle = event => {
-        const person = new Person(name.value, surname.value, age.value);
-        status.value = `${person.name} ${person.surname} created`;
-};
+function createCreatePersonHandler() {
+        const clickHandler = () => {
+                const person = new Person(name.value, surname.value, age.value);
+                status.value = `${person.name} ${person.surname} created`;
+        };
 
-btnCreatePerson.addEventListener('click', handle);
+        btnCreatePerson.addEventListener('click', clickHandler);
+}
+
+/**
+ * Compare the func below to func above. This example breaks code. Why?
+ * 
+ * function createCreatePersonHandler() {
+        this.clickHandler = () => {
+                this.click.bind(this);
+                const person = new Person(name.value, surname.value, age.value);
+                status.value = `${person.name} ${person.surname} created`;
+        };
+
+        btnCreatePerson.addEventListener('click', this.clickHandler);
+}
+ */
+
+function disposeCreatePersonHandler() {
+        createCreatePersonHandler = null;
+}
+
+createCreatePersonHandler();
 
 // TODO: Once person is created:
 //      - Enabled walk/stop buttons
