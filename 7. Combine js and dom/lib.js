@@ -2,6 +2,85 @@
 // TODO: remove global vraiables
 // TODO: on HTML, add <form>. Test "required" functionality
 
+class Helper {
+        get firstname() {
+                if (this._firstname == null) {
+                        this._firstname = document.querySelector('.firstname');
+                }
+                return this._firstname;
+        }
+
+        get surname() {
+                if (this._surname == null) {
+                        this._surname = document.querySelector('.surname');
+                }
+                return this._surname;
+        }
+
+        get age() {
+                if (this._age == null) {
+                        this._age = document.querySelector('.age');
+                }
+                return this._age;
+        }
+
+        get status() {
+                if (this._status == null) {
+                        this._status = document.querySelector('.status');
+                }
+                return this._status;
+        }
+
+        get input() {
+                if (this._input == null) {
+                        this._input = document.querySelector('.input');
+                }
+                return this._input;
+        }
+
+        get frmCreatePerson() {
+                if (this._frmCreatePerson == null) {
+                        this._frmCreatePerson = document.querySelector('[name="createPerson"]');
+                }
+                return this._frmCreatePerson;
+        }
+
+        get btnWalk() {
+                if (this._btnWalk == null) {
+                        this._btnWalk = document.querySelector('.walk');
+                }
+                return this._btnWalk;
+        }
+
+        get btnStop() {
+                if (this._btnStop == null) {
+                        this._btnStop = document.querySelector('.stop');
+                }
+                return this._btnStop;
+        }
+
+        dispose() {
+                this.firstname = null;
+                this.surname = null;
+                this.age = null;
+                this.status = null;
+                this.input = null;
+                this.frmCreatePerson = null;
+                this.btnWalk = null; // dispose
+                this.btnStop = null; // dispose
+        }
+
+        checkValue(e) {
+                this.status.value = e.currentTarget.value;
+        }
+
+        addInputListner() {
+                this.input.forEach(function(ev) {
+                        ev.addEventListener('input', checkValue);
+                });
+        }
+}
+
 class Person {
         get isWalking() {
                 return this._isWalking === true
@@ -25,34 +104,18 @@ class Person {
         }
 }
 
-const firstname = document.querySelector('.firstname');
-const surname = document.querySelector('.surname');
-const age = document.querySelector('.age');
-const status = document.querySelector('.status');
-const input = document.querySelectorAll('input');
-const frmCreatePerson = document.querySelector('[name="createPerson"]');
-const btnWalk = document.querySelector('.walk');
-const btnStop = document.querySelector('.stop');
+const helper = new Helper();
 
 // Dummy person
-firstname.value = 'Barend';
-surname.value = 'Koorzen';
-
-// wait on 3x textfields to contain data
-// enable CreatePerson button
-// function waitOnData() {
-//         if (surname.value !== '' && name.value !== '' && age.value !== '') {
-//                 return true;
-//         }
-//         return false;
-// }
+helper.firstname.value = 'Barend';
+helper.surname.value = 'Koorzen';
 
 function walkHandler() {
         const clickHandler = () => {
                 console.log('clicked here');
         };
 
-        btnWalk.addEventListener('click', clickHandler);
+        helper.btnWalk.addEventListener('click', clickHandler);
 }
 
 function stopHandler() {
@@ -60,27 +123,26 @@ function stopHandler() {
                 console.log('clicked here');
         };
 
-        btnStop.addEventListener('click', clickHandler);
+        helper.btnStop.addEventListener('click', clickHandler);
 }
 
 function createPersonHandler() {
         const clickHandler = e => {
                 e.preventDefault();
-                const person = new Person(firstname.value, surname.value, age.value);
-                status.value = `${person.name} ${person.surname} created`;
-                frmCreatePerson.setAttribute('disabled', '');
-                console.log(frmCreatePerson);
+                const person = new Person(helper.firstname.value, helper.surname.value, helper.age.value);
+                helper.status.value = `${person.name} ${person.surname} created`;
+                helper.frmCreatePerson.setAttribute('disabled', '');
+                console.log(helper.frmCreatePerson);
                 // TODO: register seperate eventlistener for statements below to seperate concern
-                btnStop.removeAttribute('disabled');
-                btnWalk.removeAttribute('disabled');
+                helper.btnStop.removeAttribute('disabled');
+                helper.btnWalk.removeAttribute('disabled');
                 walkHandler();
                 stopHandler();
         };
-        frmCreatePerson.addEventListener('submit', clickHandler);
+        helper.frmCreatePerson.addEventListener('submit', clickHandler);
 }
 
 createPersonHandler();
-
 /**
  * Compare the func below to func above. This example breaks code. Why?
  * 
