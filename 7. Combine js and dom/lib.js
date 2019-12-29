@@ -25,7 +25,7 @@ class Person {
         }
 }
 
-const name = document.querySelector('.name');
+const firstname = document.querySelector('.firstname');
 const surname = document.querySelector('.surname');
 const age = document.querySelector('.age');
 const status = document.querySelector('.status');
@@ -35,7 +35,7 @@ const btnWalk = document.querySelector('.walk');
 const btnStop = document.querySelector('.stop');
 
 // Dummy person
-name.value = 'Barend';
+firstname.value = 'Barend';
 surname.value = 'Koorzen';
 
 // wait on 3x textfields to contain data
@@ -63,27 +63,23 @@ function stopHandler() {
         btnStop.addEventListener('click', clickHandler);
 }
 
-// TODO: seperate concern for this func. Should only create handler
 function createPersonHandler() {
-        const clickHandler = () => {
-                const person = new Person(name.value, surname.value, age.value);
+        const clickHandler = e => {
+                e.preventDefault();
+                const person = new Person(firstname.value, surname.value, age.value);
                 status.value = `${person.name} ${person.surname} created`;
                 frmCreatePerson.setAttribute('disabled', '');
+                console.log(frmCreatePerson);
                 // TODO: register seperate eventlistener for statements below to seperate concern
                 btnStop.removeAttribute('disabled');
                 btnWalk.removeAttribute('disabled');
                 walkHandler();
                 stopHandler();
         };
-
         frmCreatePerson.addEventListener('submit', clickHandler);
 }
 
-function program() {
-        createPersonHandler();
-}
-
-program();
+createPersonHandler();
 
 /**
  * Compare the func below to func above. This example breaks code. Why?
