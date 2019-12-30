@@ -1,7 +1,8 @@
 // https://github.com/caperaven/training/blob/master/07.Combine%20javascript%20and%20dom%20project.md
 // TODO: Test class implementation - leave till later. Need help with best practice: naming technique + 
-// structure of code. Current code not working, but trying to figure out if I should rather implement 
-// Helper interface? Or have hierarchy of classes that inherit from each other
+// structure of code. Current code not working, but trying to figure out how to group code. I can't 
+// leave everything as functions. I should rather implement Helper interface? 
+// Or have hierarchy of classes that inherit from each other
 
 class Helper {
 
