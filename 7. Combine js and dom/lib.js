@@ -1,14 +1,15 @@
 // https://github.com/caperaven/training/blob/master/07.Combine%20javascript%20and%20dom%20project.md
-// TODO: Test class implementation - leave till later. Need help with best practice: naming technique +
+
+// TODO: Need help with best practice: naming technique +
 // structure of code. Current code not working, but trying to figure out how to group code. I can't
-// leave everything as functions. I should rather implement Helper interface?
-// Or have hierarchy of classes that inherit from each other
+// leave everything as functions. How will Person implement Helper functions? Should I create Helper interface?
+// Should Person have instance of Helper? Or rahter create hierarchy of classes that inherit from each other
+
+// TODO: Person class: what is difference in scope between name and _name? I would think that name is only passed 
+//      as parameter, but it still returns a value if I console.log "person.name". With both variable, how do 
+//      I make sure that scope does not extend block and that I accidentally overwrite values.
 
 class Helper {
-
-        // Dummy person
-firstname.value = 'Barend';
-person.surname.value = 'Koorzen';
 
         get firstname() {
                 if (this._firstname == null) {
@@ -76,16 +77,6 @@ person.surname.value = 'Koorzen';
                 this.btnWalk = null;
                 this.btnStop = null;
         }
-
-        checkValue(e) {
-                this.status.value = e.currentTarget.value;
-        }
-
-        addInputListner() {
-                this.input.forEach(function(ev) {
-                        ev.addEventListener('input', checkValue);
-                });
-        }
 }
 
 class Person {
@@ -95,10 +86,10 @@ class Person {
                         : `\n${this.name} ${this.lastName} is idle`;
         }
 
-        constructor(cName, cSurname, cAge) {
-                this.name = cName;
-                this.surname = cSurname;
-                this.age = cAge;
+        constructor(name, surname, age) {
+                this._name = name;
+                this._surname = surname;
+                this._age = age;
                 this._isWalking = false;
         }
 
@@ -112,11 +103,15 @@ class Person {
 }
 
 const helper = new Helper();
-const person = new Person(helper.firstname.value, helper.surname.value, helper.age.value);
+
+// Dummy person
+const dummyName = helper.firstname.value = 'Barend';
+const dummySurname = helper.surname.value = 'Koorzen';
+
 
 function walkHandler() {
         const clickHandler = () => {
-                console.log('clicked here');
+                console.log('working');
         };
 
         helper.btnWalk.addEventListener('click', clickHandler);
@@ -124,7 +119,7 @@ function walkHandler() {
 
 function stopHandler() {
         const clickHandler = () => {
-                console.log('clicked here');
+                console.log('working');
         };
 
         helper.btnStop.addEventListener('click', clickHandler);
@@ -133,10 +128,12 @@ function stopHandler() {
 function createPersonHandler() {
         const clickHandler = e => {
                 e.preventDefault();
-                helper.status.value = `${person.name} ${person.surname} created`;
+                const person = new Person(dummyName,dummySurname, helper.age.value);
+                //helper.status.value = `${person.name} ${person.surname} created`;
+                helper.status.value = `${person._name} ${person._surname} (${person._age}) created`;
                 helper.frmCreatePerson.setAttribute('disabled', '');
                 console.log(helper.frmCreatePerson);
-                // TODO: register seperate eventlistener for statements below to seperate concern
+                // TODO: register seperate eventlistener for statements below to seperate concern. 
                 helper.btnStop.removeAttribute('disabled');
                 helper.btnWalk.removeAttribute('disabled');
                 walkHandler();
@@ -146,24 +143,3 @@ function createPersonHandler() {
 }
 
 createPersonHandler();
-/**
- * Compare the func below to func above. This example breaks code. Why?
- * 
- * function createCreatePersonHandler() {
-        this.clickHandler = () => {
-                this.click.bind(this);
-                const person = new Person(name.value, surname.value, age.value);
-                status.value = `${person.name} ${person.surname} created`;
-        };
-
-        btnCreatePerson.addEventListener('click', this.clickHandler);
-}
- */
-
-// function disposeCreatePersonHandler() {
-//         createCreatePersonHandler = null;
-// }
-
-// TODO: Once person is created:
-//      - Enabled walk/stop buttons
-//      - remove listeners - cannot do this yet as need help with "this" keyword
