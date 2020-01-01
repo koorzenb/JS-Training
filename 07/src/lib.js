@@ -1,14 +1,5 @@
 // https://github.com/caperaven/training/blob/master/07.Combine%20javascript%20and%20dom%20project.md
 
-// TODO: Need help with best practice: naming technique +
-// structure of code. Current code not working, but trying to figure out how to group code. I can't
-// leave everything as functions. How will Person implement Helper functions? Should I create Helper interface?
-// Should Person have instance of Helper? Or rahter create hierarchy of classes that inherit from each other
-
-// TODO: Person class: what is difference in scope between name and _name? I would think that name is only passed 
-//      as parameter, but it still returns a value if I console.log "person.name". With both variable, how do 
-//      I make sure that scope does not extend block and that I accidentally overwrite values.
-
 class Helper {
 
         get firstname() {
@@ -105,13 +96,14 @@ class Person {
 const helper = new Helper();
 
 // Dummy person
-const dummyName = helper.firstname.value = 'Barend';
-const dummySurname = helper.surname.value = 'Koorzen';
-
+const dummyName = helper.firstname.value = 'Joe';
+const dummySurname = helper.surname.value = 'Soap';
+const dummyAge = helper.age.value = '23';
+let person = new Person();
 
 function walkHandler() {
         const clickHandler = () => {
-                console.log('working');
+                helper.status.value = `${person._name} ${isWalking}`;
         };
 
         helper.btnWalk.addEventListener('click', clickHandler);
@@ -128,18 +120,27 @@ function stopHandler() {
 function createPersonHandler() {
         const clickHandler = e => {
                 e.preventDefault();
-                const person = new Person(dummyName,dummySurname, helper.age.value);
-                //helper.status.value = `${person.name} ${person.surname} created`;
+                //this.click.bind(this);        // this breaks code
+                person = Person(dummyName,dummySurname, helper.age.value);
                 helper.status.value = `${person._name} ${person._surname} (${person._age}) created`;
                 helper.frmCreatePerson.setAttribute('disabled', '');
                 console.log(helper.frmCreatePerson);
-                // TODO: register seperate eventlistener for statements below to seperate concern. 
+                // TODO: Should I register seperate eventlistener for statements below to seperate concern?
                 helper.btnStop.removeAttribute('disabled');
                 helper.btnWalk.removeAttribute('disabled');
                 walkHandler();
                 stopHandler();
+                return true;
         };
         helper.frmCreatePerson.addEventListener('submit', clickHandler);
 }
 
+function disposeCreatePersonHandler() {
+         createCreatePersonHandler = null;
+}
+
 createPersonHandler();
+
+// TODO: Once person is created:
+//      - Enabled walk/stop buttons
+//      - remove listeners - cannot do this yet as need help with "this" keyword
