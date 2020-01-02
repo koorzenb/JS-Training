@@ -1,29 +1,41 @@
 // https://github.com/caperaven/training/blob/master/07.Combine%20javascript%20and%20dom%20project.md
+// import { DataCollector } from './dataCollector.js';
 
-class Helper {
+class DataCollector {
+        // placeholder person
+        constructor() {
+                // would "this" be necessary?  this.document.querySelector('.firstname').value = 'Joe';
+                document.querySelector('.firstname').value = 'Joe';
+                document.querySelector('.surname').value = 'Soap';
+                document.querySelector('.age').value = '23';
+        }
 
         get firstname() {
                 if (this._firstname == null) {
-                        this._firstname = document.querySelector('.firstname');
+                        this._firstname = document.querySelector('.firstname').value;
                 }
                 return this._firstname;
         }
 
         get surname() {
                 if (this._surname == null) {
-                        this._surname = document.querySelector('.surname');
+                        this._surname = document.querySelector('.surname').value;
                 }
                 return this._surname;
         }
 
         get age() {
                 if (this._age == null) {
-                        this._age = document.querySelector('.age');
+                        this._age = document.querySelector('.age').value;
                 }
                 return this._age;
         }
 
-        get status() {
+        // set status(newValue){
+        //         this._statusValue = newValue;
+        // }
+
+        get statusElement() {
                 if (this._status == null) {
                         this._status = document.querySelector('.status');
                 }
@@ -84,6 +96,18 @@ class Person {
                 this._isWalking = false;
         }
 
+        get name() {
+                return this._name;
+        }
+
+        get surname() {
+                return this._surname;
+        }
+
+        get age() {
+                return this._age;
+        }
+
         startWalking() {
                 this._isWalking = true;
         }
@@ -93,17 +117,12 @@ class Person {
         }
 }
 
-const helper = new Helper();
-
-// Dummy person
-const dummyName = helper.firstname.value = 'Joe';
-const dummySurname = helper.surname.value = 'Soap';
-const dummyAge = helper.age.value = '23';
-let person = new Person();
+const helper = new DataCollector();
+const person = new Person(helper.firstname, helper.surname, helper.age);
 
 function walkHandler() {
         const clickHandler = () => {
-                helper.status.value = `${person._name} ${isWalking}`;
+                helper.statusElement.innerHTML = `${person.name} ${person.isWalking}`;
         };
 
         helper.btnWalk.addEventListener('click', clickHandler);
@@ -120,9 +139,9 @@ function stopHandler() {
 function createPersonHandler() {
         const clickHandler = e => {
                 e.preventDefault();
-                //this.click.bind(this);        // this breaks code
-                person = Person(dummyName,dummySurname, helper.age.value);
-                helper.status.value = `${person._name} ${person._surname} (${person._age}) created`;
+                // this.click.bind(this);        // this breaks code
+                // helper.statusElement.value = `${person.name} ${person.surname} (${person.age}) created`;
+                document.querySelector('.status').innerHTML = document.querySelector('.firstname').textContent;
                 helper.frmCreatePerson.setAttribute('disabled', '');
                 console.log(helper.frmCreatePerson);
                 // TODO: Should I register seperate eventlistener for statements below to seperate concern?
@@ -135,9 +154,9 @@ function createPersonHandler() {
         helper.frmCreatePerson.addEventListener('submit', clickHandler);
 }
 
-function disposeCreatePersonHandler() {
-         createCreatePersonHandler = null;
-}
+// function disposeCreatePersonHandler() {
+//         createCreatePersonHandler = null;
+// }
 
 createPersonHandler();
 
