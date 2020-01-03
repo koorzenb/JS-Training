@@ -1,5 +1,12 @@
 // https://github.com/caperaven/training/blob/master/07.Combine%20javascript%20and%20dom%20project.md
 // import { DataCollector } from './dataCollector.js';
+// TODO: try to get babel working
+// Get HTML innertext working
+
+// TODO: Need help with best practice: naming technique +
+// structure of code. Current code not working, but trying to figure out how to group code. I can't
+// leave everything as functions. How will Person implement Helper functions? Should I create Helper interface?
+// Should Person have instance of Helper? Or rahter create hierarchy of classes that inherit from each other
 
 class DataCollector {
         // placeholder person
