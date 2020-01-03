@@ -4,6 +4,10 @@
     color: grey;
 }
 
-.status.iswalking {
+.iswalking {
     color: green ;
+}
+
+.isidle {
+    color: red ;
 }

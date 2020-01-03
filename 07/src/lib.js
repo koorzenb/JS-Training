@@ -19,7 +19,7 @@ class DataCollector {
 
         get firstname() {
                 if (this._firstname == null) {
-                        this._firstname = document.getElementById('firstname').value;
+                        this._firstname = document.getElementById("firstname").value;
                 }
                 return this._firstname;
         }
@@ -127,9 +127,10 @@ function walkHandler() {
         const clickHandler = () => {
                 person.startWalking();
                 helper.statusElement.innerHTML = `${person.isWalking}`;
-                helper.statusElement.setAttribute('iswalking', '');
+                helper.statusElement.removeAttribute('isidle');
+                helper.statusElement.setAttribute('class', 'iswalking');
         };
-
+        
         helper.btnWalk.addEventListener('click', clickHandler);
 }
 
@@ -137,6 +138,8 @@ function stopHandler() {
         const clickHandler = () => {
                 person.stopWalking();
                 helper.statusElement.innerHTML = `${person.isWalking}`;
+                helper.statusElement.removeAttribute('iswalking');
+                helper.statusElement.setAttribute('class', 'isidle');
         };
 
         helper.btnStop.addEventListener('click', clickHandler);
