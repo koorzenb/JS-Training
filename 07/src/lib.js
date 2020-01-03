@@ -17,28 +17,28 @@ class DataCollector {
                 document.getElementById('age').value = '23';
         }
 
-        get firstname() {
+        get txtFirstname() {
                 if (this._firstname == null) {
                         this._firstname = document.getElementById("firstname").value;
                 }
                 return this._firstname;
         }
 
-        get surname() {
+        get txtSurname() {
                 if (this._surname == null) {
                         this._surname = document.getElementById('surname').value;
                 }
                 return this._surname;
         }
 
-        get age() {
+        get txtAge() {
                 if (this._age == null) {
                         this._age = document.getElementById('age').value;
                 }
                 return this._age;
         }
 
-        get statusElement() {
+        get txtStatus() {
                 if (this._status == null) {
                         this._status = document.getElementById('status');
                 }
@@ -52,12 +52,19 @@ class DataCollector {
                 return this._input;
         }
 
-        get frmCreatePerson() {
+        get submitCreatePerson() {
                 if (this._frmCreatePerson == null) {
                         this._frmCreatePerson = document.querySelector('[name="createPerson"]');
                 }
                 return this._frmCreatePerson;
         }
+
+        get btnCreatePerson() {
+                if (this._btnCreatePerson == null) {
+                        this._btnCreatePerson = document.getElementById('createPerson');
+                }
+                return this._btnCreatePerson;
+        }        
 
         get btnWalk() {
                 if (this._btnWalk == null) {
@@ -74,12 +81,12 @@ class DataCollector {
         }
 
         dispose() {
-                this.firstname = null;
-                this.surname = null;
-                this.age = null;
+                this.txtFirstname = null;
+                this.txtSurname = null;
+                this.txtAge = null;
                 this.status = null;
                 this.input = null;
-                this.frmCreatePerson = null;
+                this.submitCreatePerson = null;
                 this.btnWalk = null;
                 this.btnStop = null;
         }
@@ -120,46 +127,70 @@ class Person {
         }
 }
 
-const helper = new DataCollector();
-const person = new Person(helper.firstname, helper.surname, helper.age);
 
-function walkHandler() {
-        const clickHandler = () => {
-                person.startWalking();
-                helper.statusElement.innerHTML = `${person.isWalking}`;
-                helper.statusElement.removeAttribute('isidle');
-                helper.statusElement.setAttribute('class', 'iswalking');
-        };
+
+/**
+ * TODO:
+ * grab value from input boxes and create person
+ * grab = qs
+ * create = person.firstname
+ */
+
+class Program{
+        import { helper } from "DataCollector";
+        const helper = new DataCollector();
+const person = new Person(helper.txtFirstname, helper.txtSurname, helper.txtAge);
+        walkHandler() {
+                const clickHandler = () => {
+                        person.startWalking();
+                        helper.txtStatus.innerHTML = `${person.isWalking}`;
+                        helper.txtStatus.removeAttribute('isidle');
+                        helper.txtStatus.setAttribute('class', 'iswalking');
+                        helper.btnWalk.setAttribute('disabled', '');
+                        helper.btnStop.removeAttribute('disabled');
+                };
+                
+                helper.btnWalk.addEventListener('click', clickHandler);
+        }
         
-        helper.btnWalk.addEventListener('click', clickHandler);
+        stopHandler() {
+                const clickHandler = () => {
+                        person.stopWalking();
+                        helper.txtStatus.innerHTML = `${person.isWalking}`;
+                        helper.txtStatus.removeAttribute('iswalking');
+                        helper.txtStatus.setAttribute('class', 'isidle');
+                        helper.btnStop.setAttribute('disabled', '');
+                        helper.btnWalk.removeAttribute('disabled');
+                };
+        
+                helper.btnStop.addEventListener('click', clickHandler);
+        }
+        
+        // Handler to submit inputs on form
+        // function frmCreatePersonHandler() {
+        //         const clickHandler = e => {
+        //                 // e.preventDefault();
+        //         };
+        //         helper.submitCreatePerson.addEventListener('submit', clickHandler);
+        // }
+        
+        btnCreatePersonHandler() {
+                const clickHandler = () => {
+                        // this.click.bind(this);        // this breaks code
+        
+                        helper.txtStatus.innerHTML = `${person.name} ${person.surname} (${person.age}) created`;
+                        helper.btnCreatePerson.setAttribute('disabled', '');
+                        // TODO: Should I register seperate eventlistener for statements below to seperate concern?
+                        helper.btnStop.removeAttribute('disabled');
+                        helper.btnWalk.removeAttribute('disabled');
+                        walkHandler();
+                        stopHandler();
+                };
+                helper.btnCreatePerson.addEventListener('click', clickHandler);
+        }
+        
+        //frmCreatePersonHandler();
+        btnCreatePersonHandler();
 }
 
-function stopHandler() {
-        const clickHandler = () => {
-                person.stopWalking();
-                helper.statusElement.innerHTML = `${person.isWalking}`;
-                helper.statusElement.removeAttribute('iswalking');
-                helper.statusElement.setAttribute('class', 'isidle');
-        };
-
-        helper.btnStop.addEventListener('click', clickHandler);
-}
-
-function createPersonHandler() {
-        const clickHandler = e => {
-                e.preventDefault();
-                // this.click.bind(this);        // this breaks code
-                helper.statusElement.innerHTML = `${person.name} ${person.surname} (${person.age}) created`;
-                helper.frmCreatePerson.setAttribute('disabled', '');
-                console.log(helper.frmCreatePerson);
-                // TODO: Should I register seperate eventlistener for statements below to seperate concern?
-                helper.btnStop.removeAttribute('disabled');
-                helper.btnWalk.removeAttribute('disabled');
-                walkHandler();
-                stopHandler();
-                return true;
-        };
-        helper.frmCreatePerson.addEventListener('submit', clickHandler);
-}
-
-createPersonHandler();
+const program = new Program();
