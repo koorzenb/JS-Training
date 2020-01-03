@@ -38,10 +38,6 @@ class DataCollector {
                 return this._age;
         }
 
-        // set status(newValue){
-        //         this._statusValue = newValue;
-        // }
-
         get statusElement() {
                 if (this._status == null) {
                         this._status = document.getElementById('status');
@@ -131,7 +127,7 @@ function walkHandler() {
         const clickHandler = () => {
                 person.startWalking();
                 helper.statusElement.innerHTML = `${person.isWalking}`;
-                helper.statusElement.setAttribute('iswalking','');
+                helper.statusElement.setAttribute('iswalking', '');
         };
 
         helper.btnWalk.addEventListener('click', clickHandler);
@@ -163,12 +159,4 @@ function createPersonHandler() {
         helper.frmCreatePerson.addEventListener('submit', clickHandler);
 }
 
-// function disposeCreatePersonHandler() {
-//         createCreatePersonHandler = null;
-// }
-
 createPersonHandler();
-
-// TODO: Once person is created:
-//      - Enabled walk/stop buttons
-//      - remove listeners - cannot do this yet as need help with "this" keyword
