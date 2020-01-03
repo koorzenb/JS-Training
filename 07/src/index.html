@@ -15,31 +15,26 @@
     <form name="createPerson" action="">
       <div>
         <label for="firstname">Name:</label>
-        <input type="text" class="firstname" name="firstname" required />
-
+        <input type="text" id="firstname" name="firstname" required />
+        
         <label for="surname">Lastname:</label>
-        <input type="text" class="surname" name="surname" required />
+        <input type="text" id="surname" name="surname" required />
 
         <label for="age">Age:</label>
-        <input type="text" class="age" name="age" required />
+        <input type="text" id="age" name="age" required />
       </div>
       <div>
         <input type="submit" value="Create Person" />
       </div>
     </form>
     <div>
-      <button class="walk" disabled>Walk Person</button>
-      <button class="stop" disabled>Stop Person</button>
+      <button id="walk" disabled>Walk Person</button>
+      <button id="stop" disabled>Stop Person</button>
     </div>
 
     <div>
       <label for="status">Status</label>
-      <input
-        type="text"
-        class="status"
-        placeholder="...waiting on input"
-        disabled
-      />
+      <textarea class="status" id="status" rows="1" cols="30" readonly>...waiting on input</textarea>
     </div>
 
     <script src="./lib.js"></script>

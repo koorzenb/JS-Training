@@ -12,28 +12,28 @@ class DataCollector {
         // placeholder person
         constructor() {
                 // would "this" be necessary?  this.document.querySelector('.firstname').value = 'Joe';
-                document.querySelector('.firstname').value = 'Joe';
-                document.querySelector('.surname').value = 'Soap';
-                document.querySelector('.age').value = '23';
+                document.getElementById('firstname').value = 'Joe';
+                document.getElementById('surname').value = 'Soap';
+                document.getElementById('age').value = '23';
         }
 
         get firstname() {
                 if (this._firstname == null) {
-                        this._firstname = document.querySelector('.firstname').value;
+                        this._firstname = document.getElementById('firstname').value;
                 }
                 return this._firstname;
         }
 
         get surname() {
                 if (this._surname == null) {
-                        this._surname = document.querySelector('.surname').value;
+                        this._surname = document.getElementById('surname').value;
                 }
                 return this._surname;
         }
 
         get age() {
                 if (this._age == null) {
-                        this._age = document.querySelector('.age').value;
+                        this._age = document.getElementById('age').value;
                 }
                 return this._age;
         }
@@ -44,14 +44,14 @@ class DataCollector {
 
         get statusElement() {
                 if (this._status == null) {
-                        this._status = document.querySelector('.status');
+                        this._status = document.getElementById('status');
                 }
                 return this._status;
         }
 
         get input() {
                 if (this._input == null) {
-                        this._input = document.querySelector('.input');
+                        this._input = document.getElementById('input');
                 }
                 return this._input;
         }
@@ -65,14 +65,14 @@ class DataCollector {
 
         get btnWalk() {
                 if (this._btnWalk == null) {
-                        this._btnWalk = document.querySelector('.walk');
+                        this._btnWalk = document.getElementById('walk');
                 }
                 return this._btnWalk;
         }
 
         get btnStop() {
                 if (this._btnStop == null) {
-                        this._btnStop = document.querySelector('.stop');
+                        this._btnStop = document.getElementById('stop');
                 }
                 return this._btnStop;
         }
@@ -92,8 +92,8 @@ class DataCollector {
 class Person {
         get isWalking() {
                 return this._isWalking === true
-                        ? `\n${this.name} ${this.lastName} is walking`
-                        : `\n${this.name} ${this.lastName} is idle`;
+                        ? `${this.name} ${this.surname} is walking`
+                        : `${this.name} ${this.surname} is idle`;
         }
 
         constructor(name, surname, age) {
@@ -129,7 +129,9 @@ const person = new Person(helper.firstname, helper.surname, helper.age);
 
 function walkHandler() {
         const clickHandler = () => {
-                helper.statusElement.innerHTML = `${person.name} ${person.isWalking}`;
+                person.startWalking();
+                helper.statusElement.innerHTML = `${person.isWalking}`;
+                helper.statusElement.setAttribute('iswalking','');
         };
 
         helper.btnWalk.addEventListener('click', clickHandler);
@@ -137,7 +139,8 @@ function walkHandler() {
 
 function stopHandler() {
         const clickHandler = () => {
-                console.log('working');
+                person.stopWalking();
+                helper.statusElement.innerHTML = `${person.isWalking}`;
         };
 
         helper.btnStop.addEventListener('click', clickHandler);
@@ -147,8 +150,7 @@ function createPersonHandler() {
         const clickHandler = e => {
                 e.preventDefault();
                 // this.click.bind(this);        // this breaks code
-                // helper.statusElement.value = `${person.name} ${person.surname} (${person.age}) created`;
-                document.querySelector('.status').innerHTML = document.querySelector('.firstname').textContent;
+                helper.statusElement.innerHTML = `${person.name} ${person.surname} (${person.age}) created`;
                 helper.frmCreatePerson.setAttribute('disabled', '');
                 console.log(helper.frmCreatePerson);
                 // TODO: Should I register seperate eventlistener for statements below to seperate concern?
