@@ -127,20 +127,10 @@ class Person {
         }
 }
 
-
-
-/**
- * TODO:
- * grab value from input boxes and create person
- * grab = qs
- * create = person.firstname
- */
-
-class Program{
-        import { helper } from "DataCollector";
-        const helper = new DataCollector();
+const helper = new DataCollector();
 const person = new Person(helper.txtFirstname, helper.txtSurname, helper.txtAge);
-        walkHandler() {
+// TODO: dispose elements
+        function walkHandler() {
                 const clickHandler = () => {
                         person.startWalking();
                         helper.txtStatus.innerHTML = `${person.isWalking}`;
@@ -153,7 +143,7 @@ const person = new Person(helper.txtFirstname, helper.txtSurname, helper.txtAge)
                 helper.btnWalk.addEventListener('click', clickHandler);
         }
         
-        stopHandler() {
+        function stopHandler() {
                 const clickHandler = () => {
                         person.stopWalking();
                         helper.txtStatus.innerHTML = `${person.isWalking}`;
@@ -174,7 +164,7 @@ const person = new Person(helper.txtFirstname, helper.txtSurname, helper.txtAge)
         //         helper.submitCreatePerson.addEventListener('submit', clickHandler);
         // }
         
-        btnCreatePersonHandler() {
+        function btnCreatePersonHandler() {
                 const clickHandler = () => {
                         // this.click.bind(this);        // this breaks code
         
@@ -191,6 +181,3 @@ const person = new Person(helper.txtFirstname, helper.txtSurname, helper.txtAge)
         
         //frmCreatePersonHandler();
         btnCreatePersonHandler();
-}
-
-const program = new Program();
