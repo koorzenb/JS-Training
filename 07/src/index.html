@@ -12,33 +12,35 @@
   </head>
 
   <body>
-    <form name="createPerson" action="">
+    <form name="createPerson">
       <div>
         <label for="firstname">Name:</label>
         <input type="text" id="firstname" name="firstname" required />
-        
+
         <label for="surname">Lastname:</label>
         <input type="text" id="surname" name="surname" required />
 
         <label for="age">Age:</label>
         <input type="text" id="age" name="age" required />
       </div>
-      <div>
+      <div></div>
         <input type="submit" id="createPerson" value="Create Person" />
+        <!cannot set button disabled - "required" wont activate on textfields>
       </div>
     </form>
     <div>
       <button id="walk" disabled>Walk Person</button>
       <button id="stop" disabled>Stop Person</button>
     </div>
-
     <div>
       <label for="status">Status</label>
-      <textarea class="status" id="status" rows="1" cols="30" readonly>...waiting on input</textarea>
+      <textarea class="status" id="status" rows="1" cols="30" readonly>
+...waiting on input</textarea
+      >
     </div>
 
     <script src="./lib.js">
-    
+      //TODO: how to run a modules with multiple classes/functions
     </script>
   </body>
 </html>
