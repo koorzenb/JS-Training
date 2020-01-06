@@ -130,6 +130,12 @@ class Person {
         stopWalking() {
                 this._isWalking = false;
         }
+
+        dispose() {
+                name = null;
+                surname = null;
+                age = null;
+        }
 }
 
 const helper = new DataCollector();
@@ -194,3 +200,8 @@ function btnCreatePersonHandler() {
 
 btnCreatePersonHandler();
 console.log('working');
+dispose(){
+        walkHandler();
+        stopHandler();
+        btnCreatePersonHandler();
+}
