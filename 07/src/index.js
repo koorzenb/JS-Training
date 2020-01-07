@@ -1,33 +1,42 @@
 import { Person } from './person/person.js';
+import { inputValidation, getConstructorValues, disposeListerners } from './lib/applicationhelper.js';
 
-const txtInputs = document.querySelectorAll('.input');
+const inputElements = document.querySelectorAll('.input');
 const btnCreatePerson = document.querySelector('#createPerson');
+let person;
+let registeredEvents = [];
+
 // listen on txtfields to enable createPerson
-const handler = () => {
-        console.log('clicked here');
+const toggleDisabledAttribute = e => {
+        const isValid = inputValidation();
+
+        if (isValid === true) {
+                document.querySelector('#createPerson').removeAttribute('disabled');
+        } else {
+                document.querySelector('#createPerson').setAttribute('disabled', '');
+        }
 };
 
-txtInputs.forEach(function(input) {
-        input.addEventListener('change', handler);
-});
-
-//  listen on btn create person
-let person;
-
-function createPerson() {
-        const handle = () => {
-                const firstname = document.querySelector('#firstname');
-                const lastname = document.querySelector('#lastname');
-                const age = document.querySelector('#age');
-                person = new Person(firstname, lastname, age);
-                document.querySelector('#status').innerHTML = `${person}`;
-        };
-
-        btnCreatePerson.addEventListener('click', handle);
+for (const element of inputElements) {
+        element.addEventListener('keyup', toggleDisabledAttribute);
+        registeredEvents.push({ element, event: 'keyup', handler: toggleDisabledAttribute });
 }
 
-createPerson();
+//  listen on btn create person
 // create person on click
-// output status
-// listen on walk/stop
-// output status
+
+function createPerson(event) {
+        const values = getConstructorValues(['firstname', 'lastname', 'age']);
+        person = new Person(...values);
+        document.querySelector('#status').innerText = `${person.firstname} ${person.isWalking}`;
+        disposeListerners(registeredEvents);
+
+        registeredEvents = null;
+        console.log(registeredEvents);
+}
+
+registeredEvents.push({ element: btnCreatePerson, event: 'click', handler: createPerson });
+btnCreatePerson.addEventListener('click', createPerson);
+
+console.log(registeredEvents);
+// disposeListerners(inputElements, 'keyup', toggleDisabledAttribute);
