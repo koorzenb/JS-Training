@@ -138,79 +138,87 @@ class Person {
         }
 }
 
-const dc = new DataCollector();
-const person = new Person();
+function program() {
+        // TODO: create class from this function and resolve const's
+        const dc = new DataCollector();
+        const person = new Person();
 
-/**
- * walkHandler problem:
- * If person created at btnCreatePersonHandler, person obj is destroyed when btnCreatePersonHandler completes and walkHandler cannot access person properties
- * Solution: pass person? But then at what point do we dispose?
- */
+        /**
+         * walkHandler problem:
+         * If person created at btnCreatePersonHandler, person obj is destroyed when btnCreatePersonHandler completes and walkHandler cannot access person properties
+         * Solution: pass person? But then at what point do we dispose?
+         */
 
-function walkHandler() {
-        const clickHandler = () => {
-                person.startWalking();
-                dc.txtStatus.innerHTML = `${person.isWalking}`;
-                dc.txtStatus.removeAttribute('isidle');
-                dc.txtStatus.setAttribute('class', 'iswalking');
-                dc.btnWalk.setAttribute('disabled', '');
-                dc.btnStop.removeAttribute('disabled');
-        };
+        function walkHandler() {
+                const clickHandler = () => {
+                        person.startWalking();
+                        dc.txtStatus.innerHTML = `${person.isWalking}`;
+                        dc.txtStatus.removeAttribute('isidle');
+                        dc.txtStatus.setAttribute('class', 'iswalking');
+                        dc.btnWalk.setAttribute('disabled', '');
+                        dc.btnStop.removeAttribute('disabled');
+                };
 
-        dc.btnWalk.addEventListener('click', clickHandler);
-}
-
-function stopHandler() {
-        const clickHandler = () => {
-                person.stopWalking();
-                dc.txtStatus.innerHTML = `${person.isWalking}`;
-                dc.txtStatus.removeAttribute('iswalking');
-                dc.txtStatus.setAttribute('class', 'isidle');
-                dc.btnStop.setAttribute('disabled', '');
-                dc.btnWalk.removeAttribute('disabled');
-        };
-
-        dc.btnStop.addEventListener('click', clickHandler);
-}
-
-function btnCreatePersonHandler() {
-        const clickHandler = e => {
-                e.preventDefault();
-                // this.click.bind(this);        // this breaks code
-                // TODO: how to use Person constructor. If I use inside this block, obj is destroy once block completes
-                person.name = dc.txtFirstname.value;
-                person.surname = dc.txtSurname.value;
-                person.age = dc.txtAge.value;
-                dc.txtStatus.innerHTML = `${person.name} ${person.surname} (${person.age}) created`;
-                dc.btnCreatePerson.setAttribute('disabled', '');
-                // TODO: Should I register seperate eventlistener for statements below to seperate concern?
-                dc.btnStop.removeAttribute('disabled');
-                dc.btnWalk.removeAttribute('disabled');
-                dc.txtFirstname.setAttribute('disabled', '');
-                dc.txtSurname.setAttribute('disabled', '');
-                dc.txtAge.setAttribute('disabled', '');
-                walkHandler();
-                stopHandler();
-        };
-        dc.btnCreatePerson.addEventListener('click', clickHandler);
-}
-// TODO: disable input and create person
-
-function inputsHandle() {
-        if (dc.txtFirstname.value !== '' && dc.txtSurname.value !== '' && dc.txtAge.value !== '') {
-                dc.btnCreatePerson.removeAttribute('disabled');
+                dc.btnWalk.addEventListener('click', clickHandler);
         }
+
+        function stopHandler() {
+                const clickHandler = () => {
+                        person.stopWalking();
+                        dc.txtStatus.innerHTML = `${person.isWalking}`;
+                        dc.txtStatus.removeAttribute('iswalking');
+                        dc.txtStatus.setAttribute('class', 'isidle');
+                        dc.btnStop.setAttribute('disabled', '');
+                        dc.btnWalk.removeAttribute('disabled');
+                };
+
+                dc.btnStop.addEventListener('click', clickHandler);
+        }
+
+        function btnCreatePersonHandler() {
+                const clickHandler = e => {
+                        e.preventDefault();
+                        // this.click.bind(this);        // this breaks code
+                        // TODO: how to use Person constructor. If I use inside this block, obj is destroy once block completes
+                        person.name = dc.txtFirstname.value;
+                        person.surname = dc.txtSurname.value;
+                        person.age = dc.txtAge.value;
+                        dc.txtStatus.innerHTML = `${person.name} ${person.surname} (${person.age}) created`;
+                        dc.btnCreatePerson.setAttribute('disabled', '');
+                        // TODO: Should I register seperate eventlistener for statements below to seperate concern?
+                        dc.btnStop.removeAttribute('disabled');
+                        dc.btnWalk.removeAttribute('disabled');
+                        dc.txtFirstname.setAttribute('disabled', '');
+                        dc.txtSurname.setAttribute('disabled', '');
+                        dc.txtAge.setAttribute('disabled', '');
+                        walkHandler();
+                        stopHandler();
+                };
+                dc.btnCreatePerson.addEventListener('click', clickHandler);
+        }
+
+        function dataValidation() {
+                function inputsHandle() {
+                        if (dc.txtFirstname.value !== '' && dc.txtSurname.value !== '' && dc.txtAge.value !== '') {
+                                dc.btnCreatePerson.removeAttribute('disabled');
+                        }
+                }
+
+                function disableInput() {
+                        dc.input.forEach(function(inputs) {
+                                inputs.addEventListener('keyup', inputsHandle);
+                        });
+                }
+
+                disableInput();
+        }
+
+        dataValidation();
+        btnCreatePersonHandler();
 }
 
-function disableInput() {
-        dc.input.forEach(function(inputs) {
-                inputs.addEventListener('keyup', inputsHandle);
-        });
-}
-
-disableInput();
-btnCreatePersonHandler();
 console.log('lib.js is working');
+program();
 
 /** not working
  * dispose() {
