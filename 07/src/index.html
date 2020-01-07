@@ -15,17 +15,16 @@
     <form name="createPerson">
       <div>
         <label for="firstname">Name:</label>
-        <input type="text" id="firstname" name="firstname" required />
+        <input class="input" type="text" id="firstname" name="firstname" required />
 
         <label for="surname">Lastname:</label>
-        <input type="text" id="surname" name="surname" required />
+        <input class="input" type="text" id="surname" name="surname" required />
 
         <label for="age">Age:</label>
-        <input type="text" id="age" name="age" required />
+        <input class="input" type="text" id="age" name="age" required />
       </div>
       <div></div>
-        <input type="submit" id="createPerson" value="Create Person" />
-        <!cannot set button disabled - "required" wont activate on textfields>
+        <input type="submit" id="createPerson" value="Create Person" disabled/>
       </div>
     </form>
     <div>

@@ -11,21 +11,21 @@
 class DataCollector {
         get txtFirstname() {
                 if (this._firstname == null) {
-                        this._firstname = document.querySelector('#firstname').value;
+                        this._firstname = document.querySelector('#firstname');
                 }
                 return this._firstname;
         }
 
         get txtSurname() {
                 if (this._surname == null) {
-                        this._surname = document.querySelector('#surname').value;
+                        this._surname = document.querySelector('#surname');
                 }
                 return this._surname;
         }
 
         get txtAge() {
                 if (this._age == null) {
-                        this._age = document.querySelector('#age').value;
+                        this._age = document.querySelector('#age');
                 }
                 return this._age;
         }
@@ -138,7 +138,7 @@ class Person {
         }
 }
 
-const helper = new DataCollector();
+const dc = new DataCollector();
 const person = new Person();
 
 /**
@@ -150,27 +150,27 @@ const person = new Person();
 function walkHandler() {
         const clickHandler = () => {
                 person.startWalking();
-                helper.txtStatus.innerHTML = `${person.isWalking}`;
-                helper.txtStatus.removeAttribute('isidle');
-                helper.txtStatus.setAttribute('class', 'iswalking');
-                helper.btnWalk.setAttribute('disabled', '');
-                helper.btnStop.removeAttribute('disabled');
+                dc.txtStatus.innerHTML = `${person.isWalking}`;
+                dc.txtStatus.removeAttribute('isidle');
+                dc.txtStatus.setAttribute('class', 'iswalking');
+                dc.btnWalk.setAttribute('disabled', '');
+                dc.btnStop.removeAttribute('disabled');
         };
 
-        helper.btnWalk.addEventListener('click', clickHandler);
+        dc.btnWalk.addEventListener('click', clickHandler);
 }
 
 function stopHandler() {
         const clickHandler = () => {
                 person.stopWalking();
-                helper.txtStatus.innerHTML = `${person.isWalking}`;
-                helper.txtStatus.removeAttribute('iswalking');
-                helper.txtStatus.setAttribute('class', 'isidle');
-                helper.btnStop.setAttribute('disabled', '');
-                helper.btnWalk.removeAttribute('disabled');
+                dc.txtStatus.innerHTML = `${person.isWalking}`;
+                dc.txtStatus.removeAttribute('iswalking');
+                dc.txtStatus.setAttribute('class', 'isidle');
+                dc.btnStop.setAttribute('disabled', '');
+                dc.btnWalk.removeAttribute('disabled');
         };
 
-        helper.btnStop.addEventListener('click', clickHandler);
+        dc.btnStop.addEventListener('click', clickHandler);
 }
 
 function btnCreatePersonHandler() {
@@ -178,33 +178,39 @@ function btnCreatePersonHandler() {
                 e.preventDefault();
                 // this.click.bind(this);        // this breaks code
                 // TODO: how to use Person constructor. If I use inside this block, obj is destroy once block completes
-                person.name = helper.txtFirstname;
-                person.surname = helper.txtSurname;
-                person.age = helper.txtAge;
-                helper.txtStatus.innerHTML = `${person.name} ${person.surname} (${person.age}) created`;
-                helper.btnCreatePerson.setAttribute('disabled', '');
+                person.name = dc.txtFirstname.value;
+                person.surname = dc.txtSurname.value;
+                person.age = dc.txtAge.value;
+                dc.txtStatus.innerHTML = `${person.name} ${person.surname} (${person.age}) created`;
+                dc.btnCreatePerson.setAttribute('disabled', '');
                 // TODO: Should I register seperate eventlistener for statements below to seperate concern?
-                helper.btnStop.removeAttribute('disabled');
-                helper.btnWalk.removeAttribute('disabled');
+                dc.btnStop.removeAttribute('disabled');
+                dc.btnWalk.removeAttribute('disabled');
+                dc.txtFirstname.setAttribute('disabled', '');
+                dc.txtSurname.setAttribute('disabled', '');
+                dc.txtAge.setAttribute('disabled', '');
                 walkHandler();
                 stopHandler();
         };
-        helper.btnCreatePerson.addEventListener('click', clickHandler);
+        dc.btnCreatePerson.addEventListener('click', clickHandler);
 }
+// TODO: disable input and create person
 
 function inputsHandle() {
-        console.log('clicked here');
+        if (dc.txtFirstname.value !== '' && dc.txtSurname.value !== '' && dc.txtAge.value !== '') {
+                dc.btnCreatePerson.removeAttribute('disabled');
+        }
 }
 
 function disableInput() {
-        helper.input.forEach(function(inputs) {
-                inputs.addEventListener('click', inputsHandle);
+        dc.input.forEach(function(inputs) {
+                inputs.addEventListener('keyup', inputsHandle);
         });
 }
 
 disableInput();
 btnCreatePersonHandler();
-console.log('working');
+console.log('lib.js is working');
 
 /** not working
  * dispose() {
