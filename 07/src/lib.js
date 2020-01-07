@@ -39,7 +39,7 @@ class DataCollector {
 
         get input() {
                 if (this._input == null) {
-                        this._input = document.querySelector('#input');
+                        this._input = document.querySelectorAll('.input');
                 }
                 return this._input;
         }
@@ -132,9 +132,9 @@ class Person {
         }
 
         dispose() {
-                name = null;
-                surname = null;
-                age = null;
+                this.name = null;
+                this.surname = null;
+                this.age = null;
         }
 }
 
@@ -173,12 +173,6 @@ function stopHandler() {
         helper.btnStop.addEventListener('click', clickHandler);
 }
 
-/**
- * Problem:
- * I need to create person form values in textfield once button click. Can do that, but then person obj destroyed
- * once handler closes and btnWalk needs acccess to person properties
- * ... or is there a way that I can create empty obj outside click handler, but only fill it later with values?
- */
 function btnCreatePersonHandler() {
         const clickHandler = e => {
                 e.preventDefault();
@@ -198,10 +192,25 @@ function btnCreatePersonHandler() {
         helper.btnCreatePerson.addEventListener('click', clickHandler);
 }
 
+function inputsHandle() {
+        console.log('clicked here');
+}
+
+function disableInput() {
+        helper.input.forEach(function(inputs) {
+                inputs.addEventListener('click', inputsHandle);
+        });
+}
+
+disableInput();
 btnCreatePersonHandler();
 console.log('working');
-dispose(){
+
+/** not working
+ * dispose() {
         walkHandler();
         stopHandler();
         btnCreatePersonHandler();
+        disableInput();
 }
+ */
