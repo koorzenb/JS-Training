@@ -24,7 +24,7 @@ export class Person {
         }
 
         get isWalking() {
-                return this._isWalking === true ? `${this.firstname} is walking` : ` is idle`;
+                return this._isWalking === true ? `is walking` : ` is idle`;
         }
 
         set isWalking(newValue) {
