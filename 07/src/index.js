@@ -1,5 +1,9 @@
+import { ViewModel } from './viewModel.js';
+
 import { Person } from './person/person.js';
 import { inputValidation, getConstructorValues, disposeListerners } from './lib/applicationhelper.js';
+
+const viewModel = new ViewModel();
 
 const inputElements = document.querySelectorAll('.input');
 const btnCreatePerson = document.querySelector('#createPerson');
@@ -55,6 +59,7 @@ function toggleWalkStop(event) {
                 person.startWalking();
                 document.querySelector('#status').innerText = `${person.firstname} ${person.isWalking}`;
                 document.querySelector('#stopPerson').removeAttribute('disabled');
+                viewModel.statusElement.style.color = 'green';
                 // run with do-while loop
                 //      disposeListerners(registeredEvents);
                 //      registeredEvents = null;
@@ -68,8 +73,9 @@ function toggleWalkStop(event) {
                 //      registeredEvents.push({ element: btnStopPerson, event: 'click', handler: toggleWalkStop });
                 event.currentTarget.setAttribute('disabled', '');
                 person.stopWalking();
-                document.querySelector('#status').innerText = `${person.firstname} ${person.isWalking}`;
+                viewModel.statusElement.innerText = `${person.firstname} ${person.isWalking}`;
                 document.querySelector('#walkPerson').removeAttribute('disabled');
+                viewModel.statusElement.style.color = 'red';
                 // run with do-while loop
                 //      disposeListerners(registeredEvents);
                 //      registeredEvents = null;
