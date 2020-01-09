@@ -1,18 +1,7 @@
 export class ViewModel {
-        get statusElement() {
-                if (this._statusElement == null) {
-                        this._statusElement = document.querySelector('#status');
-                }
-                return this._statusElement;
-        }
-
-        set statusElement(newValue) {
-                this._statusElement = newValue;
-        }
-
         get requiredElements() {
                 if (this._requiredElements == null) {
-                        this._requiredElements = document.querySelectorAll('[required]');
+                        this._requiredElements = Array.from(document.querySelectorAll('[required]'));
                 }
                 return this._requiredElements;
         }
@@ -21,56 +10,60 @@ export class ViewModel {
                 this._requiredElements = newValue;
         }
 
-        get btnCreatePerson() {
-                if (this._btnCreatePerson == null) {
-                        this._btnCreatePerson = document.querySelector('#btnCreatePerson');
+        get actionButtons() {
+                if (this._actionButtons == null) {
+                        this._actionButtons = Array.from(document.querySelectorAll('button'));
                 }
-                return this._btnCreatePerson;
-        }
-
-        set btnCreatePerson(newValue) {
-                this._btnCreatePerson = newValue;
-        }
-
-        get btnWalkPerson() {
-                if (this._btnWalkPerson == null) {
-                        this._btnWalkPerson = document.querySelector('#btnWalkPerson');
-                }
-                return this._btnWalkPerson;
-        }
-
-        set btnWalkPerson(newValue) {
-                this.btnWalkPerson = newValue;
-        }
-
-        get btnStopPerson() {
-                if (this._btnStopPerson == null) {
-                        this._btnStopPerson = document.querySelector('#btnStopPerson');
-                }
-                return this._btnStopPerson;
-        }
-
-        set btnStopPerson(newValue) {
-                this._btnStopPerson = newValue;
+                return this._actionButtons;
         }
 
         constructor() {
-                this.clickHandle = this._click.bind(this);
-                this.keyupHandle = this._keyup.bind(this);
-                console.log(this.statusElement);
+                this.clickhandler = this._click.bind(this);
+                this.keyuphandler = this._keyup.bind(this);
+                this._init();
         }
 
-        dispose() {
-                this.clickHandle = null;
-                this.keyupHandle = null;
-                this.statusElement = null;
-                this.requiredElements = null;
-                this.btnCreatePerson = null;
-                this.btnWalkPerson = null;
-                this.btnStopPerson = null;
+        _init() {
+                const options = {
+                        elements: this.requiredElements.concat(this.actionButtons),
+                        eventTypes: {
+                                input: 'keyup',
+                                button: 'click',
+                        },
+                        callbacks: {
+                                input: this.keyuphandler,
+                                button: this.clickhandler,
+                        },
+                };
+
+                this._addEvents(options);
         }
 
-        _click(event) {}
+        _click(event) {
+                const attrib = event.target.getAttribute('action');
+                this[`_${attrib}`]();
+        }
 
-        _keyup(event) {}
+        _keyup(event) {
+                console.log(event);
+        }
+
+        _addEvents(options) {
+                for (const element of options.elements) {
+                        const tag = element.nodeName.toLowerCase();
+                        element.addEventListener(options.eventTypes[`${tag}`], options.callbacks[`${tag}`]);
+                }
+        }
+
+        _walkPerson() {
+                console.log('Walking');
+        }
+
+        _stopPerson() {
+                console.log('stopped');
+        }
+
+        _createPerson() {
+                console.log('created');
+        }
 }
