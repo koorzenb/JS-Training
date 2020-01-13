@@ -1,27 +1,18 @@
-export function inputValidation() {
+export function validateInput(elements) {
         let count = 0;
-        const inputs = document.querySelectorAll('[required]');
 
-        for (const input of inputs) {
-                if (input.value !== null && input.value !== '') {
-                        count += 1;
+        for (const element of elements) {
+                if (element.value != null && element.value != '') {
+                        count++;
                 }
         }
-
-        return count === inputs.length;
+        return count === elements.length;
 }
 
-export function getConstructorValues(options) {
+export function getRequiredValues(elements) {
         const values = [];
-
-        for (const item of options) {
-                values.push(document.querySelector(`#${item}`).value);
+        for (const el of elements) {
+                values.push(el.value);
         }
         return values;
-}
-
-export function disposeListerners(options) {
-        for (const item of options) {
-                item.element.removeEventListener(item.event, item.handler);
-        }
 }
