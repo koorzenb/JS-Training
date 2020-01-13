@@ -8,7 +8,6 @@ yarn-error.log
 /extras/
 /webcomponents/
 /.vscode/
-.eslintrc
 test.html
 test.js
 babel.config.js
