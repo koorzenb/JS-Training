@@ -1,3 +1,3 @@
-import { ViewModel } from './viewModel.js';
+import { ViewModel } from "./viewModel.js";
 
 const viewModel = new ViewModel();

@@ -1,55 +1,103 @@
 export class Person {
-        get firstname() {
-                return this._firstname;
-        }
+    /**
+     * returns _firstname
+     * @Param {}
+     * @Returns _firstname
+     */
+    get firstname() {
+        return this._firstname;
+    }
 
-        set firstname(newValue) {
-                this._firstname = newValue;
-        }
+    /**
+     * sets _firstname to newValue
+     * @param {String} newValue
+     */
+    set firstname(newValue) {
+        this._firstname = newValue;
+    }
 
-        get lastname() {
-                return this._lastname;
-        }
+    /**
+     * returns _lastname
+     * @param {} none
+     * @returns {String} _lastname
+     */
+    get lastname() {
+        return this._lastname;
+    }
 
-        set lastname(newValue) {
-                this._lastname = newValue;
-        }
+    /**
+     * sets _lastname to newValue
+     * @param {String} newValue;
+     */
+    set lastname(newValue) {
+        this._lastname = newValue;
+    }
 
-        get age() {
-                return this._age;
-        }
+    /**
+     * returns _age
+     * @param {} none
+     * @returns {String} _age
+     */
+    get age() {
+        return this._age;
+    }
 
-        set age(newValue) {
-                this._age = newValue;
-        }
+    /**
+     * sets _age to newValue
+     * @param {String} newValue;
+     */
+    set age(newValue) {
+        this._age = newValue;
+    }
 
-        get isWalking() {
-                return this._isWalking === true ? `is walking` : ` is idle`;
-        }
+    /**
+     * returns the status of _isWalking
+     * @param {} none
+     * @returns {String}
+     */
+    get isWalking() {
+        return this._isWalking === true ? `is walking` : ` is idle`;
+    }
 
-        set isWalking(newValue) {
-                this._isWalking = newValue;
-        }
+    /**
+     * isWalking sets _isWalking to newValue
+     * @param {String} newValue;
+     */
+    set isWalking(newValue) {
+        this._isWalking = newValue;
+    }
 
-        constructor(firstname, lastname, age) {
-                this.firstname = firstname;
-                this.lastname = lastname;
-                this.age = age;
-                this.isWalking = false;
-        }
+    constructor(firstname, lastname, age) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+        this.isWalking = false;
+    }
 
-        dispose() {
-                delete this.firstname;
-                delete this.lastname;
-                delete this.age;
-                delete this.isWalking;
-        }
+    /**
+     * Responsible for diposal of properties on closing
+     * @param {}
+     */
+    dispose() {
+        delete this.firstname;
+        delete this.lastname;
+        delete this.age;
+        delete this.isWalking;
+    }
 
-        startWalking() {
-                this._isWalking = true;
-        }
+    /**
+     * startWalking sets _isWalking to true
+     * @param {}
+     */
+    startWalking() {
+        this._isWalking = true;
+    }
 
-        stopWalking() {
-                this._isWalking = false;
-        }
+    /**
+     * stopWalking sets _isWalking to false
+     * @param {}
+     */
+    stopWalking() {
+        this._isWalking = false;
+    }
 }

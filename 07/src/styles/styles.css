@@ -1,37 +1,37 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  height: 100vh;
-  width: 100vw;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
 }
-  .container {
+.container {
     padding: 20px;
-  }
-    label {
-      display: block;
-    }
+}
+label {
+    display: block;
+}
 
-    input {
-      margin-bottom: 16px;
-    }
+input {
+    margin-bottom: 16px;
+}
 
-    #status {
-      display: block;
-      margin-top: 16px;
-      border: 1px solid #ccc;
-      width: 300px;
-      padding: 8px;
-    }
+#status {
+    display: block;
+    margin-top: 16px;
+    border: 1px solid #ccc;
+    width: 300px;
+    padding: 8px;
+}
 
-    #status.isWalking {
-      color: green;
-    }
+#status.isWalking {
+    color: green;
+}
 
-    #status.isIdle {
-      color: red;
-    }
+#status.isIdle {
+    color: red;
+}
