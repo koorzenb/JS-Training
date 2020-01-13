@@ -1,4 +1,4 @@
-import { validateInput, getRequiredValues } from './lib/applicationhelper.js';
+import { validateInput, getRequiredValues, findActionButton } from './lib/applicationhelper.js';
 import { Person } from './person/person.js';
 
 export class ViewModel {
@@ -117,20 +117,30 @@ export class ViewModel {
 
         /**
          * _walkPerson receives no parameters, but sets person's walking status
-         * @param {}
+         * @param {} none
          */
         _walkPerson(event) {
                 this.person.startWalking();
                 this.statusElement.innerText = `${this.person.firstname} ${this.person.isWalking}`;
-        }
-
+                this.stopActionButton = findActionButton("stopPerson", this.actionButtons);
+                this.walkActionButton = findActionButton("walkPerson", this.actionButtons);
+                this.stopActionButton.removeAttribute('disabled');              
+                this.walkActionButton.setAttribute('disabled','');
+                this.statusElement.removeAttribute('isIdle');
+                this.statusElement.setAttribute('class','isWalking');  
+        }   
+        
         /**
          * _stopPerson receives no parameters, but sets person's walking status
-         * @param {}
+         * @param {} none
          */
         _stopPerson(event) {
                 this.person.stopWalking();
                 this.statusElement.innerText = `${this.person.firstname} ${this.person.isWalking}`;
+                this.walkActionButton.removeAttribute('disabled');
+                this.stopActionButton.setAttribute('disabled','');   
+                this.statusElement.removeAttribute('isWalking');
+                this.statusElement.setAttribute('class','isIdle');   
         }
 
         /**
@@ -144,26 +154,7 @@ export class ViewModel {
                 for (const element of this.requiredElements) {
                         element.setAttribute('disabled', '');
                 }
-                this._toggleDisabledButtons(event);
-        }
-
-        // eslint-disable-next-line class-methods-use-this
-        _toggleDisabledButtons() {
-                // TODO - BK no need to query document as we already have an array of buttons. Find buttons in array and manipulate.
-                // get element(1) event. disable that button
-                // console.log(event);
-                // enable other button
-                //      - loop thru array and find element(1)
-                //      - remove element(1)
-                //      - set attri remaining element(2)
-                // this.actionButtons.find(element => {
-                //         if (element.getAttribute('action') === 'walkPerson') {
-                //                 element.set
-                //         }
-                //         return false;
-                // }
-                document.querySelector('[action="walkPerson"]').removeAttribute('disabled');
-                document.querySelector('[action="stopPerson"]').removeAttribute('disabled');
+                this._changeElementAttributes(event);
         }
 
         dispose() {

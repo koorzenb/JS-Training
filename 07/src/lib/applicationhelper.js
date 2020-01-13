@@ -16,3 +16,16 @@ export function getRequiredValues(elements) {
         }
         return values;
 }
+
+export function findActionButton(myAction, actionButtons) {
+        return actionButtons.find( (el) => {
+                if (el.getAttribute('action') === myAction) {
+                        return el;
+                }
+        });                
+}
+
+export function registerEvent = [
+        
+]
+}
