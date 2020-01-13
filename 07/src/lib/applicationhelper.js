@@ -24,8 +24,3 @@ export function findActionButton(myAction, actionButtons) {
                 }
         });                
 }
-
-export function registerEvent = [
-        
-]
-}

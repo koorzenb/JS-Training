@@ -73,24 +73,24 @@ export class ViewModel {
                                 button: this.clickhandler,
                         },
                 };
-
+                
                 this._addEvents(options);
+                this.stopActionButton = findActionButton("stopPerson", this.actionButtons);
+                this.walkActionButton = findActionButton("walkPerson", this.actionButtons);
         }
 
-        /**
-         * _init method creates an object of options used for eventlisteners, then creates eventlisteners:
-         *      - elements: elements required to listen on
-         *      - eventTypes: type of events to listen for
-         *      - callbacks: callback methods to use
-         *  @param {}
-         */ _click(event) {
+          /**
+         * _click receives an event parameter, then executes class method based on target event.
+         *  @param {Event} event
+         */
+        _click(event) {
                 const attrib = event.target.getAttribute('action');
                 this[`_${attrib}`](event);
         }
 
         /**
-         * _keyup method receives an event parameter, then executes relevant class method.
-         * @param {Event} event
+         * _keyup method receives no parameters, but listens on keyup. Once all required fields have some data, Create Person button is enabled
+         * @param {} none
          */
         _keyup(event) {
                 this.isValid = validateInput(this.requiredElements);
@@ -122,8 +122,6 @@ export class ViewModel {
         _walkPerson(event) {
                 this.person.startWalking();
                 this.statusElement.innerText = `${this.person.firstname} ${this.person.isWalking}`;
-                this.stopActionButton = findActionButton("stopPerson", this.actionButtons);
-                this.walkActionButton = findActionButton("walkPerson", this.actionButtons);
                 this.stopActionButton.removeAttribute('disabled');              
                 this.walkActionButton.setAttribute('disabled','');
                 this.statusElement.removeAttribute('isIdle');
@@ -142,7 +140,7 @@ export class ViewModel {
                 this.statusElement.removeAttribute('isWalking');
                 this.statusElement.setAttribute('class','isIdle');   
         }
-
+        
         /**
          * _createPerson receives an event parameter, then creates a new Person and disables the event.target button
          * @param {Event} event
@@ -154,7 +152,8 @@ export class ViewModel {
                 for (const element of this.requiredElements) {
                         element.setAttribute('disabled', '');
                 }
-                this._changeElementAttributes(event);
+                this.stopActionButton.removeAttribute('disabled');              
+                this.walkActionButton.removeAttribute('disabled');
         }
 
         dispose() {
