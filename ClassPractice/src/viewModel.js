@@ -1,11 +1,8 @@
+import { CLIEngine } from 'eslint';
 import { validateInput, getRequiredValues } from './lib/applicationhelper.js';
 import { Person } from './person/person.js';
 
 export class ViewModel {
-        /** requiredELements returns value of  previously registered query for all "required" elements. If no search for registered 
-         * elements were previously perform, this getter will run a new qeury and assign value to private variable
-         * @param {} none
-         */
         get requiredElements() {
                 if (this._requiredElements == null) {
                         this._requiredElements = Array.from(document.querySelectorAll('[required]'));
@@ -13,17 +10,11 @@ export class ViewModel {
                 return this._requiredElements;
         }
 
-        /** requiredElements set value of private variable _requiredElements to newValue.
-         * @param {Function} newValue
-         */
+        // TODO - BK should I write doc summary for getters and setters too?
         set requiredElements(newValue) {
                 this._requiredElements = newValue;
         }
 
-        /** actionButtons returns value of  previously registered query for all "action" buttons. If no search for action buttons 
-         * elements were previously perform, this getter will run a new qeury and assign value to private variable
-         * @param {} none
-         */
         get actionButtons() {
                 if (this._actionButtons == null) {
                         this._actionButtons = Array.from(document.querySelectorAll('button'));
@@ -31,20 +22,13 @@ export class ViewModel {
                 return this._actionButtons;
         }
 
-        /** statusElement returns value of  previously registered query for the "status" element. If no search for "status"
-         * elements were previously perform, this getter will run a new qeury and assign value to private variable
-         * @param {} none
-         */
         get statusElement() {
                 if (this._statusElement == null) {
                         this._statusElement = document.querySelector('#status');
                 }
                 return this._statusElement;
         }
-        
-         /** statusElement set value of private variable _statusElement to newValue.
-         * @param {Function} newValue
-         */
+
         set statusElement(newValue) {
                 this._statusElement = newValue;
         }

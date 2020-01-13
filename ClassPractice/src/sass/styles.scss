@@ -27,5 +27,13 @@ body {
       width: 300px;
       padding: 8px;
     }
+
+    #status.isWalking {
+      color: green;
+    }
+
+    #status.isIdle {
+      color: red;
+    }
   }
 }
