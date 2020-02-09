@@ -10,19 +10,60 @@ function handleSubmit(e) {
     e.preventDefault();
     console.log('submitted!!');
     const name = e.currentTarget.item.value;
-    
+    if (!name) return;
+
     const item = {
         name,
-        id : Date.now(),
-        complete: false
-    }
+        id: Date.now(),
+        complete: false,
+    };
 
     items.push(item);
     console.log(`There are now ${items.length} items in your state`);
-    
-    
-    // if its empty, then dont submit it
-    if (!name) return;
+    e.target.reset();
+    list.dispatchEvent(new CustomEvent('itemsUpdated'));
 }
 
-shoppingForm.addEventListener('submit',handleSubmit);
+function displayItems() {
+    console.log(items);
+    const html = items
+        .map(
+            item =>
+                `<li class='shopping-item'>
+            <input type="checkbox">
+            <span class="itemName">${item.name}</span>
+            <button aria-label="Remove ${item.name}">&times;</button>
+        </li>`
+        )
+        .join('');
+    list.innerHTML = html;
+}
+
+function mirrorLocalStorage() {
+    localStorage.setItem('items', JSON.stringify(items));
+    console.info('Saving to storage');
+}
+
+function restoreFromLocalStorage() {
+    console.info(`Restoring from storage`);
+    const lsItems = JSON.parse(localStorage.getItem(items));
+    if (items.length) {
+        items.push(...lsItems);
+        list.dispatchEvent(new CustomEvent('itemsUpdated'));
+    }
+}
+
+function deletedItem() {
+    console.log('Deleting item');
+}
+
+shoppingForm.addEventListener('submit', handleSubmit);
+list.addEventListener('itemsUpdated', displayItems);
+list.addEventListener('itemsUpdated', mirrorLocalStorage);
+list.addEventListener('click', function(e) {
+    if (e.target.matches('button')) {
+        deletedItem();
+    }
+});
+
+restoreFromLocalStorage();
