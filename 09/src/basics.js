@@ -1,5 +1,5 @@
 // https://github.com/caperaven/training/blob/master/09.Batch%20dom%20updates%20-%20project.md
-
+// 48min
 const shoppingForm = document.querySelector('.shopping');
 const list = document.querySelector('.list');
 
@@ -32,7 +32,10 @@ function displayItems() {
                 `<li class='shopping-item'>
             <input type="checkbox">
             <span class="itemName">${item.name}</span>
-            <button aria-label="Remove ${item.name}">&times;</button>
+            <button 
+                aria-label="Remove ${item.name}"
+                value="${item.id}"
+            >&times;</button>
         </li>`
         )
         .join('');
@@ -46,15 +49,16 @@ function mirrorLocalStorage() {
 
 function restoreFromLocalStorage() {
     console.info(`Restoring from storage`);
-    const lsItems = JSON.parse(localStorage.getItem(items));
-    if (items.length) {
+    const lsItems = JSON.parse(localStorage.getItem('items'));
+    if (lsItems.length) {
         items.push(...lsItems);
         list.dispatchEvent(new CustomEvent('itemsUpdated'));
     }
 }
 
-function deletedItem() {
-    console.log('Deleting item');
+function deletedItem(id) {
+    console.log('Deleting items', id);
+    // document.querySelector("id=[id]").parentNode.removeChild(id);
 }
 
 shoppingForm.addEventListener('submit', handleSubmit);
@@ -62,7 +66,7 @@ list.addEventListener('itemsUpdated', displayItems);
 list.addEventListener('itemsUpdated', mirrorLocalStorage);
 list.addEventListener('click', function(e) {
     if (e.target.matches('button')) {
-        deletedItem();
+        deletedItem(e.target.value0);
     }
 });
 
