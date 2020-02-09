@@ -10,6 +10,19 @@ function handleSubmit(e) {
     e.preventDefault();
     console.log('submitted!!');
     const name = e.currentTarget.item.value;
+    
+    const item = {
+        name,
+        id : Date.now(),
+        complete: false
+    }
+
+    items.push(item);
+    console.log(`There are now ${items.length} items in your state`);
+    
+    
     // if its empty, then dont submit it
     if (!name) return;
 }
+
+shoppingForm.addEventListener('submit',handleSubmit);
