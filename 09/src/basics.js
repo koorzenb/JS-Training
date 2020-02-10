@@ -1,14 +1,13 @@
 // https://github.com/caperaven/training/blob/master/09.Batch%20dom%20updates%20-%20project.md
-// 48min
+
 const shoppingForm = document.querySelector('.shopping');
 const list = document.querySelector('.list');
 
 // We need an array to hold our state
-const items = [];
+let items = [];
 
 function handleSubmit(e) {
     e.preventDefault();
-    console.log('submitted!!');
     const name = e.currentTarget.item.value;
     if (!name) return;
 
@@ -19,7 +18,6 @@ function handleSubmit(e) {
     };
 
     items.push(item);
-    console.log(`There are now ${items.length} items in your state`);
     e.target.reset();
     list.dispatchEvent(new CustomEvent('itemsUpdated'));
 }
@@ -30,7 +28,11 @@ function displayItems() {
         .map(
             item =>
                 `<li class='shopping-item'>
-            <input type="checkbox">
+            <input 
+                type="checkbox" 
+                value="${item.id}"
+                ${item.complete ? 'checked' : ''}
+            >
             <span class="itemName">${item.name}</span>
             <button 
                 aria-label="Remove ${item.name}"
@@ -44,7 +46,7 @@ function displayItems() {
 
 function mirrorLocalStorage() {
     localStorage.setItem('items', JSON.stringify(items));
-    console.info('Saving to storage');
+    console.info('Saving to local storage');
 }
 
 function restoreFromLocalStorage() {
@@ -56,17 +58,34 @@ function restoreFromLocalStorage() {
     }
 }
 
+function markAsComplete(id) {
+    const itemRef = items.find(index => index.id === id);
+    console.log(itemRef);
+
+    itemRef.complete = !itemRef.complete;
+    list.dispatchEvent(new CustomEvent('itemsUpdated'));
+}
+
 function deletedItem(id) {
-    console.log('Deleting items', id);
+    console.log('Deleting item', id);
+    // TODO:
     // document.querySelector("id=[id]").parentNode.removeChild(id);
+    const newItems = items.filter(index => index.id !== id);
+    items = newItems;
+    list.dispatchEvent(new CustomEvent('itemsUpdated'));
 }
 
 shoppingForm.addEventListener('submit', handleSubmit);
 list.addEventListener('itemsUpdated', displayItems);
 list.addEventListener('itemsUpdated', mirrorLocalStorage);
 list.addEventListener('click', function(e) {
+    const id = parseInt(e.target.value);
+
     if (e.target.matches('button')) {
-        deletedItem(e.target.value0);
+        deletedItem(parseInt(id));
+    }
+    if (e.target.matches('input[type="checkbox"]')) {
+        markAsComplete(id);
     }
 });
 
