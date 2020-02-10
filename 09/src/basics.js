@@ -23,7 +23,6 @@ function handleSubmit(e) {
 }
 
 function displayItems() {
-    console.log(items);
     const html = items
         .map(
             item =>
@@ -46,11 +45,10 @@ function displayItems() {
 
 function mirrorLocalStorage() {
     localStorage.setItem('items', JSON.stringify(items));
-    console.info('Saving to local storage');
 }
 
 function restoreFromLocalStorage() {
-    console.info(`Restoring from storage`);
+    console.info(`Restoring from local storage`);
     const lsItems = JSON.parse(localStorage.getItem('items'));
     if (lsItems.length) {
         items.push(...lsItems);
@@ -60,16 +58,12 @@ function restoreFromLocalStorage() {
 
 function markAsComplete(id) {
     const itemRef = items.find(index => index.id === id);
-    console.log(itemRef);
 
     itemRef.complete = !itemRef.complete;
     list.dispatchEvent(new CustomEvent('itemsUpdated'));
 }
 
 function deletedItem(id) {
-    console.log('Deleting item', id);
-    // TODO:
-    // document.querySelector("id=[id]").parentNode.removeChild(id);
     const newItems = items.filter(index => index.id !== id);
     items = newItems;
     list.dispatchEvent(new CustomEvent('itemsUpdated'));
