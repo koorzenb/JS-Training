@@ -1,10 +1,15 @@
-// https://github.com/caperaven/training/blob/master/09.Batch%20dom%20updates%20-%20project.md
-
 const shoppingForm = document.querySelector('.shopping');
 const list = document.querySelector('.list');
-
-// We need an array to hold our state
+const template = document.querySelector('#productrow');
 let items = [];
+
+const tbody = document.querySelector('tbody');
+const clone = template.content.cloneNode(true);
+const td = clone.querySelectorAll('td');
+td[0].textContent = '1235646565';
+td[1].textContent = 'Stuff';
+
+tbody.appendChild(clone);
 
 function handleSubmit(e) {
     e.preventDefault();
