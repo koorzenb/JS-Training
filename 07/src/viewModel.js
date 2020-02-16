@@ -73,7 +73,8 @@ export class ViewModel {
      *      - eventTypes: type of events to listen for
      *      - callbacks: callback methods to use
      *  @param {}
-     */ _init() {
+     */    
+     _init() {
         const options = {
             elements: this.requiredElements.concat(this.actionButtons),
             eventTypes: {
@@ -87,10 +88,12 @@ export class ViewModel {
         };
 
         this._addEvents(options);
+
         this.stopActionButton = findActionButton(
             "stopPerson",
             this.actionButtons
         );
+        
         this.walkActionButton = findActionButton(
             "walkPerson",
             this.actionButtons
