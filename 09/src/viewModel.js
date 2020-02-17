@@ -2,7 +2,7 @@ export class ViewModel{
 
     get shoppingForm() {
         if (this._shoppingForm == null) {
-        this._shoppingForm = document.querySelector('.shoppingForm');
+            this._shoppingForm = document.querySelector('.shoppingForm');
         }    
         return this._shoppingForm;
     }
@@ -16,13 +16,24 @@ export class ViewModel{
 
     get list() {
         if (this._list == null) {
-        this._list = document.querySelector('.list');
+            this._list = document.querySelector('.list');
         }
         return this._list;
     }
     
     set list(newValue) {
         this._list = newValue;
+    }
+
+    get entryElements() {
+        if (this._entryElements == null) {
+            this._entryElements = document.querySelectorAll('.checkBoxElements');
+        }
+        return this._entryElements;
+    }
+    
+    set entryElements(newValue) {
+        this._entryElements = newValue;
     }
     
     dispose(){
@@ -38,9 +49,18 @@ export class ViewModel{
     _init(){
         // properties in options used to track eventlisteners
         const options = {
-            elements: {},
-            eventTypes: {},
-            callbacks: {},
+            elements: {
+                input: this.shoppingForm,  
+                button: this.entryElements
+            },
+            eventTypes: {
+                input: "submit",
+                button: "click"
+            },
+            callbacks: {
+                input: this.submithandler,
+                button: this.clickHandler,
+                },
         } 
 
         this._addEvents(options);
@@ -58,6 +78,12 @@ export class ViewModel{
         }
 
         e.
+    }
+
+    _click(event){
+        //event.id = checkbox -> checkboxhandler
+        //    else
+        // close/delete item
     }
 
     _displayItems() {
@@ -78,7 +104,7 @@ export class ViewModel{
      */
     _addEvents(options) {
         for (const element of options.elements) {
-            const tag = element.nodeName.toLowerCase();
+            // const tag = element.nodeName.toLowerCase();
             element.addEventListener(
                 options.eventTypes[`${tag}`],
                 options.callbacks[`${tag}`]
