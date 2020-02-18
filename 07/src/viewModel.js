@@ -1,9 +1,5 @@
-import {
-    validateInput,
-    getRequiredValues,
-    findActionButton
-} from "./lib/applicationhelper.js";
-import { Person } from "./person/person.js";
+import { validateInput, getRequiredValues, findActionButton } from './lib/applicationhelper.js';
+import { Person } from './person/person.js';
 
 export class ViewModel {
     /** requiredELements returns value of  previously registered query for all "required" elements. If no search for registered
@@ -12,9 +8,7 @@ export class ViewModel {
      */
     get requiredElements() {
         if (this._requiredElements == null) {
-            this._requiredElements = Array.from(
-                document.querySelectorAll("[required]")
-            );
+            this._requiredElements = Array.from(document.querySelectorAll('[required]'));
         }
         return this._requiredElements;
     }
@@ -32,9 +26,7 @@ export class ViewModel {
      */
     get actionButtons() {
         if (this._actionButtons == null) {
-            this._actionButtons = Array.from(
-                document.querySelectorAll("button")
-            );
+            this._actionButtons = Array.from(document.querySelectorAll('button'));
         }
         return this._actionButtons;
     }
@@ -42,13 +34,14 @@ export class ViewModel {
     set actionButtons(newValue) {
         this._actionButtons = newValue;
     }
+
     /** statusElement returns value of  previously registered query for the "status" element. If no search for "status"
      * elements were previously perform, this getter will run a new qeury and assign value to private variable
      * @param {} none
      */
     get statusElement() {
         if (this._statusElement == null) {
-            this._statusElement = document.querySelector("#status");
+            this._statusElement = document.querySelector('#status');
         }
         return this._statusElement;
     }
@@ -73,28 +66,26 @@ export class ViewModel {
      *      - eventTypes: type of events to listen for
      *      - callbacks: callback methods to use
      *  @param {}
-     */ _init() {
+     */
+
+    _init() {
         const options = {
             elements: this.requiredElements.concat(this.actionButtons),
             eventTypes: {
-                input: "keyup",
-                button: "click"
+                input: 'keyup',
+                button: 'click',
             },
             callbacks: {
                 input: this.keyuphandler,
-                button: this.clickhandler
-            }
+                button: this.clickhandler,
+            },
         };
 
         this._addEvents(options);
-        this.stopActionButton = findActionButton(
-            "stopPerson",
-            this.actionButtons
-        );
-        this.walkActionButton = findActionButton(
-            "walkPerson",
-            this.actionButtons
-        );
+
+        this.stopActionButton = findActionButton('stopPerson', this.actionButtons);
+
+        this.walkActionButton = findActionButton('walkPerson', this.actionButtons);
     }
 
     /**
@@ -102,7 +93,7 @@ export class ViewModel {
      *  @param {Event} event
      */
     _click(event) {
-        const attrib = event.target.getAttribute("action");
+        const attrib = event.target.getAttribute('action');
         this[`_${attrib}`](event);
     }
     // tes
@@ -111,19 +102,18 @@ export class ViewModel {
      * _keyup method receives no parameters, but listens on keyup. Once all required fields have some data, Create Person button is enabled
      * @param {} none
      */
-    _keyup(event) {
+    _keyup() {
         this.isValid = validateInput(this.requiredElements);
         const btn = this.actionButtons.find(element => {
-            if (element.getAttribute("action") === "createPerson") {
+            if (element.getAttribute('action') === 'createPerson') {
                 return element;
             }
             return false;
         });
 
-        this.isValid === true
-            ? btn.removeAttribute("disabled")
-            : btn.setAttribute("disabled", !this.isValid);
+        this.isValid === true ? btn.removeAttribute('disabled') : btn.setAttribute('disabled', !this.isValid);
     }
+
     /**
      * _addEvents receives an object of options, then creates eventlisteners for each option in the object
      * @param {Object} options
@@ -131,14 +121,11 @@ export class ViewModel {
     _addEvents(options) {
         for (const element of options.elements) {
             const tag = element.nodeName.toLowerCase();
-            element.addEventListener(
-                options.eventTypes[`${tag}`],
-                options.callbacks[`${tag}`]
-            );
+            element.addEventListener(options.eventTypes[`${tag}`], options.callbacks[`${tag}`]);
             this.registeredEvents.push({
-                element: element,
+                element,
                 event: options.eventTypes[`${tag}`],
-                callback: options.callbacks[`${tag}`]
+                callback: options.callbacks[`${tag}`],
             });
         }
     }
@@ -147,26 +134,26 @@ export class ViewModel {
      * _walkPerson receives no parameters, but sets person's walking status
      * @param {} none
      */
-    _walkPerson(event) {
+    _walkPerson() {
         this.person.startWalking();
         this.statusElement.innerText = `${this.person.firstname} ${this.person.isWalking}`;
-        this.stopActionButton.removeAttribute("disabled");
-        this.walkActionButton.setAttribute("disabled", "");
-        this.statusElement.removeAttribute("isIdle");
-        this.statusElement.setAttribute("class", "isWalking");
+        this.stopActionButton.removeAttribute('disabled');
+        this.walkActionButton.setAttribute('disabled', '');
+        this.statusElement.removeAttribute('isIdle');
+        this.statusElement.setAttribute('class', 'isWalking');
     }
 
     /**
      * _stopPerson receives no parameters, but sets person's walking status
      * @param {} none
      */
-    _stopPerson(event) {
+    _stopPerson() {
         this.person.stopWalking();
         this.statusElement.innerText = `${this.person.firstname} ${this.person.isWalking}`;
-        this.walkActionButton.removeAttribute("disabled");
-        this.stopActionButton.setAttribute("disabled", "");
-        this.statusElement.removeAttribute("isWalking");
-        this.statusElement.setAttribute("class", "isIdle");
+        this.walkActionButton.removeAttribute('disabled');
+        this.stopActionButton.setAttribute('disabled', '');
+        this.statusElement.removeAttribute('isWalking');
+        this.statusElement.setAttribute('class', 'isIdle');
     }
 
     /**
@@ -176,12 +163,12 @@ export class ViewModel {
     _createPerson(event) {
         const values = getRequiredValues(this.requiredElements);
         this.person = new Person(...values);
-        event.target.setAttribute("disabled", true);
+        event.target.setAttribute('disabled', true);
         for (const element of this.requiredElements) {
-            element.setAttribute("disabled", "");
+            element.setAttribute('disabled', '');
         }
-        this.stopActionButton.removeAttribute("disabled");
-        this.walkActionButton.removeAttribute("disabled");
+        this.stopActionButton.removeAttribute('disabled');
+        this.walkActionButton.removeAttribute('disabled');
         this.statusElement.innerText = `${this.person.firstname} ${this.person.lastname} (${this.person.age}) created`;
     }
 
@@ -192,7 +179,7 @@ export class ViewModel {
         }
         this.registeredEvents = null;
 
-        //Handlers
+        // Handlers
         this.keyuphandler = null;
         this.clickhandler = null;
         this.actionButtons = null;
