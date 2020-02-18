@@ -95,6 +95,7 @@ export class ViewModel{
     }
 
     _deleteItem(id) {
+                    console.log();
         
     }
 
