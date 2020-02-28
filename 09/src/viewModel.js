@@ -33,15 +33,15 @@ export class ViewModel {
         this._list = newValue;
     }
 
-    get entryElements() {
-        if (this._entryElements == null) {
-            this._entryElements = document.querySelectorAll('.checkBoxElements');
+    get itemName() {
+        if (this._itemName == null) {
+            this._itemName = document.querySelectorAll('#itemName');
         }
-        return this._entryElements;
+        return this._itemName;
     }
 
-    set entryElements(newValue) {
-        this._entryElements = newValue;
+    set itemName(newValue) {
+        this._itemName = newValue;
     }
 
     dispose() {
@@ -55,14 +55,12 @@ export class ViewModel {
         // ignore "bind" for now. Ask Rabie later to explain
         this.submithandler = this._submit.bind(this);
         this.clickHandler = this._click.bind(this);
-        this._displayItems();
-        console.info('constructor working');
     }
 
     _init() {
         // properties in options used to track eventlisteners
         const options = {
-            elements: this.shoppingForm.concat(this.entryElements),
+            elements: this.shoppingForm.concat(this.itemName),
             eventTypes: {
                 input: 'submit',
                 button: 'click',
@@ -86,7 +84,7 @@ export class ViewModel {
             complete: false,
         };
 
-        this._displayItems()
+        this._displayItems(name);
     }
 
     /**
@@ -102,12 +100,12 @@ export class ViewModel {
     /**
      * Pushes templates onto list
      */
-    _displayItems() {        
-            const clone = this.template.content.cloneNode(true);
+    _displayItems(content) {        
+            const clone = this.template.content.cloneNode(true);            
             const myText = clone.querySelector('.itemName');
-            myText.textContent = 'first entry'; 
+            // ?? const myText = clone.this.itemName?
+            myText.textContent = content; 
             console.log(this.list);           
-            console.log(clone);
             this.list.appendChild(clone);     
     }
 
