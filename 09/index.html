@@ -18,10 +18,16 @@
         <button type="submit">+ Add Item</button>
       </form>
 
-      <tbody class="list">
+      <div class="list">
         <!-- data to be included here -->
-      </tbody>
+      </div>
     </div>
+
+    <template id="item">
+      <input type="checkbox" value="id" />
+      <span class="itemName">test</span>
+      <button aria-label="closeButton" value="id">&times;</button>
+    </template>
 
     <script type="module" src="./src/basics.js"></script>
   </body>

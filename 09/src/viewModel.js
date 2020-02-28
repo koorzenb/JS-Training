@@ -56,7 +56,7 @@ export class ViewModel {
         this.submithandler = this._submit.bind(this);
         this.clickHandler = this._click.bind(this);
         this._displayItems();
-        console.log('constructor working');
+        console.info('constructor working');
     }
 
     _init() {
@@ -85,26 +85,42 @@ export class ViewModel {
             id: Date.now(),
             complete: false,
         };
+
+        this._displayItems()
     }
 
+    /**
+     * Click handler
+     * @param {event} event 
+     */
     _click(event) {
         // event.id = checkbox -> checkboxhandler
         //    else
         // close/delete item
     }
 
+    /**
+     * Pushes templates onto list
+     */
     _displayItems() {        
             const clone = this.template.content.cloneNode(true);
             const myText = clone.querySelector('.itemName');
             myText.textContent = 'first entry'; 
             console.log(this.list);           
             console.log(clone);
-            // this.list.appendChild(clone);            
-        
+            this.list.appendChild(clone);     
     }
 
+    /**
+     * Checks item as complete
+     * @param {eventId} id
+     */
     _markAsComplete(id) {}
 
+    /**
+     * Removes item when close button is clicked
+     * @param {eventId} id 
+     */
     _deleteItem(id) {
         console.log();
     }
