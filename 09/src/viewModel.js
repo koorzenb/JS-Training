@@ -1,4 +1,7 @@
 export class ViewModel {
+    /**
+     * Form element to receive inputs from
+     */
     get shoppingForm() {
         if (this._shoppingForm == null) {
             this._shoppingForm = document.querySelector('.shoppingForm');
@@ -6,6 +9,9 @@ export class ViewModel {
         return this._shoppingForm;
     }
 
+    /**
+     * Template to use to create entries
+     */
     get template() {
         if (this._template == null) {
             this._template = document.querySelector('#item');
@@ -13,6 +19,9 @@ export class ViewModel {
         return this._template;
     }
 
+    /**
+     * Area in DOM where to insert entries
+     */
     get list() {
         if (this._list == null) {
             this._list = document.querySelector('.list');
@@ -46,19 +55,14 @@ export class ViewModel {
         // ignore "bind" for now. Ask Rabie later to explain
         this.submithandler = this._submit.bind(this);
         this.clickHandler = this._click.bind(this);
+        this._displayItems();
+        console.log('constructor working');
     }
 
     _init() {
         // properties in options used to track eventlisteners
         const options = {
             elements: this.shoppingForm.concat(this.entryElements),
-            // TODO: left on purpose:
-            // {
-            //     input: this.shoppingForm,
-            //     button: this.entryElements
-            // }
-            // is there a way to iterate through obj instead of creating array
-            // and still be able to use in _addEvents?
             eventTypes: {
                 input: 'submit',
                 button: 'click',
@@ -68,8 +72,41 @@ export class ViewModel {
                 button: this.clickHandler,
             },
         };
-
         this._addEvents(options);
+    }
+
+    _submit(event) {
+        event.preventDefault();
+        const name = event.currentTarget.item.value;
+        if (!name) return;
+
+        const item = {
+            name,
+            id: Date.now(),
+            complete: false,
+        };
+    }
+
+    _click(event) {
+        // event.id = checkbox -> checkboxhandler
+        //    else
+        // close/delete item
+    }
+
+    _displayItems() {        
+            const clone = this.template.content.cloneNode(true);
+            const myText = clone.querySelector('.itemName');
+            myText.textContent = 'first entry'; 
+            console.log(this.list);           
+            console.log(clone);
+            // this.list.appendChild(clone);            
+        
+    }
+
+    _markAsComplete(id) {}
+
+    _deleteItem(id) {
+        console.log();
     }
 
     /**

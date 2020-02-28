@@ -13,8 +13,8 @@
 
   <body>
     <div class="taskList">
-      <form class="shopping">
-        <input type="text" name="item" id="item" />
+      <form class="shoppingForm">
+        <input type="text" name="item" id="formId" />
         <button type="submit">+ Add Item</button>
       </form>
 
@@ -23,12 +23,6 @@
       </tbody>
     </div>
 
-    <template id="item">
-      <input type="checkbox" value="id" />
-      <span class="itemName"></span>
-      <button aria-label="Remove this.name" value="id">&times;</button>
-    </template>
-
-    <!-- <script type="module" src="./src/basics.js"></script> -->
+    <script type="module" src="./src/basics.js"></script>
   </body>
 </html>
