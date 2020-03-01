@@ -1,4 +1,15 @@
-export class ViewModel {
+// pseudo:
+// goal:
+//     close specific item
+//         parent.removeChild
+//             get event.target for specific close button and remove child
+
+// method:
+//     return all "values" in template and assign ids
+            // document.querySelectorAll();
+            
+    
+    export class ViewModel {
     /**
      * Form element to receive inputs from
      */
@@ -29,24 +40,25 @@ export class ViewModel {
         return this._list;
     }
 
-    set list(newValue) {
-        this._list = newValue;
-    }
-
     get itemName() {
         if (this._itemName == null) {
-            this._itemName = document.querySelectorAll('#itemName');
+            this._itemName = document.querySelector('.itemName');
         }
         return this._itemName;
     }
 
-    set itemName(newValue) {
-        this._itemName = newValue;
+    get btnClose() {
+        if (this._btnClose == null) {
+            this._btnClose = document.querySelectorAll('closeItem');
+        }
+        return this._btnClose;
     }
 
     dispose() {
         this.inputShoppingForm = null;
+        this.btnClose = null;
         this.template = null;
+        this.itemName = null;
         this.list = null;
     }
 
@@ -88,7 +100,11 @@ export class ViewModel {
             id: Date.now(),
             complete: false,
         };
-        this._displayItems(name);
+
+
+        this._appendItems(name,item.id);
+        //this._addEventsForItem(item.id);
+        event.target.reset();
     }
 
     /**
@@ -96,6 +112,8 @@ export class ViewModel {
      * @param {event} event 
      */
     _click(event) {
+        console.log(event.target);
+         
         // event.id = checkbox -> checkboxhandler
         //    else
         // close/delete item
@@ -104,12 +122,15 @@ export class ViewModel {
     /**
      * Pushes templates onto list
      */
-    _displayItems(content) {        
+    _appendItems(content,id) {        
             const clone = this.template.content.cloneNode(true);            
             const myText = clone.querySelector('.itemName');
-            // ?? const myText = clone.this.itemName?
+            // ? const myText = clone.this.itemName;
+            const itemId = Array.from(clone.querySelectorAll("[value]"));
             myText.textContent = content; 
-            console.log(this.list);           
+            for (const elements of itemId) {
+                elements.setAttribute('value',id);
+            }           
             this.list.appendChild(clone);     
     }
 
@@ -138,7 +159,16 @@ export class ViewModel {
                 event: 'submit',
                 callback: this.submitHandler
             });
-            console.log(this.registeredEvents);
-            
+    }
+
+    _addEventsForItem(id){
+        const item = document.querySelector(id);
+        item.addEventListener('click', this.clickHandler);
+        this.registeredEvents.push({
+            element: this.inputShoppingForm,
+            event: 'submit',
+            callback: this.submitHandler
+        });
+        console.log(this.registeredEvents);
     }
 }
