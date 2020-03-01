@@ -2,11 +2,11 @@ export class ViewModel {
     /**
      * Form element to receive inputs from
      */
-    get shoppingForm() {
-        if (this._shoppingForm == null) {
-            this._shoppingForm = document.querySelector('.shoppingForm');
+    get inputShoppingForm() {
+        if (this._inputShoppingForm == null) {
+            this._inputShoppingForm = document.querySelector('.shoppingForm');
         }
-        return this._shoppingForm;
+        return this._inputShoppingForm;
     }
 
     /**
@@ -45,28 +45,33 @@ export class ViewModel {
     }
 
     dispose() {
-        this.shoppingForm = null;
+        this.inputShoppingForm = null;
         this.template = null;
         this.list = null;
     }
 
     constructor() {
-        // registeredEvents = [];
+        this.registeredEvents = [];
         // ignore "bind" for now. Ask Rabie later to explain
-        this.submithandler = this._submit.bind(this);
+        this.submitHandler = this._submit.bind(this);
         this.clickHandler = this._click.bind(this);
+        this._init();
     }
 
     _init() {
         // properties in options used to track eventlisteners
+        
         const options = {
-            elements: this.shoppingForm.concat(this.itemName),
+            elements:{
+                input: this.inputShoppingForm
+                // TODO: add close buttons
+            },
             eventTypes: {
                 input: 'submit',
                 button: 'click',
             },
             callbacks: {
-                input: this.submithandler,
+                input: this.submitHandler,
                 button: this.clickHandler,
             },
         };
@@ -83,7 +88,6 @@ export class ViewModel {
             id: Date.now(),
             complete: false,
         };
-
         this._displayItems(name);
     }
 
@@ -128,14 +132,13 @@ export class ViewModel {
      * @param {Object} options
      */
     _addEvents(options) {
-        for (const element of options.elements) {
-            const tag = element.nodeName.toLowerCase(); // button/input
-            element.addEventListener(options.eventTypes[`${tag}`], options.callbacks[`${tag}`]);
+            this.inputShoppingForm.addEventListener('submit', this.submitHandler);
             this.registeredEvents.push({
-                element,
-                event: options.eventTypes[`${tag}`],
-                callback: options.callbacks[`${tag}`],
+                element: this.inputShoppingForm,
+                event: 'submit',
+                callback: this.submitHandler
             });
-        }
+            console.log(this.registeredEvents);
+            
     }
 }
