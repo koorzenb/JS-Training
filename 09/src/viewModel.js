@@ -1,101 +1,144 @@
-export class ViewModel{
-
-    get shoppingForm() {
-        if (this._shoppingForm == null) {
-            this._shoppingForm = document.querySelector('.shoppingForm');
-        }    
-        return this._shoppingForm;
+export class ViewModel {
+    /**
+     * Form element to receive inputs from
+     */
+    get inputShoppingForm() {
+        if (this._inputShoppingForm == null) {
+            this._inputShoppingForm = document.querySelector('.shoppingForm');
+        }
+        return this._inputShoppingForm;
     }
 
+    /**
+     * Template to use to create entries
+     */
     get template() {
         if (this._template == null) {
-        this._template = document.querySelector('#item');
+            this._template = document.querySelector('#item');
         }
         return this._template;
     }
 
+    /**
+     * Area in DOM where to insert entries
+     */
     get list() {
         if (this._list == null) {
             this._list = document.querySelector('.list');
         }
         return this._list;
     }
-    
-    set list(newValue) {
-        this._list = newValue;
-    }
 
-    get entryElements() {
-        if (this._entryElements == null) {
-            this._entryElements = document.querySelectorAll('.checkBoxElements');
+    get itemName() {
+        if (this._itemName == null) {
+            this._itemName = document.querySelector('.itemName');
         }
-        return this._entryElements;
-    }
-    
-    set entryElements(newValue) {
-        this._entryElements = newValue;
-    }
-    
-    dispose(){
-        shoppingForm = null;
-        template = null;
-        list = null;
+        return this._itemName;
     }
 
-    constructor(){
-        this.submitHandle = this.submitHandle.
+    get btnClose() {
+        if (this._btnClose == null) {
+            this._btnClose = document.querySelectorAll('closeItem');
+        }
+        return this._btnClose;
     }
 
-    _init(){
+    dispose() {
+        this.inputShoppingForm = null;
+        this.btnClose = null;
+        this.template = null;
+        this.itemName = null;
+        this.list = null;
+    }
+
+    constructor() {
+        this.registeredEvents = [];
+        // ignore "bind" for now. Ask Rabie later to explain
+        this.submitHandler = this._submit.bind(this);
+        this.clickHandler = this._click.bind(this);
+        this._init();
+    }
+
+    _init() {
         // properties in options used to track eventlisteners
         const options = {
             elements: {
-                input: this.shoppingForm,  
-                button: this.entryElements
+                input: this.inputShoppingForm,
+                // TODO: add close buttons
             },
             eventTypes: {
-                input: "submit",
-                button: "click"
+                input: 'submit',
+                button: 'click',
             },
             callbacks: {
-                input: this.submithandler,
+                input: this.submitHandler,
                 button: this.clickHandler,
-                },
-        } 
-
+            },
+        };
         this._addEvents(options);
     }
 
-    _submitHandle(e) {
-        e.preventDefault();
-        const name = e.currentTarget.item.value;
+    _submit(event) {
+        event.preventDefault();
+        const name = event.currentTarget.item.value;
         if (!name) return;
 
         const item = {
             name,
             id: Date.now(),
-            complete: false
-        }
+            complete: false,
+        };
 
-        e.
+        this._appendItems(name, item.id);
+        // this._addEventsForItem(item.id);
+        event.target.reset();
     }
 
-    _click(event){
-        //event.id = checkbox -> checkboxhandler
+    /**
+     * Click handler
+     * @param {event} event
+     */
+    _click(event) {
+        if (event.target.nodeName.toLowerCase() === 'button') {
+            this._deleteItem(event.target.getAttribute('value'));
+        }
+
+        // event.id = checkbox -> checkboxhandler
         //    else
         // close/delete item
     }
 
-    _displayItems() {
-        
+    /**
+     * Pushes templates onto list
+     */
+    _appendItems(content, id) {
+        const clone = this.template.content.cloneNode(true);
+        const myText = clone.querySelector('.itemName');
+        const btnClose = clone.querySelector('button');
+        // FIXME: const myText = clone.this.itemName;
+        const itemId = Array.from(clone.querySelectorAll('[value]'));
+        myText.textContent = content;
+        for (const elements of itemId) {
+            elements.setAttribute('value', id);
+        }
+        this.list.appendChild(clone);
+        this._addEventsForItem(btnClose);
     }
 
-    _markAsComplete(id) {
-        
-    }
+    /**
+     * Checks item as complete
+     * @param {eventId} id
+     */
+    _markAsComplete(id) {}
 
+    /**
+     * Removes item when close button is clicked
+     * @param {eventId} id
+     */
     _deleteItem(id) {
-        
+        console.log(id);
+        // TODO: (1) Remove this element from DOM
+        // use/research removeChild or another method
     }
 
     /**
@@ -103,18 +146,21 @@ export class ViewModel{
      * @param {Object} options
      */
     _addEvents(options) {
-        for (const element of options.elements) {
-            // const tag = element.nodeName.toLowerCase();
-            element.addEventListener(
-                options.eventTypes[`${tag}`],
-                options.callbacks[`${tag}`]
-            );
-            this.registeredEvents.push({
-                element: element,
-                event: options.eventTypes[`${tag}`],
-                callback: options.callbacks[`${tag}`]
-            });
+        this.inputShoppingForm.addEventListener('submit', this.submitHandler);
+        this.registeredEvents.push({
+            element: this.inputShoppingForm,
+            event: 'submit',
+            callback: this.submitHandler,
+        });
     }
 
-    shoppingForm.addEventListener('submit',submitHandle);
+    _addEventsForItem(btnClose) {
+        btnClose.addEventListener('click', this.clickHandler);
+        this.registeredEvents.push({
+            element: btnClose,
+            event: 'click',
+            callback: this.clickHandler,
+        });
+        console.log(this.registeredEvents);
+    }
 }

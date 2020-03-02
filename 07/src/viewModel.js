@@ -104,7 +104,7 @@ export class ViewModel {
      */
     _keyup() {
         this.isValid = validateInput(this.requiredElements);
-        const btn = this.actionButtons.find(element => {
+        const btn = actionButtons.find(element => {
             if (element.getAttribute('action') === 'createPerson') {
                 return element;
             }
