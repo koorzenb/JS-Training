@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>|DOM Basics|</title>
-    <link rel="stylesheet" href="./styles/basics.css" />
-  </head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>|DOM Basics|</title>
+        <link rel="stylesheet" href="./styles/basics.css" />
+    </head>
 
-  <body>
-    <div class="taskList">
-      <form class="shoppingForm">
-        <input type="text" name="item" id="formId" />
-        <button type="submit">+ Add Item</button>
-      </form>
+    <body>
+        <div class="taskList">
+            <form class="shoppingForm">
+                <input type="text" name="item" id="formId" />
+                <button type="submit">+ Add Item</button>
+            </form>
 
-      <div class="list">
-        <!-- data to be included here -->
-      </div>
-    </div>
+            <div class="list">
+                <!-- data to be included here -->
+            </div>
+        </div>
 
-    <template id="item">
-      <div>
-        <input type="checkbox" value="id" />
-        <span class="itemName">test</span>
-        <button aria-label="closeButton" value="id" name="closeItem">
-          &times;
-        </button>
-      </div>
-    </template>
+        <template id="item">
+            <div value="">
+                <input type="checkbox" value="id" />
+                <span class="itemName">test</span>
+                <button aria-label="closeButton" value="id" name="closeItem">
+                    &times;
+                </button>
+            </div>
+        </template>
 
-    <script type="module" src="./src/basics.js"></script>
-  </body>
+        <script type="module" src="./src/basics.js"></script>
+    </body>
 </html>

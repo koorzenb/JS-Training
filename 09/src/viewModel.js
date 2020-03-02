@@ -111,13 +111,13 @@ export class ViewModel {
     /**
      * Pushes templates onto list
      */
-    _appendItems(content, id) {
+    _appendItems(itemContent, id) {
         const clone = this.template.content.cloneNode(true);
         const myText = clone.querySelector('.itemName');
         const btnClose = clone.querySelector('button');
         // FIXME: const myText = clone.this.itemName;
         const itemId = Array.from(clone.querySelectorAll('[value]'));
-        myText.textContent = content;
+        myText.textContent = itemContent;
         for (const elements of itemId) {
             elements.setAttribute('value', id);
         }
@@ -135,10 +135,9 @@ export class ViewModel {
      * Removes item when close button is clicked
      * @param {eventId} id
      */
-    _deleteItem(id) {
-        console.log(id);
-        // TODO: (1) Remove this element from DOM
-        // use/research removeChild or another method
+    _deleteItem(id) {        
+        const element = document.querySelector(`[value='${id}']`);
+        element.parentElement.removeChild(element);        
     }
 
     /**
@@ -161,6 +160,6 @@ export class ViewModel {
             event: 'click',
             callback: this.clickHandler,
         });
-        console.log(this.registeredEvents);
+        // console.log(this.registeredEvents);
     }
 }
