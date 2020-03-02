@@ -61,10 +61,9 @@ export class ViewModel {
 
     _init() {
         // properties in options used to track eventlisteners
-        
         const options = {
-            elements:{
-                input: this.inputShoppingForm
+            elements: {
+                input: this.inputShoppingForm,
                 // TODO: add close buttons
             },
             eventTypes: {
@@ -90,19 +89,20 @@ export class ViewModel {
             complete: false,
         };
 
-
-        this._appendItems(name,item.id);
-        //this._addEventsForItem(item.id);
+        this._appendItems(name, item.id);
+        // this._addEventsForItem(item.id);
         event.target.reset();
     }
 
     /**
      * Click handler
-     * @param {event} event 
+     * @param {event} event
      */
     _click(event) {
-        console.log(event.target);
-         
+        if (event.target.nodeName.toLowerCase() === 'button') {
+            this._deleteItem(event.target.getAttribute('value'));
+        }
+
         // event.id = checkbox -> checkboxhandler
         //    else
         // close/delete item
@@ -111,18 +111,18 @@ export class ViewModel {
     /**
      * Pushes templates onto list
      */
-    _appendItems(content,id) {        
-            const clone = this.template.content.cloneNode(true);            
-            const myText = clone.querySelector('.itemName');
-            const btnClose = clone.querySelector('button');
-            // ? const myText = clone.this.itemName;
-            const itemId = Array.from(clone.querySelectorAll("[value]"));
-            myText.textContent = content; 
-            for (const elements of itemId) {
-                elements.setAttribute('value',id);
-            }           
-            this.list.appendChild(clone);
-            this._addEventsForItem(btnClose);
+    _appendItems(content, id) {
+        const clone = this.template.content.cloneNode(true);
+        const myText = clone.querySelector('.itemName');
+        const btnClose = clone.querySelector('button');
+        // FIXME: const myText = clone.this.itemName;
+        const itemId = Array.from(clone.querySelectorAll('[value]'));
+        myText.textContent = content;
+        for (const elements of itemId) {
+            elements.setAttribute('value', id);
+        }
+        this.list.appendChild(clone);
+        this._addEventsForItem(btnClose);
     }
 
     /**
@@ -133,10 +133,12 @@ export class ViewModel {
 
     /**
      * Removes item when close button is clicked
-     * @param {eventId} id 
+     * @param {eventId} id
      */
     _deleteItem(id) {
-        console.log();
+        console.log(id);
+        // TODO: (1) Remove this element from DOM
+        // use/research removeChild or another method
     }
 
     /**
@@ -144,24 +146,21 @@ export class ViewModel {
      * @param {Object} options
      */
     _addEvents(options) {
-            this.inputShoppingForm.addEventListener('submit', this.submitHandler);
-            this.registeredEvents.push({
-                element: this.inputShoppingForm,
-                event: 'submit',
-                callback: this.submitHandler
-            });
+        this.inputShoppingForm.addEventListener('submit', this.submitHandler);
+        this.registeredEvents.push({
+            element: this.inputShoppingForm,
+            event: 'submit',
+            callback: this.submitHandler,
+        });
     }
 
-    _addEventsForItem(btnClose){
-        
-        console.log(btnClose);
-
+    _addEventsForItem(btnClose) {
         btnClose.addEventListener('click', this.clickHandler);
         this.registeredEvents.push({
             element: btnClose,
             event: 'click',
-            callback: this.clickHandler
+            callback: this.clickHandler,
         });
-        console.log(this.registeredEvents); 
+        console.log(this.registeredEvents);
     }
 }
