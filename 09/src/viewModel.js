@@ -1,15 +1,4 @@
-// pseudo:
-// goal:
-//     close specific item
-//         parent.removeChild
-//             get event.target for specific close button and remove child
-
-// method:
-//     return all "values" in template and assign ids
-            // document.querySelectorAll();
-            
-    
-    export class ViewModel {
+export class ViewModel {
     /**
      * Form element to receive inputs from
      */
@@ -125,13 +114,15 @@
     _appendItems(content,id) {        
             const clone = this.template.content.cloneNode(true);            
             const myText = clone.querySelector('.itemName');
+            const btnClose = clone.querySelector('button');
             // ? const myText = clone.this.itemName;
             const itemId = Array.from(clone.querySelectorAll("[value]"));
             myText.textContent = content; 
             for (const elements of itemId) {
                 elements.setAttribute('value',id);
             }           
-            this.list.appendChild(clone);     
+            this.list.appendChild(clone);
+            this._addEventsForItem(btnClose);
     }
 
     /**
@@ -161,14 +152,16 @@
             });
     }
 
-    _addEventsForItem(id){
-        const item = document.querySelector(id);
-        item.addEventListener('click', this.clickHandler);
+    _addEventsForItem(btnClose){
+        
+        console.log(btnClose);
+
+        btnClose.addEventListener('click', this.clickHandler);
         this.registeredEvents.push({
-            element: this.inputShoppingForm,
-            event: 'submit',
-            callback: this.submitHandler
+            element: btnClose,
+            event: 'click',
+            callback: this.clickHandler
         });
-        console.log(this.registeredEvents);
+        console.log(this.registeredEvents); 
     }
 }
