@@ -78,15 +78,19 @@ export class ViewModel {
         const options = {
             elements: {
                 input: this.inputShoppingForm,
+                checkbox: "",
+                close: this.btnClose
                 // TODO: add close buttons
             },
             eventTypes: {
                 input: 'submit',
-                button: 'click',
+                checkbox: 'click',
+                close: 'click',
             },
             callbacks: {
                 input: this.submitHandler,
-                button: this.clickHandler,
+                checkbox: this.clickHandler,
+                close: this.clickHandler,
             },
         };
         this._addEvents(options);
@@ -136,7 +140,7 @@ export class ViewModel {
         fragment.appendChild(clone);
         this.list.appendChild(fragment);
         this._addEventsForItem(btnClose);
-        this._addEventsForCheck(inputCheck);
+        this._addEventsForItem(inputCheck);
     }
 
     /**
@@ -178,15 +182,5 @@ export class ViewModel {
             event: 'click',
             callback: this.clickHandler,
         });        
-    }
-
-    _addEventsForCheck(element) {
-        element.addEventListener('click', this.clickHandler);
-        this.registeredEvents.push({
-            element,
-            event: 'click',
-            callback: this.clickHandler,
-        });        
-        console.log(this.registeredEvents);
     }
 }
