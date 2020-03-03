@@ -19,6 +19,20 @@ export class ViewModel {
         return this._template;
     }
 
+    /*
+    get element(id) {
+        if (this._element == null || this._id !== id) {
+            this._element = document.querySelector(`[value='${id}']`);
+            this._id = id;
+        }
+        return this._element;
+    }
+
+    set element(newValue){
+        this._element = newValue;
+    }
+    */
+
     /**
      * Area in DOM where to insert entries
      */
@@ -90,7 +104,6 @@ export class ViewModel {
         };
 
         this._appendItems(name, item.id);
-        // this._addEventsForItem(item.id);
         event.target.reset();
     }
 
@@ -99,46 +112,50 @@ export class ViewModel {
      * @param {event} event
      */
     _click(event) {
-        if (event.target.nodeName.toLowerCase() === 'button') {
-            this._deleteItem(event.target.getAttribute('value'));
+        event.target.nodeName.toLowerCase() === 'button' 
+            ? this._deleteItem(event.target.getAttribute('value'))
+            : this._markAsComplete(event.target.getAttribute('value'));
         }
-
-        // event.id = checkbox -> checkboxhandler
-        //    else
-        // close/delete item
-    }
 
     /**
      * Pushes templates onto list
      */
-    _appendItems(content, id) {
+    _appendItems(itemContent, id) {
         const clone = this.template.content.cloneNode(true);
         const myText = clone.querySelector('.itemName');
-        const btnClose = clone.querySelector('button');
         // FIXME: const myText = clone.this.itemName;
+        const btnClose = clone.querySelector('button');
+        const inputCheck = clone.querySelector('input');
+        // FIXME: refactor to one line
         const itemId = Array.from(clone.querySelectorAll('[value]'));
-        myText.textContent = content;
+        const fragment = document.createDocumentFragment();
+        myText.textContent = itemContent;
         for (const elements of itemId) {
             elements.setAttribute('value', id);
         }
-        this.list.appendChild(clone);
+        fragment.appendChild(clone);
+        this.list.appendChild(fragment);
         this._addEventsForItem(btnClose);
+        this._addEventsForCheck(inputCheck);
     }
 
     /**
      * Checks item as complete
      * @param {eventId} id
      */
-    _markAsComplete(id) {}
+    _markAsComplete(id) {
+        const element = document.querySelector(`[value='${id}']`);
+        element.checked = !element.checked;
+        console.log(element.checked);
+    }
 
     /**
      * Removes item when close button is clicked
      * @param {eventId} id
      */
-    _deleteItem(id) {
-        console.log(id);
-        // TODO: (1) Remove this element from DOM
-        // use/research removeChild or another method
+    _deleteItem(id) {        
+        const element = document.querySelector(`[value='${id}']`);
+        element.parentElement.removeChild(element);        
     }
 
     /**
@@ -154,13 +171,22 @@ export class ViewModel {
         });
     }
 
-    _addEventsForItem(btnClose) {
-        btnClose.addEventListener('click', this.clickHandler);
+    _addEventsForItem(element) {
+        element.addEventListener('click', this.clickHandler);
         this.registeredEvents.push({
-            element: btnClose,
+            element,
             event: 'click',
             callback: this.clickHandler,
-        });
+        });        
+    }
+
+    _addEventsForCheck(element) {
+        element.addEventListener('click', this.clickHandler);
+        this.registeredEvents.push({
+            element,
+            event: 'click',
+            callback: this.clickHandler,
+        });        
         console.log(this.registeredEvents);
     }
 }
