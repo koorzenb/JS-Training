@@ -24,15 +24,11 @@
     </div>
 
     <template id="item">
-      <div value="">
-        <input type="checkbox" value="id" />
-        <span class="itemName">test</span>
-        <button
-          type="close"
-          aria-label="closeButton"
-          value="id"
-          name="closeItem"
-        >
+      <div>
+        <input type="checkbox" />
+        <!-- no id on checkbox as you want to target parent div and lookup from there -->
+        <span class="itemName">template</span>
+        <button type="close" aria-label="closeButton" name="closeItem">
           &times;
         </button>
       </div>

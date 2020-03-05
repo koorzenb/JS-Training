@@ -67,7 +67,6 @@ export class ViewModel {
 
     constructor() {
         this.registeredEvents = [];
-        // ignore "bind" for now. Ask Rabie later to explain
         this.submitHandler = this._submit.bind(this);
         this.clickHandler = this._click.bind(this);
         this._init();
@@ -80,7 +79,6 @@ export class ViewModel {
                 input: this.inputShoppingForm,
                 checkbox: "",
                 close: this.btnClose
-                // TODO: add close buttons
             },
             eventTypes: {
                 input: 'submit',
@@ -101,13 +99,7 @@ export class ViewModel {
         const name = event.currentTarget.item.value;
         if (!name) return;
 
-        const item = {
-            name,
-            id: Date.now(),
-            complete: false,
-        };
-
-        this._appendItems(name, item.id);
+        this._appendItems(name);
         event.target.reset();
     }
 
@@ -115,51 +107,52 @@ export class ViewModel {
      * Click handler
      * @param {event} event
      */
-    _click(event) {
+    _click(event) {        
         event.target.nodeName.toLowerCase() === 'button' 
-            ? this._deleteItem(event.target.getAttribute('value'))
-            : this._markAsComplete(event.target.getAttribute('value'));
+            ? this._deleteItem(event.target.parentElement)
+            : this._markAsComplete(event);
         }
 
     /**
      * Pushes templates onto list
      */
-    _appendItems(itemContent, id) {
+    _appendItems(itemContent) {
         const clone = this.template.content.cloneNode(true);
         const myText = clone.querySelector('.itemName');
-        // FIXME: const myText = clone.this.itemName;
         const btnClose = clone.querySelector('button');
         const inputCheck = clone.querySelector('input');
-        // FIXME: refactor to one line
         const itemId = Array.from(clone.querySelectorAll('[value]'));
         const fragment = document.createDocumentFragment();
         myText.textContent = itemContent;
-        for (const elements of itemId) {
-            elements.setAttribute('value', id);
-        }
         fragment.appendChild(clone);
-        this.list.appendChild(fragment);
+        this.list.appendChild(fragment);        
         this._addEventsForItem(btnClose);
         this._addEventsForItem(inputCheck);
+
+        //dispose - get read-only error
+        // myText = null;
+        // btnClose = null;
+        // inputCheck = null;
     }
 
     /**
      * Checks item as complete
      * @param {eventId} id
      */
-    _markAsComplete(id) {
-        const element = document.querySelector(`[value='${id}']`);
-        element.checked = !element.checked;
-        console.log(element.checked);
+    _markAsComplete(event) {
+        console.log(event.target);
+        const element = event.target;
+        //element.getAttribute('checked') ? element.removeAttribute('checked') : element.setAttribute('checked','');// = !element.checked;
+        // TODO: get CSS to work on checked
+        element.getAttribute('checked') ? console.log('checked present') : console.log('checked not');// = !element.checked;
     }
 
     /**
      * Removes item when close button is clicked
      * @param {eventId} id
      */
-    _deleteItem(id) {        
-        const element = document.querySelector(`[value='${id}']`);
-        element.parentElement.removeChild(element);        
+    _deleteItem(element) {                
+        element.parentNode.removeChild(element);        
     }
 
     /**
