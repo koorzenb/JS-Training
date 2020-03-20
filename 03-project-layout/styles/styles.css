@@ -1,0 +1,42 @@
+body {
+    display: grid;
+
+    grid-template-columns: repeat(4, 4fr);
+    grid-template-rows: repeat(6, 6fr);
+    grid-template-areas:
+        "header header  header  header"
+        "main   main    main    aside"
+        "main   main    main    aside"
+        "main   main    main    aside"
+        "main   main    main    aside"
+        "footer footer  footer  footer";
+    background-image: url("./images/topography.svg"),
+    linear-gradient(110deg, #f93d66, #6d47d9);
+    background-size: 340px, auto;
+    min-height: calc(100vh - 100px);
+    margin: 50px;
+    /* background: white; */
+    background-attachment: fixed;
+    letter-spacing: -1px;
+}
+
+.header {
+    grid-area: header;
+    background: dodgerblue;
+}
+
+.main {
+    grid-area: main;
+    background: chocolate;
+}
+
+.footer {
+    grid-area: footer;
+    background: dodgerblue;
+}
+
+.aside {
+    grid-area: aside;
+    background: black;
+    color: white;
+}
