@@ -3,3 +3,5 @@ import {startWalking, Person} from "./person.js"
 const person = new Person();
 
 person.startWalking();
+console.log(person.isWalking);
+ 
