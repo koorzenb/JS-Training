@@ -1,5 +1,4 @@
-const numbers = [1,2,3,4,5]
 
-export function addNumbers(...numbers){
-    const result = 
+export function addNumbers(...array){
+    return array.reduce( (accumulator, currentValue, currentIndex, array) => accumulator + currentValue);
 }
