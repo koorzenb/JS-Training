@@ -10,6 +10,10 @@ export class MileyCirus extends Person{
     constructor(){
         super("Miley","Cirus", 24);
     }
+
+    dispose(){
+        constructor = null;
+    }
 }
 
 
