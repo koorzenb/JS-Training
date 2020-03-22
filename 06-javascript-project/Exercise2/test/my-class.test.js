@@ -1,9 +1,9 @@
-import {MyClass} from "../src/my-class.js";
+import {Calculator} from "../src/calculator.js";
 
 let instance;
 
 beforeEach(() => {
-    instance = new MyClass();
+    instance = new Calculator();
 });
 
 afterEach(() => {
