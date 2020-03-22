@@ -1,8 +1,8 @@
 // import files you want part of your library here.
-import {MyClass} from "./my-class.js"
+import {Calculator} from "./calculator.js"
 
 
 // export your api here.
-export {MyClass}
+export {Calculator}
 
 console.log('working');
