@@ -1,5 +1,5 @@
-# Training Submission for Johan Rabie
+# Project 6, Exercise 1 - JavaScript project
 
-From Barend Koorzen for project: Exercise1
+Training submission
 
-https://github.com/caperaven/training/blob/master/06.%20Javascript%20project.md
+<https://github.com/caperaven/training/blob/master/06.%20Javascript%20project.md>
