@@ -1,9 +1,16 @@
 import { Person } from "./person.js";
 
-class JoeDirt extends Person{
-
+export class JoeDirt extends Person{
+    constructor(){
+        super("Joe","Dirt", 30);
+    }
 }
 
-class MileyCirus extends Person{
-    
+export class MileyCirus extends Person{
+    constructor(){
+        super("Miley","Cirus", 24);
+    }
 }
+
+
+ 

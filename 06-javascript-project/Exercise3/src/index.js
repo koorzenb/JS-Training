@@ -1,7 +1,18 @@
-// import files you want part of your library here.
-import {startWalking, Person} from "./person.js"
-const person = new Person();
+import { JoeDirt, MileyCirus } from "./people.js";
 
-person.startWalking();
-console.log(person.isWalking);
- 
+const miley = new MileyCirus();
+const joe = new JoeDirt();
+
+joe.startWalking();
+miley.startWalking();
+console.log(joe.isWalking);
+console.log(miley.isWalking);
+console.log('');
+joe.stopWalking();
+miley.stopWalking();
+console.log(joe.isWalking);
+console.log(miley.isWalking);
+
+// dispose?
+
+

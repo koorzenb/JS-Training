@@ -22,4 +22,8 @@ export class Person {
     stopWalking(){
         this._isWalking = false;
     }
+
+    dispose(){
+        // constructor = null;
+    }
 }
