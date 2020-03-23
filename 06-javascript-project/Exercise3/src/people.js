@@ -16,5 +16,9 @@ export class MileyCirus extends Person{
     }
 }
 
+console.log('what is garbage collection?');
+console.log('dispose = clear relationships (obj, eventl), not string, int, etc');
+
+
 
  

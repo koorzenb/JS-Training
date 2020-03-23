@@ -1,18 +1,25 @@
+/* repeat 3x*/
+/* repeat with only flexbox */
+/* declare a var color */
+/* make sure you use instance for each link in project file*/
+/* create "trying" folder in this project where you show code that you have tried*/
+/* create separate html (or css) for different versions of same project showing where you are trying*/
+/* what is rem? */
+
 body {
     display: grid;
     grid-template-columns: repeat(4, 4fr);
     grid-template-rows: repeat(6, 6fr);
     grid-template-areas:
-        "header header  header  header"
-        "main   main    main    aside"
-        "main   main    main    aside"
-        "main   main    main    aside"
-        "main   main    main    aside"
-        "footer footer  footer  footer";
+        'header header  header  header'
+        'main   main    main    aside'
+        'main   main    main    aside'
+        'main   main    main    aside'
+        'main   main    main    aside'
+        'footer footer  footer  footer';
     min-height: calc(100vh - 100px);
     margin: 50px;
     background-attachment: fixed;
-;
 }
 
 .item {
