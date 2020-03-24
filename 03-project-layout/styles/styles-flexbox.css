@@ -19,6 +19,7 @@ body {
 
 main {
     display: inline-flex;
+    flex-grow: 3;
     background-color: var(--yellow);
 }
 
@@ -30,6 +31,7 @@ aside {
     display: inline-flex;
     background-color: black;
     color: white;
+    flex-grow: 1;
 }
 
 footer {
