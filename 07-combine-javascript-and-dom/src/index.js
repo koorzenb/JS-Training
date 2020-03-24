@@ -1,4 +1,2 @@
-// import { JoeDirt, MileyCirus } from "./people.js";
-
-
-
+import { ViewModel } from "./viewmodel.js";
+const viewModel = new ViewModel();
