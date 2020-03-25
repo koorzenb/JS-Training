@@ -20,24 +20,26 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 5rem;
+   /* flex-grow: 1;   makes repsonsive */
 }
 
-header {
-    background-color: var(--blue);
-    height: 5rem;
-}
 
 .middle {
+    display: flex;
     flex-direction: row;
-    display: inline-flex;
-    flex-grow: 1;
+    flex-grow: 3;
 }
 
 main,
 aside {
+    display: flex;
     align-items: center;
-    display: inline-flex;
     justify-content: center;
+}
+
+header {
+    background-color: var(--blue);
 }
 
 main {
@@ -53,5 +55,4 @@ aside {
 
 footer {
     background-color: var(--blue);
-    height: 5rem;
 }
