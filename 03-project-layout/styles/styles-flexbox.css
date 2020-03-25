@@ -7,28 +7,45 @@ html,
 body {
     padding: 0px;
     margin: 0px;
+    height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
 }
 
-.middle {
-    flex-direction: row;
-}
-
-main {
-    display: inline-flex;
-    flex-grow: 3;
-    background-color: var(--yellow);
+header,
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 header {
     background-color: var(--blue);
+    height: 5rem;
+}
+
+.middle {
+    flex-direction: row;
+    display: inline-flex;
+    flex-grow: 1;
+}
+
+main,
+aside {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+}
+
+main {
+    background-color: var(--yellow);
+    flex-grow: 3;
 }
 
 aside {
-    display: inline-flex;
     background-color: black;
     color: white;
     flex-grow: 1;
@@ -36,4 +53,5 @@ aside {
 
 footer {
     background-color: var(--blue);
+    height: 5rem;
 }
