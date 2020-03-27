@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise 1</title>
-</head>
-<body>
-    <script type=module src="./src/index.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Exercise 1</title>
+    </head>
+    <body>
+        <script type="module">
+            import { Person } from './src/people.js';
+            const joe = new JoeDirt();
+            const miley = new MileyCirus();
+
+            console.log('Start walking..');
+            console.log(joe.startWalking);
+            console.log(miley.startWalking);
+            console.log(joe.status);
+            console.log(miley.status);
+            console.log('');
+            console.log('Stop walking');
+            console.log(joe.stopWalking);
+            console.log(miley.stopWalking);
+            console.log(joe.status);
+            console.log(miley.status);
+        </script>
+    </body>
 </html>
