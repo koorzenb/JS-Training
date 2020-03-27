@@ -1,21 +1,21 @@
 export class Person{
 
     get status(){
-        return (this.status === true) ? `${this.firstname} ${this.lastname} is walking` : `${this.firstname} ${this.lastname} is idle`
+        return (this._status === true) ? `${this.firstname} ${this.lastname} is walking` : `${this.firstname} ${this.lastname} is idle`
     }
 
     constructor(firstname, lastname, age) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.age = age;
-        this.status = false;
+        this._status = false;
     }
     
     startWalking() {
-        this.status = true;
+        this._status = true;
     }
 
     stopWalking() {
-        this.status = false;
+        this._status = false;
     }
 }
