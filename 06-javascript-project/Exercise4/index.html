@@ -16,13 +16,38 @@
                 console.log(pietie);
             });
 
-            let p2 = new Promise(resolve => {
+            const p2 = new Promise(resolve => {
                 setTimeout(() => {
                     resolve('after 1 sec');
                 }, 1000);
             });
 
             p2.then(msg => console.log(msg));
+
+            function checkName(name) {
+                const msg = new Promise((resolve, reject) => {
+                    if (name === 'pietie') {
+                        resolve('Hey Pietie');
+                    } else reject('go away!');
+                });
+                return msg;
+            }
+
+            const bar = checkName('pietie')
+                .then(personName => console.log(personName))
+                .catch(wrongName => console.log(wrongName));
+
+            Promise.all([p1, p2]).then(console.log('running p-All'));
+
+            const q1 = Promise.resolve('q1 done');
+            const q2 = Promise.resolve('q2 done');
+            const q3 = new Promise(resolve => {
+                setTimeout(() => {
+                    resolve('done q3');
+                }, 1000);
+            });
+
+            Promise.race([q2, q3, q1]).then(result => console.log(result));
         </script>
     </body>
 </html>
