@@ -6,8 +6,23 @@
         <title>Document</title>
     </head>
     <body>
-        <script type="module">
-            import { myClass } from './src/index.js';
+        <script>
+            const p1 = new Promise(resolve => {
+                console.log('hello');
+                resolve('world'); //this calls then() -- I know this comment is in video, but useful to me
+            });
+
+            p1.then(pietie => {
+                console.log(pietie);
+            });
+
+            let p2 = new Promise(resolve => {
+                setTimeout(() => {
+                    resolve('after 1 sec');
+                }, 1000);
+            });
+
+            p2.then(msg => console.log(msg));
         </script>
     </body>
 </html>
