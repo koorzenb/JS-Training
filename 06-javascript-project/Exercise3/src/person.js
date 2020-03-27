@@ -18,4 +18,10 @@ export class Person{
     stopWalking() {
         this._status = false;
     }
+
+    dispose() {
+        this.firstname = null;
+        this.lastname = null;
+        this.age = null;
+    }
 }

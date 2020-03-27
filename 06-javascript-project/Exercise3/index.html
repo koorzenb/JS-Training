@@ -8,10 +8,10 @@
     <body>
         <script type="module">
             import { JoeDirt, MileyCirus } from './src/people.js';
-            const joe = new JoeDirt();
-            const miley = new MileyCirus();
+            let joe = new JoeDirt();
+            let miley = new MileyCirus();
 
-            console.log('Start walking..');
+            console.log('Start walking...');
             joe.startWalking();
             miley.startWalking();
             console.log(joe.status);
@@ -22,6 +22,10 @@
             miley.stopWalking();
             console.log(joe.status);
             console.log(miley.status);
+            joe.dispose();
+            miley.dispose();
+            joe = null;
+            miley = null;
         </script>
     </body>
 </html>

@@ -4,7 +4,10 @@ export class JoeDirt extends Person{
     constructor(){
         super("Joe","Dirt", 30);
     }
-}
+    
+    dispose(){
+        constructor = null;
+    }
 
 export class MileyCirus extends Person{
     constructor(){
