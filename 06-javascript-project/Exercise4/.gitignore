@@ -1,0 +1,15 @@
+/node_modules/
+package-lock.json
+yarn.lock
+yarn-error.log
+/coverage/
+/dist/
+/.idea/
+/publish/
+/extras/
+/webcomponents/
+/.vscode/
+.eslintrc
+test.html
+test.js
+*.json
