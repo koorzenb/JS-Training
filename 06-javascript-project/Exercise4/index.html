@@ -3,7 +3,31 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Exercise 4</title>
     </head>
-    <body></body>
+    <body>
+        <div></div>
+        <script>
+            const file1 = fetch('./files/1_p.md');
+            const file2 = fetch('./files/2_p.md');
+            const file3 = fetch('./files/3_p.md');
+
+            Promise.all([file1, file2, file3])
+                .then(result => {
+                    for (const file of result) {
+                        postToScreen(file);
+                    }
+                })
+                .catch(err => {});
+
+            let postToScreen = promise => {
+                promise.then(data => {
+                    console.log(p);
+                    const p = document.createElement('p');
+                    p.textContent = data;
+                    document.querySelector('div').appendChild(p);
+                });
+            };
+        </script>
+    </body>
 </html>
