@@ -12,22 +12,32 @@
             const file2 = fetch('./files/2_p.md');
             const file3 = fetch('./files/3_p.md');
 
-            Promise.all([file1, file2, file3])
-                .then(result => {
-                    for (const file of result) {
-                        postToScreen(file);
-                    }
-                })
-                .catch(err => {});
+            // Promise.all([file1, file2, file3])
+            //     .then(result => {
+            //         for (const file of result) {
+            //             postToScreen(file);
+            //         }
+            //     })
+            //     .catch(err => {});
 
-            let postToScreen = promise => {
-                promise.then(data => {
-                    console.log(p);
-                    const p = document.createElement('p');
-                    p.textContent = data;
-                    document.querySelector('div').appendChild(p);
-                });
-            };
+            // let postToScreen = promise => {
+            //     promise.then(data => {
+            //         console.log(p);
+            //         const p = document.createElement('p');
+            //         p.textContent = data;
+            //         document.querySelector('div').appendChild(p);
+            //     });
+            // };
+
+            function printFile() {
+                fetch('./files/1_p.md')
+                    .then(res => res.md())
+                    .then(data => {
+                        const p = document.createElement('p');
+                        p.textContent = data;
+                        document.querySelector('div').appendChild(p);
+                    });
+            }
         </script>
     </body>
 </html>
