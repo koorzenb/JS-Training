@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exercise 4</title>
-  </head>
-  <body>
-    <div></div>
-    <script>
-      const file1 = fetch("./files/1_p.md");
-      const file2 = fetch("./files/2_p.md");
-      const file3 = fetch("./files/3_p.md");
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Exercise 4</title>
+    </head>
+    <body>
+        <h1>Exercise 4 - fetching files</h1>
+        <div>div</div>
+        <script>
+            const file1 = fetch('./files/1_p.txt');
+            const file2 = fetch('./files/2_p.txt');
+            const file3 = fetch('./files/3_p.txt');
 
+            // promise.all
+            Promise.all([file1, file2, file3])
+                .then(files => {
+                    for (const file of files) {
+                        printToScreen(file);
+                    }
+                })
+                .catch(error => console.log('Error loading files: ', error));
+
+            function printToScreen(file) {
+                file.then(data => {
+                    const p = document.createElement('p');
+                    p.innerText = data.text();
+                    document.querySelector('div').appendChild('p');
+                });
+            }
+
+            //foreach - print to HTML
             // Promise.all([file1, file2, file3])
             //     .then(result => {
             //         for (const file of result) {
@@ -27,17 +46,18 @@
             //         p.textContent = data;
             //         document.querySelector('div').appendChild(p);
             //     });
-            // };
+            // // };
+            // printFile();
 
-            function printFile() {
-                fetch('./files/1_p.md')
-                    .then(res => res.md())
-                    .then(data => {
-                        const p = document.createElement('p');
-                        p.textContent = data;
-                        document.querySelector('div').appendChild(p);
-                    });
-            }
+            // function printFile() {
+            //     fetch('./files/1_p.txt')
+            //         .then(res => res.text())
+            //         .then(data => {
+            //             const p = document.createElement('p');
+            //             p.textContent = data;
+            //             document.querySelector('div').appendChild(p);
+            //         });
+            // }
         </script>
     </body>
 </html>
