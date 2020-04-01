@@ -3,61 +3,46 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./styles/base.css">
         <title>Exercise 4</title>
     </head>
     <body>
-        <h1>Exercise 4 - fetching files</h1>
+        <h1>Exercise 4 - Promises & Async / Await</h1>
         <div>div</div>
-        <script>
-            const file1 = fetch('./files/1_p.txt');
-            const file2 = fetch('./files/2_p.txt');
-            const file3 = fetch('./files/3_p.txt');
 
-            // promise.all
-            Promise.all([file1, file2, file3])
-                .then(files => {
-                    for (const file of files) {
-                        printToScreen(file);
-                    }
-                })
-                .catch(error => console.log('Error loading files: ', error));
+       <script>
+        // <script type="module">
+        //    import { WriteFiles } from "./src/index.js";
+        //    const wf = new WriteFiles();
 
-            function printToScreen(file) {
-                file.then(data => {
-                    const p = document.createElement('p');
-                    p.innerText = data.text();
-                    document.querySelector('div').appendChild('p');
-                });
+        //    wf.fetchFiles();
+
+           
+    // promise.all
+        let fragment = document.createDocumentFragment();
+        const file1 = fetch('./documents/1_p.md');
+        const file2 = fetch('./documents/2_p.md');
+        const file3 = fetch('./documents/3_p.md'); 
+
+        Promise.all([file1, file2, file3])
+        .then(files => {
+            for (const file of files) {                                
+                file.text().then(resolveToString => addToFragment(resolveToString));                
             }
+        })
+        .catch(error => console.log('Error loading files: ', error));  
+        
+        document.querySelector('body').appendChild(fragment);
+        document.querySelector('div').innerText = "newDiv";
 
-            //foreach - print to HTML
-            // Promise.all([file1, file2, file3])
-            //     .then(result => {
-            //         for (const file of result) {
-            //             postToScreen(file);
-            //         }
-            //     })
-            //     .catch(err => {});
+        console.log(fragment)
 
-            // let postToScreen = promise => {
-            //     promise.then(data => {
-            //         console.log(p);
-            //         const p = document.createElement('p');
-            //         p.textContent = data;
-            //         document.querySelector('div').appendChild(p);
-            //     });
-            // // };
-            // printFile();
+        function addToFragment(fileContent) {
+            const section = document.createElement('section');
+            section.textContent = fileContent;
+            fragment.appendChild(section);   
+        }
 
-            // function printFile() {
-            //     fetch('./files/1_p.txt')
-            //         .then(res => res.text())
-            //         .then(data => {
-            //             const p = document.createElement('p');
-            //             p.textContent = data;
-            //             document.querySelector('div').appendChild(p);
-            //         });
-            // }
         </script>
     </body>
 </html>
