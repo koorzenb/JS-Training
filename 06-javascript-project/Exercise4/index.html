@@ -3,46 +3,49 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./styles/base.css">
+        <link rel="stylesheet" href="./styles/base.css" />
         <title>Exercise 4</title>
     </head>
     <body>
         <h1>Exercise 4 - Promises & Async / Await</h1>
-        <div>div</div>
+        <div class="myDiv">div</div>
+        <ul id="list"></ul>
 
-       <script>
-        // <script type="module">
-        //    import { WriteFiles } from "./src/index.js";
-        //    const wf = new WriteFiles();
+        <script>
+            // <script type="module">
+            //    import { WriteFiles } from "./src/index.js";
+            //    const wf = new WriteFiles();
 
-        //    wf.fetchFiles();
+            //    wf.fetchFiles();
 
-           
-    // promise.all
-        let fragment = document.createDocumentFragment();
-        const file1 = fetch('./documents/1_p.md');
-        const file2 = fetch('./documents/2_p.md');
-        const file3 = fetch('./documents/3_p.md'); 
+            // promise.all
+            // let fragment = document.createDocumentFragment();
+            let fragment = new DocumentFragment();
+            const file1 = fetch('./documents/1_p.md');
+            const file2 = fetch('./documents/2_p.md');
+            const file3 = fetch('./documents/3_p.md');
 
-        Promise.all([file1, file2, file3])
-        .then(files => {
-            for (const file of files) {                                
-                file.text().then(resolveToString => addToFragment(resolveToString));                
-            }
-        })
-        .catch(error => console.log('Error loading files: ', error));  
-        
-        document.querySelector('body').appendChild(fragment);
-        document.querySelector('div').innerText = "newDiv";
+            // Promise.all([file1, file2, file3])
+            //     .then(files => {
+            //         for (const file of files) {
+            //             file.text().then(resolveToString =>
+            //                 addToFragment(resolveToString)
+            //             );
+            //         }
+            //     })
+            //     .then(document.querySelector('.myDiv').appendChild('done'))
+            //     .catch(error => console.log('Error loading files: ', error));
 
-        console.log(fragment)
+            // function addToFragment(fileContent) {
+            //     console.log(fileContent);
+            //     // let li = document.createElement('li');
+            //     const section = document.createElement('section');
+            //     section.innerHTML = fileContent;
+            //     fragment.appendChild(section);
+            //     console.log(fragment);
+            // }
 
-        function addToFragment(fileContent) {
-            const section = document.createElement('section');
-            section.textContent = fileContent;
-            fragment.appendChild(section);   
-        }
-
+            file1.then(file => {});
         </script>
     </body>
 </html>
