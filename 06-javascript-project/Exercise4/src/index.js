@@ -1,37 +1,42 @@
+import { FileManager } from "./file-manager.js";
 export class WriteFiles{
 
-    constructor(){   
+    constructor(){      
         this.fragment = document.createDocumentFragment();
+        this.writeToScreen();
     }
 
     dispose() {
-        this.file1 = null;
-        this.file2 = null;
-        this.file3 = null;
         this.fragment = null;
     }
 
+    writeToScreen() {
+        const fm = new FileManager();
 
-    fetchFiles(){
-        const file1 = fetch('./documents/1_p.md');
-        const file2 = fetch('./documents/2_p.md');
-        const file3 = fetch('./documents/3_p.md'); 
-
-        Promise.all([file1, file2, file3])
+        fm.fetchFiles()
         .then(files => {
-            for (const file of files) {                                
-                file.text().then(resolveToString => this._addToFragment(resolveToString));                
+            for (const file of files) {
+                file.text().then(resolveToText => {
+                    // console.log(resolveToString);
+                    this._addToFragment(resolveToText);
+                });
             }
+
+            // this.p = document.createElement('p');
+            // this.p.innerText = 'Hello';
+            // document.querySelector('div').appendChild(this.p);
+            console.log(this.fragment);
+            document.querySelector('div').appendChild(this.fragment);
         })
-        .catch(error => console.log('Error loading files: ', error));  
+        .catch(error => console.log('Error loading files: ', error));
         
         document.querySelector('body').appendChild(this.fragment);
-        console.log(fragment)
     }
 
     _addToFragment(fileContent) {
-        const section = document.createElement('section');
-        section.textContent = fileContent;
-        this.fragment.appendChild(section);   
+          // console.log(fileContent);
+          const section = document.createElement('section');
+          section.innerHTML = fileContent;
+          this.fragment.appendChild(section); 
     }
 }
