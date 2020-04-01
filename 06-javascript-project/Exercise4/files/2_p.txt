@@ -1,2 +1,0 @@
-## Second
-You should now understand how to use async functions using async await and promises
