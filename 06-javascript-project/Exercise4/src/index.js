@@ -2,7 +2,7 @@ import { FileManager } from "./file-manager.js";
 export class WriteFiles{
 
     constructor(){      
-        this.fragment = document.createDocumentFragment();
+        this.fragment = new DocumentFragment();
         this.writeToScreen();
     }
 
@@ -17,7 +17,6 @@ export class WriteFiles{
         .then(files => {
             for (const file of files) {
                 file.text().then(resolveToText => {
-                    // console.log(resolveToString);
                     this._addToFragment(resolveToText);
                 });
             }
@@ -34,7 +33,6 @@ export class WriteFiles{
     }
 
     _addToFragment(fileContent) {
-          // console.log(fileContent);
           const section = document.createElement('section');
           section.innerHTML = fileContent;
           this.fragment.appendChild(section); 
