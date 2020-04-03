@@ -62,6 +62,14 @@
                  reject(new Error("dum dum daaaah!"))
             }).catch(err=>console.log(err))
             }
+
+            function wait(ms){
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        resolve()
+                    }, ms);
+                })
+            }
         </script>
     </body>
 </html>

@@ -25,6 +25,7 @@
         "glob": "^7.1.4",
         "jest": "^24.9.0",
         "mkdirp": "^0.5.1",
+        "prettier": "^2.0.2",
         "rollup": "^1.23.0",
         "rollup-plugin-terser": "^5.1.2"
     }
