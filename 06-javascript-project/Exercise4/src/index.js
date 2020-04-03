@@ -1,30 +1,27 @@
 import { fetchFiles } from "./helper.js";
 
 export function writeFiles() {
-
     const fragment = new DocumentFragment();
-    // Spec
-        // 1. write all to template literal
-        // 2. async functions
+    const p = document.createElement('p');
 
-    // Method
-    // 1. fetch files
+    p.innerText = `${_processFiles()}`;
+    fragment.appendChild(p);
+    document.querySelector('body').appendChild(fragment);    
+}
+
+function _processFiles(){
+    const textString = ["Content:"];
+
     fetchFiles()
     .then( files => {
-        
         for (const file of files) {
-            _appendToFragment(files);            
+            file.text().then(resolve => {
+                textString.push(resolve);  
+            })
         }
     })
-
-    // 4. insert fragment to template literal
-    // 5. append to HTML
+    .catch(error => console.log(`Error loading files: ${error}`));
     
-    
-    // 3. pass to function that adds to fragment
-    function _appendToFragment(fileContent) {
-// 2. extract/convert to text
-        
-        fragment.appendChild(file);
-    }
+    console.log(textString);
+    return textString;
 }
