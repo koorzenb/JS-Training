@@ -11,17 +11,20 @@ export function writeFiles() {
 
 function _processFiles(){
     const textString = ["Content:"];
-
+    
     fetchFiles()
     .then( files => {
         for (const file of files) {
             file.text().then(resolve => {
-                textString.push(resolve);  
+                textString.push(`${resolve}`);  
             })
         }
     })
+    .then(() => {
+        console.log(textString);
+        return(textString);
+    })
     .catch(error => console.log(`Error loading files: ${error}`));
     
-    console.log(textString);
-    return textString;
+    // return textString;
 }
