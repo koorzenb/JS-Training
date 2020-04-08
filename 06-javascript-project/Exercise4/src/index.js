@@ -1,30 +1,21 @@
 import { fetchFiles } from "./helper.js";
 
+problem was that I did not add to literal, was convoluted and that I did not add properly to DOM 
 export function writeFiles() {
-    const fragment = new DocumentFragment();
-    const p = document.createElement('p');
+let p = "";
 
-    p.innerText = `${_processFiles()}`;
-    fragment.appendChild(p);
-    document.querySelector('body').appendChild(fragment);    
-}
-
-function _processFiles(){
-    const textString = ["Content:"];
-    
-    fetchFiles()
-    .then( files => {
+    fetchFiles().then((files) => {
         for (const file of files) {
-            file.text().then(resolve => {
-                textString.push(`${resolve}`);  
-            })
-        }
+            _addFilesToString(file.text());
+            
+            p.concat(`${file.text()}`);
+        }  
+
     })
-    .then(() => {
-        console.log(textString);
-        return(textString);
-    })
-    .catch(error => console.log(`Error loading files: ${error}`));
-    
-    // return textString;
+
+    function _addFilesToString(fileContent) {
+        
+    }
 }
+
+
