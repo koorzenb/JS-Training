@@ -1,3 +1,8 @@
-export function fetchFiles() {
-    return Promise.all([fetch("./documents/1_p.md"), fetch("./documents/2_p.md"), fetch("./documents/3_p.md")]);
+export function fetchFiles(files) {
+    const fetchedFiles = [];
+
+    for (const file of files) {
+        fetchedFiles.push(fetch(file));
+    }
+    return Promise.all(fetchedFiles)
 }
