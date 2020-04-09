@@ -5,15 +5,15 @@ export function writeFiles() {
     const content = [];
     const p = document.createElement('p')
 
-        fetchFiles(listOfFiles).then(files => {
-            for (const file of files) {
-                file.text()
-                .then( resolve => content.push(resolve) )
-                .then( () => {                    
-                    p.innerText = `${content.join('\n')}`;
-                    document.querySelector('body').appendChild(p);  
-                })
-            }
-        });
+    fetchFiles(listOfFiles).then(files => {
+        for (const file of files) {
+            file.text()
+            .then( resolve => content.push(resolve) )
+            .then( () => {                    
+                p.innerText = `${content.join('\n')}`;
+                document.querySelector('body').appendChild(p);  
+            })
+        }
+    });
 }
 
