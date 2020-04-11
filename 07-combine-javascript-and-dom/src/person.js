@@ -12,7 +12,7 @@ export class Person {
     }
 
     dispose() {
-        constructor = null();
+        // nothing to dispose here. Will dispose instance outside of this class
     }
 
     startWalking(){
@@ -21,9 +21,5 @@ export class Person {
 
     stopWalking(){
         this._isWalking = false;
-    }
-
-    dispose(){
-        // constructor = null;
     }
 }

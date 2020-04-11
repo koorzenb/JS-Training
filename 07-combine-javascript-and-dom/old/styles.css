@@ -1,0 +1,39 @@
+/* repeat in flexbox */
+
+body {
+    display: grid;
+    padding: 0;
+    margin: 0;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    min-height: calc(100vh - 100px); /* what is this? */
+    gap: 10px;
+    grid-template-areas:
+        'labels     inputs      .'
+        'labels     inputs      .'
+        'labels     inputs      .'
+        '.          status      .'
+        'buttons    buttons     buttons';
+}
+
+/* label, header, etc*/
+
+label {
+    grid-template-rows: repeat(3, 50px);
+    grid-area: labels;
+    color: #222222;
+}
+
+.input {
+    grid-area: inputs;
+}
+
+.button {
+    grid-template-rows: 100px;
+    grid-row: 4 /5;
+}
+
+.status {
+    grid-area: status;
+    grid-row: 100px !important;
+}
