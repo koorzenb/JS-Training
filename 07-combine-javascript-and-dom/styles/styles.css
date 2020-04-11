@@ -1,39 +1,32 @@
-/* repeat in flexbox */
-
-body {
-    display: grid;
-    padding: 0;
-    margin: 0;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    min-height: calc(100vh - 100px); /* what is this? */
-    gap: 10px;
-    grid-template-areas:
-        'labels     inputs      .'
-        'labels     inputs      .'
-        'labels     inputs      .'
-        '.          status      .'
-        'buttons    buttons     buttons';
+.item {
+  /* We center the contents of these items. You can also do this with flexbox too! */
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid rgba(0, 0, 0, 0.03);
+  border-radius: 3px;
+  font-size: 35px;
+  background-color: var(--yellow); /* best colour */
 }
 
-/* label, header, etc*/
-
-label {
-    grid-template-rows: repeat(3, 50px);
-    grid-area: labels;
-    color: #222222;
+form {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
 }
 
-.input {
-    grid-area: inputs;
+div {
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
 }
 
-.button {
-    grid-template-rows: 100px;
-    grid-row: 4 /5;
+label[for="status"] {
+    color: cadetblue;
+    font-style: italic;
+    margin-bottom: 20px;
 }
 
-.status {
-    grid-area: status;
-    grid-row: 100px !important;
+label, input {
+    margin-bottom: 5px;
 }
