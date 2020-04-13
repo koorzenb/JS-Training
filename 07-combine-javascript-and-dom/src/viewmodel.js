@@ -4,14 +4,14 @@ export class ViewModel {
     
     get requiredFields() {
         if (this._requiredFields == null) {
-            this._requiredFields = document.querySelectorAll('[action]');
+            this._requiredFields = document.querySelectorAll('[required]');
         }
         return this._requiredFields;
     }
     
     get actionButtons() {
         if (this._actionButtons == null) {
-            this._actionButtons = document.querySelectorAll('.action-button');
+            this._actionButtons = Array.from(document.querySelectorAll('[action]'));
         }
         return this._actionButtons;
     }
@@ -40,8 +40,21 @@ export class ViewModel {
     }
 
     _key(event) {
-        if(_inputValidation(this.requiredFields)) {
-          actionBUtton where attrib = create
+        if(_inputValidation(this.requiredFields)) {     
+            console.log(this.actionButtons);
+            
+            const btnCreate = this.actionButtons.find(elements => {
+                for (const element of this.actionButtons) {
+                    console.log(element.getAttribute("action"));
+                    
+                    const test = element.getAttribute("action") == 'walk'
+                    if(test){
+                        return test;
+                    }
+                    return false
+                }
+            })
+            console.log(btnCreate);
           
         }
     }
