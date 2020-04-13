@@ -22,8 +22,8 @@ validateInputs(){
 \_click(){
 
     btnCreate: createPerson()
-    btnWalk: startWalking + set Status(green)
-    btnStop: stopWalking + set Status(red)
+    btnWalk: startWalkingAction 
+    btnStop: stopWalking 
 
 }
 
@@ -31,6 +31,14 @@ validateInputs(){
 
     new Person (name,lastname,age)
     disable btnCreate + Inputs
-    enable Walk/Stop person
+    enable btnWalk/btnStop
+}
 
+_startWalkingAction() {
+    person.startWalking()
+    + set Status(green)
+}
+
+_stopWalkingAction() {
+    + set Status(red)
 }
