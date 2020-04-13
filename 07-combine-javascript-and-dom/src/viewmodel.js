@@ -4,13 +4,16 @@ export class ViewModel {
     
     get requiredFields() {
         if (this._requiredFields == null) {
-            this._requiredFields = document.querySelectorAll('[required]');
+            this._requiredFields = document.querySelectorAll('[action]');
         }
         return this._requiredFields;
     }
     
-    set requiredFields(newValue) {
-        this._requiredFields = newValue;
+    get actionButtons() {
+        if (this._actionButtons == null) {
+            this._actionButtons = document.querySelectorAll('.action-button');
+        }
+        return this._actionButtons;
     }
 
     constructor() {
@@ -21,6 +24,7 @@ export class ViewModel {
 
     dispose() {
         this.requiredFields = null;
+        this.actionButtons = null;
         this.clickHandler = null;
         this.keyHandler = null;
     }
@@ -36,31 +40,9 @@ export class ViewModel {
     }
 
     _key(event) {
-        // console.log(event.currentTarget.value);
-        
         if(_inputValidation(this.requiredFields)) {
-          console.log('all populated');
-            
+          actionBUtton where attrib = create
+          
         }
     }
-
-
 }
-
-
-// Make sure all required fields are populated
-    // validate fields on keyup
-            // EL on required
-            // validation =
-                // all fields have values
-                    // foreach field in 'required', check:
-                        // field != null || !undefined || !"" 
-// Enable Create Person button
-    // Set "change" (any other event type) event listener on rquired fields
-// Create Person
-    // Get values from required inputs
-// Enabled Start/Stop
-    // submit EL on Create
-// Click Start/Stop walking
-// Update Status
-// Show person walking/idle
