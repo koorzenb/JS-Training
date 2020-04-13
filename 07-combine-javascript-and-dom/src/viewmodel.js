@@ -33,29 +33,32 @@ export class ViewModel {
         for (const element of this.requiredFields) {
             element.addEventListener("keyup", this.keyHandler);
         }
+
+        for (const element of this.actionButtons) {
+            element.addEventListener("click", this.clickHandler);
+        }
     }
 
-    _click() {
-
+    _click(event) {
+        console.log(event.currentTarget.);
+        
+        // if(event.currentTarget.value)
     }
 
     _key(event) {
-        if(_inputValidation(this.requiredFields)) {     
-            console.log(this.actionButtons);
-            
-            const btnCreate = this.actionButtons.find(elements => {
-                for (const element of this.actionButtons) {
-                    console.log(element.getAttribute("action"));
-                    
-                    const test = element.getAttribute("action") == 'walk'
-                    if(test){
-                        return test;
-                    }
-                    return false
-                }
-            })
-            console.log(btnCreate);
-          
+        const isValid = _inputValidation(this.requiredFields); 
+        const btnCreate = this.actionButtons.find(element => {
+            if (element.getAttribute("action") == "create") {
+                return element;
+            } else {
+                return false;
+            } 
+        });
+
+        if (isValid) {
+            btnCreate.removeAttribute("disabled");
+        } else { 
+            btnCreate.setAttribute("disabled","")
         }
     }
 }
