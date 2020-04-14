@@ -1,4 +1,5 @@
-import { _inputValidation } from "./helper.js";
+import { inputValidation } from "./helper.js";
+import { Person } from "./person.js";
 
 export class ViewModel {
     
@@ -40,13 +41,22 @@ export class ViewModel {
     }
 
     _click(event) {
-        console.log(event.currentTarget.);
+        if(event.currentTarget.getAttribute("action") == "create") {
+            const values = []
+            for (const element of this.requiredFields) {
+                values.push(element.value);
+            }
+            console.log(values.join(","));
+            
+            const person = new Person(values.join(","));
+            console.log(person.firstname);            
+        }
         
         // if(event.currentTarget.value)
     }
 
     _key(event) {
-        const isValid = _inputValidation(this.requiredFields); 
+        const isValid = inputValidation(this.requiredFields); 
         const btnCreate = this.actionButtons.find(element => {
             if (element.getAttribute("action") == "create") {
                 return element;
