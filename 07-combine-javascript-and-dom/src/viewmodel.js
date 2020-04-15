@@ -1,4 +1,5 @@
 import { _inputValidation } from "./helper.js";
+import { Person } from "./person.js";
 
 export class ViewModel {
     
@@ -40,9 +41,9 @@ export class ViewModel {
     }
 
     _click(event) {
-        console.log(event.currentTarget.);
-        
-        // if(event.currentTarget.value)
+        if(event.currentTarget.innerText == "CREATE PERSON"){
+            this._createPerson();
+        }
     }
 
     _key(event) {
@@ -60,5 +61,16 @@ export class ViewModel {
         } else { 
             btnCreate.setAttribute("disabled","")
         }
+    }
+
+    _createPerson() {
+        const inputValues = [];
+        for (const element of this.requiredFields) {
+            inputValues.push(element.value);
+        }
+        const person = new Person(...inputValues);    
+        console.log(person);
+        send to status
+            
     }
 }

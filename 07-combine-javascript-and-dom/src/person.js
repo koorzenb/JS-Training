@@ -7,7 +7,7 @@ export class Person {
         this.firstname = firstname;
         this.lastname = lastname;
         this.age = age;
-        _isWalking = false;
+        this._isWalking = false;
     }
 
     startWalking() {
