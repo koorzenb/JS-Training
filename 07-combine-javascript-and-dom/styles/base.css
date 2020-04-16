@@ -53,10 +53,10 @@ button:hover {
   /* top:0.1em; */
 }
 
-button[disabled] {
+:disabled {
   background-color: #b0b2b8fb;
 }
 
-button[disabled]:hover {
+:disabled:hover {
   background-color: #b0b2b8fb;
 }

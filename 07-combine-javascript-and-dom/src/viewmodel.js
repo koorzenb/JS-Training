@@ -24,7 +24,6 @@ export class ViewModel {
         return this._status;
     }
 
-
     constructor() {
         this.clickHandler = this._click.bind(this);
         this.keyHandler = this._key.bind(this);
@@ -33,6 +32,12 @@ export class ViewModel {
     }
 
     dispose() {
+        for (const element of this.requiredFields) {
+            element.removeEventListener("keyup", this.keyHandler);
+        }
+        for (const element of this.actionButtons) {
+            element.removeEventListener("click", this.clickHandler);
+        }
         this.requiredFields = null;
         this.actionButtons = null;
         this.clickHandler = null;
@@ -61,11 +66,10 @@ export class ViewModel {
         
         if(event.currentTarget.innerText == "STOP PERSON"){
             this._stopPerson();
-        }
-        
+        }        
     }
 
-    _key(event) {
+    _key() {
         const isValid = inputValidation(this.requiredFields); 
         const btnCreate = getActionButton("create", this.actionButtons);
 
@@ -78,26 +82,31 @@ export class ViewModel {
 
     _createPerson() {
         const inputValues = [];
+        console.log(this.requiredFields);
+        
         for (const element of this.requiredFields) {
             inputValues.push(element.value);
         }
         this.person = new Person(...inputValues);    
-        this.statusElement.innerText = `Status: ${this.person.isWalking}`;
+        this.statusElement.innerText = `Status: ${this.person.firstname} ${this.person.lastname} (${this.person.age}) created `;
         getActionButton("create", this.actionButtons).setAttribute("disabled","");
         getActionButton("walk", this.actionButtons).removeAttribute("disabled");
         getActionButton("stop", this.actionButtons).removeAttribute("disabled");
+        for (const element of this.requiredFields) {
+            element.setAttribute("disabled");
+        }
     }
     
     _walkPerson() {
+        this.person.startWalking();
         this.statusElement.innerText = `Status: ${this.person.isWalking}`;
-        this.person.startWalking;
         this.statusElement.setAttribute("status","isWalking");
         this.statusElement.removeAttribute("isIdle");
     }
     
     _stopPerson() {
+        this.person.stopWalking();
         this.statusElement.innerText = `Status: ${this.person.isWalking}`;
-        this.person.stopWalking;
         this.statusElement.setAttribute("status","isIdle");
         this.statusElement.removeAttribute("isWalking");
     }
