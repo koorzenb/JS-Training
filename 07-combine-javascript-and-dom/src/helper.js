@@ -12,3 +12,12 @@ export function inputValidation(inputs) {
     return isPopulated;
 }
 
+export function getActionButton(btnName, actionButtons) {
+    let myElement;
+    actionButtons.find(element => {
+        if (element.getAttribute("action") == btnName) {             
+            myElement = element;
+        }  
+    })
+    return myElement;
+}

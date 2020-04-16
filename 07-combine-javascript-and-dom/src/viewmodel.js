@@ -1,4 +1,4 @@
-import { inputValidation } from "./helper.js";
+import { inputValidation, getActionButton } from "./helper.js";
 import { Person } from "./person.js";
 
 export class ViewModel {
@@ -17,10 +17,19 @@ export class ViewModel {
         return this._actionButtons;
     }
 
+    get statusElement() {
+        if (this._status == null) {
+            this._status = document.querySelector('[for="status"]');
+        }
+        return this._status;
+    }
+
+
     constructor() {
         this.clickHandler = this._click.bind(this);
         this.keyHandler = this._key.bind(this);
-        this._addEventListeners();                
+        this._addEventListeners();    
+        this.person;            
     }
 
     dispose() {
@@ -28,6 +37,7 @@ export class ViewModel {
         this.actionButtons = null;
         this.clickHandler = null;
         this.keyHandler = null;
+        this.person = null;
     }
 
     _addEventListeners() {
@@ -41,34 +51,54 @@ export class ViewModel {
     }
 
     _click(event) {
-        if(event.currentTarget.getAttribute("action") == "create") {
-            const values = []
-            for (const element of this.requiredFields) {
-                values.push(element.value);
-            }
-            console.log(values.join(","));
-            
-            const person = new Person(values.join(","));
-            console.log(person.firstname);            
+        if(event.currentTarget.innerText == "CREATE PERSON"){
+            this._createPerson();
+        }
+
+        if(event.currentTarget.innerText == "WALK PERSON"){
+            this._walkPerson();
         }
         
-        // if(event.currentTarget.value)
+        if(event.currentTarget.innerText == "STOP PERSON"){
+            this._stopPerson();
+        }
+        
     }
 
     _key(event) {
         const isValid = inputValidation(this.requiredFields); 
-        const btnCreate = this.actionButtons.find(element => {
-            if (element.getAttribute("action") == "create") {
-                return element;
-            } else {
-                return false;
-            } 
-        });
+        const btnCreate = getActionButton("create", this.actionButtons);
 
         if (isValid) {
             btnCreate.removeAttribute("disabled");
         } else { 
             btnCreate.setAttribute("disabled","")
         }
+    }
+
+    _createPerson() {
+        const inputValues = [];
+        for (const element of this.requiredFields) {
+            inputValues.push(element.value);
+        }
+        this.person = new Person(...inputValues);    
+        this.statusElement.innerText = `Status: ${this.person.isWalking}`;
+        getActionButton("create", this.actionButtons).setAttribute("disabled","");
+        getActionButton("walk", this.actionButtons).removeAttribute("disabled");
+        getActionButton("stop", this.actionButtons).removeAttribute("disabled");
+    }
+    
+    _walkPerson() {
+        this.statusElement.innerText = `Status: ${this.person.isWalking}`;
+        this.person.startWalking;
+        this.statusElement.setAttribute("status","isWalking");
+        this.statusElement.removeAttribute("isIdle");
+    }
+    
+    _stopPerson() {
+        this.statusElement.innerText = `Status: ${this.person.isWalking}`;
+        this.person.stopWalking;
+        this.statusElement.setAttribute("status","isIdle");
+        this.statusElement.removeAttribute("isWalking");
     }
 }
