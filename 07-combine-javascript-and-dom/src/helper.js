@@ -1,4 +1,4 @@
-export function _inputValidation(inputs) {
+export function inputValidation(inputs) {
     let isPopulated = false;
 
     for (const field of inputs) {
@@ -10,4 +10,14 @@ export function _inputValidation(inputs) {
         }
     }
     return isPopulated;
+}
+
+export function getActionButton(btnName, actionButtons) {
+    let myElement;
+    actionButtons.find(element => {
+        if (element.getAttribute("action") == btnName) {             
+            myElement = element;
+        }  
+    })
+    return myElement;
 }
