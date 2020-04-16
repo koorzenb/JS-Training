@@ -17,6 +17,14 @@ export class ViewModel {
         return this._actionButtons;
     }
 
+    get status() {
+        if (this._status == null) {
+            this._status = Array.from(document.querySelectorAll('[for="status"]'));
+        }
+        return this._status;
+    }
+
+
     constructor() {
         this.clickHandler = this._click.bind(this);
         this.keyHandler = this._key.bind(this);
@@ -70,7 +78,8 @@ export class ViewModel {
         }
         const person = new Person(...inputValues);    
         console.log(person);
-        send to status
+        this.status.innerText = person.isWalking;
+        
             
     }
 }
