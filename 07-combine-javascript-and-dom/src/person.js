@@ -1,25 +1,20 @@
 export class Person {
-
     get isWalking() {
-        return this._isWalking === true ? `${this.name} ${this.lastname} is walking` : `${this.name} ${this.lastname} is idle`     
+        return (this._isWalking == true) ? `${this.firstname} ${this.lastname} is walking` : `${this.firstname} ${this.lastname} is idle`;
     }
 
-    constructor(name, lastname, age) {
-        this.name = name;
+    constructor(firstname, lastname, age) {
+        this.firstname = firstname;
         this.lastname = lastname;
-        this.age = age; 
+        this.age = age;
         this._isWalking = false;
     }
 
-    dispose() {
-        // nothing to dispose here. Will dispose instance outside of this class
+    startWalking() {
+        this._isWalking = true; 
     }
 
-    startWalking(){
-        this._isWalking = true;
-    }
-
-    stopWalking(){
+    stopWalking() {
         this._isWalking = false;
     }
 }

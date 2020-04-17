@@ -12,26 +12,28 @@
     <link rel="icon" type="image/png" href="./styles/favicon.png" />
     <title>Project 7</title>
   </head>
+
   <body>
     <header>Combine JavaScript and DOM</header>
-    <form action="">
+    <form>
       <div>
-        <label for="name">Name:</label>
-        <label for="lastname">Lastname:</label>
+        <label for="name">First Name:</label>
+        <label for="lastname">Last Name:</label>
         <label for="age">Age:</label>
       </div>
       <div>
-        <input type="text" data-name="name" />
-        <input type="text" data-lastname="lastname" />
-        <input type="text" data-age="age" />
+        <input type="text" data-name="name" required />
+        <input type="text" data-lastname="lastname" required />
+        <input type="text" data-age="age" required />
       </div>
     </form>
     <div>
-        <label for="status">Status: - </label>
+      <label for="status">Status: - </label>
     </div>
-    <button>Create Person</button>
-    <button>Start Walking</button>
-    <button>Stop Walking</button>
-    <script type="module" src="./src/viewmodel.js"></script>
+    <button action="create" disabled>Create Person</button>
+    <button action="walk" disabled>Walk person</button>
+    <button action="stop" disabled>Stop person</button>
+
+    <script type="module" src="./src/index.js"></script>
   </body>
 </html>

@@ -22,8 +22,8 @@ validateInputs(){
 \_click(){
 
     btnCreate: createPerson()
-    btnWalk: startWalking + set Status(green)
-    btnStop: stopWalking + set Status(red)
+    btnWalk: startWalkingAction
+    btnStop: stopWalking
 
 }
 
@@ -31,6 +31,18 @@ validateInputs(){
 
     new Person (name,lastname,age)
     disable btnCreate + Inputs
-    enable Walk/Stop person
+    enable btnWalk/btnStop
 
+}
+
+\_startPerson() {
+person.startWalking() + set Status(+green) + div.status = walking
+}
+
+\_stopPerson() {
+person.stopWalking() + set Status(+red) + div.status = idle
+}
+
+dispose() {
+EvList (first), then handlers
 }
