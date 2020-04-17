@@ -1,9 +1,14 @@
+// pass files from calling program
+
 export async function main() {
     const response = await fetchFiles(["./documents/1_p.md", "./documents/2_p.md", "./documents/3_p.md"]);
+    // check if still run without Promise.all
     const content = await processFiles(response);    
     renderContent(content);
 }
 
+//split concerns to sperate file
+// naming fetch(file)
 function fetchFiles(files) {
     const fetchedFiles = [];
     
