@@ -38,13 +38,16 @@ export class ViewModel {
         for (const element of this.actionButtons) {
             element.removeEventListener("click", this.clickHandler);
         }
-        this.requiredFields = null;
-        this.actionButtons = null;
+        this._requiredFields = null;
+        this._actionButtons = null;
         this.clickHandler = null;
         this.keyHandler = null;
         this.person = null;
     }
 
+    /**
+     * Adding eventlisteners for various inputs
+     */
     _addEventListeners() {
         for (const element of this.requiredFields) {
             element.addEventListener("keyup", this.keyHandler);
@@ -55,6 +58,10 @@ export class ViewModel {
         }
     }
 
+    /**
+     * Handles click event
+     * @param {*} event 
+     */
     _click(event) {
         if(event.currentTarget.innerText == "CREATE PERSON"){
             this._createPerson();
@@ -69,20 +76,24 @@ export class ViewModel {
         }        
     }
 
+    /**
+     * Handles keystroke events
+     */
     _key() {
         const isValid = inputValidation(this.requiredFields); 
-        const btnCreate = getActionButton("create", this.actionButtons);
 
         if (isValid) {
-            btnCreate.removeAttribute("disabled");
+            getActionButton("create", this.actionButtons).removeAttribute("disabled");
         } else { 
-            btnCreate.setAttribute("disabled","")
+            getActionButton("create", this.actionButtons).setAttribute("disabled","")
         }
     }
 
+    /**
+     * Performs actions when the "create person" button is clicked
+     */
     _createPerson() {
         const inputValues = [];
-        console.log(this.requiredFields);
         
         for (const element of this.requiredFields) {
             inputValues.push(element.value);
@@ -93,10 +104,13 @@ export class ViewModel {
         getActionButton("walk", this.actionButtons).removeAttribute("disabled");
         getActionButton("stop", this.actionButtons).removeAttribute("disabled");
         for (const element of this.requiredFields) {
-            element.setAttribute("disabled");
+            element.setAttribute("disabled","");
         }
     }
     
+     /**
+     * Performs actions when the "walk person" button is clicked
+     */
     _walkPerson() {
         this.person.startWalking();
         this.statusElement.innerText = `Status: ${this.person.isWalking}`;
@@ -104,6 +118,9 @@ export class ViewModel {
         this.statusElement.removeAttribute("isIdle");
     }
     
+    /**
+     * Performs actions when the "stop person" button is clicked
+     */
     _stopPerson() {
         this.person.stopWalking();
         this.statusElement.innerText = `Status: ${this.person.isWalking}`;

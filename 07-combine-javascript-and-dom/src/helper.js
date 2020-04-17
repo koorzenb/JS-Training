@@ -1,3 +1,7 @@
+/**
+ * Ensures that all required input fields have been populated
+ * @param {nodes} inputs 
+ */
 export function inputValidation(inputs) {
     let isPopulated = false;
 
@@ -12,10 +16,15 @@ export function inputValidation(inputs) {
     return isPopulated;
 }
 
-export function getActionButton(btnName, actionButtons) {
+/**
+ * Locates an element in an array with "name" as the attribute value
+ * @param {string} name 
+ * @param {array of elements} actionButtons 
+ */
+export function getActionButton(name, actionButtons) {
     let myElement;
     actionButtons.find(element => {
-        if (element.getAttribute("action") == btnName) {             
+        if (element.getAttribute("action") == name) {             
             myElement = element;
         }  
     })
