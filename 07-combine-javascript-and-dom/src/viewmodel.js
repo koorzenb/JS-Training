@@ -1,4 +1,4 @@
-import { inputValidation, getActionButton } from "./helper.js";
+import { inputValidation } from "./helper.js";
 import { Person } from "./person.js";
 
 export class ViewModel {
@@ -56,6 +56,8 @@ export class ViewModel {
         for (const element of this.actionButtons) {
             element.addEventListener("click", this.clickHandler);
         }
+
+        this._getActionButton("create").addEventListener("submit", this.keyHandler);
     }
 
     /**
@@ -77,15 +79,31 @@ export class ViewModel {
     }
 
     /**
+     * Locates an element in an array with "name" as the attribute value
+     * @param {string} name 
+     * @param {array of elements} actionButtons 
+     */
+    _getActionButton(name) {
+        let myElement;
+        this.actionButtons.find(element => {
+            if (element.getAttribute("action") == name) {             
+                myElement = element;
+            }  
+        })
+        return myElement;
+    }
+
+
+    /**
      * Handles keystroke events
      */
     _key() {
         const isValid = inputValidation(this.requiredFields); 
 
         if (isValid) {
-            getActionButton("create", this.actionButtons).removeAttribute("disabled");
+            this._getActionButton("create").removeAttribute("disabled");
         } else { 
-            getActionButton("create", this.actionButtons).setAttribute("disabled","")
+            this._getActionButton("create").setAttribute("disabled","")
         }
     }
 
@@ -100,9 +118,9 @@ export class ViewModel {
         }
         this.person = new Person(...inputValues);    
         this.statusElement.innerText = `Status: ${this.person.firstname} ${this.person.lastname} (${this.person.age}) created `;
-        getActionButton("create", this.actionButtons).setAttribute("disabled","");
-        getActionButton("walk", this.actionButtons).removeAttribute("disabled");
-        getActionButton("stop", this.actionButtons).removeAttribute("disabled");
+        this._getActionButton("create").setAttribute("disabled","");
+        this._getActionButton("walk").removeAttribute("disabled");
+        this._getActionButton("stop").removeAttribute("disabled");
         for (const element of this.requiredFields) {
             element.setAttribute("disabled","");
         }

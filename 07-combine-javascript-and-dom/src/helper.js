@@ -16,17 +16,3 @@ export function inputValidation(inputs) {
     return isPopulated;
 }
 
-/**
- * Locates an element in an array with "name" as the attribute value
- * @param {string} name 
- * @param {array of elements} actionButtons 
- */
-export function getActionButton(name, actionButtons) {
-    let myElement;
-    actionButtons.find(element => {
-        if (element.getAttribute("action") == name) {             
-            myElement = element;
-        }  
-    })
-    return myElement;
-}
