@@ -56,8 +56,6 @@ export class ViewModel {
         for (const element of this.actionButtons) {
             element.addEventListener("click", this.clickHandler);
         }
-
-        this._getActionButton("create").addEventListener("submit", this.keyHandler);
     }
 
     /**
@@ -65,46 +63,18 @@ export class ViewModel {
      * @param {*} event 
      */
     _click(event) {
-        if(event.currentTarget.innerText == "CREATE PERSON"){
-            this._createPerson();
-        }
-
-        if(event.currentTarget.innerText == "WALK PERSON"){
-            this._walkPerson();
-        }
-        
-        if(event.currentTarget.innerText == "STOP PERSON"){
-            this._stopPerson();
-        }        
+        const attribute = event.currentTarget.getAttribute("action");
+        this[`_${attribute}Person`](event);     
     }
-
-    /**
-     * Locates an element in an array with "name" as the attribute value
-     * @param {string} name 
-     * @param {array of elements} actionButtons 
-     */
-    _getActionButton(name) {
-        let myElement;
-        this.actionButtons.find(element => {
-            if (element.getAttribute("action") == name) {             
-                myElement = element;
-            }  
-        })
-        return myElement;
-    }
-
 
     /**
      * Handles keystroke events
      */
     _key() {
         const isValid = inputValidation(this.requiredFields); 
-
-        if (isValid) {
-            this._getActionButton("create").removeAttribute("disabled");
-        } else { 
-            this._getActionButton("create").setAttribute("disabled","")
-        }
+        
+        isValid ? this._getActionButton("create").removeAttribute("disabled") : 
+            this._getActionButton("create").setAttribute("disabled","");
     }
 
     /**
@@ -119,7 +89,8 @@ export class ViewModel {
         this.person = new Person(...inputValues);    
         this.statusElement.innerText = `Status: ${this.person.firstname} ${this.person.lastname} (${this.person.age}) created `;
         this._getActionButton("create").setAttribute("disabled","");
-        this._getActionButton("walk").removeAttribute("disabled");
+        // expertmenting with nextElementSibling
+        this._getActionButton("create").nextElementSibling.removeAttribute("disabled");
         this._getActionButton("stop").removeAttribute("disabled");
         for (const element of this.requiredFields) {
             element.setAttribute("disabled","");
@@ -144,5 +115,21 @@ export class ViewModel {
         this.statusElement.innerText = `Status: ${this.person.isWalking}`;
         this.statusElement.setAttribute("status","isIdle");
         this.statusElement.removeAttribute("isWalking");
+    }
+
+    
+    /**
+     * Locates the specific action element in actionButtons with "name" as the attribute value
+     * @param {string} name 
+     * @param {array of elements} actionButtons 
+     */
+    _getActionButton(name) {
+        let myElement;
+        this.actionButtons.find(element => {
+            if (element.getAttribute("action") == name) {             
+                myElement = element;
+            }  
+        })
+        return myElement;
     }
 }
