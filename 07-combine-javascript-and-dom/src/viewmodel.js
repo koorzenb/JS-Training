@@ -110,4 +110,38 @@ export class ViewModel {
         this.statusElement.setAttribute("status","isIdle");
         this.statusElement.removeAttribute("isWalking");
     }
+
+    
+    /**
+     * Locates the specific action element in actionButtons with "name" as the attribute value
+     * @param {string} name 
+     * @param {array of elements} actionButtons 
+     */
+    _getActionButton(name) {
+        let myElement;
+        this.actionButtons.find(element => {
+            if (element.getAttribute("action") == name) {             
+                myElement = element;
+            }  
+        })
+        return myElement;
+    }
 }
+
+/**
+ * when to use "for" in HTML
+
+label
+input
+
+change to action-data-set
+button.dataset.action.create
+
+qs input
+qs buttons
+qs input#status
+
+remove dispose (.. or at least on page unload) 
+
+stop/walk smaller
+ */
