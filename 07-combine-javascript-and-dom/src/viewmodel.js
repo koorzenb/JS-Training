@@ -5,21 +5,21 @@ export class ViewModel {
     
     get requiredFields() {
         if (this._requiredFields == null) {
-            this._requiredFields = document.querySelectorAll('[required]');
+            this._requiredFields = document.querySelectorAll('input');
         }
         return this._requiredFields;
     }
     
     get actionButtons() {
         if (this._actionButtons == null) {
-            this._actionButtons = Array.from(document.querySelectorAll('[action]'));
+            this._actionButtons = Array.from(document.querySelectorAll('button'));
         }
         return this._actionButtons;
     }
 
     get statusElement() {
         if (this._status == null) {
-            this._status = document.querySelector('[for="status"]');
+            this._status = document.querySelector('label#status');
         }
         return this._status;
     }
@@ -28,7 +28,7 @@ export class ViewModel {
         this.clickHandler = this._click.bind(this);
         this.keyHandler = this._key.bind(this);
         this._addEventListeners();    
-        this.person;            
+        this.person;             
     }
 
     dispose() {
@@ -38,8 +38,8 @@ export class ViewModel {
         for (const element of this.actionButtons) {
             element.removeEventListener("click", this.clickHandler);
         }
-        this.requiredFields = null;
-        this.actionButtons = null;
+        this._requiredFields = null;
+        this._actionButtons = null;
         this.clickHandler = null;
         this.keyHandler = null;
         this.person = null;
@@ -56,17 +56,7 @@ export class ViewModel {
     }
 
     _click(event) {
-        if(event.currentTarget.innerText == "CREATE PERSON"){
-            this._createPerson();
-        }
-
-        if(event.currentTarget.innerText == "WALK PERSON"){
-            this._walkPerson();
-        }
-        
-        if(event.currentTarget.innerText == "STOP PERSON"){
-            this._stopPerson();
-        }        
+        this[`${event.currentTarget.id}`]();
     }
 
     _key() {
@@ -80,9 +70,8 @@ export class ViewModel {
         }
     }
 
-    _createPerson() {
+    create() {
         const inputValues = [];
-        console.log(this.requiredFields);
         
         for (const element of this.requiredFields) {
             inputValues.push(element.value);
@@ -93,24 +82,23 @@ export class ViewModel {
         getActionButton("walk", this.actionButtons).removeAttribute("disabled");
         getActionButton("stop", this.actionButtons).removeAttribute("disabled");
         for (const element of this.requiredFields) {
-            element.setAttribute("disabled");
+            element.setAttribute("disabled","");
         }
     }
     
-    _walkPerson() {
-        this.person.startWalking();
+    walk() {
+        this.person.walk();      
+        // this.person[`${this}`]()  - I want to try something like this, but various syntaxes doesnt work
         this.statusElement.innerText = `Status: ${this.person.isWalking}`;
-        this.statusElement.setAttribute("status","isWalking");
-        this.statusElement.removeAttribute("isIdle");
+        this.statusElement.dataset.status = this;
     }
     
-    _stopPerson() {
-        this.person.stopWalking();
+    stop() {
+        this.person.stop();      
+        // this.person[`${this}`]()  - I want to try something like this, but various syntaxes doesnt work
         this.statusElement.innerText = `Status: ${this.person.isWalking}`;
-        this.statusElement.setAttribute("status","isIdle");
-        this.statusElement.removeAttribute("isWalking");
+        this.statusElement.dataset.status = this;
     }
-
     
     /**
      * Locates the specific action element in actionButtons with "name" as the attribute value
@@ -120,7 +108,7 @@ export class ViewModel {
     _getActionButton(name) {
         let myElement;
         this.actionButtons.find(element => {
-            if (element.getAttribute("action") == name) {             
+            if (element.getAttribute("id") == name) {             
                 myElement = element;
             }  
         })
@@ -129,19 +117,9 @@ export class ViewModel {
 }
 
 /**
- * when to use "for" in HTML
-
-label
-input
 
 change to action-data-set
 button.dataset.action.create
-
-qs input
-qs buttons
-qs input#status
-
-remove dispose (.. or at least on page unload) 
 
 stop/walk smaller
  */

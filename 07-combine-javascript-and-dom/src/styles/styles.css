@@ -1,0 +1,46 @@
+form {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+div {
+  width: 300px;
+  flex-direction: row;
+}
+
+div.buttons {
+  margin-top: 20px;
+  width: 100%;
+}
+
+label {
+  width: 100px;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 200px;
+  float: right;
+  margin-bottom: 5px;
+}
+
+label #status {
+  display: block;
+  color: cadetblue;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+label[status='walk'] {
+  color: red;
+}
+
+label[status='stop'] {
+  color: green;
+}

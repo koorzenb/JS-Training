@@ -10,11 +10,11 @@ export class Person {
         this._isWalking = false;
     }
 
-    startWalking() {
+    walk() {
         this._isWalking = true; 
     }
 
-    stopWalking() {
+    stop() {
         this._isWalking = false;
     }
 }
