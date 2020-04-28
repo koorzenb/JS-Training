@@ -96,14 +96,13 @@ export class ViewModel {
     
     walk() {
         this.person.walk();      
-        // this.person[`${this}`]()  - I want to try something like this, but various expresssions doesnt work
+        // this.person[`${this}`]()  - I want to try something like this, but tried various expresssions that doesnt work
         this.statusElement.innerText = `Status: ${this.person.isWalking}`;
         this.statusElement.dataset.status = "walk";        
     }
     
     stop() {
         this.person.stop();      
-        // this.person[`${this}`]()  - I want to try something like this, but various expresssions doesnt work
         this.statusElement.innerText = `Status: ${this.person.isWalking}`;
         this.statusElement.dataset.status = "stop";        
     }
