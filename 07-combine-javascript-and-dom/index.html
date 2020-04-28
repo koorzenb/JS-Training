@@ -7,32 +7,38 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./styles/base.css" />
-    <link rel="stylesheet" href="./styles/styles.css" />
-    <link rel="icon" type="image/png" href="./styles/favicon.png" />
+    <link rel="stylesheet" href="./src/styles/base.css" />
+    <link rel="stylesheet" href="./src/styles/styles.css" />
+    <link rel="icon" type="image/png" href="./src/styles/favicon.png" />
     <title>Project 7</title>
   </head>
 
   <body>
     <header>Combine JavaScript and DOM</header>
     <form>
+      <!-- BK - If a may not use divs for separation, what othe ways are available to put 
+        input next to label if flex-direction = column? -->
       <div>
-        <label for="name">First Name:</label>
-        <label for="lastname">Last Name:</label>
-        <label for="age">Age:</label>
+        <label>First Name:</label>
+        <input />
       </div>
       <div>
-        <input type="text" data-name="name" required />
-        <input type="text" data-lastname="lastname" required />
-        <input type="text" data-age="age" required />
+        <label>Last Name:</label>
+        <input />
+      </div>
+      <div>
+        <label>Age:</label>
+        <input />
       </div>
     </form>
-    <div>
-      <label for="status">Status: - </label>
+
+    <div class="buttons">
+      <button id="create" disabled>Create Person</button>
+      <button id="walk" disabled>Walk person</button>
+      <button id="stop" disabled>Stop person</button>
     </div>
-    <button action="create" disabled>Create Person</button>
-    <button action="walk" disabled>Walk person</button>
-    <button action="stop" disabled>Stop person</button>
+
+    <div id="status" data-status="idle"></div>
 
     <script type="module" src="./src/index.js"></script>
   </body>
