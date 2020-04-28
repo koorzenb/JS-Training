@@ -25,7 +25,7 @@ div[data-status='stop'] {
   color: red;
 }
 
-div[data-status='walk'] {
+div[data-status='start'] {
   color: green;
 }
 

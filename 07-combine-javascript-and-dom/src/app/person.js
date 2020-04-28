@@ -13,18 +13,11 @@ export class Person {
         this.age = age;
         this._isWalking = false;
     }
-
-    /**
-     * Sets persons walking status to true
-     */
-    walk() {
-        this._isWalking = true; 
-    }
     
     /**
-     * Sets persons walking status to false
+     * Sets persons walking status 
      */
-    stop() {
-        this._isWalking = false;
+    walk(action) {
+        action == true ? this._isWalking = true : this._isWalking = false; 
     }
 }
