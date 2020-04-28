@@ -20,24 +20,25 @@
         input next to label if flex-direction = column? -->
       <div>
         <label>First Name:</label>
-        <input data-name="name" />
+        <input />
       </div>
       <div>
         <label>Last Name:</label>
-        <input value="remove" data-lastname="lastname" />
+        <input />
       </div>
       <div>
         <label>Age:</label>
-        <input value="remove" data-age="age" />
+        <input />
       </div>
     </form>
-    <label id="status" data-status="idle">Status: - </label>
 
     <div class="buttons">
       <button id="create" disabled>Create Person</button>
       <button id="walk" disabled>Walk person</button>
       <button id="stop" disabled>Stop person</button>
     </div>
+
+    <div id="status" data-status="idle"></div>
 
     <script type="module" src="./src/index.js"></script>
   </body>

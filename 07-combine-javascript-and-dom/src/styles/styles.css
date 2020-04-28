@@ -1,12 +1,7 @@
 form {
   display: flex;
-  flex-direction: row;
-  margin-bottom: 20px;
-}
-
-form {
-  display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 
 div {
@@ -15,13 +10,23 @@ div {
 }
 
 div.buttons {
-  margin-top: 20px;
+  margin: 20px 0px;
   width: 100%;
 }
 
-label {
-  width: 100px;
-  margin-bottom: 5px;
+div #status {
+  display: block;
+  color: cadetblue;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+div[data-status='stop'] {
+  color: red;
+}
+
+div[data-status='walk'] {
+  color: green;
 }
 
 input {
@@ -30,17 +35,7 @@ input {
   margin-bottom: 5px;
 }
 
-label #status {
-  display: block;
-  color: cadetblue;
-  font-style: italic;
-  margin-bottom: 20px;
-}
-
-label[status='walk'] {
-  color: red;
-}
-
-label[status='stop'] {
-  color: green;
+label {
+  width: 100px;
+  margin-bottom: 5px;
 }

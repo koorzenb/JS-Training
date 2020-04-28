@@ -19,7 +19,7 @@ export class ViewModel {
 
     get statusElement() {
         if (this._status == null) {
-            this._status = document.querySelector('label#status');
+            this._status = document.querySelector('div#status');
         }
         return this._status;
     }
@@ -55,71 +55,59 @@ export class ViewModel {
         }
     }
 
+    /**
+     * Handles the click events and calls respective methods
+     * @param {*} event 
+     */
     _click(event) {
         this[`${event.currentTarget.id}`]();
     }
 
+    /**
+     * Handles the keyup events
+     */
     _key() {
         const isValid = inputValidation(this.requiredFields); 
-        const btnCreate = getActionButton("create", this.actionButtons);
 
         if (isValid) {
-            btnCreate.removeAttribute("disabled");
+            this.disableActionButton("create", false);
         } else { 
-            btnCreate.setAttribute("disabled","")
+            this.disableActionButton("create", true);
         }
     }
 
+    /**
+     * Uses information form input values and creates a new Person
+     */
     create() {
         const inputValues = [];
         
         for (const element of this.requiredFields) {
             inputValues.push(element.value);
-        }
-        this.person = new Person(...inputValues);    
-        this.statusElement.innerText = `Status: ${this.person.firstname} ${this.person.lastname} (${this.person.age}) created `;
-        getActionButton("create", this.actionButtons).setAttribute("disabled","");
-        getActionButton("walk", this.actionButtons).removeAttribute("disabled");
-        getActionButton("stop", this.actionButtons).removeAttribute("disabled");
-        for (const element of this.requiredFields) {
             element.setAttribute("disabled","");
         }
+        this.person = new Person(...inputValues);    
+        this.disableActionButton("create", true);
+        this.disableActionButton("walk", false);
+        this.disableActionButton("stop", false);
     }
     
     walk() {
         this.person.walk();      
         // this.person[`${this}`]()  - I want to try something like this, but various syntaxes doesnt work
         this.statusElement.innerText = `Status: ${this.person.isWalking}`;
-        this.statusElement.dataset.status = this;
+        this.statusElement.dataset.status = "walk";        
     }
     
     stop() {
         this.person.stop();      
         // this.person[`${this}`]()  - I want to try something like this, but various syntaxes doesnt work
         this.statusElement.innerText = `Status: ${this.person.isWalking}`;
-        this.statusElement.dataset.status = this;
+        this.statusElement.dataset.status = "stop";        
     }
-    
-    /**
-     * Locates the specific action element in actionButtons with "name" as the attribute value
-     * @param {string} name 
-     * @param {array of elements} actionButtons 
-     */
-    _getActionButton(name) {
-        let myElement;
-        this.actionButtons.find(element => {
-            if (element.getAttribute("id") == name) {             
-                myElement = element;
-            }  
-        })
-        return myElement;
+
+    disableActionButton(btnName, disabledStatus) {
+        disabledStatus ? getActionButton(btnName, this.actionButtons).setAttribute("disabled","") 
+        : getActionButton(btnName, this.actionButtons).removeAttribute("disabled");
     }
 }
-
-/**
-
-change to action-data-set
-button.dataset.action.create
-
-stop/walk smaller
- */
