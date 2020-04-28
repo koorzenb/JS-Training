@@ -2,32 +2,14 @@ import { inputValidation, getActionButton } from "./helper.js";
 import { Person } from "./person.js";
 
 export class ViewModel {
-    
-    get requiredFields() {
-        if (this._requiredFields == null) {
-            this._requiredFields = document.querySelectorAll('input');
-        }
-        return this._requiredFields;
-    }
-    
-    get actionButtons() {
-        if (this._actionButtons == null) {
-            this._actionButtons = Array.from(document.querySelectorAll('button'));
-        }
-        return this._actionButtons;
-    }
-
-    get statusElement() {
-        if (this._status == null) {
-            this._status = document.querySelector('div#status');
-        }
-        return this._status;
-    }
 
     constructor() {
         this.clickHandler = this._click.bind(this);
         this.keyHandler = this._key.bind(this);
-        this._addEventListeners();               
+        this._addEventListeners();     
+        this._requiredFields = document.querySelectorAll('input');   
+        this._actionButtons = Array.from(document.querySelectorAll('button'));   
+        this._status = document.querySelector('div#status');    
     }
 
     dispose() {
@@ -42,18 +24,19 @@ export class ViewModel {
         this.clickHandler = null;
         this.keyHandler = null;
         this.person = null;
+        this._status = null;
     }
 
     /**
      * Adding eventlisteners for various inputs
      */
     _addEventListeners() {
-        for (const element of this.requiredFields) {
-            element.addEventListener("keyup", this.keyHandler);
+        for (const field of this.requiredFields) {
+            field.addEventListener("keyup", this.keyHandler);
         }
 
-        for (const element of this.actionButtons) {
-            element.addEventListener("click", this.clickHandler);
+        for (const button of this.actionButtons) {
+            button.addEventListener("click", this.clickHandler);
         }
     }
 
@@ -63,6 +46,8 @@ export class ViewModel {
      */
     _click(event) {
         this[`${event.currentTarget.id}`]();
+        // console.log('change to target');
+        
     }
 
     /**
