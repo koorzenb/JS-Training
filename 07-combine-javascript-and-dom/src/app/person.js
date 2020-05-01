@@ -17,7 +17,10 @@ export class Person {
     /**
      * Sets persons walking status 
      */
-    walk(action) {
+}
+
+// Experimenting: prototype used for performance
+// Each time a new person is created, "walk" is shared instead of recreated 
+Person.prototype.walk = function(action) {
         action == true ? this._isWalking = true : this._isWalking = false; 
-    }
 }
