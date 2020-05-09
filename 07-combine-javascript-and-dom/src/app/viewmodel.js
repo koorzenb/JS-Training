@@ -67,7 +67,7 @@ export class ViewModel {
      */
     create() {
         const inputValues = [];
-        
+
         for (const element of this._inputs) {
             inputValues.push(element.value);
             element.setAttribute("disabled","");
@@ -78,18 +78,19 @@ export class ViewModel {
         this._disableActionButton("stop", false);
     }
     
-    //TODO: BK - start() / Stop() very similar, but stuck on how to refactor due to how _click() handles calls
-    // I want to try something like this - this.person[`${this}`]()  - , but tried variations on this expresssion without success
     start() {
-        this.person.walk(true);      
-        this._status.innerText = `Status: ${this.person.isWalking}`;
-        this._status.dataset.status = "start";        
+        this.person.walk(true); 
+        this.setStatus("start")      
     }
     
     stop() {
         this.person.walk(false);      
+        this.setStatus("stop");
+    }
+
+    setStatus(status) {
         this._status.innerText = `Status: ${this.person.isWalking}`;
-        this._status.dataset.status = "stop";        
+        this._status.dataset.status = status;    
     }
 
     _disableActionButton(btnName, disabledStatus) {

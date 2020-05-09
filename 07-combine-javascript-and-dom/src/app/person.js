@@ -13,14 +13,10 @@ export class Person {
         this.age = age;
         this._isWalking = false;
     }
-    
-    /**
-     * Sets persons walking status 
-     */
 }
 
-// Experimenting: prototype used for performance
-// Each time a new person is created, "walk" is shared instead of recreated 
+// Experimenting: prototype used for performance. Each time a new person is created, "walk" is shared instead of recreated 
 Person.prototype.walk = function(action) {
+    console.log(this);
         action == true ? this._isWalking = true : this._isWalking = false; 
 }
