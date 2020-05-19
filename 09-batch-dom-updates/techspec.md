@@ -1,16 +1,34 @@
 # Proj 9 - Batch updates
 
-## Design layout
+## Layout
 
 <https://cdn.dribbble.com/users/1591610/screenshots/4426221/to-do_shot.jpg>
 
-## Brief
+#### Headers
 
-Must:
+- Fat border-top
 
-- _<u>List</u>_ structure - use templates
-- When constructing the list items - use document fragments.
+#### Descriptor
 
-## Full spec at
+- "today"
 
-<https://github.com/caperaven/training/blob/master/09.Batch%20dom%20updates%20-%20project.md>
+#### Rows
+
+    ##### Checkbox
+
+    - styling on "checked"
+    - border-shadow?
+
+    ##### Item
+
+    - description
+    - date
+
+    ##### Line separator
+
+    - between items
+
+    ##### Add
+
+    - border-radius
+    - border shadow
