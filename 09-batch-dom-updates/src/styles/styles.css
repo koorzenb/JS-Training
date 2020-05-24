@@ -39,3 +39,9 @@ header h1 {
   padding-bottom: .5rem;
   padding-left: .5rem;
 }
+
+menu {
+  padding-left: 1rem;
+  font-size: .8rem;
+  color: dimgrey;
+}
