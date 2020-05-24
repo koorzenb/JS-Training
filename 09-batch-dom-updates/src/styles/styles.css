@@ -35,13 +35,51 @@ header {
 header h1 {
   margin: 0px;
   font-weight: 400;
-  font-size: 1rem;
-  padding-bottom: .5rem;
-  padding-left: .5rem;
+  font-size: 1.2rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
 }
 
 menu {
   padding-left: 1rem;
+  padding-bottom: ;
   font-size: .8rem;
   color: dimgrey;
 }
+
+div {
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+div input {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+}
+
+div.item-details {
+  display: grid;
+  box-sizing: content-box;
+  width: 100%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr ; 
+  border-bottom: 1px solid lightgrey
+}
+
+label.item-description {
+  text-transform: capitalize;
+  padding-top: 0.5rem;
+}
+
+label.item-date {
+  font-size: 0.8rem;
+  color: dimgrey;
+}
+
+input {
+  cursor: pointer;
+}
+
+ignore checkbox styling for now . Focus on add button, then js
