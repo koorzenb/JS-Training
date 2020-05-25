@@ -2,7 +2,7 @@
   --height: 35rem;
   --width: 20rem;
   --blue: rgb(62, 81, 182, 1);
-  --darkblue: rgb(49, 62, 162)
+  --darkblue: rgb(49, 62, 162);
 }
 
 html,
@@ -94,7 +94,7 @@ input {
 
 button {
   position: absolute;
-   /* tried this, but not working: */
+  /* tried this, but not working: */
   /* top: calc(var(--height)+50px); */
   top: 30rem;
   left: 15rem;
