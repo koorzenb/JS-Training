@@ -1,16 +1,28 @@
+:root {
+  --height: 35rem;
+  --width: 20rem;
+  --blue: rgb(62, 81, 182, 1);
+  --darkblue: rgb(49, 62, 162)
+}
+
 html,
 body {
+  margin: 0;
+  padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 400;
   font-size: 16px;
+  height: var(--height);
+  width: var(--width);
+}
+
+html {
+  box-shadow: 0px 3px 10px 3px rgba(0, 0, 3, 0.17);
 }
 
 body {
   width: 20rem;
   height: 64px;
-  border: 1px solid yellowgreen;
-  /* how to set display in center in responsive manner */
-  /* margin: 20% 0 0 20%; */
 }
 
 svg {
@@ -27,9 +39,8 @@ header {
   display: flex;
   color: white;
   align-items: center;
-  /* padding: 20px; */
-  background: rgb(62, 81, 182, 1);
-  border-top: 1rem solid rgb(49, 62, 162);
+  background: var(--blue);
+  border-top: 1rem solid var(--darkblue);
 }
 
 header h1 {
@@ -42,8 +53,7 @@ header h1 {
 
 menu {
   padding-left: 1rem;
-  padding-bottom: ;
-  font-size: .8rem;
+  font-size: 0.8rem;
   color: dimgrey;
 }
 
@@ -64,8 +74,8 @@ div.item-details {
   box-sizing: content-box;
   width: 100%;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr ; 
-  border-bottom: 1px solid lightgrey
+  grid-template-rows: 1fr 1fr;
+  border-bottom: 1px solid lightgrey;
 }
 
 label.item-description {
@@ -82,4 +92,29 @@ input {
   cursor: pointer;
 }
 
-ignore checkbox styling for now . Focus on add button, then js
+button {
+  position: absolute;
+   /* tried this, but not working: */
+  /* top: calc(var(--height)+50px); */
+  top: 30rem;
+  left: 15rem;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 3rem;
+  border: none;
+  background-color: var(--blue);
+  color: white;
+  font-size: 2rem;
+  font-weight: 400;
+  box-shadow: 0px 3px 10px 3px rgba(0, 0, 3, 0.17);
+}
+
+button:focus {
+  outline: none;
+  cursor: pointer;
+}
+
+button:active {
+  background-color: var(--darkblue);
+  box-shadow: none;
+}
