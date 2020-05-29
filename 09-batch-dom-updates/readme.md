@@ -10,4 +10,4 @@ Must:
 List structure - use templates
 When constructing the list items - use document fragments.
 Full spec at
-<https://github.com/caperaven/training/blob/master/09.Batch> dom updates - project.md
+https://github.com/caperaven/training/blob/master/09.Batch%20dom%20updates%20-%20project.md
