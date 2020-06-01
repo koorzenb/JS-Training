@@ -1,17 +1,10 @@
-import { date } from "./utils.js";
+import { formattedDate } from "./utils.js";
 
 export class ViewModel {
 
-    get template() {
-        if (this._template == null) {
-            this._template = document.querySelector('template');
-        }
-        return this._template;
-    }
-
     get date() {
         if (this._date == null) {
-            this.date = date();
+            this._date = formattedDate();
         }
         return this._date;
     }
@@ -20,12 +13,15 @@ export class ViewModel {
         this.addHandler = this._add.bind(this);
         this.btnAdd = document.querySelector('button');
         this.btnAdd.addEventListener('click', this.addHandler); 
+        this.template = document.querySelector('template');
     }
 
     dispose() {
         console.log('disposed');
         this.btnAdd.removeEventListener("click",this.addHandler);
         this.addHandler = null;
+        this.template = null;
+        this._date = null;
     }
 
     /**
@@ -34,19 +30,20 @@ export class ViewModel {
     async _add() {
         const fragment = new DocumentFragment();
         const clone = this.template.content.cloneNode(true);
-        const answer = await this.ask();
-        clone.querySelector("#description").innerText = answer;
-        clone.querySelector("#date").innerText = date();
-        fragment.appendChild(clone);
-        document.body.appendChild(fragment);
+        const itemDescription = await this.getItemDescription();
+        if(itemDescription != "") {
+            clone.querySelector("#description").innerText = itemDescription;
+            clone.querySelector("#date").innerText = formattedDate();
+            fragment.appendChild(clone);
+            document.body.appendChild(fragment);
+        }
     }      
 
     /**
      * Cleans up the popup once answers is submitted
      * @param {element} popup 
      */
-    destroyPopup(popup) {
-        popup.classList.remove('open');
+    destroy(popup) {
         popup.remove();
         popup = null;
     }
@@ -54,8 +51,8 @@ export class ViewModel {
     /**
      * Creates popup and asks user for details
      */
-    ask() {
-        const destroy = this.destroyPopup;
+    getItemDescription() {
+        const destroy = this.destroy;
         
         return new Promise(async function(resolve) {
           const popup = document.createElement('form');
@@ -70,13 +67,16 @@ export class ViewModel {
           `
           );
 
-          // BK: is "{once : true}" a valid way of disposing eventlisteners?
           popup.addEventListener(
             'submit', (e) => 
             {
                 e.preventDefault();
-                resolve(e.target.input.value);
-                // TODO BK: how to use "this" so that I do not have to assign destroy to variable (line 58)
+                if(e.target.input.value == "") {
+                    resolve("");
+                }
+                else {
+                    resolve(e.target.input.value);
+                }
                 destroy(popup);
             },
             { once: true }
@@ -84,7 +84,6 @@ export class ViewModel {
       
           document.body.appendChild(popup);      
           popup.classList.add('open');
-          window.focus();
         });
       }
 }
