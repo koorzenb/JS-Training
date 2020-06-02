@@ -28,5 +28,9 @@
     "mkdirp": "^0.5.1",
     "rollup": "^1.23.0",
     "rollup-plugin-terser": "^5.1.2"
+  },
+  "dependencies": {
+    "html": "^1.0.0",
+    "main.css": "^2.1.0"
   }
 }

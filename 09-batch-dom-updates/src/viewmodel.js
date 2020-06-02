@@ -1,3 +1,3 @@
-export ViewModel {
-    constructor {}
+export class ViewModel {
+    constructor() {}
 }

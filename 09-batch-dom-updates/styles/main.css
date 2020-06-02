@@ -1,0 +1,12 @@
+menu {
+    padding-left: 1rem;
+    font-size: 0.8rem;
+    color: dimgrey;
+  }
+  
+  div {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+  }
+  

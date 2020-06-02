@@ -1,0 +1,30 @@
+
+div input {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+  }
+  
+  div.item-details {
+    display: grid;
+    box-sizing: content-box;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    border-bottom: 1px solid lightgrey;
+  }
+  
+  label.item-description {
+    text-transform: capitalize;
+    padding-top: 0.5rem;
+  }
+  
+  label.item-date {
+    font-size: 0.8rem;
+    color: dimgrey;
+  }
+  
+  input {
+    cursor: pointer;
+  }
+  
