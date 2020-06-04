@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "jest",
-    "render": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*' --directory --port 7777 --browser \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\"",
+    "render": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*' --directory --port 7777 --browser \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" --startPath ./index.html",
     "bundle": "rollup -c",
     "build-publish": "rollup -c & node build/publish.js",
     "start": "ws --spa ./index.html"
