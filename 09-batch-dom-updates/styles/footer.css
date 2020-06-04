@@ -1,28 +1,27 @@
-
 button.add {
-    position: absolute;
-    /* tried this, but not working: */
-    /* top: calc(var(--height)+50px); */
-    top: 30rem;
-    left: 15rem;
-    height: 3rem;
-    width: 3rem;
-    border-radius: 3rem;
-    border: none;
-    background-color: var(--blue);
-    color: white;
-    font-size: 2rem;
-    font-weight: 400;
-    box-shadow: 0px 3px 10px 3px rgba(0, 0, 3, 0.17);
-  }
-  
-  button:focus {
-    outline: none;
-    cursor: pointer;
-  }
-  
-  button:active {
-    background-color: var(--darkblue);
-    box-shadow: none;
-  }
-  
+  position: absolute;
+  /* tried this, but not working: */
+  /* top: calc(var(--height)+50px); */
+  bottom: 3rem;
+  right: 3rem;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 3rem;
+  border: none;
+  background-color: var(--blue);
+  color: white;
+  font-size: 2rem;
+  font-weight: 400;
+  box-shadow: 0px 3px 10px 3px rgba(0, 0, 3, 0.17);
+  align-self: center;
+}
+
+button:focus {
+  outline: none;
+  cursor: pointer;
+}
+
+button:active {
+  background-color: var(--darkblue);
+  box-shadow: none;
+}
