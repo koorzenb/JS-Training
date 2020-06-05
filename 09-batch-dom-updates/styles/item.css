@@ -3,6 +3,8 @@ li {
   display: grid;
   height: 3rem;
   width: 100%;
+  padding-top: 0.5rem;
+  grid-template-columns: 4rem auto;
   grid-template-areas: 'checkbox item';
 }
 
@@ -12,7 +14,7 @@ li input {
   justify-self: center;
   cursor: pointer;
   grid-area: checkbox;
-  width: 3rem;
+  width: 2rem;
 }
 
 div.item-details {
