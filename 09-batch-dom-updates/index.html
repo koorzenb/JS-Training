@@ -54,7 +54,11 @@
       </li>
     </template>
 
-    <button class="add">+</button>
+    <fieldset class="add">
+        <input type="text" placeholder="Type details here" show="hidden" id="input-details" />
+        <button class="add" show="hidden" id="confirm">x</button>
+        <button type="submit" class="add" id="addCancel">&#x2713</button>
+    </fieldset>
     <script type="module" src="./src/index.js"></script>
   </body>
 </html>
