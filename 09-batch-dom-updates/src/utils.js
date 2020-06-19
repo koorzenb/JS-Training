@@ -15,9 +15,19 @@ export function registerEvent(element, event, callback) {
     });
 }
 
-export function unregisterEvents() {
-    for (const item of event) {
-        item.element.removeEventListener(item.event, item.callback);
-        item.callback = null;
+export function unregisterEvents(singleElement) {
+    if(singleElement != null) {
+        for (const item of events) {
+            if(item.element == singleElement){
+                item.element.removeEventListener(item.event, item.callback);
+                item.callback = null;
+            }
+        }
+    }
+    else {
+        for (const item of events) {
+            item.element.removeEventListener(item.event, item.callback);
+            item.callback = null;
+        }
     }
 }

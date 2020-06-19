@@ -1,3 +1,4 @@
+/* Styling of fieldset differs from Firefox and Chrome   */
 fieldset {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -5,8 +6,8 @@ fieldset {
   grid-template-areas: 'details close add';
   gap: 0.5rem;
   position: absolute;
+  right: 0;
   bottom: 5rem;
-  right: 16rem;
   height: 3rem;
   width: 3rem;
   border: none;
@@ -26,8 +27,6 @@ button {
   align-self: center;
   justify-content: center;
   opacity: 1;
-  transform: translateX(0);
-  transition: 1s linear;
 }
 
 button#add {
@@ -65,8 +64,10 @@ button:active {
   box-shadow: none;
 }
 
+input:focus {
+  outline: none;
+}
+
 button [hidden] {
-  transform: translateX(100%);
   opacity: 0;
-  transition: 1s linear;
 }

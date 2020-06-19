@@ -64,13 +64,11 @@ export class ViewModel {
         this.input.value = null;
 
         this.btnAdd.innerHTML = "+";
+        unregisterEvents(this.btnAdd);
         this.btnAdd.addEventListener("click", this.addHandler)
-        this.btnAdd.removeEventListener("click", this.submitHandler)
-        this.submitHandler = null;
 
         this.btnClose.setAttribute("hidden","");
-        this.btnClose.removeEventListener('click', this.closeHandler);
-        this.closeHandler = null;
+        unregisterEvents(this.btnClose);
     }
 
     /**
