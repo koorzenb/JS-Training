@@ -24,20 +24,6 @@
     <main>
       <label id="date-descriptor">Today</label>
       <ul>
-        <li>
-          <input type="checkbox" />
-          <div class="item-details">
-            <label class="item-description" id="description">--details--</label>
-            <label class="item-date" id="date">--date--</label>
-          </div>
-        </li>
-        <li>
-          <input type="checkbox" />
-          <div class="item-details">
-            <label class="item-description" id="description">--details--</label>
-            <label class="item-date" id="date">--date--</label>
-          </div>
-        </li>
         <!-- list of items to be inserted here -->
       </ul>
     </main>
@@ -53,9 +39,9 @@
     </template>
 
     <fieldset class="add">
-        <input type="text" id="input-details" show="unhide" placeholder="Type details here" />
-        <button id="close" show="unhide">x</button>
-        <button type="submit" id="add">&#x2713</button>
+      <input type="text" id="input-details" placeholder="Type details here" hidden />
+      <button id="close" hidden>x</button>
+      <button type="submit" id="add">+</button>
     </fieldset>
     <script type="module" src="./src/index.js"></script>
   </body>
