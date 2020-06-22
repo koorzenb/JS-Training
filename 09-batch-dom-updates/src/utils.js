@@ -22,6 +22,7 @@ export function unregisterEvents(singleElement) {
                 item.element.removeEventListener(item.event, item.callback);
                 item.callback = null;
             }
+            break;
         }
     }
     else {
