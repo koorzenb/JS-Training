@@ -56,11 +56,11 @@ DOE CLOSE HLNDLER ONCE
         this.input.removeAttribute("hide");
         this.input.removeAttribute("disabled");
 
-        this.btnAdd.addEventListener("click", this.submitHandler)
-        this.btnAdd.removeEventListener("click", this.addHandler)
+        unregisterEvents(this.btnAdd,"click", this.addHandler)
+        registerEvent(this.btnAdd,"click", this.submitHandler)
         this.btnAdd.innerHTML = "&#x2713";
 
-        this.btnClose.addEventListener('click', this.closeHandler);
+        registerEvent(this.btnClose,'click', this.closeHandler);
         this.btnClose.removeAttribute("hide");
         this.btnClose.removeAttribute("disabled");
     }
@@ -75,7 +75,7 @@ DOE CLOSE HLNDLER ONCE
 
         this.btnAdd.innerHTML = "+";
         unregisterEvents(this.btnAdd);
-        this.btnAdd.addEventListener("click", this.addHandler)
+        registerEvent(this.btnAdd,"click", this.addHandler)
 
         this.btnClose.setAttribute("hide","");
         this.btnClose.setAttribute("disabled","");
