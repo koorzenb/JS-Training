@@ -59,11 +59,11 @@ export class ViewModel {
           popup.classList.add('popup');
           popup.insertAdjacentHTML(
             'afterbegin',
-            `<fieldset>
+            `<form>
               <label>Description:</label>
               <input type="text" name="input"/>
               <button type="submit">Submit</button>
-            </fieldset>
+            </form>
           `
           );
 

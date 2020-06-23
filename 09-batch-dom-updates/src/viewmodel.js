@@ -10,11 +10,18 @@ export class ViewModel {
     }
 
     constructor() {
-        console.log('viewmodel working');
                 /*
         move descrip to utils
-        must have aria next time
         check again around 54min + 1.07
+styling create variable form maint
+menu = button
+menu label -> header
+remove "for" label only on forms
+query template? only once
+form -> form 
+CLEAN UP HANDLERS
+RENAME SINGLEELEMENT -  USE MAP
+DOE CLOSE HLNDLER ONCE
         */
         this.init();
     }
@@ -26,7 +33,9 @@ export class ViewModel {
         this.btnAdd = document.querySelector('button#add');     
         this.btnClose = document.querySelector('button#close');     // decided not to write iterator for only 2 buttons
         this.input = document.querySelector('input#input-details');
-        this.addHandler = this._add.bind(this);
+        this.addHandler = this._open.bind(this);
+        this.submitHandler = this._submit.bind(this);
+        this.closeHandler = this._close.bind(this);
         registerEvent(this.btnAdd,'click', this.addHandler); 
         this.template = document.querySelector('template');
     }
@@ -43,38 +52,41 @@ export class ViewModel {
     /**
      * Opens input dialog and sets new eventListeners
      */
-    _add() {
-        this.input.removeAttribute("hidden");
+    _open() {
+        this.input.removeAttribute("hide");
+        this.input.removeAttribute("disabled");
 
-        this.submitHandler = this._submit.bind(this);
         this.btnAdd.addEventListener("click", this.submitHandler)
         this.btnAdd.removeEventListener("click", this.addHandler)
         this.btnAdd.innerHTML = "&#x2713";
 
-        this.closeHandler = this._close.bind(this);
         this.btnClose.addEventListener('click', this.closeHandler);
-        this.btnClose.removeAttribute("hidden");
+        this.btnClose.removeAttribute("hide");
+        this.btnClose.removeAttribute("disabled");
     }
 
     /**
      * Closes input dialog box and disposes listeners
      */
     _close() {
-        this.input.setAttribute("hidden","");
+        this.input.setAttribute("hide","");
+        this.input.setAttribute("disabled","");
         this.input.value = null;
 
         this.btnAdd.innerHTML = "+";
         unregisterEvents(this.btnAdd);
         this.btnAdd.addEventListener("click", this.addHandler)
 
-        this.btnClose.setAttribute("hidden","");
+        this.btnClose.setAttribute("hide","");
+        this.btnClose.setAttribute("disabled","");
         unregisterEvents(this.btnClose);
     }
 
     /**
      * Collects information, populate template and send to DOM
      */
-    _submit() {
+    _submit(e) {
+        e.preventDefault();
         const fragment = new DocumentFragment();
         const clone = this.template.content.cloneNode(true);
 

@@ -1,19 +1,19 @@
-/* Styling of fieldset differs from Firefox and Chrome   */
-fieldset {
+/* Styling of form differs from Firefox and Chrome   */
+form {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 3rem;
   grid-template-areas: 'details close add';
   gap: 0.5rem;
   position: absolute;
-  right: 0;
-  bottom: 5rem;
+  right: 17rem;
+  bottom: 2rem;
   height: 3rem;
   width: 3rem;
   border: none;
 }
 
-button {
+form button {
   border-radius: 3rem;
   height: 100%;
   width: 2.5rem;
@@ -66,8 +66,10 @@ button:active {
 
 input:focus {
   outline: none;
+  cursor: text;
 }
 
-button [hidden] {
+[hide] {
   opacity: 0;
+  cursor: cell;
 }
