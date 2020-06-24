@@ -11,17 +11,7 @@ export class ViewModel {
 
     constructor() {
                 /*
-        move descrip to utils
-        check again around 54min + 1.07
-styling create variable form maint
-menu = button
-menu label -> header
-remove "for" label only on forms
-query template? only once
-form -> form 
-CLEAN UP HANDLERS
-RENAME SINGLEELEMENT -  USE MAP
-DOE CLOSE HLNDLER ONCE
+        check again around 54min + 1.07 (validity)
         */
         this.init();
     }
@@ -96,6 +86,9 @@ DOE CLOSE HLNDLER ONCE
             fragment.appendChild(clone);
             document.body.appendChild(fragment);
             this._close();
+        }
+        else{
+            this.input.setAttribute("invalid","")
         }
     }
 }

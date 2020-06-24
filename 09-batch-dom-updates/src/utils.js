@@ -1,3 +1,6 @@
+/**
+ * Formats and returns date
+ */
 export function formattedDate() {
     const dateTimeFormat = new Intl.DateTimeFormat('en',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }); 
     const [{value: weekday},,{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat.formatToParts(new Date); 
@@ -6,6 +9,12 @@ export function formattedDate() {
 
 const events = [];
 
+/**
+ * Registers eventlisteners against elements and 
+ * @param {*} element - element against which the eventlistner is being registered
+ * @param {*} event - event type
+ * @param {*} callback - function to call
+ */
 export function registerEvent(element, event, callback) {
     element.addEventListener(event, callback);
     events.push({
@@ -15,6 +24,11 @@ export function registerEvent(element, event, callback) {
     });
 }
 
+/**
+ * Unregister and disposes either an eventlistener on a single element; 
+ *  or dispose all registered eventlisteners 
+ * @param {*} singleElement 
+ */
 export function unregisterEvents(singleElement) {
     if(singleElement != null) {
         for (const item of events) {

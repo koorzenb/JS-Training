@@ -44,7 +44,6 @@ input#input-details::placeholder {
 }
 
 input#input-details {
-  border: 1px solid rgb(187, 191, 194);
   border-radius: 2rem;
   padding-left: 1rem;
   height: 100%;
@@ -67,6 +66,14 @@ button:active {
 input:focus {
   outline: none;
   cursor: text;
+}
+
+input:invalid {
+  border: 1px solid red;
+}
+
+input:valid {
+  border: 1px solid lightgray);
 }
 
 [hide] {
