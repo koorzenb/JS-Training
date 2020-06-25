@@ -46,7 +46,7 @@ export class ViewModel {
         this.input.removeAttribute("hide");
         this.input.removeAttribute("disabled");
 
-        unregisterEvents(this.btnAdd,"click", this.addHandler)
+        unregisterEvents(this.btnAdd, "click")
         registerEvent(this.btnAdd,"click", this.submitHandler)
         this.btnAdd.innerHTML = "&#x2713";
 

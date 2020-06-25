@@ -1,4 +1,9 @@
 /* Styling of form differs from Firefox and Chrome   */
+:root {
+  --buttonShadow: rgba(0, 0, 3, 0.17);
+  --inputShadow: rgba(17, 163, 189, 0.151);
+}
+
 form {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -14,7 +19,7 @@ form {
 }
 
 form button {
-  border-radius: 3rem;
+  border-radius: 50%;
   height: 100%;
   width: 2.5rem;
   height: 2.5rem;
@@ -23,7 +28,6 @@ form button {
   color: white;
   font-size: 2rem;
   font-weight: 400;
-  box-shadow: 0px 3px 10px 3px rgba(0, 0, 3, 0.17);
   align-self: center;
   justify-content: center;
   opacity: 1;
@@ -45,6 +49,7 @@ input#input-details::placeholder {
 
 input#input-details {
   border-radius: 2rem;
+  border: 1px solid red;
   padding-left: 1rem;
   height: 100%;
 }
@@ -52,10 +57,12 @@ input#input-details {
 button:focus {
   outline: none;
   cursor: pointer;
+  box-shadow: 0px 3px 10px 3px var(--buttonShadow);
 }
 
 button:hover {
   cursor: pointer;
+  box-shadow: 0px 3px 10px 3px var(--buttonShadow);
 }
 
 button:active {
@@ -66,17 +73,18 @@ button:active {
 input:focus {
   outline: none;
   cursor: text;
+  box-shadow: 0px 3px 10px 3px var(--inputShadow);
 }
 
-input:invalid {
-  border: 1px solid red;
+input:hover {
+  box-shadow: 0px 3px 10px 3px var(--inputShadow);
 }
 
 input:valid {
-  border: 1px solid lightgray);
+  border: 1px solid lightgray;
 }
 
 [hide] {
   opacity: 0;
-  cursor: cell;
+  cursor: default;
 }
