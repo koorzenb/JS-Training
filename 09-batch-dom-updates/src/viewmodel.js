@@ -43,16 +43,17 @@ export class ViewModel {
      * Opens input dialog and sets new eventListeners
      */
     _open() {
-        this.input.removeAttribute("hide");
-        this.input.removeAttribute("disabled");
-
-        unregisterEvents(this.btnAdd, "click")
-        registerEvent(this.btnAdd,"click", this.submitHandler)
+        unregisterEvents(this.btnAdd, 'click')
+        registerEvent(this.btnAdd,"submit", this.submitHandler)
         this.btnAdd.innerHTML = "&#x2713";
 
         registerEvent(this.btnClose,'click', this.closeHandler);
         this.btnClose.removeAttribute("hide");
         this.btnClose.removeAttribute("disabled");
+
+        this.input.removeAttribute("hide");
+        this.input.removeAttribute("disabled");
+        this.input.focus();
     }
 
     /**
@@ -64,12 +65,12 @@ export class ViewModel {
         this.input.value = null;
 
         this.btnAdd.innerHTML = "+";
-        unregisterEvents(this.btnAdd);
+        unregisterEvents(this.btnAdd, "submit");
         registerEvent(this.btnAdd,"click", this.addHandler)
 
         this.btnClose.setAttribute("hide","");
         this.btnClose.setAttribute("disabled","");
-        unregisterEvents(this.btnClose);
+        unregisterEvents(this.btnClose,"click");
     }
 
     /**
@@ -80,15 +81,12 @@ export class ViewModel {
         const fragment = new DocumentFragment();
         const clone = this.template.content.cloneNode(true);
 
-        if(this.input.value != null && this.input.value.trim().length != 0) {
+        if(this.input.validity.valid && this.input.value.trim().length != 0) {
             clone.querySelector("#description").innerText = this.input.value;
             clone.querySelector("#date").innerText = formattedDate();
             fragment.appendChild(clone);
             document.body.appendChild(fragment);
             this._close();
-        }
-        else{
-            this.input.setAttribute("invalid","")
         }
     }
 }

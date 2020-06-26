@@ -29,12 +29,14 @@ export function registerEvent(element, event, callback) {
  *  or dispose all registered eventlisteners 
  * @param {*} singleElement 
  */
-export function unregisterEvents(singleElement,callback) {
+export function unregisterEvents(singleElement,event) {
     if(singleElement != null) {
         for (const item of events) {
-            if(item.element == singleElement && item.callback == callback){
+            if(item.element == singleElement && item.event == event){
                 item.element.removeEventListener(item.event, item.callback);
                 item.callback = null;
+                const index = events.indexOf(item);
+                events.splice(index,1);
             }
             break;
         }
