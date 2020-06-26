@@ -42,10 +42,9 @@
       </ul>
     </main>
 
-    <form class="add">
+    <form id="add">
       <input
-        name="input"
-        type="text"
+        type="text submit"
         id="input-details"
         minlength="1"
         placeholder="Type details here"
@@ -53,8 +52,8 @@
         disabled
         required
       />
-      <button id="close" disabled hide aria-label="cancel entry">x</button>
-      <button for="input" type="submit" tabindex="1" id="add" aria-label="add new item">+</button>
+      <button type="button" id="close" disabled hide aria-label="cancel entry">x</button>
+      <button type="submit" tabindex="1" id="add" aria-label="add new item">+</button>
     </form>
 
     <script type="module" src="./index.js"></script>

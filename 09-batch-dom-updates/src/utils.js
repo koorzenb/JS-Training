@@ -37,8 +37,9 @@ export function unregisterEvents(singleElement,event) {
                 item.callback = null;
                 const index = events.indexOf(item);
                 events.splice(index,1);
+                break;
             }
-            break;
+            // cannot have break here. Will exit after first iteration
         }
     }
     else {

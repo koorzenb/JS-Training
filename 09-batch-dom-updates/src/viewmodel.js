@@ -10,9 +10,6 @@ export class ViewModel {
     }
 
     constructor() {
-                /*
-        check again around 54min + 1.07 (validity)
-        */
         this.init();
     }
 
@@ -23,10 +20,11 @@ export class ViewModel {
         this.btnAdd = document.querySelector('button#add');     
         this.btnClose = document.querySelector('button#close');     // decided not to write iterator for only 2 buttons
         this.input = document.querySelector('input#input-details');
-        this.addHandler = this._open.bind(this);
+        this.form = document.querySelector('form#add');
+        this.openHandler = this._open.bind(this);
         this.submitHandler = this._submit.bind(this);
         this.closeHandler = this._close.bind(this);
-        registerEvent(this.btnAdd,'click', this.addHandler); 
+        registerEvent(this.btnAdd,'click', this.openHandler); 
         this.template = document.querySelector('template');
     }
 
@@ -43,17 +41,17 @@ export class ViewModel {
      * Opens input dialog and sets new eventListeners
      */
     _open() {
-        unregisterEvents(this.btnAdd, 'click')
-        registerEvent(this.btnAdd,"submit", this.submitHandler)
         this.btnAdd.innerHTML = "&#x2713";
-
         registerEvent(this.btnClose,'click', this.closeHandler);
+        
         this.btnClose.removeAttribute("hide");
         this.btnClose.removeAttribute("disabled");
 
         this.input.removeAttribute("hide");
         this.input.removeAttribute("disabled");
         this.input.focus();
+
+        registerEvent(this.form, "submit", this.submitHandler);
     }
 
     /**
@@ -65,12 +63,12 @@ export class ViewModel {
         this.input.value = null;
 
         this.btnAdd.innerHTML = "+";
-        unregisterEvents(this.btnAdd, "submit");
-        registerEvent(this.btnAdd,"click", this.addHandler)
 
         this.btnClose.setAttribute("hide","");
         this.btnClose.setAttribute("disabled","");
         unregisterEvents(this.btnClose,"click");
+        
+        unregisterEvents(this.form, "submit");
     }
 
     /**
