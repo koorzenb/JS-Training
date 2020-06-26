@@ -41,19 +41,6 @@ button#close {
   grid-area: close;
 }
 
-input#input-details::placeholder {
-  grid-area: details;
-  width: 50%;
-  color: lightsteelblue;
-}
-
-input#input-details {
-  border-radius: 2rem;
-  border: 1px solid lightgray;
-  padding-left: 1rem;
-  height: 100%;
-}
-
 button:focus {
   outline: none;
   cursor: pointer;
@@ -65,9 +52,26 @@ button:hover {
   box-shadow: 0px 3px 10px 3px var(--buttonShadow);
 }
 
+button[hide]:hover {
+  cursor: default;
+}
+
 button:active {
   background-color: var(--darkblue);
   box-shadow: none;
+}
+
+input#input-details::placeholder {
+  grid-area: details;
+  width: 50%;
+  color: lightsteelblue;
+}
+
+input#input-details {
+  border-radius: 2rem;
+  border: 1px solid lightgray;
+  padding-left: 1rem;
+  height: 100%;
 }
 
 input:focus {
@@ -88,9 +92,6 @@ input:hover {
   cursor: default;
 }
 
-input {
-  border: 2px solid currentcolor;
-}
 input:invalid {
   border: 1px solid red;
 }
