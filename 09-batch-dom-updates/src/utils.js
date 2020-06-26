@@ -39,7 +39,6 @@ export function unregisterEvents(singleElement,event) {
                 events.splice(index,1);
                 break;
             }
-            // cannot have break here. Will exit after first iteration
         }
     }
     else {
