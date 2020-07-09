@@ -1,4 +1,73 @@
+:root {
+  --green: rgb(91, 218, 77);
+}
+
+.custom-control {
+  position: relative;
+  display: block;
+  height: 5rem;
+  left: 5rem;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
 .switch {
-    height: 2rem;
-    border-radius: 50%;
+  opacity: 0;
+}
+
+.custom-control-label::before {
+  display: block;
+  position: absolute;
+  left: -2.25rem;
+  width: 4rem;
+  height: 2rem;
+  pointer-events: all;
+  border-radius: 2rem;
+  top: 0.25rem;
+  pointer-events: none;
+  content: '';
+  background-color: #fff;
+  border: #adb5bd solid 1px;
+}
+
+.custom-switch .custom-control-label::after {
+  top: calc(0.25rem + 2px);
+  left: calc(-2.25rem + 2px);
+  width: calc(2rem - 4px);
+  height: calc(2rem - 4px);
+  background-color: #adb5bd;
+  border-radius: 2rem;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    -webkit-transform 0.15s ease-in-out;
+  transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+}
+
+.custom-control-label::after {
+  position: absolute;
+  top: 0.25rem;
+  left: -1.5rem;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  content: '';
+  background: no-repeat 50%/50% 50%;
+}
+
+.switch:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: var(--green);
+  background-color: var(--green);
+}
+
+.custom-switch .switch:checked ~ .custom-control-label::after {
+  background-color: #fff;
+  -webkit-transform: translateX(0.75rem);
+  transform: translateX(2rem);
 }
