@@ -1,0 +1,30 @@
+:root {
+    --sm-background: #266fed;
+    --sm-background-hover: #e91e63;
+}
+
+body {
+    background-image: linear-gradient( cornflowerblue, #03A9F4);
+    display: flex;
+    place-content: center;
+}
+
+nav {
+    display: grid;
+    grid-template-columns: repeat(3, 5rem);
+}
+
+ul {
+    color: white;
+    opacity: 0.5;
+    list-style: none;
+}
+
+li {
+    /* display: grid; */
+    list-style: none;
+    color: white;
+    background-color: ;
+}
+
+li:hover > li
