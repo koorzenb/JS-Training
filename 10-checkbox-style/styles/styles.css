@@ -45,7 +45,7 @@
   left: .125rem;
   width: calc(8rem - 4px);
   height: calc(8rem - 4px);
-  box-shadow: 0.5px 0.5px 1px #adb5bd;
+  box-shadow: 0.5px 0.5px 2px #adb5bd;
   border-radius: 4rem;
   transform: translateX(0px);
   transition: all ease-in .25s;
