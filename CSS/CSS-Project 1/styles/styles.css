@@ -9,7 +9,6 @@ div {
 div div {
   display: flex;
   color: var(--card-text);
-  font-weight: 700;
   background-color: var(--grey);
   width: 8rem;
   height: 6rem;
