@@ -4,21 +4,24 @@ export default class Inflation extends ViewBase {
     async connectedCallback() {
         await super.connectedCallback();
         this.initTemplate();
-        this.createDataStruct();
+        this.data();
     }
 
     initTemplate() {
-        this.mainWindow = document.querySelector("crs-router")
-
-
+        this.mainWindow = document.querySelector("crs-router");
     }
 
     dispose() {
         this.mainWindow = null;
     }
 
+    editItem() {
+        console.log("editting")
+    }
 
-    createDataStruct() {
+
+
+    data() {
         const data = [
             {
                 name: "John",

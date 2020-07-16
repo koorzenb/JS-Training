@@ -13,8 +13,7 @@
     {
       "title": "Inflation",
       "hash": "#inflation",
-      "view": "inflation",
-      "hasStyle": true
+      "view": "inflation"
     },
     {
       "title": "About",

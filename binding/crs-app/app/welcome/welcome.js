@@ -1,7 +1,29 @@
 import {ViewBase} from "./../../node_modules/crs-binding/crs-view-base.js";
 
 export default class Welcome extends ViewBase {
-    async connectedCallback() {
-        await super.connectedCallback();
+
+    async preLoad(setPropertyCallback) {
+        setPropertyCallback("items", [
+            {
+                title: "Big Boss"
+            },
+            {
+                title: "Small Boss"
+            },
+            {
+                title: "Little Boss"
+            }
+        ]);
+    }
+
+    _loaded() {
+        crsbinding.data.updateUI(this,"items");
+        super._loaded();
+    }
+
+    add() {
+        const array = crsbinding.data.array(this,"items");
+        array.push({title: "barend"});
+        console.log(crsbinding.data.getValue(5,"items"));
     }
 }

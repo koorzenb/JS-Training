@@ -1,6 +1,6 @@
 {
     "name": "",
-    "version": "0.0.7",
+    "version": "0.0.6",
     "description": "",
     "main": "index.js",
     "directories": {
@@ -29,7 +29,6 @@
     },
     "dependencies": {
         "crs-binding": "0.0.124",
-        "crs-router": "0.0.48",
-        "local-web-server": "^4.2.1"
+        "crs-router": "0.0.48"
     }
 }
