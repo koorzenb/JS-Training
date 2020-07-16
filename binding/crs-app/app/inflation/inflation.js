@@ -1,28 +1,28 @@
 import {ViewBase} from "./../../node_modules/crs-binding/crs-view-base.js";
 
 export default class Inflation extends ViewBase {
-    async connectedCallback() {
-        await super.connectedCallback();
-        this.initTemplate();
-        this.data();
+
+    _loaded() {
+        crsbinding.data.updateUI(this._dataId, "items");
+        super._loaded();
     }
 
-    initTemplate() {
-        this.mainWindow = document.querySelector("crs-router");
+    newItem() {
+        const items = crsbinding.data.array(this,"items");
+        const title = prompt("Title", `Item ${items.length + 1}`);
+        items.push({title});
+        console.log(crsbinding.data.getValue(5,"items"));
     }
 
-    dispose() {
-        this.mainWindow = null;
-    }
+    removeItem() {}
 
-    editItem() {
+    editFirst() {
         console.log("editting")
     }
 
 
-
-    data() {
-        const data = [
+    async preLoad(setPropertyCallback) {
+        setPropertyCallback("items", [
             {
                 name: "John",
                 lastName: "Doe",
@@ -50,6 +50,6 @@ export default class Inflation extends ViewBase {
                     lineManager: true
                 }
             }
-        ]
+        ])
     }
 }

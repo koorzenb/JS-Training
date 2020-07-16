@@ -16,6 +16,11 @@
       "view": "inflation"
     },
     {
+      "title": "SimpleArray",
+      "hash": "#simpleArray",
+      "view": "simpleArray"
+    },
+    {
       "title": "About",
       "hash": "#about",
       "view": "about",

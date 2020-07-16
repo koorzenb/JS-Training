@@ -17,7 +17,7 @@ export default class Welcome extends ViewBase {
     }
 
     _loaded() {
-        crsbinding.data.updateUI(this,"items");
+        crsbinding.data.updateUI(this._dataId,"items");
         super._loaded();
     }
 
