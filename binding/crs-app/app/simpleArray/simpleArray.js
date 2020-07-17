@@ -20,7 +20,7 @@ export default class SimpleArray extends ViewBase {
         for (const item of proxy) {
             const index = proxy.indexOf(item);
             if(item.isSelected === true) {
-                // TODO: BK - need to use crsbinding property that will remove item
+                // TODO: BK - need to use crsbinding property that will remove item?
                 proxy.splice(index, 1);
             }
         }
