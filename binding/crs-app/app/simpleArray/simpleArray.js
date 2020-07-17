@@ -16,17 +16,18 @@ export default class SimpleArray extends ViewBase {
 
     removeItem() {
         // crsbinding.data.removeObject(7);    // doesnt remove from DOM
-        const items = crsbinding.data.array(this,"items");
-        for (const item of items) {
-            const index = items.indexOf(item);
+        const proxy = crsbinding.data.array(this,"items");
+        for (const item of proxy) {
+            const index = proxy.indexOf(item);
             if(item.isSelected == true) {
-                items.splice(index, 1);
+                proxy.splice(index, 1);
             }
         }
     }
 
     editFirst() {
-        console.log("editting")
+        const items = crsbinding.data.array(this,"items");
+        crsbinding.data.setProperty(items[0], "title", "Hello World");
     }
 
     async preLoad(setPropertyCallback) {
