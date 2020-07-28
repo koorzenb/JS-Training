@@ -1,8 +1,14 @@
 import {ViewBase} from "./../../node_modules/crs-binding/crs-view-base.js";
+import {BindableElement} from "/node_modules/crs-binding/crs-bindable-element.js";
 
 export default class Inflation extends ViewBase {
 
+    connectedCallback() {
+
+    }
+
     _loaded() {
+        // crsbinding.data.updateUI(this._dataId, "headers");
         crsbinding.data.updateUI(this._dataId, "items");
         super._loaded();
     }
@@ -14,14 +20,9 @@ export default class Inflation extends ViewBase {
         console.log(crsbinding.data.getValue(5,"items"));
     }
 
-    removeItem() {}
-
-    editFirst() {
-        console.log("editting")
-    }
-
-
     async preLoad(setPropertyCallback) {
+        // setPropertyCallback("headers", ["matrix", "Foreman", "Admin", "Line Manager"]);
+
         setPropertyCallback("items", [
             {
                 name: "John",
