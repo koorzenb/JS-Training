@@ -1,4 +1,5 @@
 import {ViewBase} from "./../../node_modules/crs-binding/crs-view-base.js";
+// import { getRenderData } from "./model.js";
 
 export default class Inflation extends ViewBase {
 
@@ -22,34 +23,79 @@ export default class Inflation extends ViewBase {
 
 
     async preLoad(setPropertyCallback) {
-        setPropertyCallback("items", [
+        for (const item of this.getRenderData()) {
+            console.log(item.title || item.value);
+            console.log(item);
+            console.log(" ");
+            set conditional binding <condition.if item.title!=null, then output, else item.value> on html 
+        }
+        setPropertyCallback("items", this.getRenderData());
+    }
+
+    // TODO: BK - Could not import getRenderData() from model.js  
+    getRenderData() {
+        /**
+         * matrix       Foreman    Admin   Line Manager
+         * JohnDoe          x       -       -
+         * Peter Smith      x       x       -
+         * Adam Ranger      -       -       x
+         */
+    
+        const people = [
             {
-                name: "John",
-                lastName: "Doe",
-                role: {
-                    foreman: true,
-                    admin: false,
-                    lineManager: false
+                id: 0,
+                title: "John Doe",
+                trades: {
+                    0: true,
+                    1: false,
+                    2: false,
                 }
             },
             {
-                name: "Peter",
-                lastName: "Smith",
-                role: {
-                    foreman: true,
-                    admin: true,
-                    lineManager: false
+                id: 1,
+                title: "Peter Smith",
+                trades: {
+                    0: true,
+                    1: true,
+                    2: false,
                 }
             },
             {
-                name: "Adam",
-                lastName: "Ranger",
-                role: {
-                    foreman: false,
-                    admin: false,
-                    lineManager: true
+                id: 2,
+                title: "Adam Ranger",
+                trades: {
+                    0: false,
+                    1: false,
+                    2: true,
                 }
             }
-        ])
+        ];
+        
+        const trades = [
+            {
+                id: 0,
+                title: "Foreman"
+            },
+            {
+                id: 1,
+                title: "Admin"
+            },
+            {
+                id: 2,
+                title: "Line Manager"
+            }
+        ];
+
+        const result = [{id: -1, title: "matrix", type:"header"}];
+        trades.forEach(item => result.push({id: item.id, title: item.title, type: "header"}));
+    
+        people.forEach(item => {
+            result.push({id: item.id, title: item.title, type:"person"});
+            result.push({person: item.id, trade: 0, value: item.trades["0"], type:"cell"});
+            result.push({person: item.id, trade: 1, value: item.trades["1"], type:"cell"});
+            result.push({person: item.id, trade: 2, value: item.trades["2"], type:"cell"});
+        });
+
+        return result;
     }
 }

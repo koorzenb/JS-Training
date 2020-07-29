@@ -31,3 +31,12 @@ div {
 [hidden] {
     display: none;
 }
+
+li {
+    list-style: none;
+}
+
+h2 {
+    text-align: center;
+    color: var(--cl-primary);
+}
