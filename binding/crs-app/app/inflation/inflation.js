@@ -14,6 +14,7 @@ export default class Inflation extends ViewBase {
 
     async preLoad(setPropertyCallback) {
         setPropertyCallback("items", this.getRenderData());
+        console.log(this.getRenderData());
     }
 
     // TODO: BK - Could not import getRenderData() from model.js  

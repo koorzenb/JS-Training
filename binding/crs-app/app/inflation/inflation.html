@@ -1,21 +1,15 @@
 <h2 data-title.once="Simple arrays">Inflation</h2>
 <ul>
-    <template for="item of items">
-        <li hidden.if="item.title == null">${item.title}</li>
-
-        <!-- see
-        https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use
-
-        and 
-
-        https://github.com/caperaven/training/blob/master/binding/05.inflation.md
-
-         -->
-
-        <!-- TODO: find out if way to set conditional binding on innerText -->
-         <!-- check element output (in concolse) too and investigate -->
-        <span hidden.if="item.value == null">${item.value}</span>
-    </template>
+    <div id="container">
+        <template for="item of items">
+            <li hidden.if="item.title == null">${item.title}</li>
+            <!-- empty container shows if svg != true or false. Find -->
+            <svg class="icon" element.parentNode.removeChild.if="item.title == 'matrix'">
+                <use href="#checked" hidden.if="item.value == null || item.value == false"/>
+                <use href="#unchecked" hidden.if="item.value == null || item.value == true"/>
+            </svg>
+        </template>
+    </div>
 </ul>
 
     <svg id="checked" width="24" height="24" viewBox="0 0 24 24">
@@ -25,3 +19,9 @@
     <svg id="unchecked" width="24" height="24" viewBox="0 0 24 24">
         <path d="M14.59 8L12 10.59 9.41 8 8 9.41 10.59 12 8 14.59 9.41 16 12 13.41 14.59 16 16 14.59 13.41 12 16 9.41 14.59 8zM12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
     </svg>
+
+            <!-- see
+        https://github.com/caperaven/training/blob/master/binding/05.inflation.md
+
+        see screenshot on desktop
+         -->
