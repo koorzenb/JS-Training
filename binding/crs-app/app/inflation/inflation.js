@@ -6,10 +6,6 @@ import {ViewBase} from "./../../node_modules/crs-binding/crs-view-base.js";
 
 export default class Inflation extends ViewBase {
 
-    connectedCallback() {
-
-    }
-
     _loaded() {
         // crsbinding.data.updateUI(this._dataId, "headers");
         crsbinding.data.updateUI(this._dataId, "items");
@@ -17,12 +13,6 @@ export default class Inflation extends ViewBase {
     }
 
     async preLoad(setPropertyCallback) {
-        for (const item of this.getRenderData()) {
-            console.log(item.title || item.value);
-            console.log(item);
-            console.log(" ");
-            set conditional binding <condition.if item.title!=null, then output, else item.value> on html 
-        }
         setPropertyCallback("items", this.getRenderData());
     }
 
