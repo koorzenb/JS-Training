@@ -1,6 +1,9 @@
 import {ViewBase} from "./../../node_modules/crs-binding/crs-view-base.js";
 // import { getRenderData } from "./model.js";
 
+// Expressions: https://github.com/caperaven/crs-binding-documentation/blob/master/3.%20binding-expressions.md
+// Project: https://github.com/caperaven/training/blob/master/binding/05.inflation.md
+
 export default class Inflation extends ViewBase {
 
     connectedCallback() {
@@ -11,13 +14,6 @@ export default class Inflation extends ViewBase {
         // crsbinding.data.updateUI(this._dataId, "headers");
         crsbinding.data.updateUI(this._dataId, "items");
         super._loaded();
-    }
-
-    newItem() {
-        const items = crsbinding.data.array(this,"items");
-        const title = prompt("Title", `Item ${items.length + 1}`);
-        items.push({title});
-        console.log(crsbinding.data.getValue(5,"items"));
     }
 
     async preLoad(setPropertyCallback) {
