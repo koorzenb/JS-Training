@@ -6,10 +6,10 @@ import {ViewBase} from "./../../node_modules/crs-binding/crs-view-base.js";
 
 export default class Inflation extends ViewBase {
 
-    _loaded() {
+    load() {
         // crsbinding.data.updateUI(this._dataId, "headers");
         crsbinding.data.updateUI(this._dataId, "items");
-        super._loaded();
+        super.load();
     }
 
     async preLoad(setPropertyCallback) {
