@@ -4,8 +4,8 @@
             <div remove.if="item.title == null ? true">${item.title}</div>
             
             <svg class="icon" remove.if="item.title != null ? true">
-                <use href="#checked" hidden.if="item.value == null || item.value == false ? true"/>
-                <use href="#unchecked" remove.if="item.value == null || item.value == true ? true"/>
+                <use href="#checked" remove.if="item.value == null || item.value == false ? true"/>
+                <use href="#unchecked" hidden.if="item.value == null || item.value == true ? true"/>
             </svg>
         </template>
     </div>
