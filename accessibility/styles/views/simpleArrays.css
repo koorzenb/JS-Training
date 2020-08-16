@@ -1,0 +1,8 @@
+.done {
+    opacity: 0.5;
+}
+
+[aria-selected="true"] {
+    border: #266fed solid 1px;
+    background: #266fed20;
+}

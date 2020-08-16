@@ -1,0 +1,45 @@
+{
+  "default": "welcome",
+  "root": "app",
+  "auto-nav": true,
+  "auto-hide": true,
+  "routes": [
+    {
+      "title": "Welcome",
+      "hash": "#welcome",
+      "view": "welcome",
+      "hasStyle": true
+    },
+    {
+      "title": "Inflation",
+      "hash": "#inflation",
+      "view": "inflation",
+      "hasStyle": true
+    },
+    {
+      "title": "Simple Array",
+      "hash": "#simpleArray",
+      "view": "simpleArray"
+    },
+    {
+      "title": "Web Accessibility - Project1",
+      "hash": "#project1",
+      "view": "project1",
+      "hasStyle": true
+    },
+    {
+      "title": "About",
+      "hash": "#about",
+      "view": "about",
+      "html-only": true,
+      "hasStyle": true
+    },
+    {
+      "title": "404",
+      "hash": "#404",
+      "view": "404",
+      "html-only": true,
+      "hasStyle": true
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+article {
+    margin: 1rem;
+    border: 1px solid gray;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: "img section";
+}
+
+img {
+    grid-area: img;
+    width: 140px;
+    height: 90px;
+}
+
+section {
+    display: grid;
+    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-areas: "header main footer";
+}
+
+section header {
+    grid-area: header;
+}
+
+section main {
+    grid-area: main;
+}
+
+section a {
+    grid-area: footer;
+    display: flex;
+    justify-content: right;
+    font-weight: 700;
+    text-decoration: none;
+}
