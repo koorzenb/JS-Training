@@ -20,12 +20,12 @@ export default class Project1 extends ViewBase {
             {
                 id: 0,
                 position: "first",
-                link: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article"
+                link: "https://github.com/caperaven/training/blob/master/accessibility/02.project1.md"
             },
             {
                 id: 1,
                 position: "second",
-                link: "https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Images_in_HTML"
+                link: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article"
             },
             {
                 id: 2,
