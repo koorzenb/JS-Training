@@ -30,7 +30,7 @@ export default class Project1 extends ViewBase {
             {
                 id: 2,
                 position: "third",
-                link: "https://www.w3.org/TR/wai-aria-practices/#tabpanel"
+                link: "https://www.w3.org/TR/wai-aria-practices/#feed"
             }
         ];
 
