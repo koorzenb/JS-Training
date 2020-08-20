@@ -1,5 +1,5 @@
 {
-  "default": "welcome",
+  "default": "project1",
   "root": "app",
   "auto-nav": true,
   "auto-hide": true,

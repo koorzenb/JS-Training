@@ -15,20 +15,27 @@ export default class Project1 extends ViewBase {
         console.log(this.getRenderData());
     }
 
+    keydown(event) {
+        console.log(event);
+    }
+
     getRenderData() {
         const articles = [
             {
                 id: 0,
+                ariaLabelledby: 0,
                 position: "first",
                 link: "https://github.com/caperaven/training/blob/master/accessibility/02.project1.md"
             },
             {
                 id: 1,
+                ariaLabelledby: 1,
                 position: "second",
                 link: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article"
             },
             {
                 id: 2,
+                ariaLabelledby: 2,
                 position: "third",
                 link: "https://www.w3.org/TR/wai-aria-practices/#feed"
             }
@@ -36,7 +43,7 @@ export default class Project1 extends ViewBase {
 
         const result = [];
          articles.forEach(item => {
-            result.push({article: item.id, position: item.position, link: item.link});
+            result.push({ariaLabelledby: item.ariaLabelledby, position: item.position, link: item.link});
          });
 
          return result;
