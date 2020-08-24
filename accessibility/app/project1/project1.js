@@ -17,6 +17,7 @@ export default class Project1 extends ViewBase {
 
     keydown(event) {
         console.log(event);
+        // TODO: figure out how to navigate using keyboard. Target ids
     }
 
     getRenderData() {
