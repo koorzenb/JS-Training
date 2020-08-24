@@ -18,6 +18,14 @@ export default class Project1 extends ViewBase {
     keydown(event) {
         console.log(event);
         // TODO: figure out how to navigate using keyboard. Target ids
+        // get event
+        // based on event, call key direction function
+        
+        // function keyDir(event){
+            // id.focus();
+        // }
+        const item2 = document.querySelector('[data-id="2"]');
+        item2.focus();
     }
 
     getRenderData() {
@@ -44,7 +52,7 @@ export default class Project1 extends ViewBase {
 
         const result = [];
          articles.forEach(item => {
-            result.push({ariaLabelledby: item.ariaLabelledby, position: item.position, link: item.link});
+            result.push({id: item.id, ariaLabelledby: item.ariaLabelledby, position: item.position, link: item.link});
          });
 
          return result;

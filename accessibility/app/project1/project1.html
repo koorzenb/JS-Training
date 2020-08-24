@@ -2,7 +2,7 @@
 <h3>Helpful articles</h3>
 <div id="container">
     <template for.once="item of items">
-        <article class="article-item" tabindex="0" keydown.call="keydown($event)">
+        <article class="article-item" tabindex="0" keydown.call="keydown($event)" data-id="${item.id}">
             <img src="/app/project1/images/bird.png" alt="bird in a nest" />
             <section>
                 <h4 class="article-header" aria-labelledby="${item.ariaLabelledby}" data-title.once="position">This is the ${item.position} article</h4>
