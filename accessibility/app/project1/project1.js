@@ -24,6 +24,7 @@ export default class Project1 extends ViewBase {
         // function keyDir(event){
             // id.focus();
         // }
+        const itemsLength = this.getRenderData().length;
         const item2 = document.querySelector('[data-id="2"]');
         item2.focus();
     }
