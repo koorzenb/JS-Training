@@ -1,5 +1,5 @@
 {
-  "default": "welcome",
+  "default": "simpleBinding",
   "root": "app",
   "auto-nav": true,
   "auto-hide": true,
@@ -8,6 +8,12 @@
       "title": "Welcome",
       "hash": "#welcome",
       "view": "welcome",
+      "hasStyle": true
+    },
+    {
+      "title": "Simple Binding",
+      "hash": "#simpleBinding",
+      "view": "simpleBinding",
       "hasStyle": true
     },
     {
