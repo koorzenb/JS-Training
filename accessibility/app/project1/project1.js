@@ -22,11 +22,11 @@ export default class Project1 extends ViewBase {
         // based on event, call key direction function
         
         // function keyDir(event){
-            // id.focus();
-        // }
-        const itemsLength = this.getRenderData().length;
-        const item2 = document.querySelector('[data-id="2"]');
-        item2.focus();
+        //     // id.focus();
+        // // }
+        // const itemsLength = this.getRenderData().length;
+        // const item2 = document.querySelector('[data-id="2"]');
+        // item2.focus();
     }
 
     getRenderData() {
