@@ -11,15 +11,15 @@
       "hasStyle": true
     },
     {
-      "title": "Inflation",
-      "hash": "#inflation",
-      "view": "inflation",
-      "hasStyle": true
-    },
-    {
       "title": "Simple Binding",
       "hash": "#simpleBinding",
       "view": "simpleBinding",
+      "hasStyle": true
+    },
+    {
+      "title": "Inflation",
+      "hash": "#inflation",
+      "view": "inflation",
       "hasStyle": true
     },
     {
