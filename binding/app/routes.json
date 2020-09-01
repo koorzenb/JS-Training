@@ -1,5 +1,5 @@
 {
-  "default": "welcome",
+  "default": "simpleBinding",
   "root": "app",
   "auto-nav": true,
   "auto-hide": true,
@@ -14,6 +14,12 @@
       "title": "Inflation",
       "hash": "#inflation",
       "view": "inflation",
+      "hasStyle": true
+    },
+    {
+      "title": "Simple Binding",
+      "hash": "#simpleBinding",
+      "view": "simpleBinding",
       "hasStyle": true
     },
     {
