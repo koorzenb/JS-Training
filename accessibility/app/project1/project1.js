@@ -20,10 +20,6 @@ export default class Project1 extends ViewBase {
         try {
             this[`${event.key}`](event);            
         } catch (error) {}
-
-        this.itemsLength = this.getProperty("items").length;
-        const item2 = document.querySelector('[data-id="2"]');
-        item2.focus();
     }
 
     ArrowDown(event) {
