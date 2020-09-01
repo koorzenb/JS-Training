@@ -12,22 +12,29 @@ export default class Project1 extends ViewBase {
 
     async preLoad(setPropertyCallback) {
         setPropertyCallback("items", this.getRenderData());
+
         console.log(this.getRenderData());
     }
 
     keydown(event) {
-        console.log(event);
-        // TODO: figure out how to navigate using keyboard. Target ids
-        // get event
-        // based on event, call key direction function
-        
-        // function keyDir(event){
-            // id.focus();
-        // }
-        const itemsLength = this.getRenderData().length;
+        try {
+            this[`${event.key}`](event);            
+        } catch (error) {}
+
+        this.itemsLength = this.getProperty("items").length;
         const item2 = document.querySelector('[data-id="2"]');
         item2.focus();
     }
+
+    ArrowDown(event) {
+        console.log("down");
+    }
+
+    ArrowUp(event) {
+        console.log("up");
+        // get focus on selected item/id
+    }
+
 
     getRenderData() {
         const articles = [
