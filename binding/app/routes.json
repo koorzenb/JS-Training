@@ -1,5 +1,5 @@
 {
-  "default": "simpleBinding",
+  "default": "Welcome",
   "root": "app",
   "auto-nav": true,
   "auto-hide": true,

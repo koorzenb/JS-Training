@@ -7,19 +7,29 @@ import {ViewBase} from "./../../node_modules/crs-binding/crs-view-base.js";
 export default class Inflation extends ViewBase {
 
     load() {
-        crsbinding.data.updateUI(this._dataId, "items");
+        crsbinding.data.updateUI(this._dataId, "label");
+        // crsbinding.data.updateUI(this._dataId, "data");
         super.load();
     }
 
     async preLoad(setPropertyCallback) {
-        const value = {
+        const data = {
             firstName: "John",
             lastName: "Doe",
             age: 20
         }
         
-        this.setProperty("data", value)
-        // TODO: create buttons
+        const label = {
+            firstName: "First Name",
+            lastName: "First Name",
+            age: "Age"
+        }
+
+        // setPropertyCallback("data", data);
+        setPropertyCallback("label", label);
+        console.log(label);
+
+        // TODO: compare to inflation and create buttons
     }
 
     getRenderData() {    
