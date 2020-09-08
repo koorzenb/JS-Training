@@ -21,23 +21,26 @@ export default class Project1 extends ViewBase {
             {
                 id: 0,
                 position: "first",
-                link: "https://github.com/caperaven/training/blob/master/accessibility/02.project1.md"
+                link: "https://github.com/caperaven/training/blob/master/accessibility/02.project1.md",
+                imgTitle: "Bird in a nest"
             },
             {
                 id: 1,
                 position: "second",
-                link: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article"
+                link: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article",
+                imgTitle: "Bird in a nest"
             },
             {
                 id: 2,
                 position: "third",
-                link: "https://www.w3.org/TR/wai-aria-practices/#feed"
+                link: "https://www.w3.org/TR/wai-aria-practices/#feed",
+                imgTitle: "Bird in a nest"
             }
         ];
 
         const result = [];
          articles.forEach(item => {
-            result.push({id: item.id, position: item.position, link: item.link});
+            result.push({id: item.id, position: item.position, link: item.link, imgTitle: item.imgTitle});
          });
 
          return result;

@@ -3,7 +3,7 @@
 <div id="container">
     <template for.once="item of items">
         <article class="article-item" data-id="${item.id}">
-            <img src="/app/project1/images/bird.png" alt="bird in a nest" />
+            <img src="/app/project1/images/bird.png" alt="bird in a nest" title="${item.imgTitle}"/>
             <section>
                 <h4 class="article-header" data-position="${item.position}">This is the ${item.position} article</h4>
                 <p class="article-content">A short blurb about the article. The main content will be on another screen when clicking on the link</p>

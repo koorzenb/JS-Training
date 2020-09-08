@@ -29,10 +29,12 @@ section {
 .article-header {
     grid-area: header;
     display: flex;
+    align-items: center;
 }
 
 .article-content {
     grid-area: main;
+    margin: 0;
 }
 
 .article-link {
@@ -44,8 +46,4 @@ section {
     align-items: center;
     font-weight: 700;
     text-decoration: none;
-}
-
-h4 {
-    align-items: center;
 }
