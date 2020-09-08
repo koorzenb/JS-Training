@@ -83,6 +83,7 @@ export class CreateAndUpdate {
 
 
             // await this.writeSchema(createSchema, create, dashboardSchema.resource);
+
             this.addSaveAndUpdate(createSchema);
             console.log(`editted ${options.create}`);
         }
@@ -90,17 +91,43 @@ export class CreateAndUpdate {
 
     async addSaveAndUpdate(schema) {
 
+        console.log(`updating ${schema.resource}`);
         const schemaClone = await this.clone(schema);
 
         // add translation to schema variables
-        console.log(schemaClone.variables.translations.titles);
-        schemaClone.variables.translations.titles.saveAndUpdate = "Save and Update2";
-        console.log(schemaClone.variables.translations.titles);
-        // add property "saveAndUpdate" to translations
+        schemaClone.variables.translations.titles.saveAndUpdate = "Save and Update";
         // do error checking: if no translations or variables, output to list
 
         // add action
+        let maxExistingId = schema.actions.length > 0 ? schema.actions.length + 1 : 1;
+        const newAction = {
+            "id": maxExistingId,
+            "action": "context.saveAndUpdate",
+            "parameters": {
+                "activity-id": 10001
+            }
+            }
+
+        console.log(schema.resource, schemaClone.actions);
+        schemaClone.actions.push(newAction);
+
         // add button to group
+        const newButton = {
+            "element": "button",
+            "title": "@translations.titles.labelButtonSaveAndUpdate",
+            "action": 3,
+            "attributes": {
+              "data-action": 2
+            }
+        }
+
+        // const footerIndex = schema.body.elements.findIndex(x => x.styles == "dialog-footer")
+        // const footerArray = schema.body.elements[footerIndex]
+        // footerArray.findIndex(x => x.element == "dropdown-button")
+
+        // console.log(schema.body.elements[footerIndex][dropdownIndex]);
+
+        // console.log(schema.body.elements);
     }
 
     async addLookupsToSchema(lookups, fromSchema, lookupSchema) {
