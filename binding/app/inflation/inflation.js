@@ -16,16 +16,8 @@ export default class Inflation extends ViewBase {
         setPropertyCallback("items", this.getRenderData());
         console.log(this.getRenderData());
     }
-
-    // TODO: BK - Could not import getRenderData() from model.js  
-    getRenderData() {
-        /**
-         * matrix       Foreman    Admin   Line Manager
-         * JohnDoe          x       -       -
-         * Peter Smith      x       x       -
-         * Adam Ranger      -       -       x
-         */
     
+    getRenderData() {    
         const people = [
             {
                 id: 0,
