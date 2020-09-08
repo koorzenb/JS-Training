@@ -1,0 +1,15 @@
+{
+  "name": "schema-converter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "convert.js",
+  "type": "module",
+  "scripts": {
+    "run": "node program.js"
+  },
+  "author": "Barend",
+  "license": "ISC",
+  "dependencies": {
+    "walkdir": "^0.4.1"
+  }
+}

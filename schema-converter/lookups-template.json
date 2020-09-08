@@ -1,0 +1,17 @@
+{
+    "type": "Lookups",
+    "variables": {
+        "translations": {
+            "titles": {
+                "labelCode": "Code",
+                "labelDescription": "Description"
+            }
+        }
+    },
+    "perspectives": [],
+    "lookups": [],
+    "previews": [],
+    "datasources": [],
+    "templates": [],
+    "resource": "ResourceName"
+}
