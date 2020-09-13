@@ -17,6 +17,12 @@
       "hasStyle": true
     },
     {
+      "title": "Project2",
+      "hash": "#project2",
+      "view": "project2",
+      "hasStyle": true
+    },
+    {
       "title": "About",
       "hash": "#about",
       "view": "about",
