@@ -10,12 +10,12 @@ export default class Project2 extends ViewBase {
     }
 
     async preLoad(setPropertyCallback) {
-        setPropertyCallback("items", this.getRenderData());
-        console.log(this.getRenderData());
+        setPropertyCallback("items", this.getRenderData().result);
+        setPropertyCallback("banner", this.getRenderData().banner);
+        console.log(this.getRenderData().result);
     }
 
     getRenderData() {
-// how to load multiple objs. Speak to Rabie
         const navigation = [
             {
                 title: "Home",
