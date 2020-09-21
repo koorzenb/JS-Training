@@ -3,10 +3,12 @@
 <h2 data-banner.once="banner">${banner}</h2>
 
 <nav> Site Navigation
-<template for.once="item of items">
-        <a class="nav-link" href="link">${title}</a>
+    <template for.once="item of items">
+        <a class="nav-link" href="item.link">${item.title}</a>
     </template>
 </nav>
+
+
     <!-- 
 <main>
     <h3 data-mainTitle="main.welcome.title">${main.welcome.title}</h3>

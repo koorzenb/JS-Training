@@ -6,6 +6,7 @@ export default class Project2 extends ViewBase {
 
     load() {
         crsbinding.data.updateUI(this._dataId, "items");
+        crsbinding.data.updateUI(this._dataId, "banner");
         super.load();
     }
 
@@ -18,6 +19,7 @@ export default class Project2 extends ViewBase {
     getRenderData() {
         const navigation = [
             {
+                type: "navigation",
                 title: "Home",
                 link: "www.google.com"
             },
@@ -31,8 +33,10 @@ export default class Project2 extends ViewBase {
             }            
         ]
 
+        //add main to group above, but give different "type"
         const main = [
             {
+                type: "main",
                 title: "Welcome",
                 body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst quisque sagittis purus sit amet volutpat consequat. "
             },
@@ -49,7 +53,7 @@ export default class Project2 extends ViewBase {
         const result = [];
         const banner = ["Logo"];
         navigation.forEach(item => {
-            result.push({title: item.title}, {link: item.link})
+            result.push({title: item.title, link: item.link})
         })
 
         return {banner, result};
