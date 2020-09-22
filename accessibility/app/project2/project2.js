@@ -17,43 +17,63 @@ export default class Project2 extends ViewBase {
     }
 
     getRenderData() {
-        const navigation = [
+        const items = [
             {
                 type: "navigation",
                 title: "Home",
                 link: "www.google.com"
             },
             {
+                type: "navigation",
                 title: "About",
                 link: "www.google.com"
             },
             {
+                type: "navigation",
                 title: "Contact",
                 link: "www.google.com"
-            }            
-        ]
-
-        //add main to group above, but give different "type"
-        const main = [
+            },
             {
                 type: "main",
                 title: "Welcome",
-                body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst quisque sagittis purus sit amet volutpat consequat. "
+                body: "1Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst quisque sagittis purus sit amet volutpat consequat. "
             },
             {
+                type: "main",
                 title: "What we do",
-                body: "Leo a diam sollicitudin tempor id eu. Vitae tortor condimentum lacinia quis. Ipsum a arcu cursus vitae congue. Enim facilisis gravida neque convallis a cras semper."
+                body: "2Leo a diam sollicitudin tempor id eu. Vitae tortor condimentum lacinia quis. Ipsum a arcu cursus vitae congue. Enim facilisis gravida neque convallis a cras semper."
             },
             {
-                title: "Welcome",
-                body: "Id diam maecenas ultricies mi eget mauris pharetra et. Mauris rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar."
+                type: "main",
+                title: "Why we do it",
+                body: "3Id diam maecenas ultricies mi eget mauris pharetra et. Mauris rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar."
             },
+            {
+                type: "aside",
+                title: "Banner",
+            },
+            {
+                type: "aside",
+                title: "Navigation",
+            },
+            {
+                type: "aside",
+                title: "Main",
+            },
+            {
+                type: "aside",
+                title: "Aside",
+            },
+            {
+                type: "aside",
+                title: "Footter",
+            }
         ]
 
         const result = [];
         const banner = ["Logo"];
-        navigation.forEach(item => {
-            result.push({title: item.title, link: item.link})
+        items.forEach(item => {
+            result.push({type: item.type, title: item.title, link: item.link, body: item.body})
         })
 
         return {banner, result};

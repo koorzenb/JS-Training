@@ -2,33 +2,29 @@
 
 <h2 data-banner.once="banner">${banner}</h2>
 
-<nav> Site Navigation
+<nav> 
+    <h2>Site Navigation</h2> 
     <template for.once="item of items">
-        <a class="nav-link" href="item.link">${item.title}</a>
+        <a class="nav" hidden.if="item.type != 'navigation' ? true" href="item.link">${item.title}</a>
     </template>
 </nav>
 
-
-    <!-- 
 <main>
-    <h3 data-mainTitle="main.welcome.title">${main.welcome.title}</h3>
-    <p>${main.welcome.body}</p>
-
-    <h4 data-p2="main.p2.title">${main.p2.title}</h4>
-    <p>${main.p2.body}</p>
-
-    <h4 data-p3="main.p3.title">${main.p3.title}</h4>
-    <p>${main.p3.body}</p>
+    <h2>Welcome to our page</h2>
+    <template for.once="item of items">
+        <h3 class="main" hidden.if="item.type != 'main' ? true">${item.title}</h3>
+        <p class="main" hidden.if="item.type != 'main' ? true">${item.body}</p>
+    </template>
 </main>
 
-<aside>
-    <a class="aside-link" href="aside.banner.link">${aside.banner.title}</a>
-    <a class="aside-link" href="aside.nav.link">${aside.nav.title}</a>
-    <a class="aside-link" href="aside.main.link">${aside.main.title}</a>
-    <a class="aside-link" href="aside.aside.link">${aside.aside.title}</a>
-    <a class="aside-link" href="aside.footer.link">${aside.footer.title}</a>
-</aside>
 
+    <h2>Help Docs</h2>
+    <template for.once="item of items">
+        <h3 class="main" hidden.if="item.type != 'aside' ? true">${item.title}</h3>
+        <p class="main" hidden.if="item.type != 'aside' ? true">${item.body}</p>
+    </template>
+
+    <!-- 
 <footer>
     <p>Copyright 2020</p>
     <a class="footer-link" href="footer.terms.link">${footer.terms.title}</a>
