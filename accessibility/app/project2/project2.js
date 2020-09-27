@@ -17,7 +17,6 @@ export default class Project2 extends ViewBase {
     }
 
     getRenderData() {
-        //use schema as example of data struct
         const items = [
             {
                 type: "navigation",
@@ -67,7 +66,17 @@ export default class Project2 extends ViewBase {
             },
             {
                 type: "aside",
-                title: "Footter",
+                title: "Footer",
+            },
+            {
+                type: "footer",
+                title: "Terms",
+                link: "www.google.com"   
+            },
+            {
+                type: "footer",
+                title: "Support",
+                link: "www.google.com"   
             }
         ]
 

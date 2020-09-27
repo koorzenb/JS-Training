@@ -1,32 +1,40 @@
 <h1 data-title.once="title">${title}</h1>
 
-<h2 data-banner.once="banner">${banner}</h2>
+<myContainer>
+    <!-- spec says "banner", but no such standard element. Set to "header" -->
+    <header>
+        <h2 class="banner">${banner}</h2>
+    </header>
 
-<nav> 
-    <h2>Site Navigation</h2> 
-    <template for.once="item of items">
-        <a class="nav" hidden.if="item.type != 'navigation' ? true" href="item.link">${item.title}</a>
-    </template>
-</nav>
+    <nav> 
+        <h2>Site Navigation</h2> 
+        <template for.once="item of items">
+            <a class="nav" hidden.if="item.type != 'navigation' ? true" href="item.link">${item.title}</a>
+        </template>
+    </nav>
 
-<main>
-    <h2>Welcome to our page</h2>
-    <template for.once="item of items">
-        <h3 class="main" hidden.if="item.type != 'main' ? true">${item.title}</h3>
-        <p class="main" hidden.if="item.type != 'main' ? true">${item.body}</p>
-    </template>
-</main>
+    <main>
+        <h2>Welcome to our page</h2>
+        <template for.once="item of items">
+            <h3 class="main" hidden.if="item.type != 'main' ? true">${item.title}</h3>
+            <p class="main" hidden.if="item.type != 'main' ? true">${item.body}</p>
+        </template>
+    </main>
 
+    <!-- bug: cannot use <aside> -->
+    <div class="aside">
+        <h2 class="aside">Help Docs</h2>
+        <template for.once="item of items">
+            <h3 class="aside" hidden.if="item.type != 'aside' ? true">${item.title}</h3>
+        </template>
+    </div>
 
-    <h2>Help Docs</h2>
-    <template for.once="item of items">
-        <h3 class="main" hidden.if="item.type != 'aside' ? true">${item.title}</h3>
-        <p class="main" hidden.if="item.type != 'aside' ? true">${item.body}</p>
-    </template>
-
-    <!-- 
-<footer>
-    <p>Copyright 2020</p>
-    <a class="footer-link" href="footer.terms.link">${footer.terms.title}</a>
-    <a class="footer-link" href="footer.support.link">${footer.support.title}</a>
-</footer> -->
+        
+    <footer>
+        <p class="footer">Copyright 2020</p>
+        <div>
+            <a class="footer" href="item.link">Terms</a>
+            <a class="footer" href="item.link">Support</a>
+        </div>
+    </footer>
+</myContainer>

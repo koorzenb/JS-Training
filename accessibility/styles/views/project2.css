@@ -1,0 +1,32 @@
+myContainer {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 4fr 1fr;
+    grid-template-areas:
+        'header header  header'
+        'nav    main    aside'
+        'footer footer  footer';
+}
+
+myContainer header {
+
+}
+
+myContainer nav {
+    grid-area: nav;
+}
+
+myContainer main {
+    grid-area: main;
+}
+
+myContainer .aside {
+    grid-area: aside;
+}
+
+myContainer footer{
+    grid-area: footer;
+}
+
+
+
