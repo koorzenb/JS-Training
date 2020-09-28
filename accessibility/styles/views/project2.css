@@ -9,7 +9,7 @@ myContainer {
 }
 
 myContainer header {
-
+    grid-area: header;
 }
 
 myContainer nav {

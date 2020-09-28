@@ -22,7 +22,7 @@
     </main>
 
     <!-- bug: cannot use <aside> -->
-    <div class="aside">
+    <div role="aside" class="aside">
         <h2 class="aside">Help Docs</h2>
         <template for.once="item of items">
             <h3 class="aside" hidden.if="item.type != 'aside' ? true">${item.title}</h3>
