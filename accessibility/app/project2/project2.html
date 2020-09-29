@@ -16,20 +16,21 @@
     <main>
         <h2>Welcome to our page</h2>
         <template for.once="item of items">
-            <h3 class="main" hidden.if="item.type != 'main' ? true">${item.title}</h3>
+            <h3 class="main" remove.if="item.type != 'main' ? true">${item.title}</h3>
             <!-- <p class="main" hidden.if="item.type != 'main' ? true">${item.body}</p> -->
             <p class="main">${item.body}</p>
         </template>
     </main>
 
     <!-- bug: cannot use <aside> -->
-    <div role="aside" class="aside">
+        <aside>
+    <!-- <div role="aside" class="aside"> -->
         <h2 class="aside">Help Docs</h2>
         <template for.once="item of items">
             <h3 class="aside" hidden.if="item.type != 'aside' ? true">${item.title}</h3>
         </template>
-    </div>
-
+    <!-- </div> -->
+    </aside>
         
     <footer>
         <p class="footer">Copyright 2020</p>

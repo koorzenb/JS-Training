@@ -27,7 +27,8 @@ myContainer main {
     grid-area: main;
 }
 
-myContainer > .aside {
+/* check inherited styling */
+myContainer aside {
     grid-area: aside;
     border: 1px solid #F4F4F4;
 }

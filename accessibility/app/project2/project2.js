@@ -17,6 +17,7 @@ export default class Project2 extends ViewBase {
     }
 
     getRenderData() {
+        // rather have items, nav, main, etc. 
         const items = [
             {
                 type: "navigation",
