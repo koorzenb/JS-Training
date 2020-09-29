@@ -17,7 +17,8 @@
         <h2>Welcome to our page</h2>
         <template for.once="item of items">
             <h3 class="main" hidden.if="item.type != 'main' ? true">${item.title}</h3>
-            <p class="main" hidden.if="item.type != 'main' ? true">${item.body}</p>
+            <!-- <p class="main" hidden.if="item.type != 'main' ? true">${item.body}</p> -->
+            <p class="main">${item.body}</p>
         </template>
     </main>
 
