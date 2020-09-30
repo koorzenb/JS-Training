@@ -1,11 +1,17 @@
 /* https://github.com/caperaven/training/blob/master/accessibility/03.project2.md */
+:root {
+    --projHeaderHeight: 3rem;
+}
+
+h1 {
+    height: var(--projHeaderHeight);
+}
 
 myContainer {
-    /* use calc(100% - var(--headerHeight)) */
+    height: calc(100% - var(--projHeaderHeight)); 
     display: grid;
-    height: 100%;
     grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 1fr 4fr 2rem;
+    grid-template-rows: 4rem 1fr 4rem;
     grid-template-areas:
         'header header  header'
         'nav    main    aside'
@@ -16,11 +22,14 @@ myContainer header {
     grid-area: header;
     background-color: #DBDBDB;
     color: #5C5F6B;
+    justify-content: left;
+    padding: 1rem;
 }
 
 myContainer nav {
     grid-area: nav;
     background-color: #F4F4F4;
+    padding: 1rem;
 }
 
 myContainer main {
@@ -37,6 +46,8 @@ myContainer footer{
     grid-area: footer;
     background-color: #282C37;
     color: white;
+    justify-content: space-between;
+    padding: 1rem;
 }
 
 myContainer footer a {

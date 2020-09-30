@@ -7,14 +7,14 @@
     </header>
 
     <nav> 
-        <h2>Site Navigation</h2> 
+        <h4>Site Navigation</h4> 
         <template for.once="item of items">
             <a class="nav" hidden.if="item.type != 'navigation' ? true" href="item.link">${item.title}</a>
         </template>
     </nav>
 
     <main>
-        <h2>Welcome to our page</h2>
+        <h3>Welcome to our page</h3>
         <template for.once="item of items">
             <h3 class="main" remove.if="item.type != 'main' ? true">${item.title}</h3>
             <!-- <p class="main" hidden.if="item.type != 'main' ? true">${item.body}</p> -->
@@ -25,7 +25,7 @@
     <!-- bug: cannot use <aside> -->
         <aside>
     <!-- <div role="aside" class="aside"> -->
-        <h2 class="aside">Help Docs</h2>
+        <h4 class="aside">Help Docs</h4>
         <template for.once="item of items">
             <h3 class="aside" hidden.if="item.type != 'aside' ? true">${item.title}</h3>
         </template>
@@ -36,6 +36,7 @@
         <p class="footer">Copyright 2020</p>
         <div>
             <a class="footer" href="item.link">Terms</a>
+            <sep> | </sep>
             <a class="footer" href="item.link">Support</a>
         </div>
     </footer>
