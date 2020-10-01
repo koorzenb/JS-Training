@@ -8,16 +8,16 @@
 
     <nav> 
         <h4>Site Navigation</h4> 
-        <template for.once="item of items">
-            <a class="nav" hidden.if="item.type != 'navigation' ? true" href="item.link">${item.title}</a>
+        <template for.once="item of nav">
+            <a class="nav" href="item.link">${item.title}</a>
         </template>
     </nav>
 
     <main>
         <h3>Welcome to our page</h3>
-        <template for.once="item of items">
-            <h3 class="main" remove.if="item.type != 'main' ? true">${item.title}</h3>
-            <!-- <p class="main" hidden.if="item.type != 'main' ? true">${item.body}</p> -->
+        <template for.once="item of main">
+            <!-- check with Rabie - hide h3 to show p -->
+            <h3 class="main">${item.title}</h3>
             <p class="main">${item.body}</p>
         </template>
     </main>
@@ -26,8 +26,8 @@
         <aside>
     <!-- <div role="aside" class="aside"> -->
         <h4 class="aside">Help Docs</h4>
-        <template for.once="item of items">
-            <h3 class="aside" hidden.if="item.type != 'aside' ? true">${item.title}</h3>
+        <template for.once="item of aside">
+            <h4 class="aside">${item.title}</h4>
         </template>
     <!-- </div> -->
     </aside>
@@ -35,9 +35,9 @@
     <footer>
         <p class="footer">Copyright 2020</p>
         <div>
-            <a class="footer" href="item.link">Terms</a>
+            <a class="footer" href="www.google.com">Terms</a>
             <sep> | </sep>
-            <a class="footer" href="item.link">Support</a>
+            <a class="footer" href="www.google.com">Support</a>
         </div>
     </footer>
 </myContainer>
