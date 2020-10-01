@@ -34,12 +34,18 @@ myContainer nav {
 
 myContainer main {
     grid-area: main;
+    padding: 1rem;
 }
 
 /* check inherited styling */
-myContainer aside {
+myContainer > aside {
     grid-area: aside;
     border: 1px solid #F4F4F4;
+    background: none;
+    color: var(--text);
+    box-shadow: none;
+    position: relative;
+    transform: none;
 }
 
 myContainer footer{
