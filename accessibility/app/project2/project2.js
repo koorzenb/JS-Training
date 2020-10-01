@@ -43,30 +43,33 @@ export default class Project2 extends ViewBase {
         const main = [
             {
                 title: "Welcome",
-                body: "1Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst quisque sagittis purus sit amet volutpat consequat. "
+                body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst quisque sagittis purus sit amet volutpat consequat. "
             },
             {
                 title: "What we do",
-                body: "2Leo a diam sollicitudin tempor id eu. Vitae tortor condimentum lacinia quis. Ipsum a arcu cursus vitae congue. Enim facilisis gravida neque convallis a cras semper."
+                body: "Leo a diam sollicitudin tempor id eu. Vitae tortor condimentum lacinia quis. Ipsum a arcu cursus vitae congue. Enim facilisis gravida neque convallis a cras semper."
             },
             {
                 title: "Why we do it",
-                body: "3Id diam maecenas ultricies mi eget mauris pharetra et. Mauris rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar."
+                body: "Id diam maecenas ultricies mi eget mauris pharetra et. Mauris rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar."
             }
         ]
 
         const aside = [
             {
                 title: "Banner",
+                link: "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Banner_role"
             },
             {
                 title: "Navigation",
+                link: "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Navigation_Role"
             },
             {
                 title: "Main",
             },
             {
                 title: "Aside",
+                link: "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Complementary_role"
             },
             {
                 title: "Footer",
@@ -84,7 +87,7 @@ export default class Project2 extends ViewBase {
             mainArray.push({title: item.title, body: item.body})
         })
         aside.forEach(item => {
-            asideArray.push({title: item.title})
+            asideArray.push({title: item.title, link: item.link})
         })
 
         return {banner, navArray, mainArray, asideArray};

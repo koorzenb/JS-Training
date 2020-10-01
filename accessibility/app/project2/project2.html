@@ -7,17 +7,17 @@
     </header>
 
     <nav> 
-        <h4>Site Navigation</h4> 
-        <template for.once="item of nav">
-            <a class="nav" href="item.link">${item.title}</a>
-        </template>
+        <h3>Site Navigation</h3> 
+            <template for.once="item of nav">
+                <a class="nav" href="item.link">${item.title}</a>
+            </template>
     </nav>
 
     <main>
         <h3>Welcome to our page</h3>
         <template for.once="item of main">
             <!-- check with Rabie - hide h3 to show p -->
-            <h3 class="main">${item.title}</h3>
+            <!-- <h3 class="main">${item.title}</h3> -->
             <p class="main">${item.body}</p>
         </template>
     </main>
@@ -25,9 +25,9 @@
     <!-- bug: cannot use <aside> -->
         <aside>
     <!-- <div role="aside" class="aside"> -->
-        <h4 class="aside">Help Docs</h4>
+        <h3 class="aside">Help Docs</h3>
         <template for.once="item of aside">
-            <h4 class="aside">${item.title}</h4>
+            <a class="aside" href="item.link">${item.title}</a>
         </template>
     <!-- </div> -->
     </aside>

@@ -30,9 +30,16 @@ myContainer nav {
     grid-area: nav;
     background-color: #F4F4F4;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
-myContainer main {
+myContainer nav a{
+    text-decoration: none;
+    color: var(--text);
+}
+
+    myContainer main {
     grid-area: main;
     padding: 1rem;
 }
@@ -46,6 +53,14 @@ myContainer > aside {
     box-shadow: none;
     position: relative;
     transform: none;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+myContainer > aside a {
+    text-decoration: none;
+    color: var(--text);
 }
 
 myContainer footer{
@@ -54,10 +69,12 @@ myContainer footer{
     color: white;
     justify-content: space-between;
     padding: 1rem;
+
 }
 
 myContainer footer a {
     color: white;
+    text-decoration: none;
+    padding: 1rem;
 }
-
 
