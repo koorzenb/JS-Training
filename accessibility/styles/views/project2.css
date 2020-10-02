@@ -44,10 +44,9 @@ myContainer nav a{
     padding: 1rem;
 }
 
-/* check inherited styling */
 myContainer > aside {
     grid-area: aside;
-    border: 1px solid #F4F4F4;
+    border: 2px solid #F4F4F4;
     background: none;
     color: var(--text);
     box-shadow: none;
@@ -78,3 +77,12 @@ myContainer footer a {
     padding: 1rem;
 }
 
+myContainer footer div {
+    display: flex;
+    align-items: center;
+}
+
+
+li {
+    list-style: none;
+}
