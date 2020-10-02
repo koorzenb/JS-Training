@@ -7,37 +7,35 @@
     </header>
 
     <nav> 
-        <h3>Site Navigation</h3> 
+        <h3 aria-labelledby="Site Navigation">Site Navigation</h3> 
             <template for.once="item of nav">
                 <a class="nav" href="item.link">${item.title}</a>
             </template>
     </nav>
 
     <main>
-        <h3>Welcome to our page</h3>
+        <h3 aria-labelledby="Welcome">Welcome to our page</h3>
         <template for.once="item of main">
             <!-- check with Rabie - hide h3 to show p -->
-            <!-- <h3 class="main">${item.title}</h3> -->
+            <!-- also check aria-labelledby -->
+            <h3 class="main" aria-labelledby="item.title">${item.title}</h3>
             <p class="main">${item.body}</p>
         </template>
     </main>
 
-    <!-- bug: cannot use <aside> -->
-        <aside>
-    <!-- <div role="aside" class="aside"> -->
-        <h3 class="aside">Help Docs</h3>
+    <aside>
+        <h3 class="aside" aria-labelledby="Help">Help Docs</h3>
         <template for.once="item of aside">
-            <a class="aside" href="item.link">${item.title}</a>
+            <li class="aside">${item.title}</li>
         </template>
-    <!-- </div> -->
     </aside>
         
     <footer>
-        <p class="footer">Copyright 2020</p>
+        <p class="footer" aria-label="Copyright">Copyright 2020</p>
         <div>
-            <a class="footer" href="www.google.com">Terms</a>
-            <sep> | </sep>
-            <a class="footer" href="www.google.com">Support</a>
+            <a class="footer" href="www.google.com" aria-label="Terms">Terms</a>
+            <div> | </div>
+            <a class="footer" href="www.google.com" aria-label="Support">Support</a>
         </div>
     </footer>
 </myContainer>
