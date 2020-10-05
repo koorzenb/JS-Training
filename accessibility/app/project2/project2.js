@@ -18,9 +18,7 @@ export default class Project2 extends ViewBase {
         setPropertyCallback("main", this.getRenderData().mainArray);
         setPropertyCallback("aside", this.getRenderData().asideArray);
         setPropertyCallback("banner", this.getRenderData().banner);
-        console.log(this.getRenderData().navArray);
         console.log(this.getRenderData().mainArray);
-        console.log(this.getRenderData().asideArray);
     }
 
     getRenderData() {

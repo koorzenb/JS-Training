@@ -1,7 +1,6 @@
 <h1 data-title.once="title">${title}</h1>
 
 <myContainer>
-    <!-- spec says "banner", but no such standard element. Set to "header" -->
     <header>
         <h2 class="banner">${banner}</h2>
     </header>
@@ -13,11 +12,11 @@
             </template>
     </nav>
 
+                <!-- check with Rabie - hide h3 to show p -->
+            <!-- also check aria-labelledby -->
     <main>
         <h3 aria-labelledby="Welcome">Welcome to our page</h3>
         <template for.once="item of main">
-            <!-- check with Rabie - hide h3 to show p -->
-            <!-- also check aria-labelledby -->
             <h3 class="main" aria-labelledby="item.title">${item.title}</h3>
             <p class="main">${item.body}</p>
         </template>
