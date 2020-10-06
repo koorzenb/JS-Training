@@ -1,0 +1,40 @@
+:root {
+    --sm-background: #266fed;
+    --sm-background-hover: #e91e63;
+}
+
+myContainer {
+    height: 100%;
+    background-image: linear-gradient( cornflowerblue, #03A9F4);
+    display: flex;
+    place-content: center;
+}
+
+myContainer nav {
+    display: grid;
+    grid-template-columns: repeat(3, 5rem);
+}
+
+myContainer ul {
+    display: grid;
+    color: white;
+    opacity: 0.5;
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+myContainer li {
+    display: flex;
+    list-style: none;
+    color: white;
+    background-color: var(--sm-background);
+    height: 3rem;
+    width: max-content;
+    flex-direction: row;
+    text-align: center;
+}
+
+myContainer li:hover {
+    background-color: var(--sm-background-hover);
+}
