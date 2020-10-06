@@ -23,6 +23,12 @@
       "hasStyle": true
     },
     {
+      "title": "Project3",
+      "hash": "#project3",
+      "view": "project3",
+      "hasStyle": true
+    },
+    {
       "title": "About",
       "hash": "#about",
       "view": "about",
