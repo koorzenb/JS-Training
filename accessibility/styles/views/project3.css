@@ -2,6 +2,8 @@
     --sm-background: #266fed;
     --sm-background-hover: #e91e63;
 }
+ /* CSS: https://github.com/caperaven/training/blob/master/css/06.project2.md */
+
 
 myContainer {
     height: 100%;
@@ -17,6 +19,8 @@ myContainer nav {
 
 myContainer ul {
     display: grid;
+    position: absolute;
+    top: 2rem;
     color: white;
     opacity: 0;
     list-style: none;
@@ -36,7 +40,8 @@ myContainer li {
 
 li.main-menu {
     display: flex;
-    justify-content: center;
+    justify-content: left;
+    padding-left: 1rem;
     opacity: 1;
 }
 
@@ -46,4 +51,10 @@ li.main-menu:hover > ul {
 
 myContainer li:hover {
     background-color: var(--sm-background-hover);
+    border-bottom: 1px solid white;
 }
+
+/* li :not(.main-menu) {
+    position: absolute;
+    top: 1rem
+} */
