@@ -26,6 +26,8 @@ myContainer ul {
     list-style: none;
     text-align: center;
     padding: 0;
+    transition: .3s;
+    transform: translate(0, -1rem);
 }
 
 myContainer li {
@@ -47,10 +49,21 @@ li.main-menu {
 
 li.main-menu:hover > ul {
     opacity: 1;
+    transform: translate(0,0)
 }
+
 
 myContainer li:hover {
     background-color: var(--sm-background-hover);
+    border-bottom: 1px solid white;
+    box-sizing: border-box;
+}
+
+myContainer li:hover:last-child {
+    border-bottom: none;
+}
+
+li.main-menu:hover:last-child {
     border-bottom: 1px solid white;
 }
 
