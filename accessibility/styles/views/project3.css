@@ -15,19 +15,22 @@ myContainer {
 myContainer nav {
     display: grid;
     grid-template-columns: repeat(3, 6rem);
+    position: relative; 
 }
 
 myContainer ul {
     display: grid;
     position: absolute;
     top: 2rem;
+    left: 0;
     color: white;
-    opacity: 0;
     list-style: none;
     text-align: center;
     padding: 0;
+    margin: 0;
     transition: .3s;
     transform: translate(0, -1rem);
+    opacity: 0;
 }
 
 myContainer li {
@@ -36,20 +39,22 @@ myContainer li {
     color: white;
     background-color: var(--sm-background);
     height: 2rem;
-    /* width: max-content; */
+    width: 100%;
     align-items: center;
 }
 
-li.main-menu {
+ul.main-menu {
     display: flex;
     justify-content: left;
-    padding-left: 1rem;
+    position: relative;
     opacity: 1;
 }
 
-li.main-menu:hover > ul {
+li:hover > ul {
     opacity: 1;
-    transform: translate(0,0)
+    transform: translate(0,0);
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -67,7 +72,10 @@ li.main-menu:hover:last-child {
     border-bottom: 1px solid white;
 }
 
-/* li :not(.main-menu) {
-    position: absolute;
-    top: 1rem
-} */
+li :not(.main-menu) {
+    width: max-content;
+} 
+
+ul :not(.main-menu) {
+    padding: 0;
+} 
