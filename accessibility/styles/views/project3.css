@@ -1,6 +1,7 @@
 :root {
     --sm-background: #266fed;
     --sm-background-hover: #e91e63;
+    --itemWidth: 11rem;
 }
  /* CSS: https://github.com/caperaven/training/blob/master/css/06.project2.md */
 
@@ -19,7 +20,7 @@ myContainer nav {
 }
 
 myContainer ul {
-    display: grid;
+    display: none;
     position: absolute;
     top: 2rem;
     left: 0;
@@ -30,7 +31,6 @@ myContainer ul {
     margin: 0;
     transition: .3s;
     transform: translate(0, -1rem);
-    opacity: 0;
 }
 
 myContainer li {
@@ -51,9 +51,8 @@ ul.main-menu {
 }
 
 li:hover > ul {
-    opacity: 1;
-    transform: translate(0,0);
     display: flex;
+    transform: translate(0,0);
     flex-direction: column;
 }
 
@@ -73,9 +72,13 @@ li.main-menu:hover:last-child {
 }
 
 li :not(.main-menu) {
-    width: max-content;
+    width: var(--itemWidth);
 } 
 
 ul :not(.main-menu) {
     padding: 0;
 } 
+
+.tier2 {
+    transform: translate(var(--itemWidth));
+}
