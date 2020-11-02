@@ -41,13 +41,18 @@ myContainer li {
     height: 2rem;
     width: 100%;
     align-items: center;
+    justify-content: flex-start;
+    padding-left: 1rem;
 }
 
 ul.main-menu {
     display: flex;
     justify-content: left;
     position: relative;
-    opacity: 1;
+}
+
+li.main-menu {
+    display: flex;
 }
 
 li:hover > ul {
@@ -75,9 +80,9 @@ li :not(.main-menu) {
     width: var(--itemWidth);
 } 
 
-ul :not(.main-menu) {
+/* ul :not(.main-menu) {
     padding: 0;
-} 
+}  */
 
 .tier2 {
     transform: translate(var(--itemWidth));
