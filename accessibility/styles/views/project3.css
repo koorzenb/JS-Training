@@ -5,6 +5,13 @@
 }
  /* CSS: https://github.com/caperaven/training/blob/master/css/06.project2.md */
 
+li {
+    cursor: pointer;
+}
+/* 
+ul:first-child {
+    background-color: green;
+} */
 
 myContainer {
     height: 100%;
@@ -14,8 +21,7 @@ myContainer {
 }
 
 myContainer nav {
-    display: grid;
-    grid-template-columns: repeat(3, 6rem);
+    display: flex;
     position: relative; 
 }
 
@@ -34,7 +40,7 @@ myContainer ul {
 }
 
 myContainer li {
-    display: grid;
+    display: flex;
     list-style: none;
     color: white;
     background-color: var(--sm-background);
@@ -42,7 +48,6 @@ myContainer li {
     width: 100%;
     align-items: center;
     justify-content: flex-start;
-    padding-left: 1rem;
 }
 
 ul.main-menu {
@@ -53,12 +58,15 @@ ul.main-menu {
 
 li.main-menu {
     display: flex;
+    width: 6rem;
+    justify-content: space-around;
 }
 
 li:hover > ul {
     display: flex;
     transform: translate(0,0);
     flex-direction: column;
+    position: absolute;
 }
 
 
@@ -77,7 +85,7 @@ li.main-menu:hover:last-child {
 }
 
 li :not(.main-menu) {
-    width: var(--itemWidth);
+    min-width: var(--itemWidth);
 } 
 
 /* ul :not(.main-menu) {
