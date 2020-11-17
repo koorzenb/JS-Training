@@ -1,17 +1,38 @@
-myContainer {
-    
+:root {
+    --sm-background: #266fed;
+    --sm-background-hover: #e91e63;
+}
+
+myContainer{
+    height: 100%;
+    background-image: linear-gradient( cornflowerblue, #03A9F4);
+    display: flex;
+    justify-content: center;
 }
 
 myContainer ul {
     margin: 0;
     padding: 0;
     list-style: none;
+    transform: translate(0, -1rem);
+    transition: .3s;
+    color: white;
+}
+
+.main-menu {
+    transform: translate(0);
 }
 
 myContainer li {
     position: relative;
     cursor: pointer;
     padding: 0.5rem;
+}
+
+myContainer li:hover {
+    background-color: var(--sm-background-hover);
+    border-bottom: 1px solid white;
+    box-sizing: border-box;
 }
 
 /* main menu */
@@ -28,11 +49,23 @@ myContainer nav ul ul {
     background: #266fed;
 }
 
+myContainer nav ul ul ul{
+    transform: translate(15rem);
+}
+
 nav ul li:hover > ul {
     display: flex;
     flex-direction: column;
+    transform: translate(0,0);
 }
 
+myContainer li:hover:last-child {
+    border-bottom: none;
+}
+
+.main-menu > li:hover:last-child {
+    border-bottom: 1px solid white;
+}
 
 
 
