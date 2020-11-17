@@ -3,6 +3,8 @@
     --sm-background-hover: #e91e63;
 }
 
+/* add blank border to combat items moving on hover */
+
 myContainer{
     height: 100%;
     background-image: linear-gradient( cornflowerblue, #03A9F4);
@@ -47,6 +49,8 @@ myContainer nav ul ul {
     min-width: 15rem;
     position: absolute;
     background: #266fed;
+    margin-top: 0.56rem;
+    margin-left: -0.5rem;
 }
 
 myContainer nav ul ul ul{
