@@ -1,97 +1,38 @@
-:root {
-    --sm-background: #266fed;
-    --sm-background-hover: #e91e63;
-    --itemWidth: 11rem;
-}
- /* CSS: https://github.com/caperaven/training/blob/master/css/06.project2.md */
-
-li {
-    cursor: pointer;
-}
-/* 
-ul:first-child {
-    background-color: green;
-} */
-
 myContainer {
-    height: 100%;
-    background-image: linear-gradient( cornflowerblue, #03A9F4);
-    display: flex;
-    place-content: center;
-}
-
-myContainer nav {
-    display: flex;
-    position: relative; 
+    
 }
 
 myContainer ul {
-    display: none;
-    position: absolute;
-    top: 2rem;
-    left: 0;
-    color: white;
-    list-style: none;
-    text-align: center;
-    padding: 0;
     margin: 0;
-    transition: .3s;
-    transform: translate(0, -1rem);
+    padding: 0;
+    list-style: none;
 }
 
 myContainer li {
-    display: flex;
-    list-style: none;
-    color: white;
-    background-color: var(--sm-background);
-    height: 2rem;
-    width: 100%;
-    align-items: center;
-    justify-content: flex-start;
+    position: relative;
+    cursor: pointer;
+    padding: 0.5rem;
 }
 
-ul.main-menu {
+/* main menu */
+myContainer nav > ul {      
     display: flex;
-    justify-content: left;
+    justify-content: center;
     position: relative;
 }
 
-li.main-menu {
-    display: flex;
-    width: 6rem;
-    justify-content: space-around;
-}
-
-li:hover > ul {
-    display: flex;
-    transform: translate(0,0);
-    flex-direction: column;
+myContainer nav ul ul {
+    display: none;
+    min-width: 15rem;
     position: absolute;
+    background: #266fed;
+}
+
+nav ul li:hover > ul {
+    display: flex;
+    flex-direction: column;
 }
 
 
-myContainer li:hover {
-    background-color: var(--sm-background-hover);
-    border-bottom: 1px solid white;
-    box-sizing: border-box;
-}
 
-myContainer li:hover:last-child {
-    border-bottom: none;
-}
 
-li.main-menu:hover:last-child {
-    border-bottom: 1px solid white;
-}
-
-li :not(.main-menu) {
-    min-width: var(--itemWidth);
-} 
-
-/* ul :not(.main-menu) {
-    padding: 0;
-}  */
-
-.tier2 {
-    transform: translate(var(--itemWidth));
-}
