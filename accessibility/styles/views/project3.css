@@ -14,7 +14,7 @@ myContainer ul {
     margin: 0;
     padding: 0;
     list-style: none;
-    transform: translate(0, -1rem);
+    /* transform: translate(0, -1rem); */
     transition: .3s;
     color: white;
 }
@@ -56,8 +56,11 @@ myContainer nav ul ul ul{
 nav ul li:hover > ul {
     display: flex;
     flex-direction: column;
+    transition: .3s;
     transform: translate(0,0);
 }
+
+/* get transform and translate to work */
 
 myContainer li:hover:last-child {
     border-bottom: none;
