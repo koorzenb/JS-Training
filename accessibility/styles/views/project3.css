@@ -3,8 +3,6 @@
     --sm-background-hover: #e91e63;
 }
 
-/* add blank border to combat items moving on hover */
-
 myContainer{
     height: 100%;
     background-image: linear-gradient( cornflowerblue, #03A9F4);
@@ -17,18 +15,17 @@ myContainer ul {
     padding: 0;
     list-style: none;
     /* transform: translate(0, -1rem); */
-    transition: .3s;
     color: white;
-}
-
-.main-menu {
-    transform: translate(0);
 }
 
 myContainer li {
     position: relative;
     cursor: pointer;
     padding: 0.5rem;
+}
+
+myContainer li li {
+    border-bottom: 1px solid var(--sm-background);
 }
 
 myContainer li:hover {
@@ -42,6 +39,7 @@ myContainer nav > ul {
     display: flex;
     justify-content: center;
     position: relative;
+    transform: translate(0);
 }
 
 myContainer nav ul ul {
@@ -49,28 +47,31 @@ myContainer nav ul ul {
     min-width: 15rem;
     position: absolute;
     background: #266fed;
+    transform: translate(0, -1rem);
     margin-top: 0.56rem;
     margin-left: -0.5rem;
 }
 
-myContainer nav ul ul ul{
-    transform: translate(15rem);
-}
-
 nav ul li:hover > ul {
+    will-change: transition;
     display: flex;
     flex-direction: column;
-    transition: .3s;
-    transform: translate(0,0);
+    transition: all 0.3s ease-out ; /* right place */
+    transform: translate(0,0); 
 }
 
-/* get transform and translate to work */
+nav ul ul li:hover > ul{
+    position: absolute;
+    top: 0;
+    margin-top: 0;
+    transform: translate(15rem);
+}
 
 myContainer li:hover:last-child {
     border-bottom: none;
 }
 
-.main-menu > li:hover:last-child {
+myContainer nav > ul > li:hover:last-child {
     border-bottom: 1px solid white;
 }
 

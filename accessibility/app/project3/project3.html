@@ -1,34 +1,17 @@
 <myContainer>
-    <nav>
-      <ul class="main-menu">
-        <li>Section 1
-          <ul>
-            <li>Section1 Child1</li>
-            <li>Section1 Child2
-              <ul>
-                <li class="tier2">Section1 grandchild1</li>
-                <li class="tier2">Section1 grandchild2</li>
-                <li class="tier2">Section1 grandchild3</li>
-              </ul>
+    <nav> 
+        <template>
+            <li for.once="mainItem of main">${mainItem.label}
+                <ul>
+                    <li for.once="tier1Item of tier1">${mainItem.label} ${tier1Item.label}
+                        <ul>
+                            <li for.once="tier2Item of tier2">${mainItem.label} ${tier2Item.label}
+                                <ul></ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </li>
-            <li>Section1 Child3</li>
-          </ul>
-        </li>
-        <li>Section 2
-          <ul>
-            <li>Section2 child1</li>
-            <li>Section2 child2</li>
-            <li>Section2 child3</li>
-          </ul>
-        </li>
-        <li>Section 3
-          <ul>
-            <li>Section3 child1</li>
-            <li>Section3 child2</li>
-            <li>Section3 child3</li>
-          </ul>
-        </li>
-      </ul>
+        </template>
     </nav>
-   
 </myContainer>

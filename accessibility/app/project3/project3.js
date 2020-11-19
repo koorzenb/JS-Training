@@ -6,27 +6,35 @@ export default class Project2 extends ViewBase {
 // CSS: https://github.com/caperaven/training/blob/master/css/06.project2.md
 
     load() {
-        crsbinding.data.updateUI(this._dataId, "nav");
+        crsbinding.data.updateUI(this._dataId, "main");
         super.load();
     }
 
     async preLoad(setPropertyCallback) {
-        setPropertyCallback("nav", this.getRenderData().navArray);
-        console.log(this.getRenderData().navArray);
+        setPropertyCallback("nav", this.getRenderData().mainArray);
+        console.log(this.getRenderData().mainArray);
     }
 
     getRenderData() {
-        const nav = [
-
+        const main = [
+            {
+                text: "Section1"
+            },
+            {
+                text: "Section2"
+            },
+            {
+                text: "Section3"
+            }
         ]
 
-        const navArray = [];
+        const mainArray = [];
 
-        nav.forEach(item => {
-            navArray.push({title: item.title, link: item.link})
+        main.forEach(item => {
+            mainArray.push({label: item.text})
         })
 
-        return {navArray};
+        return {mainArray};
     }
 
 }
