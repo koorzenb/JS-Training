@@ -7,6 +7,10 @@ run:
 - "npm start" 
 - click on menu to see various apps
 
+References:
+- CRS Binding:
+    https://www.npmjs.com/package/crs-binding
+
 
 
 
