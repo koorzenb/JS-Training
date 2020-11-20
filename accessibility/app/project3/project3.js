@@ -11,7 +11,7 @@ export default class Project2 extends ViewBase {
     }
 
     async preLoad(setPropertyCallback) {
-        setPropertyCallback("nav", this.getRenderData().mainArray);
+        setPropertyCallback("main", this.getRenderData().mainArray);
         console.log(this.getRenderData().mainArray);
     }
 

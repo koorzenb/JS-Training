@@ -1,8 +1,8 @@
 <myContainer>
     <nav> 
-        <template>
-            <li for.once="mainItem of main">${mainItem.label}
-                <ul>
+        <template for.once="item of main">
+            <li>${item.label}
+                <!-- <ul>
                     <li for.once="tier1Item of tier1">${mainItem.label} ${tier1Item.label}
                         <ul>
                             <li for.once="tier2Item of tier2">${mainItem.label} ${tier2Item.label}
@@ -10,7 +10,7 @@
                             </li>
                         </ul>
                     </li>
-                </ul>
+                </ul> -->
             </li>
         </template>
     </nav>
