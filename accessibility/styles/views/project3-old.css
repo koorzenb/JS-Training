@@ -1,74 +1,32 @@
-/* :root {
+:root {
     --sm-background: #266fed;
     --sm-background-hover: #e91e63;
-    --itemWidth: 11rem;
 }
- /* CSS: https://github.com/caperaven/training/blob/master/css/06.project2.md */
 
-li {
-    cursor: pointer;
-}
-/* 
-ul:first-child {
-    background-color: green;
-} */
-
-myContainer {
+myContainer{
     height: 100%;
     background-image: linear-gradient( cornflowerblue, #03A9F4);
     display: flex;
-    place-content: center;
-}
-
-myContainer nav {
-    display: flex;
-    position: relative; 
+    justify-content: center;
 }
 
 myContainer ul {
-    display: none;
-    position: absolute;
-    top: 2rem;
-    left: 0;
-    color: white;
-    list-style: none;
-    text-align: center;
-    padding: 0;
     margin: 0;
-    transition: .3s;
-    transform: translate(0, -1rem);
+    padding: 0;
+    list-style: none;
+    /* transform: translate(0, -1rem); */
+    color: white;
 }
 
 myContainer li {
-    display: flex;
-    list-style: none;
-    color: white;
-    background-color: var(--sm-background);
-    height: 2rem;
-    width: 100%;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-ul.main-menu {
-    display: flex;
-    justify-content: left;
     position: relative;
+    cursor: pointer;
+    padding: 0.5rem;
 }
 
-li.main-menu {
-    display: flex;
-    width: 6rem;
-    justify-content: space-around;
+myContainer li li {
+    border-bottom: 1px solid var(--sm-background);
 }
-
-li:hover > ul {
-    display: flex;
-    transform: translate(0,0);
-    flex-direction: column;
-    position: absolute;
-}
-
 
 myContainer li:hover {
     background-color: var(--sm-background-hover);
@@ -76,22 +34,46 @@ myContainer li:hover {
     box-sizing: border-box;
 }
 
+/* main menu */
+myContainer nav > ul {      
+    display: flex;
+    justify-content: center;
+    position: relative;
+    transform: translate(0);
+}
+
+myContainer nav ul ul {
+    display: none;
+    min-width: 15rem;
+    position: absolute;
+    background: #266fed;
+    transform: translate(0, -1rem);
+    margin-top: 0.56rem;
+    margin-left: -0.5rem;
+}
+
+nav ul li:hover > ul {
+    will-change: transition;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease-out ; /* right place */
+    transform: translate(0,0); 
+}
+
+nav ul ul li:hover > ul{
+    position: absolute;
+    top: 0;
+    margin-top: 0;
+    transform: translate(15rem);
+}
+
 myContainer li:hover:last-child {
     border-bottom: none;
 }
 
-li.main-menu:hover:last-child {
+myContainer nav > ul > li:hover:last-child {
     border-bottom: 1px solid white;
 }
 
-li :not(.main-menu) {
-    min-width: var(--itemWidth);
-} 
 
-/* ul :not(.main-menu) {
-    padding: 0;
-}  */
 
-.tier2 {
-    transform: translate(var(--itemWidth));
-} */

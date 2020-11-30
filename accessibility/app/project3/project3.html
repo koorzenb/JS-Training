@@ -1,17 +1,11 @@
 <myContainer>
     <nav> 
-        <template for.once="item of main">
-            <li>${item.label}
-                <!-- <ul>
-                    <li for.once="tier1Item of tier1">${mainItem.label} ${tier1Item.label}
-                        <ul>
-                            <li for.once="tier2Item of tier2">${mainItem.label} ${tier2Item.label}
-                                <ul></ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul> -->
-            </li>
-        </template>
+        <ul>
+            <template for.once="mainItem of main">
+                <li>${mainItem.label}
+                    <ul></ul>
+                </li>
+            </template>
+        </ul>
     </nav>
 </myContainer>

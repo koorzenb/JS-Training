@@ -3,6 +3,8 @@
     --sm-background-hover: #e91e63;
 }
 
+/* new */
+
 myContainer{
     height: 100%;
     background-image: linear-gradient( cornflowerblue, #03A9F4);
