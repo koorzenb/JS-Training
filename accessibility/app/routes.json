@@ -23,6 +23,12 @@
       "hasStyle": true
     },
     {
+      "title": "Project3- no binding",
+      "hash": "#proj3-nobind",
+      "view": "proj3-nobind",
+      "hasStyle": true
+    },
+    {
       "title": "Project3",
       "hash": "#project3",
       "view": "project3",

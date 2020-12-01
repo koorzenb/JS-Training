@@ -25,7 +25,11 @@ myContainer li {
 }
 
 myContainer li li {
-    border-bottom: 1px solid var(--sm-background);
+    border-bottom: 1px solid white;
+}
+
+myContainer li:last-child {
+    border-bottom: var(--sm-background);
 }
 
 myContainer li:hover {
