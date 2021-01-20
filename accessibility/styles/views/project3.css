@@ -3,8 +3,6 @@
     --sm-background-hover: #e91e63;
 }
 
-/* new */
-
 myContainer{
     height: 100%;
     background-image: linear-gradient( cornflowerblue, #03A9F4);
@@ -27,7 +25,11 @@ myContainer li {
 }
 
 myContainer li li {
-    border-bottom: 1px solid var(--sm-background);
+    border-bottom: 1px solid white;
+}
+
+myContainer li:last-child {
+    border-bottom: var(--sm-background);
 }
 
 myContainer li:hover {
@@ -42,6 +44,7 @@ myContainer nav > ul {
     justify-content: center;
     position: relative;
     transform: translate(0);
+    
 }
 
 myContainer nav ul ul {
@@ -58,7 +61,7 @@ nav ul li:hover > ul {
     will-change: transition;
     display: flex;
     flex-direction: column;
-    transition: all 0.3s ease-out ; /* right place */
+    transition: transform 0.3s ease-out;
     transform: translate(0,0); 
 }
 

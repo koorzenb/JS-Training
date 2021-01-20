@@ -1,11 +1,32 @@
 <myContainer>
-    <nav> 
-        <template for.once="mainItem of main">
-            <ul>
-                <li>${mainItem.label}
-                    <ul></ul>
-                </li>
-            </ul>
-        </template>
+    <nav>
+      <ul aria-label="Main">
+        <li>Section 1
+          <ul>
+            <li aria-label="Section 1">Section1 Child1</li>
+            <li>Section1 Child2
+              <ul>
+                <li>Section1 grandchild1</li>
+                <li>Section1 grandchild2</li>
+                <li>Section1 grandchild3</li>
+              </ul>
+            <li>Section1 Child3</li>
+          </ul>
+        </li>
+        <li>Section 2
+          <ul>
+            <li>Section2 child1</li>
+            <li>Section2 child2</li>
+            <li>Section2 child3</li>
+          </ul>
+        </li>
+        <li>Section 3
+          <ul>
+            <li>Section3 child1</li>
+            <li>Section3 child2</li>
+            <li>Section3 child3</li>
+          </ul>
+        </li>
+      </ul>
     </nav>
 </myContainer>
