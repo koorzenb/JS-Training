@@ -9,13 +9,16 @@ export class ViewModel {
     registerListeners() {
         const lists = document.querySelectorAll("li")
         for (const li of lists) {
-            li.addEventListener("hover", this.hoverHandler())
+            figure out how to select only parent elements
+            console.log(li);
+            debugger;
+            li.addEventListener("mouseover", this.hoverHandler);
         }
     }
 
     hover(e) {
-
-        console.log(e);
+        debugger;
+        console.log(e.target);
     }
     
     setExpanded(e) {
