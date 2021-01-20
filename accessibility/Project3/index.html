@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/projects3.css">
+    <title>Document</title>
+</head>
+<body>
+    <myContainer>
+        <nav aria-label="Main Menu">
+          <ul aria-label="Main Menu">
+            <li>Section 1
+              <ul>
+                <!-- Note: saw in one example "aria-expanded"
+                  https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html
+                Get array of all li that has children
+                  qs all li
+                  if li has ul, add eventlist for hover. In case of hover, change aria state
+                    li.qs -->
+                <li aria-label="Section 1">Section1 Child1</li>
+                <li>Section1 Child2
+                  <ul>
+                    <li>Section1 grandchild1</li>
+                    <li>Section1 grandchild2</li>
+                    <li>Section1 grandchild3</li>
+                  </ul>
+                </li>
+                <li>Section1 Child3</li>
+              </ul>
+            </li>
+            <li>Section 2
+              <ul>
+                <li>Section2 child1</li>
+                <li>Section2 child2</li>
+                <li>Section2 child3</li>
+              </ul>
+            </li>
+            <li>Section 3
+              <ul>
+                <li>Section3 child1</li>
+                <li>Section3 child2</li>
+                <li>Section3 child3</li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+    </myContainer>
+
+    <script src="./src/project3.js"></script>
+</body>
+</html>
