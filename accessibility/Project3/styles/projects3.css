@@ -3,15 +3,12 @@
     --sm-background-hover: #e91e63;
 }
 
-<<<<<<< Updated upstream:accessibility/styles/views/project3.css
-=======
 html, body {
     font-family: Arial, Helvetica, sans-serif;
     height: 100vh;
     margin: 0;
 }
 
->>>>>>> Stashed changes:accessibility/Project3/styles/projects3.css
 myContainer{
     height: 100%;
     background-image: linear-gradient( cornflowerblue, #03A9F4);
