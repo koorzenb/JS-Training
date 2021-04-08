@@ -7,72 +7,60 @@ export class ViewModel {
     }
     
     _init() {
-        this.setIds();
+        // this.setIds();
         this.registerListeners();
     }
 
-    setIds() {
-        const lists = document.querySelectorAll("li");
-        let id = 1;
-        for (const li of lists) {
-            li.setAttribute("id", id);
-            id++;
-        }
-    }
+    // setIds() {
+    //     const lists = document.querySelectorAll("li");
+    //     let id = 1;
+    //     for (const li of lists) {
+    //         li.setAttribute("id", id);
+    //         id++;
+    //     }
+    // }
 
     registerListeners() {
         const lists = document.querySelectorAll("li")
         for (const li of lists) {
-            li.addEventListener("mouseover", this.hoverHandler);
+            this.hasChilren(li) && li.addEventListener("mouseover", this.hoverHandler);
+            // no memory management done, since we are not navigating away from page
         }
     }
 
     hover(e) {
         console.log(e.currentTarget);
+        console.log(e.currentTarget.innerText);
         const element = e.currentTarget;
-        // element.hasChildNodes() returns true if element does not have children, but do have text
-        
-        // this.hasChilren(element) ? 
-        see toggleExp below. 
-        console.log("hasChildren")
-        console.log();
-
-        
-        // function myFunction() {
-            if(element.hasChildNodes() != null && element.parentElement.getAttribute("aria-expanded") != "true" ) {
-                element.parentElement.setAttribute("aria-expanded", "true"); 
-            }
-            var x = element.getAttribute("aria-expanded"); 
-            console.log(x);
-            element.setAttribute("aria-expanded", "true"); 
-          
+        this.hasChilren(element) && this.toggleExpanded(element);          
     }
     
     /**
      * Gets id2 and set expanded to true. Sets exp of old id (id1) to false
-     * @param {*} id 
-     * @param {*} id2 
+     * @param {*} id - id of element to set aria-expanded on 
      */
-    toggleExpanded(id, id2) {
-        var n = document.getElementById(id);
-        if (n.style.display != 'none') 
-            {
-            n.style.display = 'none';
-            document.getElementById(id2).setAttribute('aria-expanded', 'false');
-        }
-        else
-        {
-        n.style.display = '';
-        document.getElementById(id2).setAttribute('aria-expanded', 'true');
-            }
+    toggleExpanded(element) {
+        debugger;
+        this.previousElement != null && this.previousElement.setAttribute("aria-expanded","false");
+        element.setAttribute("aria-expanded","true");
+        this.isParent(element)
+        this.previousElement = element;
     }
     
     dispose() {
-        //...
+        // not done since we are not navigating away from this page
     }
 
     hasChilren(element) {
-        return element.querySelectorAll("li") != null ? true : false;
+        return element.querySelectorAll("li").length != 0 ? true : false;
+    }
+
+    isParent(element) {
+        /**
+         * query all li's on this parent-elmenet
+         * if any match previousElement, then this is parent
+         */
+
     }
 
 }
