@@ -1,0 +1,119 @@
+formResponse - Lourens
+
+1.	General
+1.	Request URL: 
+https://docs.google.com/forms/u/0/d/e/1FAIpQLSe62QIzfhmkSKF872N3OnRDJG3j3dfqmDw0ca0oZcmDG1lBbA/formResponse
+2.	Request Method: 
+POST
+3.	Status Code: 
+200 
+4.	Remote Address: 
+172.217.170.14:443
+5.	Referrer Policy: 
+strict-origin-when-cross-origin
+2.	Response Headers
+1.	alt-svc: 
+h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+2.	cache-control: 
+no-cache, no-store, max-age=0, must-revalidate
+3.	content-encoding: 
+gzip
+4.	content-security-policy: 
+base-uri 'self';object-src 'none';report-uri https://csp.withgoogle.com/csp/forms/prod;script-src 'report-sample' 'nonce-zO3Bd0ld0InVDABLgvfiBw' 'unsafe-inline' 'strict-dynamic' https: http: 'unsafe-eval'
+5.	content-type: 
+text/html; charset=utf-8
+6.	date: 
+Thu, 08 Apr 2021 04:00:45 GMT
+7.	expires: 
+Mon, 01 Jan 1990 00:00:00 GMT
+8.	pragma: 
+no-cache
+9.	referrer-policy: 
+strict-origin-when-cross-origin
+10.	server: 
+GSE
+11.	set-cookie: 
+S=spreadsheet_forms=IVs7M9OhjsJs7UoX6JN8JC2RQpVx_UIOVTolTNwu0SA; Domain=.docs.google.com; Expires=Thu, 08-Apr-2021 05:00:45 GMT; Path=/forms/u/0/d/e/1FAIpQLSe62QIzfhmkSKF872N3OnRDJG3j3dfqmDw0ca0oZcmDG1lBbA; Secure; HttpOnly; Priority=LOW; SameSite=none
+12.	set-cookie: 
+SIDCC=AJi4QfHjuSe0dlCu_LcQauESGBaBzN9OPRfLob9FEcYu8GstncejJsNlwh0IjNNnZSd0IsRAFQ; expires=Fri, 08-Apr-2022 04:00:45 GMT; path=/; domain=.google.com; priority=high
+13.	set-cookie: 
+__Secure-3PSIDCC=AJi4QfFjOMc3Oj4qGbj0XyWx1jtjQX5P4mQgnqR4N1Eqx38whPq_spPBcSJL7-RNBRrDZiLZjQ; expires=Fri, 08-Apr-2022 04:00:45 GMT; path=/; domain=.google.com; Secure; HttpOnly; priority=high; SameSite=none
+14.	x-content-type-options: 
+nosniff
+15.	x-robots-tag: 
+noindex, nofollow, nosnippet
+16.	x-xss-protection: 
+1; mode=block
+3.	Request Headers
+1.	:authority: 
+docs.google.com
+2.	:method: 
+POST
+3.	:path: 
+/forms/u/0/d/e/1FAIpQLSe62QIzfhmkSKF872N3OnRDJG3j3dfqmDw0ca0oZcmDG1lBbA/formResponse
+4.	:scheme: 
+https
+5.	accept: 
+text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+6.	accept-encoding: 
+gzip, deflate, br
+7.	accept-language: 
+en-US,en;q=0.9
+8.	cache-control: 
+max-age=0
+9.	content-length: 
+274
+10.	content-type: 
+application/x-www-form-urlencoded
+11.	cookie: 
+HSID=AnCiqET0DjkRPCv7W; SSID=A82_D29Ou5YOhvyjy; APISID=vyQeT_NFF7wbcACa/ANEMVWGdEpyMgjk_w; SAPISID=r0Krc-UwLX7Sp5kz/AXZscQKIHinFOAfHG; __Secure-3PAPISID=r0Krc-UwLX7Sp5kz/AXZscQKIHinFOAfHG; CONSENT=YES+ZA.en+20170618-09-0; SEARCH_SAMESITE=CgQIq5EB; ANID=AHWqTUlvy01w4Spwzovlepjdq_uYoHaRnAnpRZ7rjZmUGyb3g4dVtlhf-S4e8b6O; SID=8QcuSfDWBwpiPnRv4BCiqygBl7y_1Z8kDhB58YSRzTVuuDh1WFn-wLT_1u4j0MMB9JeYww.; __Secure-3PSID=8QcuSfDWBwpiPnRv4BCiqygBl7y_1Z8kDhB58YSRzTVuuDh1K3ZRPg3P-_mTGRNI2Ofvzg.; 1P_JAR=2021-04-08-03; NID=213=STTJEXvhLQBdHGjepz6edr3JcFxcDsYY5A8ZDyfcI4Eo_QcApZ17fJ6Bthpi8fBpHetJst8x7_dbV5S5jMP_TxQOiLQk-BiSCdBYZXg7ZyKASzFbbMGABDd2yayV-UhYbVWZVU_2mhTr5dJ3b5oNImcUXiXsPBaG4GW-6G5jrO0jdtP4wPCZIoIxh0Cpj3jvf9s8MKfuEVAjBnGHe3Fm-dDn90bAkms68fXEUxAQ; SIDCC=AJi4QfEY1rk9z38qYjdFQ2M2hSdQWoinB2zi5nv25HMMH8vwbgpPSuZTploxlzXmp6F3-WMdcA; __Secure-3PSIDCC=AJi4QfF76v2vo8fl7Ho5qjn7wsYtB5s6DDGYjCnjXX7yjhYaH05OuF7MUx5ETc4e5GKWhzyB1Q
+12.	origin: 
+https://docs.google.com
+13.	referer: 
+https://docs.google.com/forms/d/e/1FAIpQLSe62QIzfhmkSKF872N3OnRDJG3j3dfqmDw0ca0oZcmDG1lBbA/viewform?fbzx=-7208064027947692477
+14.	sec-ch-ua: 
+"Google Chrome";v="89", "Chromium";v="89", ";Not A Brand";v="99"
+15.	sec-ch-ua-mobile: 
+?0
+16.	sec-fetch-dest: 
+document
+17.	sec-fetch-mode: 
+navigate
+18.	sec-fetch-site: 
+same-origin
+19.	sec-fetch-user: 
+?1
+20.	upgrade-insecure-requests: 
+1
+21.	user-agent: 
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+22.	x-chrome-connected: 
+source=Chrome,id=115670366419793567281,mode=0,enable_account_consistency=false,supervised=false,consistency_enabled_by_default=false
+23.	x-client-data: 
+CIi2yQEIprbJAQjEtskBCKmdygEIibnKAQj4x8oBCMaFywEIsZrLAQjknMsBCKidywEY4ZrLAQ==
+Decoded:
+message ClientVariations { // Active client experiment variation IDs. repeated int32 variation_id = [3300104, 3300134, 3300164, 3313321, 3316873, 3318776, 3326662, 3329329, 3329636, 3329704]; // Active client experiment variation IDs that trigger server-side behavior. repeated int32 trigger_variation_id = [3329377]; }
+4.	Form Dataview sourceview URL encoded
+1.	entry.737793686: 
+Lourens
+2.	entry.1003610907: 
+Koorzen
+3.	entry.1259687714: 
+3MD
+4.	entry.396171059: 
+None
+5.	entry.173553869: 
+No
+6.	entry.396171059_sentinel: 
+7.	entry.173553869_sentinel: 
+8.	fvv: 
+1
+9.	draftResponse: 
+[null,null,"-7208064027947692477"] 
+10.	pageHistory: 
+0
+11.	fbzx: 
+-7208064027947692477
+
+
+
