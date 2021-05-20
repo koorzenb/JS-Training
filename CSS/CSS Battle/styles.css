@@ -1,0 +1,19 @@
+:root {
+    --color1: #6592CF;
+    --color2: #243D83;
+    --color3: #EEB850;
+}
+
+body {
+    background-color: var(--color1);
+    display: flex;
+    
+    grid-auto-rows: 50px;
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+div {
+    background: #fdc57b;
+}
+
