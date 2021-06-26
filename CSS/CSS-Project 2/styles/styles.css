@@ -77,3 +77,15 @@ div {
     height: 30px;
     padding: 0 1rem;
 }
+
+div.main {
+    width: 80px;
+}
+
+.sec2 > ul{
+    left: 112px;
+}
+
+.sec3 > ul {
+    left: 210px;
+}
