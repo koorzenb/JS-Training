@@ -11,12 +11,12 @@ body {
     display: flex;
     place-content: center;
     background-image: linear-gradient( cornflowerblue, #03A9F4);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 nav {
     display: flex;
     position: absolute;
-    height: 30px;
 }
 
 li {
@@ -26,17 +26,24 @@ li {
     text-align: center;
     background-color: var(--sm-background);
     width: 200px;
-    height: 100%;
-}
+    height: 30px;
+    box-sizing: border-box;
+}       
 
 li.main {
     display: flex;
     flex-direction: column;
+    width: max-content;
 }
 
 li:hover {
     background-color: var(--sm-background-hover);
     border-bottom: 1px solid white;
+}
+
+nav > li > ul {
+    position: absolute;
+    top: 30px;
 }
 
 nav ul {
@@ -51,8 +58,8 @@ ul > li {
 
 ul {
     /* "display: none" solves cross hover issue, but transition not working */
-    /* display: none;
-    opacity: 0;
+    display: none;
+    /* opacity: 0;
     visibility: 0; */
     margin: 0;
     transition: display 100ms, opacity 600ms, visibility 600ms;
@@ -64,4 +71,9 @@ li:hover > ul {
     opacity: 1;
 }
 
-TODO: sort out layout
+div {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding: 0 1rem;
+}
