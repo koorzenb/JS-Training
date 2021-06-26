@@ -61,6 +61,7 @@ ul {
     margin: 0;
     transform: translateY(-1rem);
     transition: display 100ms, opacity 600ms, visibility 600ms, transform 600ms;
+    box-shadow: 0 .1rem 5px 0 rgba(1, 1, 1, .3)
 }
 
 nav li.main:hover > ul {
@@ -69,14 +70,16 @@ nav li.main:hover > ul {
     transform: translateY(0);
 }
 
-div {
+a {
     display: flex;
     align-items: center;
     height: 2rem;
     padding-left: 1rem;
+    text-decoration: none;
+    color: white;
 }
 
-div.main {
+a.main {
     padding: 0 1rem;
     width: 5rem;
 }
