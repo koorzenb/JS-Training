@@ -58,17 +58,19 @@ ul > li {
 
 ul {
     /* "display: none" solves cross hover issue, but transition not working */
-    display: none;
-    /* opacity: 0;
-    visibility: 0; */
+    /* display: none; */
+    opacity: 0;
+    visibility: hidden;
     margin: 0;
-    transition: display 100ms, opacity 600ms, visibility 600ms;
+    transform: translateY(-20px);
+    transition: display 100ms, opacity 600ms, visibility 600ms, transform 600ms;
 }
 
-li:hover > ul {
-    display: initial;
+nav li.main:hover > ul {
+    /* display: initial; */
     visibility: visible;
     opacity: 1;
+    transform: translateY(0);
 }
 
 div {
@@ -88,4 +90,10 @@ div.main {
 
 .sec3 > ul {
     left: 210px;
+}
+
+li.sub:hover > ul {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
 }
