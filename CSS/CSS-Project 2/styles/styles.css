@@ -20,37 +20,50 @@ li {
     text-align: center;
     background-color: #266fed;
     width: 12rem;
-    height: 2rem;
     box-sizing: border-box;
-}       
+    display: flex;
+    height: 2rem;
+    justify-items: flex-start;
+    border-bottom: 1px solid white;
+}  
+
+li:before {
+    content: "";
+    width: 1rem;
+}
 
 li.main {
     display: flex;
     flex-direction: column;
-    width: 6.5rem;
+    width: 6rem;
+    justify-content: center;
+    border-bottom: none;
 }
 
 ul > li {
     display: grid;
-    grid-template-columns: 12rem 12rem;
+    grid-template-columns: 1rem 11rem 1rem 11rem;
+    grid-template-rows: 2rem 2rem;
+    line-height: 2rem;
 }
 
 li:hover {
     background-color: #e91b63;
-    border-bottom: 1px solid white;
 }
+
 
 li:last-child {
     border-bottom: none;
 }
 
-li.main:last-child:hover {
-    border-bottom: 1px solid white;
+li.main:hover {
+    border-bottom: 2px solid white;
 }
 
 nav > li > ul {
     position: absolute;
     top: 2rem;
+    left: 0
 }
 
 ul {
@@ -58,7 +71,7 @@ ul {
     visibility: hidden;
     margin: 0;
     transform: translateY(-1rem);
-    transition: display 100ms, opacity 600ms, visibility 600ms, transform 600ms;
+    transition: display 100ms, visibility 600ms, transform 600ms;
     box-shadow: 0 .1rem 5px 0 rgba(1, 1, 1, .3)
 }
 
@@ -73,11 +86,11 @@ nav li.main:hover > ul {
 }
 
 .sec2 > ul{
-    left: 6.5rem;
+    left: 6rem;
 }
 
 .sec3 > ul {
-    left: 13rem;
+    left: 12rem;
 }
 
 li.sub:hover > ul {
@@ -86,16 +99,15 @@ li.sub:hover > ul {
     transform: translateY(0);
 }
 
-a {
-    display: flex;
-    align-items: center;
-    height: 2rem;
-    padding-left: 1rem;
-    text-decoration: none;
-    color: white;
+li.sub {
+    /* align-items: center; */
 }
 
-a.main {
-    padding: 0 1rem;
-    width: 5rem;
+/* .sub2 {
+    height: 2rem;
+    align-content: center;
+} */
+
+.g1 {
+    top: 1rem
 }
