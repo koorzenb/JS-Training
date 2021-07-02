@@ -1,0 +1,22 @@
+{
+  "name": "",
+  "version": "0.0.6",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest",
+    "render": "browser-sync start --server --startPath ./index.html --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*' --directory --port 7777 --browser \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\"",
+    "bundle": "rollup -c",
+    "build-publish": "rollup -c & node build/publish.js",
+    "start": "ws --spa ./index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.27.3"
+  }
+}
