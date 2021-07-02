@@ -21,7 +21,6 @@ li {
     background-color: #266fed;
     width: 12rem;
     box-sizing: border-box;
-    display: flex;
     height: 2rem;
     justify-items: flex-start;
     border-bottom: 1px solid white;
@@ -72,11 +71,8 @@ ul {
     margin: 0;
     transform: translateY(-1rem);
     transition: display 100ms, visibility 600ms, transform 600ms;
-    box-shadow: 0 .1rem 5px 0 rgba(1, 1, 1, .3)
-}
-
-nav ul {
-    padding: 0;
+    box-shadow: 0 .1rem 5px 0 rgba(1, 1, 1, .3);
+    padding: 0
 }
 
 nav li.main:hover > ul {
@@ -97,17 +93,5 @@ li.sub:hover > ul {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
-}
-
-li.sub {
-    /* align-items: center; */
-}
-
-/* .sub2 {
-    height: 2rem;
-    align-content: center;
-} */
-
-.g1 {
-    top: 1rem
+    height: max-content;
 }
