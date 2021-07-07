@@ -1,12 +1,30 @@
 /**
  * Formats and returns date
  */
-export function formattedDate() {
-    const dateTimeFormat = new Intl.DateTimeFormat('en',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }); 
-    const [{value: weekday},,{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat.formatToParts(new Date); 
-    return `${weekday} ${month} ${day}, ${year }`;     
-}
+// export function formattedDate() {
+//     const dateTimeFormat = new Intl.DateTimeFormat('en',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }); 
+//     const [{value: weekday},,{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat.formatToParts(new Date); 
+//     return `${weekday} ${month} ${day}, ${year }`;     
+// }
 
+export function formattedDate(previousTime) {
+        const date = new Date();
+
+        const weekday = [];
+        weekday[0] = "Sunday";
+        weekday[1] = "Monday";
+        weekday[2] = "Tuesday";
+        weekday[3] = "Wednesday";
+        weekday[4] = "Thursday";
+        weekday[5] = "Friday";
+        weekday[6] = "Saturday";
+
+        console.log(date.getHours, previousTime.hours);
+        const diff = `+${date.getHours() - previousTime.hours}:${date.getMinutes() - previousTime.minutes}`
+        
+        // return `${weekday[date.getDay()]} ${date.getDay()}, ${date.getHours()}:${date.getMinutes()} ${diff}`
+        return `${weekday[date.getDay()]} ${date.getDay()}, ${diff}`
+}
 const events = [];
 
 /**

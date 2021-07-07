@@ -21,10 +21,13 @@ export class ViewModel {
         this.btnClose = document.querySelector('button#close');     // decided not to write iterator for only 2 buttons
         this.input = document.querySelector('input#input-details');
         this.form = document.querySelector('form#add');
+        this.html = document.querySelector("html")
         this.openHandler = this._open.bind(this);
         this.submitHandler = this._submit.bind(this);
         this.closeHandler = this._close.bind(this);
         registerEvent(this.btnAdd,'click', this.openHandler); 
+        registerEvent(this.html,"keydown",this.openHandler);
+        registerEvent(this.html,"keydown",this.closeHandler);
         this.template = document.querySelector('template');
     }
 
@@ -40,7 +43,10 @@ export class ViewModel {
     /**
      * Opens input dialog and sets new eventListeners
      */
-    _open() {
+    _open(e) {
+        if(e.type != "click" && e.code != "NumpadAdd") return;
+
+        unregisterEvents(this.btnAdd,"keydown");
         this.btnAdd.innerHTML = "&#x2713";
         registerEvent(this.btnClose,'click', this.closeHandler);
         
@@ -57,7 +63,9 @@ export class ViewModel {
     /**
      * Closes input dialog box and disposes listeners
      */
-    _close() {
+    _close(e) {
+        if(e?.type != "click" && e?.code != "Escape") return;
+
         this.input.setAttribute("hide","");
         this.input.setAttribute("disabled","");
         this.input.value = null;
@@ -69,6 +77,7 @@ export class ViewModel {
         unregisterEvents(this.btnClose,"click");
         
         unregisterEvents(this.form, "submit");
+        registerEvent(this.html,"keydown",this.openHandler);
     }
 
     /**
@@ -81,9 +90,12 @@ export class ViewModel {
 
         if(this.input.validity.valid && this.input.value.trim().length != 0) {
             clone.querySelector("#description").innerText = this.input.value;
-            clone.querySelector("#date").innerText = formattedDate();
+            clone.querySelector("#date").innerText = formattedDate(this.time ?? {hours: 8, minutes: 0});
+            const date = new Date();
+            this.time = {hours: date.getHours(), minutes: date.getMinutes()};
             fragment.appendChild(clone);
             document.body.appendChild(fragment);
+            this.input.value = "";
             this._close();
         }
     }
