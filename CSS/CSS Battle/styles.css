@@ -1,0 +1,66 @@
+body {
+            background: #191210;
+    margin: 0
+    
+  }
+  .main {
+    background: #191210;
+    height: 300px;
+    width: 400px;
+    display: grid;
+    justify-content: center;
+    align-items: flex-end;
+    grid-template-columns: 100px 150px 100px;
+  }
+  
+ .main > div {
+    background: #191210;
+  }
+  
+  .one, .three {
+    height: 10px;
+}
+.one > div, .three > div {
+      background: #84271C;
+    height: 70px;
+    width: 70px;
+    position: absolute;
+    top: 90px;
+    background: #191210;
+    border: 20px solid #ECA03D;
+    border-radius: 100%;
+}
+
+.one > div {
+    left: 30px;
+    clip-path: inset(50% 0 0 0);
+}
+
+.three > div {
+    left: 260px;
+    clip-path: inset(0 0 50% 0);
+}
+
+  .two {
+    height: 230px;
+}
+  
+  .two-outer {
+    height: 110px;
+   width: 110px;
+    background: #191210;
+    border-radius: 100%;
+    border: 20px solid #ECA03D;
+}
+  
+  .two-inner{
+    height: 40px;
+    width: 40px;
+    background: #84271C;
+    border-radius: 100%;
+    position: absolute;
+    top: 150px;
+    left: 190px;
+  }
+
+
