@@ -17,6 +17,8 @@ export class ViewModel {
      * Initializes module
      */
     init() {
+        const date = new Date();
+        document.querySelector("#date-descriptor").innerText = `Today ${formattedDate({hours: 8, minutes: 0})}`
         this.btnAdd = document.querySelector('button#add');     
         this.btnClose = document.querySelector('button#close');     // decided not to write iterator for only 2 buttons
         this.input = document.querySelector('input#input-details');

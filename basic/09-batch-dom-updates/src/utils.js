@@ -19,11 +19,13 @@ export function formattedDate(previousTime) {
         weekday[5] = "Friday";
         weekday[6] = "Saturday";
 
-        console.log(date.getHours, previousTime.hours);
-        const diff = `+${date.getHours() - previousTime.hours}:${date.getMinutes() - previousTime.minutes}`
+        const calc = date.getMinutes() - previousTime.minutes 
+        const minutes = calc < 10 ? `0${calc}` : `${calc}`
+
+        const diff = `+${date.getHours() - previousTime.hours}:${minutes}`
         
         // return `${weekday[date.getDay()]} ${date.getDay()}, ${date.getHours()}:${date.getMinutes()} ${diff}`
-        return `${weekday[date.getDay()]} ${date.getDay()}, ${diff}`
+        return `${weekday[date.getDay()]} ${date.getDay()}, @${date.getHours()}:${date.getMinutes()} -> ${diff}`
 }
 const events = [];
 
