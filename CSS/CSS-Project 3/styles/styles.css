@@ -20,6 +20,9 @@ div {
     background-color: #266fed;
     height: 18rem;
     width: 28rem;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    text-fil
 }
 
 div::before {
@@ -55,49 +58,23 @@ div::after {
     justify-content: center;
 }
 
+/* //clip-path text. Make text opacity == 0 */
+
 h1 {
     font-weight: inherit;
     font-size: 4rem;
     position: relative;
     top: -3rem;
     border-radius: 1rem;
-    background-color: rgba(255, 255, 255, 0.5);
-    opacity: .5;
-    backdrop-filter: blur(3px);
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    /* opacity: .5; */
+    /* backdrop-filter: blur(3px); */
     width: 22rem;
     justify-content: center;
     display: flex;
+    color:transparent;
 }
 
 /*
-div > * {
-    justify-content: center;
-    display: flex;
-}
-
-.parent::before {
-    content: "d";
-    width: 1rem;
-    height: 1rem;
-    background-color: green;
-    position: relative;
-}
-
-.parent{
-    height: 18rem;
-    width: 28rem;
-    background-color: #266fed;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.child1::before{
-    background-color: green;
-    width: 100%;
-}
-
-.child2 {
-    transform: translateY(-3rem);
-    font-size: 2.5rem;
-}
+https://stackoverflow.com/questions/13932946/transparent-text-cut-out-of-background
 */
