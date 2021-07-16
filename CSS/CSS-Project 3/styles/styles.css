@@ -20,9 +20,9 @@ div {
     background-color: #266fed;
     height: 18rem;
     width: 28rem;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    text-fil
+    background: #266fed;
+    /* -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; */
 }
 
 div::before {
