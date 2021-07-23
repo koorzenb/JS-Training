@@ -12,11 +12,13 @@ body {
 
 div {
     display: flex;
-    color: white;
+    /* color: white; */
     align-items: center;
     justify-content: center;
     display: flex;
     position: relative;
+    flex-direction: column;
+    justify-content: space-around;
     background-color: #266fed;
     height: 18rem;
     width: 28rem;
@@ -36,7 +38,7 @@ div::before {
     top: 0;
     left: 0;
     display: inline-block;
-}
+} 
 
 div:hover::before {
     transform: scale(100%);
@@ -46,28 +48,34 @@ div:hover::before {
     transition: all .3s;
 }
 
-div::after {
-    content: "This is a paragraph";
+p {
     color: white;
-    position: absolute;
-    top: 10rem;
-    left: 50%;
-    transform: translateX(-50%);
     font-size: 2.5rem;
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 0;
+    margin-bottom: 4rem;
+    z-index: 1;
 }
-
-/* //clip-path text. Make text opacity == 0 */
 
 h1 {
-    background:white;
-    mix-blend-mode:screen;
-    
-    padding:0.25em;
-    mix-blend-mode:screen;
+    background: rgba(255,255,255,0.5);
+    font-size: xxx-large;
+    width: 19rem;
+mix-blend-mode: screen;
+padding: 0.25em;
+border-radius: 0.5rem;
+width: 19rem;
+display: flex;
+justify-content: center;
+margin-bottom: 0;
 }
+
+/* h1::before {
+    height: 2rem;
+    width: 2rem;
+} */
 
 /*
 https://stackoverflow.com/questions/13932946/transparent-text-cut-out-of-background
