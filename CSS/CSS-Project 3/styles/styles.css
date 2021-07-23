@@ -7,7 +7,7 @@ body {
     place-content: center;
     align-items: center;
     background-image: linear-gradient(lavender, white);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif /* Not sure what font was used */ 
 }
 
 div {
@@ -63,13 +63,14 @@ h1 {
     background: rgba(255,255,255,0.5);
     font-size: xxx-large;
     width: 19rem;
-mix-blend-mode: screen;
-padding: 0.25em;
-border-radius: 0.5rem;
-width: 19rem;
-display: flex;
-justify-content: center;
-margin-bottom: 0;
+    mix-blend-mode: screen;
+    padding: 0.25em;
+    border-radius: 0.5rem;
+    width: 19rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+    backdrop-filter: blur(1px);  /* Not compatible with FF */
 }
 
 /* h1::before {
