@@ -58,31 +58,3 @@ h1 {
     margin-bottom: 0;
     backdrop-filter: blur(1px);  /* Not compatible with FF */
 }
-
-/* h1::before {
-    height: 2rem;
-    width: 2rem;
-} */
-
-/*
-https://stackoverflow.com/questions/13932946/transparent-text-cut-out-of-background
-*/
-
-/* h1 {
-    background:white;
-    mix-blend-mode:screen;
-    
-    padding:0.25em;
-    mix-blend-mode:screen;
-}
-    
-    
-html {
-    background:url(https://i.picsum.photos/id/1069/367/267.jpg?hmac=w5sk7UQ6HGlaOVQ494mSfIe902cxlel1BfGUBpEYoRw)center / cover ;
-    min-height:100vh;
-    display:flex;
-}
-
-body {
-    margin:auto;
-} */
