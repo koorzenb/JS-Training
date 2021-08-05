@@ -86,4 +86,6 @@ export class ViewModel {
           popup.classList.add('open');
         });
       }
+
+      
 }

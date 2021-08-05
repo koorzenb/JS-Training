@@ -1,0 +1,16 @@
+{
+  "name": "todolist-ver2",
+  "version": "2.0.0",
+  "description": "ToDo List",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ws --spa ./index.html"
+  },
+  "keywords": [
+    "ToDo",
+    "List"
+  ],
+  "author": "BarendK",
+  "license": "ISC"
+}

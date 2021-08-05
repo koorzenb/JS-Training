@@ -1,0 +1,11 @@
+h3#date-descriptor {
+  display: block;
+  margin: 1rem 0;
+  padding-left: 1rem;
+  font-size: 0.8rem;
+  color: dimgrey;
+}
+
+ul {
+  padding: 0;
+}

@@ -1,0 +1,38 @@
+li {
+  list-style: none;
+  display: grid;
+  height: 3rem;
+  width: 100%;
+  padding-top: 0.5rem;
+  grid-template-columns: 4rem auto;
+  grid-template-areas: 'checkbox item';
+}
+
+li input {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  cursor: pointer;
+  grid-area: checkbox;
+  width: 2rem;
+}
+
+div.item-details {
+  grid-area: item;
+  grid-template-areas: 'details' 'date';
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-rows: 1fr 1fr;
+  border-bottom: 1px solid lightgrey;
+}
+
+label.item-description {
+  grid-area: details;
+  text-transform: capitalize;
+  padding-top: 0.5rem;
+}
+
+label.item-date {
+  font-size: 0.8rem;
+  color: dimgrey;
+}
