@@ -3,15 +3,10 @@ import { formattedDate, registerEvent, unregisterEvents } from "./utils.js";
 export class ViewModel {
 
     constructor() {
-        const addButton = document.querySelector("#addItem");
-        this.itemsList = document.querySelector("ul");
-        this.clickHandler = this._click.bind(this);
-        this.formInput = document.querySelector("form input");
-        registerEvent(addButton, "click", this.clickHandler);
-        this.itemTemplate = document.querySelector("template#item")
+        this.init();
         console.log("viewModel started");
     }
-
+    
     dispose() {
         unregisterEvents(addButton, "click")
         delete this.clickHandler;
@@ -19,9 +14,14 @@ export class ViewModel {
         delete this.formInput;
         delete this.itemsList;
     }
-
+    
     init() {
-        
+        const addButton = document.querySelector("#addItem");
+        this.itemsList = document.querySelector("ul");
+        this.clickHandler = this._click.bind(this);
+        this.formInput = document.querySelector("form input");
+        registerEvent(addButton, "click", this.clickHandler);
+        this.itemTemplate = document.querySelector("template#item")
     }
 
     _click(event) {

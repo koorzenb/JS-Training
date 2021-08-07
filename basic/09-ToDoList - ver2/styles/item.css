@@ -26,13 +26,13 @@ div.item-details {
   border-bottom: 1px solid lightgrey;
 }
 
-label.item-description {
+p.item-description {
   grid-area: details;
   text-transform: capitalize;
   padding-top: 0.5rem;
 }
 
-label.item-date {
+p.item-date {
   font-size: 0.8rem;
   color: dimgrey;
 }
