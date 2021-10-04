@@ -1,4 +1,4 @@
-import { formattedDate, registerEvent, unregisterEvents } from "./utils.js";
+import { formattedDate, registerEvent, unregisterEvents } from "./utils/system-utils.js";
 
 export class ViewModel {
 
@@ -15,6 +15,9 @@ export class ViewModel {
         delete this.itemsList;
     }
     
+    /**
+     * Initializes view model
+     */
     init() {
         const addButton = document.querySelector("#addItem");
         this.itemsList = document.querySelector("ul");
@@ -24,11 +27,18 @@ export class ViewModel {
         this.itemTemplate = document.querySelector("template#item")
     }
 
+    /**
+     * Handles click event
+     * @param {*} event 
+     */
     _click(event) {
-        // this[`_${event}`];
         if (event.currentTarget.id == "addItem") this.addItem(event);
     }
 
+    /**
+     * Adds an item to the DOM
+     * @param {*} event 
+     */
     addItem(event) {
         event.preventDefault();
         const clone = this.itemTemplate.content.cloneNode(true);
