@@ -67,6 +67,7 @@ button:active {
 input {
   margin-right: 1rem;
   border-radius: 15%/50%;
+  padding-left: 1rem;
   border: 1px solid gray;
 }
 
