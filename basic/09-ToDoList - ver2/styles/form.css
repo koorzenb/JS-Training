@@ -14,22 +14,7 @@ form {
   flex-direction: row;
 }
 
-/* form button {
-  border-radius: 50%;
-  height: 100%;
-  width: 100%;
-  height: 100%;
-  border: none;
-  background-color: var(--blue);
-  color: white;
-  font-size: 2rem;
-  font-weight: 400;
-  align-self: center;
-  justify-content: center;
-  opacity: 1;
-} */
-
-button {
+button#addItem {
   position: relative;
   border-radius: 50%;
   width: 48px;
@@ -44,22 +29,22 @@ button#addItem svg {
   left: -24px;
 }
 
-button:focus{
+button#addItem:focus{
   outline: none;
   cursor: pointer;
   box-shadow: 0px 3px 10px 3px var(--buttonShadow);
 }
 
-button:hover{
+button#addItem:hover{
   cursor: pointer;
   box-shadow: 0px 3px 10px 3px var(--buttonShadow);
 }
 
-button[hide]:hover {
+button#addItem[hide]:hover {
   cursor: default;
 }
 
-button:active {
+button#addItem:active {
   background-color: var(--darkblue);
   box-shadow: none;
 }
