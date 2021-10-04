@@ -24,7 +24,8 @@ export class ViewModel {
         delete this.itemTemplate;
         delete this.formInput;
         delete this.itemsList;
-        delete this._today
+        delete this._today;
+        delete this.id;
     }
     
     /**
@@ -54,53 +55,64 @@ export class ViewModel {
     addItem(event) {
         event.preventDefault();
         const clone = this.itemTemplate.content.cloneNode(true);
-        const newEntry = this.calculateHours(this.formInput.value)
-        this.saveToLocalStorage(newEntry);
-        if (newEntry.difference != null) {
-            clone.querySelector("#description").innerText = newEntry.difference;
-            clone.querySelector("#date").innerText = formattedDate();
-            const fragment = new DocumentFragment();
-            fragment.appendChild(clone);
-            this.itemsList.appendChild(fragment);
+        const entry = this.calculateHours(this.formInput.value)
+        this.saveToLocalStorage(entry);
+        if (entry.loggedTimes.difference != null) {
+            const item = document.getElementById(`${entry.id}`);
+            this.itemsList.removeChild(item);
+            clone.querySelector(".item-description").innerText = `From ${entry.loggedTimes.start} - ${entry.loggedTimes.end} = ${entry.loggedTimes.difference} hours`;
+        } else {
+            clone.querySelector(".item-description").innerText = `From ${entry.loggedTimes.start} until...`;
         }
+        // if hours > 6 , subtract 1 hour for lunch
+        clone.querySelector(".item-date").innerText = formattedDate();
+        clone.querySelector("li").setAttribute("id", entry.id);
+        const fragment = new DocumentFragment();
+        fragment.appendChild(clone);
+        this.itemsList.appendChild(fragment);
+        this.formInput.value = "";
     }
 
     calculateHours(newValue) {
-// add to storage
-        // check if same date
-            // if so append and save
-            // else start new and save
-
-        // TODO: check if same date exists on local storage -> alert... and overwrite
-
-        
-        //get old
-        // get new
-        //subtract 
         let currentStorage = localStorage.getItem(this.entryDate)
         if(currentStorage != null) {
             currentStorage = JSON.parse(currentStorage);
         }
 
+        const date = new Date();
+        const id = `${date.getDate()}${date.getMonth()+1}${date.getFullYear()}`
+        let existingItem
+        try {
+            existingItem = this.itemsList.querySelector(`#${id}`);
+        } catch (error) {     
+        }
+
+        if (existingItem) this.itemsList.removeChild(existingItem);
 
         const loggedTimes = {};
         if(currentStorage == null || currentStorage.end != null) {
-            if (currentStorage?.end != null) localStorage.removeItem(this.entryDate);
+            if (currentStorage?.end != null) {
+                localStorage.removeItem(this.entryDate);
+                currentStorage = {};
+            }
             loggedTimes.start = parseInt(newValue);
             console.log("Starting time saved");
-        } else if (currentStorage.start != null && currentStorage.end == null){
-            loggedTimes.start = currentStorage.start;
+            // add date id to input. Delete by id
+        } else if (currentStorage.loggedTimes.start != null && currentStorage.loggedTimes.end == null){
+            loggedTimes.start = currentStorage.loggedTimes.start;
             loggedTimes.end = parseInt(newValue);
             loggedTimes.difference = loggedTimes.end - loggedTimes.start;
             console.log("End time saved");
         }
-        return loggedTimes;
+        const entry = {
+            id,
+            loggedTimes
+        }
+        return entry;
     }
 
     saveToLocalStorage(newHours) {
-        const currentStorage = localStorage.getItem(this.entryDate)
-        if (currentStorage != null)
-        alert(`Current value = ${currentStorage}`);
+        // const currentStorage = localStorage.getItem(this.entryDate)
 
         localStorage.setItem(this.entryDate, JSON.stringify(newHours));
     }
