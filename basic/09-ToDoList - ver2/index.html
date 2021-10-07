@@ -18,11 +18,11 @@
             <rect y="40" width="80" height="10"></rect>
             </svg>
         </button>
-        <h2>Tasks</h2>
+        <h2 id="main-title">Tasks</h2>
     </header>
 
     <main>
-      <h3 id="date-descriptor">Today</h3>
+      <h3 id="week-descriptor">Week number</h3>
 
       <ul>
         <!-- list of items to be inserted here -->
@@ -33,7 +33,7 @@
       <input
       required
       minlength="1"
-      placeholder= "Type details"
+      placeholder= "Starting time"
       />
 
       <button id="addItem" type="submit">
@@ -53,7 +53,6 @@
       </li>
     </template>
 
-
-    <script type="module" src="./index.js"></script>
+    <script src="index.js" type="module"></script>
 </body>
 </html>

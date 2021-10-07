@@ -1,4 +1,6 @@
 import { formattedDate, registerEvent, unregisterEvents } from "./utils/system-utils.js";
+import { Dates, DateType } from "./utils/enums.js";
+import { DateTime } from "./utils/luxon.js";
 
 export class ViewModel {
 
@@ -6,18 +8,31 @@ export class ViewModel {
         const temp = formattedDate();
         // check for null
         // check for new date
-        if(this._today == null) {
+        if (this._today == null) {
             this._today = temp;
         }
 
         return this._today !== temp ? temp : this._today;
     }
 
+    get localStorage() {
+        if (this._currentStorage == null) {
+            this._currentStorage = localStorage.getItem(this.entryDate)
+            this._currentStorage = JSON.parse(this._currentStorage);
+        }
+        return this._currentStorage == null ? {} : this._currentStorage
+    }
+
+    set localStorage(newValue) {
+        this._currentStorage = newValue;
+        localStorage.setItem(this.entryDate, JSON.stringify(newValue));
+    }
+
     constructor() {
         this.init();
         console.log("viewModel started");
     }
-    
+
     dispose() {
         unregisterEvents(addButton, "click")
         delete this.clickHandler;
@@ -26,18 +41,70 @@ export class ViewModel {
         delete this.itemsList;
         delete this._today;
         delete this.id;
+        delete this.localStorage;
+        delete this.fragment;
+        delete this.dt;
     }
-    
+
     /**
      * Initializes view model
      */
     init() {
+        this. dt = new DateTime({});
         const addButton = document.querySelector("#addItem");
         this.itemsList = document.querySelector("ul");
         this.clickHandler = this._click.bind(this);
         this.formInput = document.querySelector("form input");
         registerEvent(addButton, "click", this.clickHandler);
         this.itemTemplate = document.querySelector("template#item");
+        this.showEntries();
+    }
+
+    getWeeklyEntries() {
+        const thisWeek = this.dt.weekNumber;
+        const entries = [];
+
+        const length = Object.keys(this.localStorage).length
+        let lastItem = length !== 0 ? this.localStorage[length - 1] : {};  //TODO: Length == 0? lastItem == {} and contidition below falls ovr
+
+        //thisWeek == null, meaning now new records for this week
+        if (lastItem.week != thisWeek) {
+            const enumDate = new Dates();
+            const offset = this.dt.weekday - 1;   // days to substract so we start calc from Monday        
+            
+            let count = 0;
+            for (const day of DateType.WEEKDAY) {
+                const localOffset = count - offset
+                const offsetDate = this.dt.plus({day : localOffset }).day;  // todayDate - offset - count //TODO: set offsetDate to correct represent offset ie, -3
+                const paddedDate = offsetDate < 10 ? `0${offsetDate}` :  offsetDate;
+                const item = {
+                    day: `${enumDate.get(DateType.WEEKDAY, DateType.WEEKDAY.indexOf(day))}`,
+                    id: `${paddedDate}${this.dt.month}${this.dt.year}`,
+                    dt: DateTime.now().plus({day: localOffset}),
+                    offsetDate,
+                    offset: localOffset
+                }
+                entries.push(item);
+                count++;
+            }
+        } else {
+            entries = lastItem;
+        }
+
+        return entries;
+    }
+
+    showEntries() {
+        const data = this.getWeeklyEntries();
+
+        this.fragment = new DocumentFragment();
+        for (const entry of data) {
+            this.appendItem(entry);
+        }
+        this.itemsList.appendChild(this.fragment);
+        document.querySelector("#week-descriptor").innerText = `Week ${data[0].dt.weekNumber}`;  //TODO: use data-content
+        // document.querySelector("#main-title").innerText = 
+
     }
 
     /**
@@ -54,66 +121,86 @@ export class ViewModel {
      */
     addItem(event) {
         event.preventDefault();
-        const clone = this.itemTemplate.content.cloneNode(true);
         const entry = this.calculateHours(this.formInput.value)
-        this.saveToLocalStorage(entry);
-        if (entry.loggedTimes.difference != null) {
+        this.localStorage = entry;
+        this.appendItem(entry);
+        this.formInput.value = "";
+
+
+        // save in new format
+        // getweek()
+        // get localStorage
+        // find indexof week in localStorage
+        // find index of day in week
+        // if id exist - overwrite
+        //get weeknumber from localStorage
+        //render before new inputs
+    }
+
+    /**
+     * 
+     * @param {{_day: string, _id: number, loggedTimes: {start: number, end: number, _difference:number}}} entry 
+     * @returns 
+     */
+    appendItem(entry) {
+        const clone = this.itemTemplate.content.cloneNode(true);
+        const loggedTimes = entry.loggedTimes;
+
+        if (loggedTimes?.end != null || loggedTimes?.start == null || loggedTimes == null) {
+            let existingItem;
+            try {
+                existingItem = document.getElementById(`${id}`);
+            } catch (error) { }
+
+            if (existingItem) this.itemsList.removeChild(existingItem);
+        }
+
+        if (entry.loggedTimes?.difference != null) {
             const item = document.getElementById(`${entry.id}`);
             this.itemsList.removeChild(item);
             clone.querySelector(".item-description").innerText = `From ${entry.loggedTimes.start} - ${entry.loggedTimes.end} = ${entry.loggedTimes.difference} hours`;
-        } else {
+            this.formInput.setAttribute('placeholder', "Start time");
+            console.log("Times calculated");
+        } else if (entry.loggedTimes?.start != null){
             clone.querySelector(".item-description").innerText = `From ${entry.loggedTimes.start} until...`;
+            this.formInput.setAttribute('placeholder', "End time");
+            console.log("Start time saved");
+        } else {
+            clone.querySelector(".item-description").innerText = `Nothing logged...`;
         }
-        // if hours > 6 , subtract 1 hour for lunch
-        clone.querySelector(".item-date").innerText = formattedDate();
+
+        clone.querySelector(".item-date").innerText = entry.dt.toLocaleString({ weekday: 'long', day: '2-digit', month: 'short'});
         clone.querySelector("li").setAttribute("id", entry.id);
-        const fragment = new DocumentFragment();
-        fragment.appendChild(clone);
-        this.itemsList.appendChild(fragment);
-        this.formInput.value = "";
+
+        this.fragment.appendChild(clone);        
     }
 
     calculateHours(newValue) {
-        let currentStorage = localStorage.getItem(this.entryDate)
-        if(currentStorage != null) {
-            currentStorage = JSON.parse(currentStorage);
-        }
-
         const date = new Date();
-        const id = `${date.getDate()}${date.getMonth()+1}${date.getFullYear()}`
-        let existingItem
-        try {
-            existingItem = this.itemsList.querySelector(`#${id}`);
-        } catch (error) {     
-        }
+        const id = `${date.getDate()}${date.getMonth() + 1}${date.getFullYear()}`
+        let loggedTimes = this.localStorage.loggedTimes ?? {};
 
-        if (existingItem) this.itemsList.removeChild(existingItem);
-
-        const loggedTimes = {};
-        if(currentStorage == null || currentStorage.end != null) {
-            if (currentStorage?.end != null) {
-                localStorage.removeItem(this.entryDate);
-                currentStorage = {};
-            }
+        if (loggedTimes?.end != null || loggedTimes?.start == null || loggedTimes == null) {
+            loggedTimes = {};
             loggedTimes.start = parseInt(newValue);
-            console.log("Starting time saved");
-            // add date id to input. Delete by id
-        } else if (currentStorage.loggedTimes.start != null && currentStorage.loggedTimes.end == null){
-            loggedTimes.start = currentStorage.loggedTimes.start;
+        } else if (loggedTimes?.start != null) {
             loggedTimes.end = parseInt(newValue);
             loggedTimes.difference = loggedTimes.end - loggedTimes.start;
             console.log("End time saved");
         }
-        const entry = {
-            id,
-            loggedTimes
-        }
-        return entry;
+
+        return { id, loggedTimes, week: this.dt.weekNumber }
     }
+
+
+
 
     saveToLocalStorage(newHours) {
         // const currentStorage = localStorage.getItem(this.entryDate)
 
-        localStorage.setItem(this.entryDate, JSON.stringify(newHours));
+        this.localStorage.setItem(this.entryDate, JSON.stringify(newHours));
     }
+
 }
+
+

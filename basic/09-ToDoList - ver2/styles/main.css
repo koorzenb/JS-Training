@@ -1,4 +1,5 @@
-h3#date-descriptor {
+h3#week-descriptor {
+  content: attr(data-content);
   display: block;
   margin: 1rem 0;
   padding-left: 1rem;
