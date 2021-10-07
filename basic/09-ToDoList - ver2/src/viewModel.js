@@ -68,7 +68,7 @@ export class ViewModel {
         let lastItem = length !== 0 ? this.localStorage[length - 1] : {};  //TODO: Length == 0? lastItem == {} and contidition below falls ovr
 
         //thisWeek == null, meaning now new records for this week
-        if (lastItem.week != thisWeek) {
+        if ( lastItem == null || lastItem.week != thisWeek) {
             const enumDate = new Dates();
             const offset = this.dt.weekday - 1;   // days to substract so we start calc from Monday        
             
@@ -103,7 +103,9 @@ export class ViewModel {
         }
         this.itemsList.appendChild(this.fragment);
         document.querySelector("#week-descriptor").innerText = `Week ${data[0].dt.weekNumber}`;  //TODO: use data-content
-        // document.querySelector("#main-title").innerText = 
+        const startDate = data[0].dt.toLocaleString({ month: 'short', day: '2-digit'})
+        const endDate = data[6].dt.toLocaleString({ month: 'short', day: '2-digit'})
+        document.querySelector("#main-title").innerText = `${startDate} - ${endDate}`
 
     }
 
@@ -169,7 +171,7 @@ export class ViewModel {
             clone.querySelector(".item-description").innerText = `Nothing logged...`;
         }
 
-        clone.querySelector(".item-date").innerText = entry.dt.toLocaleString({ weekday: 'long', day: '2-digit', month: 'short'});
+        clone.querySelector(".item-date").innerText = entry.dt.toLocaleString({ weekday: 'long', month: 'short', day: '2-digit'});
         clone.querySelector("li").setAttribute("id", entry.id);
 
         this.fragment.appendChild(clone);        
