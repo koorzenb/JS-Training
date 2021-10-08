@@ -10,3 +10,6 @@ if hours > 6 , subtract 1 hour for lunch
 increments of/round to 15min
 
 validation for entries - must be number
+
+getWeekly
+- 
