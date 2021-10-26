@@ -142,16 +142,20 @@ export class ViewModel {
             this.initializeEmptyWeek();
         }
 
+        this.render(data);
+    }
+
+    render(data) {
         this.fragment = new DocumentFragment();
         for (const entry of data.loggedTimes) {
             this.appendItem(entry);
         }
         this.itemsList.appendChild(this.fragment);
         this.fragment = null;
-        document.querySelector("#week-descriptor").innerText = `Week ${data[0].dt.weekNumber}`;  //TODO: use data-content
-        const startDate = data[0].dt.toLocaleString({ month: 'short', day: '2-digit'})
-        const endDate = data[6].dt.toLocaleString({ month: 'short', day: '2-digit'})
-        document.querySelector("#main-title").innerText = `${startDate} - ${endDate}`
+        document.querySelector("#week-descriptor").innerText = `Week ${data[0].dt.weekNumber}`; //TODO: use data-content
+        const startDate = data[0].dt.toLocaleString({ month: 'short', day: '2-digit' });
+        const endDate = data[6].dt.toLocaleString({ month: 'short', day: '2-digit' });
+        document.querySelector("#main-title").innerText = `${startDate} - ${endDate}`;
     }
 
     /**
