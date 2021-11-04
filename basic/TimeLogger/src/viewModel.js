@@ -3,7 +3,9 @@ import { DataHandler } from "./dataHandler.js";
 export class ViewModel {
 
     constructor() {
+        this.initHandler = this.init.bind(this);
         this.init();
+        document.addEventListener('DOMContentLoaded', this.initHandler)
         console.log("viewModel started");
     }
 
@@ -27,12 +29,14 @@ export class ViewModel {
     init() {
         const addButton = document.querySelector("#addItem");
         this.itemsList = document.querySelector("ul");
-        this.clickHandler = this._click.bind(this);
         this.formInput = document.querySelector("form input");
         registerEvent(addButton, "click", this.clickHandler);
         this.dataHandler = new DataHandler;
         this.itemTemplate = document.querySelector("template#item");
+        this.clickHandler = this._click.bind(this);
+        registerEvent(addButton, "click", this.clickHandler);  
         this.showEntries();
+        unstash changes and fix jest
     }
 
    

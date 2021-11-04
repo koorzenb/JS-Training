@@ -3,7 +3,7 @@ import { Dates, DateType} from "./enums.js";
 /**
  * Formats and returns date
  */
-export function formattedDate(customDate = "") {
+ export function formattedDate(customDate = "") {
         const date = new Date();
         const enumDate = new Dates();     
         const offset = date.getDay();      
@@ -16,7 +16,7 @@ export function formattedDate(customDate = "") {
  * Returns current week number of the year
  * @returns {number}
  */
-export function getWeek() {
+ export function getWeek() {
     const date = new Date();
     const oneJan = new Date(date.getFullYear(),0,1);
     const numberOfDays = Math.floor((date - oneJan) / (24 * 60 * 60 * 1000));

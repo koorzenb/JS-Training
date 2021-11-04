@@ -6,6 +6,16 @@ body {
   width: 100wv;
 }
 
+section {
+  counter-reset: my-counter;
+}
+
+
+button::before {
+  content: counter(my-counter);
+}
+
 p {
   color: red;
+  counter-increment: my-counter;
 }
