@@ -47,5 +47,6 @@ export class ViewModel {
         const fragment = new DocumentFragment();
         fragment.appendChild(clone);
         this.itemsList.appendChild(fragment);
+        this.formInput.value = "";
     }
 }
