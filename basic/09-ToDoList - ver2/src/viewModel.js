@@ -1,4 +1,5 @@
 import { formattedDate, registerEvent, unregisterEvents } from "./utils/system-utils.js";
+import { FileIO } from "./fileIO.js";
 
 export class ViewModel {
 
@@ -24,7 +25,8 @@ export class ViewModel {
         this.clickHandler = this._click.bind(this);
         this.formInput = document.querySelector("form input");
         registerEvent(addButton, "click", this.clickHandler);
-        this.itemTemplate = document.querySelector("template#item")
+        this.itemTemplate = document.querySelector("template#item");
+        this.entries = []
     }
 
     /**
@@ -42,11 +44,18 @@ export class ViewModel {
     addItem(event) {
         event.preventDefault();
         const clone = this.itemTemplate.content.cloneNode(true);
-        clone.querySelector("#description").innerText = this.formInput.value;
-        clone.querySelector("#date").innerText = formattedDate();
+        const description = this.formInput.value;
+        clone.querySelector("#description").innerText = description;
+        const date = formattedDate();
+        clone.querySelector("#date").innerText = date;
         const fragment = new DocumentFragment();
         fragment.appendChild(clone);
         this.itemsList.appendChild(fragment);
+        this.entries.push({date, description});
         this.formInput.value = "";
+        this.fileIO = new FileIO();
+        this.fileIO.saveToLocalStorage({data: this.entries});
+        const load = this.fileIO.loadFromLocalStorage();
+        this.fileIO = null;
     }
 }
