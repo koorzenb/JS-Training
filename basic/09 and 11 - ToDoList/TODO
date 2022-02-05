@@ -1,25 +1,12 @@
-# adv-list
 
-- add to DOM
-    - loadComponent("adv-list", "body") 
-- accepts description
-    - qs("adv-list")
-    - element.addItem("description")
-- handles own template
-- from input, generate list-item
 
+<!-- for editing
+on checkbox true, open input and accept description -->
 # data-control
-for editing
-on checkbox true, open input and accept description
-- get input 
-    - on keydown enter
-    - find data.records.id == checkbox.id
-    - update records
-    - emit "changed"
+
 
 - data-control
     - on "changed"
-    - get list
     - update UI
         - get datasource.data lists
         - for each record, get value and recordToUpdate.push(currentValue)
@@ -37,15 +24,32 @@ on checkbox true, open input and accept description
 ```js
 class loadComponents(id, target) {
     createElement("template");
-    html = getHTML(id);
+    html = getHTML(id); //fetch?
     template.innerHTML = html;
     target.appendChild(template)
 }
 ```
 
-# record-entry
-- loadComponent("record-entry", "ul")
+# list-item
 - script
     - onChangedAttrib dataset.value
         - update UI
             - this/descriptions.textContent = dataset.value 
+    
+    addNewItem() {
+        - update datasource.data
+        - emit("changed")
+    }
+
+# function update (after checkbox -> "enter")
+    - get input 
+        - on keydown/enter
+        <!-- - data.records = new Map() -->
+        - data.records.get()
+        - data.records.set(checkbox.id, inputValue) 
+        - emit "changed"
+
+# function create (after "+")        
+- loadComponent("list-item", "ul")
+- data.records.set(++id, inputvalue)
+- emit("changed")
