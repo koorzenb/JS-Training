@@ -1,0 +1,8 @@
+# adv-list
+
+- add to DOM
+- accepts description
+    - qs("adv-list")
+    - element.addItem("description")
+- handles own template
+- from input, generate list-item
