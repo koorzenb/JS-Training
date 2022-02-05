@@ -44,16 +44,14 @@ export class ViewModel {
     keydown(event) {
         if (event.key != "Enter") return;
         event.preventDefault();
-        if (event.key == "Enter") {
-            this.addItem();
-        }
+        this.addItem();
     }
 
     /**
      * Adds an item to the DOM
      * @param {*} event 
      */
-    addItem(event) {
+    addItem() {
         const clone = this.itemTemplate.content.cloneNode(true);
         const description = this.formInput.value;
         clone.querySelector("#description").innerText = description;
