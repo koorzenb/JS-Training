@@ -1,6 +1,4 @@
 import {formattedDate, registerEvent, unregisterEvents} from "./utils/system-utils.js";
-import {FileIO} from "./fileIO.js";
-
 export class ViewModel {
 
     constructor() {
@@ -62,10 +60,6 @@ export class ViewModel {
         this.itemsList.appendChild(fragment);
         this.entries.push({date, description});
         this.formInput.value = "";
-        this.fileIO = new FileIO();
-        this.fileIO.saveToLocalStorage({data: this.entries});
-        const load = this.fileIO.loadFromLocalStorage();
-        this.fileIO = null;
         this.formInput.classList.add("hidden");
     }
 }
