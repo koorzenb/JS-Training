@@ -1,5 +1,5 @@
-import { formattedDate, registerEvent, unregisterEvents } from "./utils/system-utils.js";
-import { FileIO } from "./fileIO.js";
+import {formattedDate, registerEvent, unregisterEvents} from "./utils/system-utils.js";
+import {FileIO} from "./fileIO.js";
 
 export class ViewModel {
 
@@ -7,34 +7,46 @@ export class ViewModel {
         this.init();
         console.log("viewModel started");
     }
-    
+
     dispose() {
-        unregisterEvents(addButton, "click")
+        unregisterEvents(addButton, "click");
         delete this.clickHandler;
         delete this.itemTemplate;
         delete this.formInput;
         delete this.itemsList;
     }
-    
+
     /**
      * Initializes view model
      */
     init() {
         const addButton = document.querySelector("#addItem");
-        this.itemsList = document.querySelector("ul");
-        this.clickHandler = this._click.bind(this);
+        this.itemsList = document.querySelector("#list-container");
+        this.clickHandler = this.click.bind(this);
+        this.keydownHandler = this.keydown.bind(this);
         this.formInput = document.querySelector("form input");
         registerEvent(addButton, "click", this.clickHandler);
+        registerEvent(this.formInput, "keydown", this.keydownHandler);
         this.itemTemplate = document.querySelector("template#item");
-        this.entries = []
+        this.entries = [];
     }
 
     /**
      * Handles click event
      * @param {*} event 
      */
-    _click(event) {
-        if (event.currentTarget.id == "addItem") this.addItem(event);
+    click(event) {
+        if (event.currentTarget.id == "addItem") {
+            this.formInput.classList.remove("hidden");
+        }
+    }
+
+    keydown(event) {
+        if (event.key != "Enter") return;
+        event.preventDefault();
+        if (event.key == "Enter") {
+            this.addItem();
+        }
     }
 
     /**
@@ -42,7 +54,6 @@ export class ViewModel {
      * @param {*} event 
      */
     addItem(event) {
-        event.preventDefault();
         const clone = this.itemTemplate.content.cloneNode(true);
         const description = this.formInput.value;
         clone.querySelector("#description").innerText = description;
@@ -57,5 +68,6 @@ export class ViewModel {
         this.fileIO.saveToLocalStorage({data: this.entries});
         const load = this.fileIO.loadFromLocalStorage();
         this.fileIO = null;
+        this.formInput.classList.add("hidden");
     }
 }

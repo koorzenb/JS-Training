@@ -93,3 +93,6 @@ input:invalid:focus {
   box-shadow: 0px 3px 10px 3px rgba(221, 12, 64, 0.473);
 }
 
+input.hidden {
+  display: none;
+}
