@@ -1,8 +1,51 @@
 # adv-list
 
 - add to DOM
+    - loadComponent("adv-list", "body") 
 - accepts description
     - qs("adv-list")
     - element.addItem("description")
 - handles own template
 - from input, generate list-item
+
+# data-control
+for editing
+on checkbox true, open input and accept description
+- get input 
+    - on keydown enter
+    - find data.records.id == checkbox.id
+    - update records
+    - emit "changed"
+
+- data-control
+    - on "changed"
+    - get list
+    - update UI
+        - get datasource.data lists
+        - for each record, get value and recordToUpdate.push(currentValue)
+            ```js
+            {
+               id: 1,
+               recordValue (or just "value"): "get cucumber" 
+            } 
+            ```
+        - for each recordToUpdate
+            - item = qs(id)
+            - item.dataset.value = recordValue 
+
+
+```js
+class loadComponents(id, target) {
+    createElement("template");
+    html = getHTML(id);
+    template.innerHTML = html;
+    target.appendChild(template)
+}
+```
+
+# record-entry
+- loadComponent("record-entry", "ul")
+- script
+    - onChangedAttrib dataset.value
+        - update UI
+            - this/descriptions.textContent = dataset.value 
