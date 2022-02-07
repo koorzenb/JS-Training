@@ -44,12 +44,13 @@ class loadComponents(id, target) {
 # function update (after checkbox -> "enter")
     - get input 
         - on keydown/enter
-        <!-- - data.records = new Map() -->
-        - data.records.get()
-        - data.records.set(checkbox.id, inputValue) 
+        <!-- - data = new Map() -->
+       - data.get()
+        - data.set(checkbox.id, inputValue) 
         - emit "changed"
 
 # function create (after "+")        
 - loadComponent("list-item", "ul")
 - data.records.set(++id, inputvalue)
 - emit("changed")
+
