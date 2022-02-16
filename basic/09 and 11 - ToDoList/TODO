@@ -6,7 +6,6 @@ on checkbox true, open input and accept description -->
 
 
 - data-control
-    - on "changed"
     - update UI
         - get datasource.data lists
         - for each record, get value and recordToUpdate.push(currentValue)
@@ -16,9 +15,6 @@ on checkbox true, open input and accept description -->
                recordValue (or just "value"): "get cucumber" 
             } 
             ```
-        - for each recordToUpdate
-            - item = qs(id)
-            - item.dataset.value = recordValue 
 
 
 ```js
@@ -30,27 +26,10 @@ class loadComponents(id, target) {
 }
 ```
 
-# list-item
-- script
-    - onChangedAttrib dataset.value
-        - update UI
-            - this/descriptions.textContent = dataset.value 
-    
-    addNewItem() {
-        - update datasource.data
-        - emit("changed")
-    }
 
-# function update (after checkbox -> "enter")
-    - get input 
-        - on keydown/enter
-        <!-- - data = new Map() -->
-       - data.get()
-        - data.set(checkbox.id, inputValue) 
-        - emit "changed"
-
-# function create (after "+")        
-- loadComponent("list-item", "ul")
-- data.records.set(++id, inputvalue)
-- emit("changed")
+//create datasource.json list
+// data-source loadComponent into DOM
+// data-control component -> fetch data
+// pass that to index.updateUI
+// updateUI -> create list-item and add to DOM
 
