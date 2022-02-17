@@ -5,7 +5,6 @@ class loadComponents {
         html = getHTML(id); //fetch? ?? if fileNotExist .html, then not templated
         template.innerHTML = html;
         target.appendChild(template);
-
     }
 
     dispose() {

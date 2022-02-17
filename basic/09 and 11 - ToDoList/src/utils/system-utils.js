@@ -1,12 +1,12 @@
-import { Dates, DateType} from "./enums.js";
+import {Dates, DateType} from "./enums.js";
 
 /**
  * Formats and returns date
  */
 export function formattedDate() {
-        const date = new Date();
-        const enumDate = new Dates();        
-        return `${enumDate.get(DateType.WEEKDAY, date.getDay())} ${enumDate.get(DateType.MONTH, date.getMonth())} ${date.getDay()}, ${date.getFullYear()}`;
+    const date = new Date();
+    const enumDate = new Dates();
+    return `${enumDate.get(DateType.WEEKDAY, date.getDay())} ${enumDate.get(DateType.MONTH, date.getMonth())} ${date.getDay()}, ${date.getFullYear()}`;
 }
 
 /**
@@ -31,18 +31,38 @@ export function registerEvent(element, event, callback) {
  * @param {DOM Element} elements - element(s) to remove
  * @param {string} - event type
  */
-export function unregisterEvents(elements,event) {
-    if(elements == null || event == null || events[0] == null) return;
+export function unregisterEvents(elements, event) {
+    if (elements == null || event == null || events[0] == null) return;
 
     elements = Array.isArray(elements) === true ? elements : [elements];
 
     for (const item of events) {
-        if(item.element == elements && item.event == event){
+        if (item.element == elements && item.event == event) {
             item.element.removeEventListener(item.event, item.callback);
             item.callback = null;
             const index = events.indexOf(item);
-            events.splice(index,1);
+            events.splice(index, 1);
             break;
         }
     }
 }
+
+export function loadComponents() {
+    const template = createElement("template");
+    html = getHTML(id); //fetch? ?? if fileNotExist .html, then not templated
+    template.innerHTML = html;
+    target.appendChild(template);
+};
+
+export async function getHTML(id) {
+    // if html exist, fetch
+    let html;
+    try {
+        const path = `./src/webComponents/${id}/${id}.html`;
+        const response = await fetch(path);
+        html = await response.text();
+        return html;
+    } catch (error) {
+        console.info(`No html for ${id}`);
+    }
+};

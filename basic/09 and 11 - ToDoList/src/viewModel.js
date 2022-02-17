@@ -1,8 +1,10 @@
-import {formattedDate, registerEvent, unregisterEvents} from "./utils/system-utils.js";
+import {formattedDate, registerEvent, unregisterEvents, getHTML} from "./utils/system-utils.js";
+
 export class ViewModel {
 
     constructor() {
         this.init();
+        getHTML("list-item");
         console.log("viewModel started");
     }
 
