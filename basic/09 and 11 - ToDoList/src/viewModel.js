@@ -29,6 +29,8 @@ export class ViewModel {
         registerEvent(this.formInput, "keydown", this.keydownHandler);
         this.itemTemplate = document.querySelector("template#item");
         this.entries = [];
+        this.addItem("this is the first", "21 Feb");
+        this.addItem("this is the second", "29 Feb");
     }
 
     /**
@@ -49,19 +51,14 @@ export class ViewModel {
 
     /**
      * Adds an item to the DOM
+     * @param description {string}
+     * @param date {string}
      * @param {*} event 
      */
-    addItem() {
-        const clone = this.itemTemplate.content.cloneNode(true);
-        const description = this.formInput.value;
-        clone.querySelector("#description").innerText = description;
-        const date = formattedDate();
-        clone.querySelector("#date").innerText = date;
-        const fragment = new DocumentFragment();
-        fragment.appendChild(clone);
-        this.itemsList.appendChild(fragment);
-        this.entries.push({date, description});
-        this.formInput.value = "";
-        this.formInput.classList.add("hidden");
+    addItem(description, date) {
+        const listItem = document.createElement("list-item");
+        listItem.description = description;
+        listItem.date = date;
+        this.itemsList.appendChild(listItem);
     }
 }

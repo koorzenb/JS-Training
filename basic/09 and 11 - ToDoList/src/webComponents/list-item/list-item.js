@@ -1,3 +1,5 @@
+import {getHTML} from "../../utils/system-utils.js";
+
 // - script
 //     - onChangedAttrib dataset.value
 //         - update UI
@@ -15,18 +17,35 @@
 // - on ConnectedCallback = get description() and populate
 
 
-class ListItem {
+class ListItem extends HTMLElement {
 
     get description() {
-        return this.description;
+        return this._description;
     }
 
     get date() {
-        return this.date;
+        return this._date;
     }
 
-    connectedCallback() {
-        const template = 
+    set description(newValue) {
+        this._description = newValue;
+    }
+
+    set date(newValue) {
+        this._date = newValue;
+    }
+
+    async connectedCallback() {
+        // get html
+        // append to this
+
+        const html = await getHTML("list-item");
+        const template = document.createElement("template");
+        template.innerHTML = html;
+        const clone = template.content.cloneNode(true).firstChild;
+        clone.querySelector("#description").innerText = this.description;
+        clone.querySelector("#date").innerText = this.date;
+        this.appendChild(clone);
     }
 
     disconnectedCallback() {

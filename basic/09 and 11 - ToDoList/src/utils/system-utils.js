@@ -47,7 +47,7 @@ export function unregisterEvents(elements, event) {
     }
 }
 
-export function loadComponents() {
+export function loadComponents(id) {
     const template = createElement("template");
     html = getHTML(id); //fetch? ?? if fileNotExist .html, then not templated
     template.innerHTML = html;
