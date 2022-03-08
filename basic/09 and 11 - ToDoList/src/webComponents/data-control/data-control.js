@@ -11,12 +11,28 @@
 // item = qs(id)
 // item.dataset.value = recordValue
 
-class DataControl {
+class DataControl extends HTMLElement {
 
-    connectedCallback() {
-        this.updateHandler = this.update.bind(this);
-        window.eventEmitter.on("data-changed", this.updateHandler);
-        this.data = new Datasource();
+    get target() {
+        return this.dataset.target;
+    }
+
+    async connectedCallback() {
+        //const data = fetch(dataset.url)
+        console.log("data-control started");
+        const response = await fetch(this.dataset.url);
+        const data = await response.text();
+        const entries = JSON.parse(data);
+        for (const d of entries) {
+
+            console.log(d + "entryies");
+        }
+
+        // list.data = data
+        // forof data {
+        //      list.appendchild(list-item)
+        // }
+
     }
 
     disconnectedCallback() {
@@ -27,7 +43,9 @@ class DataControl {
 
     }
 
-    update(record) {
-        this.data.set(record.id, record.value);
-    }
+    // update(record) {
+    //     this.data.set(record.id, record.value);
+    // }
 }
+
+customElements.define("data-control", DataControl);

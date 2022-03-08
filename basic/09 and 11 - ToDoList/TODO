@@ -33,3 +33,12 @@ class loadComponents(id, target) {
 // pass that to index.updateUI
 // updateUI -> create list-item and add to DOM
 
+
+    <data-control data-url="http://somewhere" element="list"></data-control>
+
+        const data = fetch(dataset.url)
+         list.data = data
+        forof data {
+             list.appendchild(list-item)
+        }
+

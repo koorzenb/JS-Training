@@ -19,9 +19,9 @@ const events = [];
 export function registerEvent(element, event, callback) {
     element.addEventListener(event, callback);
     events.push({
-        element: element,
-        event: event,
-        callback: callback
+        element,
+        event,
+        callback
     });
 }
 
@@ -65,4 +65,11 @@ export async function getHTML(id) {
     } catch (error) {
         console.info(`No html for ${id}`);
     }
+};
+
+export const cloneNode = async (id) => {
+    const html = await getHTML(id);
+    const template = document.createElement("template");
+    template.innerHTML = html;
+    return template.content.cloneNode(true).firstChild;
 };
