@@ -58,7 +58,7 @@ export class ViewModel {
     addItem(description, date) {
         const listItem = document.createElement("list-item");
         listItem.description = description;
-        listItem.date = date;
+        listItem.date = formattedDate();
         this.itemsList.appendChild(listItem);
     }
 }
