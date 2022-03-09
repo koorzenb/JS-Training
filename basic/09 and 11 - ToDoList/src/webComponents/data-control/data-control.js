@@ -11,28 +11,17 @@
 // item = qs(id)
 // item.dataset.value = recordValue
 
+
 class DataControl extends HTMLElement {
 
-    get target() {
-        return this.dataset.target;
-    }
-
     async connectedCallback() {
-        //const data = fetch(dataset.url)
         console.log("data-control started");
         const response = await fetch(this.dataset.url);
         const data = await response.text();
-        const entries = JSON.parse(data);
-        for (const d of entries) {
-
-            console.log(d + "entryies");
-        }
-
-        // list.data = data
-        // forof data {
-        //      list.appendchild(list-item)
-        // }
-
+        const customList = document.createElement("custom-list");
+        customList.data = JSON.parse(data);
+        const target = document.querySelector(this.dataset.target);
+        target.appendChild(customList);
     }
 
     disconnectedCallback() {

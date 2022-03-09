@@ -1,21 +1,21 @@
-import {getHTML, cloneNode} from "../../utils/system-utils.js";
+import {getHTML, formattedDate, cloneNode} from "../../utils/system-utils.js";
 
-class List extends HTMLElement {
+class customList extends HTMLElement {
 
     get data() {
         return this._data;
     }
 
-    get data() {
-        return this._data;
+    set data(newValue) {
+        this._data = newValue;
     }
 
     async connectedCallback() {
-        const clone = cloneNode("list");
+        const clone = cloneNode("customList");
         const fragment = new DocumentFragment;
-        for (const entry of Object.keys(this.data)) {
+        for (const entry of Object.values(this.data)) {
             const listItem = document.createElement("list-item");
-            listItem.description = description;
+            listItem.description = entry.description;
             listItem.date = formattedDate();
             fragment.appendChild(listItem);
         }
@@ -30,4 +30,4 @@ class List extends HTMLElement {
 
 }
 
-customElements.define("custom-list", List);
+customElements.define("custom-list", customList);
