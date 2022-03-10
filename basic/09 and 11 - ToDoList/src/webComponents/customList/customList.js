@@ -11,12 +11,12 @@ class customList extends HTMLElement {
     }
 
     async connectedCallback() {
-        const clone = cloneNode("customList");
+        const clone = await cloneNode("customList");
         const fragment = new DocumentFragment;
         for (const entry of Object.values(this.data)) {
             const listItem = document.createElement("list-item");
             listItem.description = entry.description;
-            listItem.date = formattedDate();
+            listItem.date = entry.date; //formattedDate();
             fragment.appendChild(listItem);
         }
         clone.appendChild(fragment);
@@ -24,7 +24,7 @@ class customList extends HTMLElement {
     }
 
     disconnectedCallback() {
-
+        this.data = null;
     }
 
 

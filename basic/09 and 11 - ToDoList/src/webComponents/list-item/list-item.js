@@ -1,4 +1,4 @@
-import {getHTML} from "../../utils/system-utils.js";
+import {cloneNode} from "../../utils/system-utils.js";
 
 // - script
 //     - onChangedAttrib dataset.value
@@ -36,20 +36,15 @@ class ListItem extends HTMLElement {
     }
 
     async connectedCallback() {
-        // get html
-        // append to this
-
-        const html = await getHTML("list-item");
-        const template = document.createElement("template");
-        template.innerHTML = html;
-        const clone = template.content.cloneNode(true).firstChild;
+        const clone = await cloneNode("list-item");
         clone.querySelector("#description").innerText = this.description;
         clone.querySelector("#date").innerText = this.date;
         this.appendChild(clone);
     }
 
     disconnectedCallback() {
-
+        this.description = null;
+        this.date = null;
     }
 
 
