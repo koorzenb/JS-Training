@@ -8,12 +8,19 @@ class customList extends HTMLElement {
 
     set data(newValue) {
         this._data = newValue;
+        console.log("logging data");
+        // update vs clear and redraw
     }
 
     async connectedCallback() {
+        await this.renderList();
+    }
+
+    async renderList() {
+        console.log("Starting renderList");
         const clone = await cloneNode("customList");
         const fragment = new DocumentFragment;
-        for (const entry of Object.values(this.data)) {
+        for (const entry of Object.values(this.data)) { //rather loop thru keys
             const listItem = document.createElement("list-item");
             listItem.description = entry.description;
             listItem.date = entry.date; //formattedDate();

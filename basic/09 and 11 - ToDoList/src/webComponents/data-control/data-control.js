@@ -4,10 +4,10 @@ class DataControl extends HTMLElement {
         console.log("data-control started");
         const response = await fetch(this.dataset.url);
         const data = await response.text();
-        const customList = document.createElement("custom-list");
-        customList.data = JSON.parse(data);
+        // const customList = document.createElement("custom-list");
         const target = document.querySelector(this.dataset.target);
-        target.appendChild(customList);
+        // customList.data = JSON.parse(data);
+        target.data = JSON.parse(data); // send data and move on
     }
 
 }
