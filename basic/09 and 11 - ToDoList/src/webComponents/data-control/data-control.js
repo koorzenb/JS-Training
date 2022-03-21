@@ -2,7 +2,6 @@ import {getHTML, formattedDate, cloneNode, registerEvent} from "../../utils/syst
 class DataControl extends HTMLElement {
 
     async connectedCallback() {
-        console.log("data-control started");
         const response = await fetch(this.dataset.url);
         const data = await response.text();
         // const customList = document.createElement("custom-list");

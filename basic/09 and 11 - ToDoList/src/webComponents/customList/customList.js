@@ -9,8 +9,6 @@ class customList extends HTMLElement {
 
     set data(newValue) {
         this._data = newValue;
-        console.log("logging data");
-        // update vs clear and redraw
     }
 
     async connectedCallback() {
@@ -27,7 +25,6 @@ class customList extends HTMLElement {
     }
 
     async renderList() {
-        console.log("Starting renderList");
         const clone = await cloneNode("customList");
         const fragment = new DocumentFragment;
         for (const key of Object.keys(this.data)) {
