@@ -1,3 +1,4 @@
+import {getHTML, formattedDate, cloneNode, registerEvent} from "../../utils/system-utils.js";
 class DataControl extends HTMLElement {
 
     async connectedCallback() {
@@ -8,6 +9,7 @@ class DataControl extends HTMLElement {
         const target = document.querySelector(this.dataset.target);
         // customList.data = JSON.parse(data);
         target.data = JSON.parse(data); // send data and move on
+        window.eventEmitter.emit("updated-data");
     }
 
 }

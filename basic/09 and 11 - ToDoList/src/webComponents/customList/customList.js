@@ -1,4 +1,5 @@
-import {getHTML, formattedDate, cloneNode} from "../../utils/system-utils.js";
+import {EventEmitter} from "../../lib/events.js";
+import {getHTML, formattedDate, cloneNode, registerEvent} from "../../utils/system-utils.js";
 
 class customList extends HTMLElement {
 
@@ -13,15 +14,25 @@ class customList extends HTMLElement {
     }
 
     async connectedCallback() {
-        await this.renderList();
+        this.renderHandler = this.renderList.bind(this);
+        window.eventEmitter = new EventEmitter;     //TODO: move this out and cleanup
+        window.eventEmitter.on("updated-data", this.renderHandler);
+    }
+
+
+    disconnectedCallback() {
+        window.eventEmitter.remove("updated-data");
+        this.renderHandler = null;
+        this.data = null;
     }
 
     async renderList() {
         console.log("Starting renderList");
         const clone = await cloneNode("customList");
         const fragment = new DocumentFragment;
-        for (const entry of Object.values(this.data)) { //rather loop thru keys
+        for (const key of Object.keys(this.data)) {
             const listItem = document.createElement("list-item");
+            const entry = this.data[key];
             listItem.description = entry.description;
             listItem.date = entry.date; //formattedDate();
             fragment.appendChild(listItem);
@@ -29,11 +40,6 @@ class customList extends HTMLElement {
         clone.appendChild(fragment);
         this.appendChild(clone);
     }
-
-    disconnectedCallback() {
-        this.data = null;
-    }
-
 
 }
 
