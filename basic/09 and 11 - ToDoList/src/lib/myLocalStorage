@@ -1,4 +1,4 @@
-class MyLocalStorage extends HTMLElement {
+class MyLocalStorage {
 
     get title() {
         return this._title ?? "default";
@@ -8,9 +8,8 @@ class MyLocalStorage extends HTMLElement {
         this._title = newValue;
     }
 
-    async connectedCallback() {
-        if (this.dataset.url == null) console.error("No data location specified for myLocalStorage component");
-        const title = this.getAttribute("title");
+    constructor(url, title) {
+        if (url == null) console.error("No data location specified for myLocalStorage component");
         title == null ? console.warn("No title set for localStorage") : this.title = title;
         // window.eventEmitter.emit("updated-data");
     }
@@ -38,6 +37,3 @@ class MyLocalStorage extends HTMLElement {
     }
 
 }
-
-customElements.define("my-local-storage", MyLocalStorage);
-
