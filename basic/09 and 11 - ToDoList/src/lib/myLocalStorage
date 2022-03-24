@@ -10,7 +10,7 @@ class MyLocalStorage {
 
     constructor(url, title) {
         if (url == null) console.error("No data location specified for myLocalStorage component");
-        title == null ? console.warn("No title set for localStorage") : this.title = title;
+        name == null ? console.warn("No title set for localStorage") : this.title = title;
         // window.eventEmitter.emit("updated-data");
     }
 
