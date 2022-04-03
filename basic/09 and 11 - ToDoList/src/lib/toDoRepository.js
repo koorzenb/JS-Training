@@ -4,6 +4,23 @@ class TodoRepository {
     /**
      * Action after "+"
      */
+
+    get data() {
+        if (this._data == null) {
+            this._data == this.readAll();
+        }
+
+        return data;
+    }
+
+    set data(newValue) {
+        this._data = newValue;
+    }
+
+    constructor(dataLocation) {
+        this.dataLocation = dataLocation;
+    }
+
     create() {
         // loadComponent("list-item", "ul")
         // data.records.set(++id, inputvalue)
@@ -14,6 +31,13 @@ class TodoRepository {
          * 
          * if no file, create data/entries.json with array as content
          */
+
+        try {
+            await fetch(this.dataLocation);
+        } catch (e) {
+            console.warn("no data store - created new");
+            //TODO: create new file - cannot us fs. since node doesnt run on mobile
+        }
     }
 
     /**
@@ -42,8 +66,15 @@ class TodoRepository {
         // readlAll and return as this.lastRecordId
     }
 
+    /**
+     * 
+     * @returns Fetch all data from file
+     */
     readAll() {
-        // this.data = fetch all data in file
+        if (this.dataLocation == null) return;
+
+        const response = await fetch(this.dataLocation);
+        this.data = await response.text();
     }
 
     deleteById(id) {
