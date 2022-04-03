@@ -28,11 +28,11 @@ export class MyLocalStorage {
         this.dataLocation = dataLocation;
         window.eventEmitter = new EventEmitter;     //TODO: move this out and cleanup
         this.saveHandler = this._save.bind(this);
-        window.eventEmitter.on("save-data", this.saveHandler);
+        window.eventEmitter.on("save-to-storage", this.saveHandler);
         this.readHandler = this._read.bind(this);
-        window.eventEmitter.on("read-data", this.readHandler);
+        window.eventEmitter.on("read-from-storage", this.readHandler);
         this.clearHandler = this._clear.bind(this);
-        window.eventEmitter.on("clear-data", this.clearHandler);
+        window.eventEmitter.on("clear-storage", this.clearHandler);
     }
 
     dispose() {
