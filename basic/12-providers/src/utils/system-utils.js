@@ -1,14 +1,3 @@
-import { Dates, DateType} from "./enums.js";
-
-/**
- * Formats and returns date
- */
-export function formattedDate() {
-        const date = new Date();
-        const enumDate = new Dates();        
-        return `${enumDate.get(DateType.WEEKDAY, date.getDay())} ${enumDate.get(DateType.MONTH, date.getMonth())} ${date.getDay()}, ${date.getFullYear()}`;
-}
-
 /**
  * Registers eventlisteners against elements and 
  * @param {HTML element} element - element against which the eventlistner is being registered
@@ -31,17 +20,17 @@ export function registerEvent(element, event, callback) {
  * @param {DOM Element} elements - element(s) to remove
  * @param {string} - event type
  */
-export function unregisterEvents(elements,event) {
-    if(elements == null || event == null || events[0] == null) return;
+export function unregisterEvents(elements, event) {
+    if (elements == null || event == null || events[0] == null) return;
 
     elements = Array.isArray(elements) === true ? elements : [elements];
 
     for (const item of events) {
-        if(item.element == elements && item.event == event){
+        if (item.element == elements && item.event == event) {
             item.element.removeEventListener(item.event, item.callback);
             item.callback = null;
             const index = events.indexOf(item);
-            events.splice(index,1);
+            events.splice(index, 1);
             break;
         }
     }
