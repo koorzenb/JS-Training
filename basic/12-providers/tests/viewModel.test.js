@@ -1,4 +1,7 @@
-import {ViewModel} from "viewModel.js";
+
+const ViewModel = require("../src/viewModel.js");
+
+import 'regenerator-runtime/runtime';
 
 describe("ViewModel", () => {
     let viewModel;
