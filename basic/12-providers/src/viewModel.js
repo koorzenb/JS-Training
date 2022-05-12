@@ -1,6 +1,6 @@
 import {registerEvent, unregisterEvents} from "./utils/system-utils.js";
 import Binding from "./binding.js";
-export class ViewModel {
+export default class ViewModel {
 
     constructor() {
         this._init();

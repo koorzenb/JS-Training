@@ -38,5 +38,3 @@ export default class Binding {
     }
 
 }
-
-// module.exports = Binding;

@@ -1,5 +1,5 @@
 
-const Binding = require("../src/binding.js");
+import Binding from "../src/binding.js";
 import 'regenerator-runtime/runtime';
 
 describe("Binding", () => {
