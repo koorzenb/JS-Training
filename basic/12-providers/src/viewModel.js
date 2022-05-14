@@ -8,6 +8,8 @@ export default class ViewModel {
         const binding = new Binding;
         const html = binding.textParser(this.div.innerHTML, this[`_${context}`]());
         this.div.innerHTML = html;
+        const attribute = binding.textParser(this.div.dataset[`${context}.bind`], this[`_${context}`]());
+        this.div.dataset[`${context}.bind`] = attribute;
         console.log("viewModel started");
 
         // # You need a provider that deals with the ".bind" syntax on an attribute 
@@ -46,7 +48,7 @@ export default class ViewModel {
         const attributes = element.attributes;
         for (const attr of attributes) {
             if (attr.name.includes(".bind")) {
-                return attr.name.replace(".bind", "");
+                return attr.name.replace(".bind", "").replace("data-", "");
             }
         }
     }
