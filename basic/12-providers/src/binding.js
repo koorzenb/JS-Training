@@ -1,30 +1,23 @@
 export default class Binding {
 
-    set data(newValue) {
-        this._data = newValue;
-    }
-
-    get data() {
-        return this._data;
-    }
-
-    constructor(element, context) {
-        this.data = {
-            firstName: "John",
-            lastName: "Smith",
-            age: 20
-        };
+    constructor(element) {
         this.element = element;
-        this.context = context;
     }
 
     dispose() {
         this.element = null;
-        this.context = null;
     }
 
-    textParser(element, context) {
-        let text = element;
+
+    _textParser(context) {
+        let text;
+        if (this.element instanceof HTMLElement === true) text = this.element.innerHTML;
+        if (typeof this.element === "string") {
+            text = this.element;
+        } else {
+            throw new Error("not implemented");
+            return false;
+        }
         const regex = /{{(.*?)}}/g;
         const matches = text.match(regex);
         if (matches) {
@@ -37,4 +30,44 @@ export default class Binding {
         return text;
     }
 
+
+    /**
+      * Set binding expressions
+      * @private
+      */
+    setBindingExpressions() {
+        const context = this._locateBindingExpressions();
+        const html = this._textParser(this.div.innerHTML, this[`_${context}`]());
+        this.div.innerHTML = html;
+        const attribute = binding.textParser(this.div.dataset[`${context}.bind`], this[`_${context}`]());
+        this.div.dataset[`${context}.bind`] = attribute;
+    }
+
+    // not sure where else to store this data.
+    /**
+     * Name data
+     * @returns {Object}
+     * @private
+     */
+    _name() {
+        return {
+            firstName: "John",
+            lastName: "Smith",
+            age: 20
+        };
+    }
+
+    /**
+     * Find .bind expressions in the DOM and return the context
+     * @param {*} element 
+     * @returns 
+     */
+    _locateBindingExpressions(element) {
+        const attributes = element.attributes;
+        for (const attr of attributes) {
+            if (attr.name.includes(".bind")) {
+                return attr.name.replace(".bind", "").replace("data-", "");
+            }
+        }
+    }
 }
