@@ -2,6 +2,7 @@ import {ViewBase} from "./node_modules/crs-binding/crs-view-base.js";
 
 export default class IndexViewModel extends ViewBase {
     async connectedCallback() {
+        this.title = "My Application";
         await super.connectedCallback();
         crsbinding.data.updateUI(this, "routes");
     }
@@ -32,7 +33,8 @@ export default class IndexViewModel extends ViewBase {
                 fn();
             }
             else {
-                router.addEventListener("ready", fn);}
-        })
+                router.addEventListener("ready", fn);
+            }
+        });
     }
 }
