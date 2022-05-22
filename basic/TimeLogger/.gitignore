@@ -1,1 +1,14 @@
 /node_modules/
+package-lock.json
+yarn.lock
+/.cache/
+yarn-error.log
+/coverage/
+/dist/
+/.idea/
+/publish/
+/extras/
+/webcomponents/
+/.vscode/
+.eslintrc
+*.png
