@@ -1,4 +1,4 @@
-const {beforeFn, afterFn, beforeEachFn, afterEachFn, cleanFolders} = require("./../lib/bootstrap-functions.js");
+// const {beforeFn, afterFn, beforeEachFn, afterEachFn, cleanFolders} = require("./../lib/bootstrap-functions.js");
 
 before(async function () {
     await beforeFn.call();
