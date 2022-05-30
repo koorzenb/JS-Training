@@ -4,11 +4,12 @@
   "description": "observer-pattern",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "jest",
+    "start": "ws --spa ./index.html"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/koorzenb/JS-Training.git#project-12"
+    "url": "git+https://github.com/koorzenb/JS-Training.git#project-13"
   },
   "keywords": [
     "observer",
@@ -19,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/koorzenb/JS-Training/issues"
   },
-  "homepage": "https://github.com/koorzenb/JS-Training/tree/project-12#readme"
+  "homepage": "https://github.com/koorzenb/JS-Training/tree/project-12#readme",
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
 }
