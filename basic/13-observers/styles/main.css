@@ -2,7 +2,7 @@ h1 {
   display: block;
   margin: 1rem 0;
   padding-left: 1rem;
-  font-size: 0.8rem;
+  font-size: 1.5rem;
   color: dimgrey;
 }
 
@@ -11,10 +11,17 @@ ul {
 }
 
 main {
-  box-shadow: 0px 3px 10px 3px rgba(0, 0, 3, 0.17);
   display: flex;
   flex-direction: column;
   gap: .5rem;
   margin: 1rem;
   width: max-content;
+}
+
+p {
+  margin: 1rem 0;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: brown;
 }
