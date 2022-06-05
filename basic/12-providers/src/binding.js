@@ -76,7 +76,7 @@ export default class Binding {
     /**
       * Set binding expressions
       */
-    setBindingExpressions() {
+    updateUI() {
         this._setHTML(this.context);
         this._setAttributes(this.context);
     }

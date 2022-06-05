@@ -5,7 +5,7 @@ export default class ViewModel {
         console.log("viewModel started");
         this._init();
         const binding = new Binding(this.element);
-        binding.setBindingExpressions();
+        binding.updateUI();
     }
 
     dispose() {
