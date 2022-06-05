@@ -1,29 +1,34 @@
+import {Person} from "./person.js";
+
 export class ViewModel {
 
-    get name() {
-        return this._name;
+    constructor(person) {
+        this.person = new Person;
+        this._init();
     }
 
-    set name(value) {
-        this._name = value;
-        this.notify();
+    _init() {
+        this.submitButton = document.querySelector('#submit');
+        this.submitHandler = this._submit.bind(this);
+        this.submitButton.addEventListener('submit', this.submitHandler);
+        this.results = document.querySelector('#results');
     }
 
-    get lastName() {
-        return this._lastName;
+    dispose() {
+        this.submitButton.removeEventListener('submit', this.submitHandler);
+        this.submitHandler = null;
+        this.results = null;
+        this.submitButton = null;
     }
 
-    set lastName(value) {
-        this._lastName = value;
-        this.notify();
-    }
-
-    get age() {
-        return this._age;
-    }
-
-    set age(value) {
-        this._age = value;
-        this.notify();
+    _submit(event) {
+        event.preventDefault();
+        const name = this.nameInput.value;
+        const lastName = this.lastNameInput.value;
+        const age = this.ageInput.value;
+        this.person.name = name;
+        this.person.lastName = lastName;
+        this.person.age = age;
+        this.results.innerText = this.person.getInfo();
     }
 }

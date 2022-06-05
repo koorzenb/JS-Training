@@ -1,12 +1,12 @@
 global.testing = {};
 
-const {beforeFn, afterFn, beforeEachFn, afterEachFn, cleanFolders} = require("./../lib/bootstrap-functions.js");
+const {beforeFn, afterFn, beforeEachFn, afterEachFn} = require("./../lib/bootstrap-functions.js");
 // const {auth} = require("./../lib/test-helpers.js");
 // const TestHelper = require("../integration/lib/generic-components/test-helper.js");
 
 before(async function () {
     // await cleanFolders();
-    await beforeFn.call();
+    await beforeFn();
 });
 
 after(async function () {
