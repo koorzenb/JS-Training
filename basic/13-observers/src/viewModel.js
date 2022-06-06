@@ -1,6 +1,6 @@
-import {Person} from "./person.js";
+// import {Person} from "./person.js";
 
-export class ViewModel {
+class ViewModel {
 
     constructor() {
         this._init();
@@ -25,30 +25,44 @@ export class ViewModel {
 
     _submit(event) {
         event.preventDefault();
+        this._queryInputs();
+        this._validateInputValues();
+    }
+
+    _validateInputValues() {
+        const valuesToIterate = ["name", "lastName", "age"];
+        this.person.result = true;
+
+        for (const value of valuesToIterate) {
+            this.proxy[value] = this[`${value}`];
+        }
+
+        if (this.proxy.result === true) {
+            this.results.textContent = `Found you John`;
+        } else {
+            this.results.textContent = "";
+            if (this.proxy._age === 30) {
+                this.ageInput.value = 30;
+            }
+        }
+    }
+
+    _queryInputs() {
         const nameInput = document.querySelector('#name');
         this.name = nameInput.value;
         const lastNameInput = document.querySelector('#lastName');
         this.lastName = lastNameInput.value;
-        const ageInput = document.querySelector('#age');
-        this.age = ageInput.value;
-        const valuesToIterate = ["name", "lastName", "age"];
-        this.person.result = true;
-        for (const value of valuesToIterate) {
-            this.proxy[value] = this[`${value}`];
-        }
-        console.log(this.proxy.result);
-        if (this.proxy.result === true) {
-            this.results.textContent = `Found you John Doe`;
-        } else {
-            this.results.textContent = "";
-        }
+        this.ageInput = document.querySelector('#age');
+        this.age = this.ageInput.value;
     }
+
     _setupValidator() {
         const validator = {
             set(obj, prop, value) {
 
                 obj[prop] = value;
                 if (obj.result === true) {
+
                     if (prop === 'age') {
                         value = value.toString();
                         if (value !== "20") {

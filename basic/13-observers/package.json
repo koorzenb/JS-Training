@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha ./test/integration/bootstrap.js --recursive test/integration/tests/index.js",
+    "test-unit": "mocha test/unit/viewModel.test.js",
     "start": "ws --spa ./index.html"
   },
   "repository": {
