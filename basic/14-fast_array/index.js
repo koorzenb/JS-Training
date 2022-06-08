@@ -1,10 +1,15 @@
 const processArray = (array) => {
-    let total, min, max, avg, count;
+    let total, min, max, count;
+    const uniqueValues = [];
     const keys = Object.keys(array[0]);
+    for (const key of keys) {
+        const arrayName = `unique${key}`;
+        eval(`${arrayName} = new Array();`); // test this
+    }
     for (const arrayElement of array) {
 
         for (const key of keys) {
-            value = arrayElement[key];
+            const value = arrayElement[key];
             if (typeof value === "number" || value instanceof Date) {
                 if (value < arrayElement.min) {
                     min = value;
@@ -16,33 +21,36 @@ const processArray = (array) => {
             }
         }
         count++;
-    };
 
-    const avg = total / array.length;
-    const countAggregate = array.reduce((acc, curr) => {
-        const key = curr.code;
-        if (acc[key]) {
-            acc[key]++;
-        } else {
-            acc[key] = 1;
-        }
-        return acc;
-    }, {});
-    const uniqueValues = array.reduce((acc, curr) => {
-        if (acc.indexOf(curr.code) === -1) {
-            acc.push(curr.code);
-        }
-        return acc;
-    }, []);
 
-    return {
-        min: array[0].min,
-        max: array[0].max,
-        avg: avg,
-        countAggregate: countAggregate,
-        uniqueValues: uniqueValues
+        return {
+            min: array[0].min,
+            max: array[0].max,
+            avg: avg,
+            countAggregate: countAggregate,
+            uniqueValues: uniqueValues
+        };
     };
 };
-return {min, max, avg, countAggregate, uniqueValues};
 
-module.exports = arrays;
+/**
+ * Creates an array of unique values from an array of objects.
+ * @param {Array} array
+ * @returns {Object}
+ * @private
+ */
+_uniqueValues = (arrayElement, uniqueValues) => {
+    const keys = Object.keys(arrayElement);
+    for (const key of keys) {
+        const value = arrayElement[key];
+        uniqueValues.indexOf(value) === -1 && uniqueValues.push(value);
+    }
+};
+
+/**
+ * Get keyname - code
+ * create "uniqueCodes" - arrayName = `unique${keyName}`
+ * 
+ */
+
+module.exports = processArray;
