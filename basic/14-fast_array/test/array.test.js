@@ -8,18 +8,18 @@ describe("fast array processing", () => {
 
     test('calc min', () => {
         const results = processArray(testArray);
-        expect(results.min).toBe(10);
+        expect(results.value.min).toBe(10);
 
     });
 
     test('calc max', () => {
         const results = processArray(testArray);
-        expect(results.max).toBe(30);
+        expect(results.value.max).toBe(30);
     });
 
     test('calc avg', () => {
         const results = processArray(testArray);
-        expect(results.avg).toBe(17.5);
+        expect(results.value.avg).toBe(17.5);
     });
 
     // test('calc min', () => {
