@@ -1,4 +1,4 @@
-const processData = (data) => {
+export const processData = (data) => {
     if (data == null) data = getData();
     const processor = generateProcessor(data[0]);
     for (const item of data) {
@@ -8,7 +8,7 @@ const processData = (data) => {
     return processor.result;
 };
 
-const getData = () => {
+export const getData = () => {
     return [{value: 10, code: "a"}, {value: 10, code: "a"}, {value: 20, code: "a"}, {value: 30, code: "b"}];
 };
 
@@ -106,4 +106,4 @@ const generateProcessor = (firstElement) => {
 //  *
 //  */
 
-// module.exports = processArray;
+module.exports = {processData, getData};

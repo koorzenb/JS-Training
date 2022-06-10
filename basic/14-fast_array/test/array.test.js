@@ -1,9 +1,17 @@
-const processArray = require('../index');
+const {processData, getData} = require('../index');
 
 describe("fast array processing", () => {
     let testArray;
     beforeEach(() => {
         testArray = [{value: 10, code: "a"}, {value: 10, code: "a"}, {value: 20, code: "a"}, {value: 30, code: "b"}];
+    });
+
+    test('getData should exist', () => {
+        expect(getData).toBeDefined();
+    });
+
+    test('processData should exist', () => {
+        expect(processData).toBeDefined();
     });
 
     test('calc min', () => {
