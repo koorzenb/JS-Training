@@ -3,7 +3,7 @@ const {processData, getData, generateProcessor} = require('../index');
 describe("fast array processing", () => {
     let testArray;
     beforeEach(() => {
-        testArray = [{value: 10, code: "a"}, {value: 10, code: "a"}, {value: 20, code: "a"}, {value: 30, code: "b"}];
+        testArray = [{siteValue: 10, code: "a"}, {value: 10, code: "a"}, {value: 20, code: "a"}, {value: 30, code: "b"}];
     });
 
     test('processData should exist', () => {
@@ -25,8 +25,7 @@ describe("fast array processing", () => {
     });
 
     test('processData should return an result object with the correct properties', () => {
-        const data = getData();
-        const processor = generateProcessor(data[0]);
+        const processor = generateProcessor(testArray[0]);
         expect(processor.result.value).toHaveProperty('min');
         expect(processor.result.value).toHaveProperty('max');
         expect(processor.result.value).toHaveProperty('avg');
