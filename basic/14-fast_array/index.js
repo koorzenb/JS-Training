@@ -13,21 +13,21 @@ export const processData = (data, amount = 1000000) => {
  * @param amountOfRandomNumbers {number} - amount of random values to generate
  * @returns {[{code: string, value: number},{code: string, value: number},{code: string, value: number},{code: string, value: number}]}
  */
-export const getData = (amountOfRandomNumbers = 100) => {
-    return [{value: 10, code: "a"}, {value: 10, code: "a"}, {value: 20, code: "a"}, {value: 30, code: "b"}];
-    // const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-    // const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    // const data = [];
-    // let count = 1;
-    //
-    // do {
-    //     const value = random(1, 26);
-    //     const code = alphabet[random(0, 25)];
-    //     data.push({value, code});
-    //     count++;
-    // } while (count < amountOfRandomNumbers);
-    //
-    // return data;
+export const getData = (amountOfRandomNumbers = 1000000) => {
+    // return [{value: 10, code: "a"}, {value: 10, code: "a"}, {value: 20, code: "a"}, {value: 30, code: "b"}];
+    const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+    const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    const data = [];
+    let count = 1;
+
+    do {
+        const value = random(1, 26);
+        const code = alphabet[random(0, 25)];
+        data.push({value, code});
+        count++;
+    } while (count < amountOfRandomNumbers);
+
+    return data;
 };
 
 export const generateProcessor = (firstElement) => {
@@ -38,18 +38,18 @@ export const generateProcessor = (firstElement) => {
     const keys = Object.keys(firstElement);
     for (const key of keys) {
         result[key] = {};
+        result[key].uniqueValues = [];
 
-        if (typeof key === "number") {
+        if (typeof firstElement[key] === "number") {
             result[key].type = "number";
             result[key].min = null;
             result[key].max = null;
             result[key].avg = null;
         }
 
-        if (typeof key === "string") {
+        if (typeof firstElement[key] === "string") {
             result[key].type = "string";
             result[key].aggregate = {};
-            result[key].uniqueValues = [];
         }
     }
     // will assign results later to results[key] ~~ results.property
@@ -59,30 +59,33 @@ export const generateProcessor = (firstElement) => {
     const processor = {
         process: (item) => {
             const keys = Object.keys(item)
-            for (const key of keys) {
-                const propertyName = item[key]
+            for (const propertyName of keys) {
                 if (result[propertyName].type === "number") {
-                    if (processor.result.value.min === null || item.value < processor.result.value.min) { // add numeric check
-                        processor.result.value.min = item.value;
+                    if (processor.result[propertyName].min === null || item[propertyName] < processor.result[propertyName].min) {
+                        processor.result[propertyName].min = item[propertyName];
                     }
 
-                    if (processor.result.value.max === null || item.value > processor.result.value.max) {
-                        processor.result.value.max = item.value;
+                    if (processor.result[propertyName].max === null || item[propertyName] > processor.result[propertyName].max) {
+                        processor.result[propertyName].max = item[propertyName];
                     }
 
-                    processor.result.value.avg = processor.result.value.avg === null ? item.value : (processor.result.value.avg + item.value) / 2;
+                    processor.result[propertyName].avg = processor.result[propertyName].avg === null ? item[propertyName] : (processor.result[propertyName].avg + item[propertyName]) / 2;
                 }
 
                 if (result[propertyName].type === "string") {
-                    if (processor.result.code.aggregate[item.code] == null) {
-                        processor.result.code.aggregate[item.code] = 1;
+                    if (processor.result[propertyName].aggregate[item[propertyName]] == null) {
+                        processor.result[propertyName].aggregate[item[propertyName]] = 1;
                     } else {
-                        processor.result.code.aggregate[item.code]++;
+                        processor.result[propertyName].aggregate[item[propertyName]]++;
                     }
 
-                    if (processor.result.code.uniqueValues.indexOf(item.code) === -1) {
-                        processor.result.code.uniqueValues.push(item.code);
+                    if (processor.result[propertyName].uniqueValues.indexOf(item[propertyName]) === -1) {
+                        processor.result[propertyName].uniqueValues.push(item[propertyName]);
                     }
+                }
+
+                if (processor.result[propertyName].uniqueValues.indexOf(item[propertyName]) === -1) {
+                    processor.result[propertyName].uniqueValues.push(item[propertyName]);
                 }
             }
         },
@@ -90,62 +93,3 @@ export const generateProcessor = (firstElement) => {
     };
     return processor;
 };
-
-// const processArray = (array) => {
-//     let total, min, max, count;
-//     const uniqueValues = [];
-//     const keys = Object.keys(array[0]);
-//     for (const key of keys) {
-//         const arrayName = `unique${key}`;
-//         eval(`${arrayName} = new Array();`); // test this
-//     }
-//     for (const arrayElement of array) {
-
-//         for (const key of keys) {
-//             const value = arrayElement[key];
-//             if (typeof value === "number" || value instanceof Date) {
-//                 if (value < arrayElement.min) {
-//                     min = value;
-//                 }
-//                 if (value > arrayElement.max) {
-//                     max = value;
-//                 }
-//                 total += value;
-//             }
-//         }
-//         count++;
-
-
-//         return {
-//             min: array[0].min,
-//             max: array[0].max,
-//             avg: avg,
-//             countAggregate: countAggregate,
-//             uniqueValues: uniqueValues
-//         };
-//     };
-// };
-
-// /**
-//  * Creates an array of unique values from an array of objects.
-//  * @param {Array} array
-//  * @returns {Object}
-//  * @private
-//  */
-// _uniqueValues = (arrayElement, uniqueValues) => {
-//     const keys = Object.keys(arrayElement);
-//     for (const key of keys) {
-//         const value = arrayElement[key];
-//         uniqueValues.indexOf(value) === -1 && uniqueValues.push(value);
-//     }
-// };
-
-// /**
-//  * Get keyname - code
-//  * create "uniqueCodes" - arrayName = `unique${keyName}`
-//  *
-//  */
-
-// module.exports = {processData, getData, generateProcessor};
-
-processData();
