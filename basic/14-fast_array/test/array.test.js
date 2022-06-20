@@ -3,7 +3,7 @@ const {processData, getData, generateProcessor} = require('../index');
 describe("fast array processing", () => {
     let testArray;
     beforeEach(() => {
-        testArray = [{siteValue: 10, code: "a"}, {value: 10, code: "a"}, {value: 20, code: "a"}, {value: 30, code: "b"}];
+        testArray = [{value: 10, code: "a"}, {value: 10, code: "a"}, {value: 20, code: "a"}, {value: 30, code: "b"}];
     });
 
     test('processData should exist', () => {

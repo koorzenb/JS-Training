@@ -4,7 +4,6 @@ export const processData = (data, amount = 1000000) => {
     for (const item of data) {
         processor.process(item);
     }
-    console.log(processor.result);
     return processor.result;
 };
 
