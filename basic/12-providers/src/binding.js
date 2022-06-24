@@ -1,5 +1,8 @@
 export default class Binding {
 
+    set dataStore(newValue) {
+    }
+
     get element() {
         return this._element;
     }
