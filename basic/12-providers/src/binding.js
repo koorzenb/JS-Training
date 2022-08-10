@@ -1,8 +1,5 @@
 export default class Binding {
 
-    set dataStore(newValue) {
-    }
-
     get element() {
         return this._element;
     }
@@ -29,11 +26,13 @@ export default class Binding {
 
     constructor(element) {
         this.element = element;
+        this.dataStore = {}; // getter don't accept parameters and not sure how to set this property otherwise 
     }
 
     dispose() {
         this.element = null;
         this.context = null;
+        this.dataStore = null;
     }
 
 
@@ -101,19 +100,5 @@ export default class Binding {
     _setHTML(context) {
         const html = this._textParser(this.element, this[`_${context}`]());
         this.element.innerHTML = html;
-    }
-
-    // not sure where else to store this data.
-    /**
-     * Name data - context object
-     * @returns {Object}
-     * @private
-     */
-    _name() {
-        return {
-            firstName: "John",
-            lastName: "Smith",
-            age: 20
-        };
     }
 }

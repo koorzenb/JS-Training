@@ -6,7 +6,11 @@ export default class ViewModel {
         this._init();
 
         const binding = new Binding(this.element);
-        binding.dataStore(context);
+        binding.dataStore.name = {
+            firstName: "John",
+            lastName: "Smith",
+            age: 20
+        };
         binding.updateUI();
     }
 
