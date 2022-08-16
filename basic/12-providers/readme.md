@@ -1,6 +1,3 @@
-# Training submission for Johan Rabie
-## Branch: project-12
+# Binding expressions
 
-### Details
-#### Full spec at
-https://github.com/caperaven/training/blob/master/basic/12.%20Conventions%20factories%20and%20providers.md
+Project to explore bing expressions
