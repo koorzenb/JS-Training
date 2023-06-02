@@ -4,8 +4,13 @@
   "description": "Project 12",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --verbose ./test",
+    "test-integration": "jest --help",
     "start": "ws --spa ./index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/koorzenb/JS-Training/tree/project-12/basic"
   },
   "keywords": [
     "providers"
@@ -13,20 +18,9 @@
   "author": "BarendK",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.15.8",
-    "@babel/plugin-proposal-throw-expressions": "^7.8.3",
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/preset-env": "^7.15.8",
-    "@types/jest": "^27.4.0",
-    "babel-jest": "27.5.1",
-    "babel-polyfill": "^6.26.0",
-    "jest": "^27.2.4",
-    "regenerator-runtime": "^0.13.9",
+    "mocha": "^10.0.0",
+    "puppeteer": "^14.1.1",
     "sinon": "^13.0.1"
-  },
-  "dependencies": {
-    "core-js": "^3.21.1",
-    "puppeteer": "^14.1.1"
   },
   "directories": {
     "test": "test"

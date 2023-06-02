@@ -1,0 +1,32 @@
+{
+  "name": "13-observers",
+  "version": "1.0.0",
+  "description": "observer-pattern",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./test/integration/bootstrap.js --recursive test/integration/tests/index.js",
+    "test-unit": "mocha test/unit/viewModel.test.js",
+    "start": "ws --spa ./index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koorzenb/JS-Training.git#project-13"
+  },
+  "keywords": [
+    "observer",
+    "pattern"
+  ],
+  "author": "Barend Koorzen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koorzenb/JS-Training/issues"
+  },
+  "homepage": "https://github.com/koorzenb/JS-Training/tree/project-12#readme",
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "jest": "^28.1.0",
+    "mocha": "^10.0.0",
+    "nyc": "^15.1.0",
+    "puppeteer": "^14.1.2"
+  }
+}
