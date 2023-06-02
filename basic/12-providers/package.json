@@ -1,0 +1,28 @@
+{
+  "name": "project12",
+  "version": "0.0.2",
+  "description": "Project 12",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose ./test",
+    "test-integration": "jest --help",
+    "start": "ws --spa ./index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/koorzenb/JS-Training/tree/project-12/basic"
+  },
+  "keywords": [
+    "providers"
+  ],
+  "author": "BarendK",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^10.0.0",
+    "puppeteer": "^14.1.1",
+    "sinon": "^13.0.1"
+  },
+  "directories": {
+    "test": "test"
+  }
+}

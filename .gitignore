@@ -13,3 +13,4 @@ yarn-error.log
 .eslintrc
 test.html
 test.js
+**/**/node_modules/

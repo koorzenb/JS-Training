@@ -1,8 +1,9 @@
-import {MyLocalStorage} from './lib/myLocalStorage.js';
-export class ViewModel {
-
-    constructor() {
-        console.log("viewModel started");
-        const myStorage = new MyLocalStorage("toDoList", "../data/entries.json");
-    }
+class ViewModel {
+  constructor() {
+    const context = {
+      firstName: 'John',
+      lastName: 'Smith',
+      age: 20,
+    };
+  }
 }
