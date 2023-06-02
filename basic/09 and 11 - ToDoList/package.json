@@ -1,10 +1,10 @@
 {
-  "name": "todolist-ver2",
+  "name": "todolist-lite",
   "version": "2.0.0",
   "description": "ToDo List",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --runInBand",
+    "test": "jest",
     "start": "ws --spa ./index.html",
     "render": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*' --directory --port 7777 --browser \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" --startPath ./index.html"
   },
@@ -15,7 +15,21 @@
   "author": "BarendK",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.27.5",
-    "jest": "^27.2.4"
+    "@babel/core": "^7.15.8",
+    "@babel/plugin-proposal-throw-expressions": "^7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.15.8",
+    "@types/jest": "^27.4.0",
+    "babel-jest": "27.5.1",
+    "babel-polyfill": "^6.26.0",
+    "jest": "^27.2.4",
+    "regenerator-runtime": "^0.13.9",
+    "sinon": "^13.0.1"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "core-js": "^3.21.1"
   }
 }
